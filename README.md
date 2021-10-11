@@ -1,108 +1,348 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Gym Rat Dictionaries
 
-Welcome USER_NAME,
+*Gym Rat Dictionaries* is a online glossary of all the workout and exercise terminology you may come across when beginning your fitness journey. *GRD* is a community built site, with gym rats of all fitness levels coming together to contribute a variety of exercises that you may come across in your fitness journey. 
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Are you new to fitness and left a little confused by all exercise jargon? Still working out what a Barbell Good Morning is?
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+# Demo
+Visit the live site here
 
-## Gitpod Reminders
+# Contents:
+### UX: 
+  * User Stories
+  * Strategies
+  * Scope
+  * Structure
+  * Skeleton
+  * Surface
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+### Features:
+  * Existing Features
+  * Features left to implement
 
-`python3 -m http.server`
+### Technologies Used:
+  * Languages
+  * Frameworks and Libraries
+  * Others
 
-A blue button should appear to click: _Make Public_,
+### Database - MongoDB 
+  * Schema / Data Model
+  * Breakdown of collections and fields of each
 
-Another blue button should appear to click: _Open Browser_.
+### Testing: 
+* Testing User Stories
+* Bugs - Discovered and resolved during development
+* Manual functionality testing
+* Responsive Testing
+* Validation Testing
+* Lighthouse performance 
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+### Deployment:
+  * Git
+  * GitHub
+  * Heroku 
 
-A blue button should appear to click: _Make Public_,
+### Credits:
+  * Code
+  * Content
+  * Acknowledgements
 
-Another blue button should appear to click: _Open Browser_.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+# UX
+## User Stories: 
+*As a regular user, I want to be able to:*
+* Login and out of my account.
+* Upload an exercise definition. 
+*  View all my uploaded definition in one place.
+* Save or add all my favourite definitions to 'My Favourites'. 
+* 'Like' or 'upvote' a definition.
+* Edit or delete any definition I have added.
 
-To log into the Heroku toolbelt CLI:
+*As a first-time user, I want to be able to:*
+* Identify the different categories of definitions available on the app.
+*  Search for a particular exercise quickly.
+* Create an account if I like the content of the site.
+* To share a definition on my Facebook or Instagram account. 
+* To quickly find a definition while I'm at the gym. 
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+*As the site owner/Admin, I want to be able to:*
+* Add a new workout type category to the site. 
+* Edit an existing workout type category.
+* Delete an existing workout type category. 
+* Provide the functionality to users to allow them to 'save' their favourite definitions to 'My Favourites'.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
 
-------
+  ## Strategies:
+  **Purpose & Objectives:**
+  
+ * The purpose of the site is to provide a well-structured app where users can provide definitions for exercise terminology. Registered users can create, read, edit and delete exercise definitions, while casual or first-time users can search and share definitions. Gym Rat Dictionaries is a community driven app, where users can help extend the variety of definitions available to others. Our purpose is to provide a site that will be beneficial to those at any level of fitness. For those who are just starting off and struggling with the overwhelming jargon associated with exercise, to those who are well versed in the fitness world and want to impart their knowledge to others. GRD will provide a community to those interested in fitness.
 
-## Release History
+* The objective of this app is to provide the framework necessary for users to perform CRUD operations on the data provided to the non-relational DBMS. As a community driven app, the content gained from the users is tracked and catalogued in the non-relational DBMS. Each definition entry has a unique ID and is sorted into its relevant category by the user when creating the definition. Combined with the use of Flask, Python, and Materialize, the app provides a user-friendly front-end to present the data to the user to manipulate in a polished, intuitive manner. From there, users  can perform CRUD operations, are able to browse through each category or search for a specific definition through the search bar. The save functionality also allows the user to track and catalogue the content specific to their interests or share a definition across various social media platforms. 
+  
+  ### Owner Goals: 
+ * To provide a community driven app to allow users to create, edit, delete and browse exercise definitions.
+ * Provide users with the functionality to find and share definitions.
+ * To provide a mobile-first app with search functionality for users on the go.
+ * Provide upvoting functionality for users to express their satisfaction with particular definitions.
+ * To collect quality definitions provided by a variety of users to create and publish a dictionary or e-book. 
+ * To provide save functionality to allow users to save their favourite definitions. 
+  
+  
+  ##  Scope:
+  The functional requirements put in place help aid the user to access the content they are looking for quickly and easily, provide the framework for them to perform CRUD operations and provide the functionality to allow them to share this data across a variety of social media platforms. This is all combined to present a user-friendly intuitive front-end design to maximise UX:
+   * MongoDB
+   * Flask 
+   * Python 
+   * Materialize
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+The required content for the site is the framework put in place to guide users through performing CRUD operations, the content or data from then on, is provided by the users themselves: 
+* Create definition form
+* Edit definition form 
+* Delete definition prompt 
+* Register/Login forms
+  
+  ##  Structure:
+ * The site is designed to foster intuitive learning; the aim is to provide an intuitive interaction between the user and the website.
+ * Content is structured logically and grouped categorically.
+ * Users can quickly identify and access the information they are looking for.
+  
+  ##  Skeleton:
+  **Wireframes:**
+  Wireframes were created for each HTML file across a variety of viewports. (mobile, tablet/iPad, laptop/desktop)
+  The wireframes for each can be viewed [here](). 
+  
+  ##  Surface:
+  **Aesthetic:**
+  As the app is orientated towards a fitness/exercise demographic, I wanted to keep the feel of the site modern, clean, and bright with pops of accent colours. 
+  
+ **Colour Palette:** 
+ I chose to use five colours throughout the site, three neutral colours to be used for the base and two contrasting accent colours to add some colour to text, icons and headings. 
+ INSERT IMG OF COLOUR PALETTE HERE
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+**Typography:**
+The fonts chosen are simple and clean, in keeping with the overall aesthetic and purpose of the app. 
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+**Images:**
+The images chosen are all fitness orientated and intuitively provide further context to the purpose of the site. The option for users to provide imagery along with their definition was included as it provides visual context to the definition. 
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+# Features:
+  ## Existing Features:
+**Navigation Bar:**
+The navigation bar is available in the default position and allows users to quickly identify the different sections of the site. On mobile and table viewports, these sections are available in a collapsible menu to provide a cleaner layout on smaller screens. The sections presented on the nav-bar change depending on the following: 
+1. Whether the user is logged in.
+2. Whether the user logged in is actually a site admin.
+3. Whether the user is casually browsing the app.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+**If the user is logged in, the navigation bar will display the following:**
+INSERT IMAGE OF LOGGED IN USER NAV BAR HERE
+**If the user logged in is a site admin:**
+INSERT IMG OF LOGGED IN ADMIN NAV BAR HERE
+**If the user is casually browsing the app:**
+INSERT IMG OF CASUALLY BROWSING USER NAV BAR HERE
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+The changes in the sections presented in the navigation bar depend solely on the status of the user. Changes will be seen depending on whether you are casually browsing, are registered user, or a site admin. For both the registered user and site admin there is additional functionality made available. 
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+**Search Functionality:**
+As the app was constructed in a mobile-first approach with user interaction and experience in mind, the choice was made to build the search bar functionality into the navigation bar. This was implemented to aid users on the go, perhaps at the gym, mid-workout.  It minimises the amount of limited time a user has to spend trying to find the exercise definition they are looking for. As the site's function is primarily a glossary or dictionary, its search functionality needs to be easily identified and accessed.  
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+**User Accounts:**
+To register or create an account with the app, the user is required to provide a unique, validated username and password. Upon logging-in, a registered user will be prompted to provide this username and password to gain access to their account. Security measures have been put in place by the site owner to protect user log-in details. 
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+**Categories:**
+To present the data in an organised and intuitive fashion, the site owner has chosen to track and catalogue the exercise definitions by category. The following breakdown of categories have been created to help organise the definitions: 
+* Upper Body Exercises
+* Lower Body Exercises
+* Full Body Exercises
+* Core Exercises
+* Mobility Exercises
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+Upon creating a definition, the user must as a requirement, select which category the definition fall underneath. 
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+**Creation/Management of categories:** 
+The functionality surrounding the creation and management of categories is restricted to the site owner and admin. While registered and casual users can browse the categories available, only the site owner and admin will have access to category CRUD operations. 
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+**CRUD Operations:**
+The following CRUD operations are restricted to registered users of the app only: 
+* Create
+* Update/Edit
+* Delete
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+**Note:** Registered users only have access to perform CRUD operations on their **own definitions**.  
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+Casual or first-time users of the app are able to browse through definitions and categories but, will not be permitted to perform the aforementioned operations. 
 
-------
+**Floating Buttons:**
+The addition of floating buttons (Search and Scroll to the top) were added to enhance both UI and UX. On any page where the navigation bar is no longer visible, users can instead use the floating buttons to either search for a definition or, to trigger scroll to the top. This was implemented primarily for smaller viewports but was added to all viewports to increase user satisfaction towards the app. 
 
-## FAQ about the uptime script
+**My Favourites:**
+The my favourites functionality was provided to allow users to save their favourite definitions onto their profile page, alongside their own uploaded definitions. Users can add a definition to their 'My Favourites' by clicking on the HEART icon available on each definition panel, further increasing user interaction with the app.
 
-**Why have you added this script?**
+**Upvoting functionality:**
+Promotes further user interaction with the app and also gives the user a sense of community, as the upvote functionality displays the amount of 'votes' a definition has gotten from the Gym Rat Dictionaries community. The icon to upvote a definition is displayed on each definition panel and a user can simply click it to upvote a definition. 
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+**Share a definition:**
+The decision to integrate the option to share a definition was twofold, it would help: 
+* To increase traffic to the app by allowing users to share definitions across various social media platforms. 
+* To encourage further user interaction and satisfaction with the app, as sharing across platforms is standard/common practice amongst all apps. 
 
-**How will this affect me?**
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+## Features left to implement:
+* Introduce a 'definition of the day' functionality - where registered users receive a daily definition through email.
+* Random definition generator - would generate a random definition from the site.
+* Create a workout from the app definitions - to allow the user to compile definitions to create their own customised workout, which they could then share either on Gym Rat Dictionaries or on another social media platform. 
+* Create new categories for user-created workouts - Once users had compiled and created their own workouts from the app definitions, they could then upload it to the workout category. 
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+# Technologies Used:
+  ## Languages:
+  * [HTML5](https://en.wikipedia.org/wiki/HTML5)
+  * [CSS3](https://en.wikipedia.org/wiki/CSS)
+  * [JavaScipt](https://en.wikipedia.org/wiki/JavaScript)
+  * [Python](https://www.python.org/)
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+  ## Frameworks, Packages, & Libraries:
+* [Pip3](https://pip.pypa.io/)
+* [Dnspython](https://pypi.org/project/dnspython/)
+* [jQuery](https://jquery.com/)
+* [Font Awesome](https://fontawesome.com/)
+* [Google Fonts](https://fonts.google.com/)
+* [Materialize](https://materializecss.com/)
+* [Flask](https://flask.palletsprojects.com/)
+* [Flask-PyMongo](https://flask-pymongo.readthedocs.io/en/latest/)
+* [Jinja](https://jinja.palletsprojects.com/)
+* [Werkzeug](https://werkzeug.palletsprojects.com/)
 
-**So….?**
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+## Other Technologies: 
+* [GitHub](https://github.com/) used to host the GRD repository.
+* [Git](https://git-scm.com/) used for version control of GRD  project.
+* [GitPod](https://www.gitpod.io/) used to develop the project. 
+* [MongoDB](https://www.mongodb.com/) used to structure and host user data. 
+* [Heroku](https://www.heroku.com/) used to deploy the live site.
+* [Balsamiq](https://balsamiq.com/) used to create the wireframes for the GRD project.
+* [PowerMapper](https://www.powermapper.com/) used to verify cross-browser compatibility. 
+* [Favicon.io](https://favicon.io/) used to create GRD favicon.
+* [RandomKeygen](https://randomkeygen.com/) used to generate a secure password for environment variable `SECRET_KEY`.
+* [Upsplash](https://unsplash.com/) free images used throughout site found on Upsplash. (Acknowledgments in the credits section)
+* [Autoprefixer CSS](https://autoprefixer.github.io/) used to parse CSS and add vendor prefixes to custom CSS file. 
+* [Am I Responsive](http://ami.responsivedesign.is/) used to create the demo image seen in the README.
+* [Lighthouse](https://developers.google.com/web/tools/lighthouse) used to audit the app for improved performance and UI.
 
-**Can I opt out?**
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+# Database - MongoDB: 
+### **Schema:**
+  Below is the schema for the Gym Rat Dictionaries database: 
+  INSERT IMG OF SCHEMA 
+### **Categories:**
+INSERT IMG OF CATEGORIES
 
-**Anything more?**
+### **Users:**
+INSERT IMG OF USERS
+### **Exercises:**
+INSERT IMG OF EXERCISES
+### **user_favourites:**
+INSERT IMG OF USER_FAVOURITES
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+# Testing:
+Due to the size of the testing section, you can find all documentation related to the testing of Gym Rat Dictionaries [here]().
 
----
+# Deployment:
+## Git:
+ **Using Git to add, commit and push code into a repository:**
+Storing files in Git is a two-stage process:
+​1. Files must be **added to the staging area** using the "**git add**" command followed by the specified file name.
 
-Happy coding!
+​2. Files must be **committed** to the repository using the "**git commit -m**" command followed by a specified message within double quotation marks.  
+
+**Note:**  that it is common practice when making your first commit to a repository to provide the message "**Initial commit.**".
+
+**Pushing code to GitHub:**
+
+This is achieved by connecting your local repository with your remote repository and pushing the code from local to remote. Storing your code in a remote repository on a remote server allows it to be backed up and also be accessed by others. Once you have added the files to the storing area, committed the files to the repository, you then push your files to GitHub. Using the "**git push**" command to push the code from your local repository to the remote repository. 
+
+**To back up your code:**
+* Start from the terminal by pressing  **CTRL+C**  to stop the server.
+* Run "**ls**" to list the files.
+* Begin adding and committing the code as outlined in step 1 & 2 of storing files in Git.
+* Run "**git status**" to view all files added to the staging area.
+* Run "**git commit -m**" followed by your message contained in double quotation marks, adding the files to your local repository.
+*  Once the files have been committed, push them to the remote repository using "**git push**".
+ 
+ ## GitHub:
+ This repository is hosted by GitHub, but deployed by Heroku.
+    
+**Clone this repository:**
+To run  **locally**, you can clone this repository, or pull the code from this GitHub repository:
+* Navigate to the main page of the repository.  
+* Above the list of files, click '**Code**'.
+* To clone the repository using  **HTTPS**, under  '**Clone with HTTPS**', click the  **clipboard**  symbol.
+* Open Git Bash.
+* Change the current working directory to the location where you want the cloned directory.
+* Type  `git clone`  and paste in the copied URL
+`$ git clone https://INSERT GITHUB REPO URL HERE`
+* Press  **Enter**  to create your local clone.
+
+**Note:** In order to clone this repository, you will need to create the following:
+* An env.py file using your own variables.
+* A MongoDB database similar to the database documented in the Database section of this README.
+* Install all packages listed in the requirements.txt file, this can be achieved by running the following command in the terminal: 
+`pip install -r requirements.txt`
+
+**Fork this repository:**
+A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project.
+
+To fork this repository:
+* Log into GitHub and navigate to this repository [here](ENTER GITHUB REPO URL HERE)
+* In the top-right corner of the page, click '**Fork**'.
+* From there, you will have a copy of the repository.
+
+
+  
+
+## Heroku Deployment:
+This project was deployed using Heroku. Heroku integrates with GitHub to make it easy to deploy code living on GitHub to apps running on Heroku. <---When GitHub integration is configured for a Heroku app, Heroku can automatically build and release (if the build is successful) pushes to the specified GitHub repo.--> 
+
+ **Requirements.txt & Procfile:** 
+Before creating the Heroku application, you must first set up two files which Heroku needs to run the app, requirements.txt and Procfile:
+* Requirements.txt is used to specify what packages are required to run the project.
+* The Procfile specifies the commands that are executed by the app on start-up. 
+
+ To create these files, use the following code in the **GitHub Terminal**:
+
+    pip3 freeze --local>requirements.txt
+    echo web: python app.py > Procfile
+**Note:**  The Procfile may have a blank line at the end of the file which can cause problems when running the app on Heroku, make sure to delete it and save the file. 
+
+**On Heroku:** 
+Sign in or create an account on heroku.com:
+* Click '**New**' on the dashboard and select '**Create new app**'. 
+* Provide a unique app name including dashes, select your region, and click '**Create App**'.
+
+**Connecting to GitHub:**
+From the dashboard, click on the **Deploy** tab:
+* From the '**Deployment Method**' section, click on '**GitHub**'.
+* Provide your repository name and click '**Search**', once it finds your repository, click '**Connect**'. 
+
+**Note:** 
+**BEFORE** you enable automatic deployment, click on '**Settings**' tab and click '**Reveal Conflict Vars**' to provide your **environment variables** from your **env.py** file to Heroku:
+
+    IP: 0.0.0.0
+    PORT: 5000
+    SECRET_KEY: YOUR_SECRET_KEY
+    MONGO_URI: YOUR_UNIQUE_MONGO_URI
+    MONGO_DBNAME: DATBASE_NAME
+**Note:** It doesn't matter if you don't have your MONGO_URI at this time, just add it as blank.  
+
+* Click **Hide your config vars** and go back to the Deploy tab.
+
+**Note:** 
+**Before you deploy**, you need to **push** the Procfile and requirements from the GitHub terminal.
+
+* Back on Heroku, you can then '**Enable Automatic Deployment**' followed by '**Deploy Branch (main)**'.
+* You will be able to confirm a successful deployment from the Heroku. 
+
+## Credits:
+  **Code:**
+  **Content:**
+  **Acknowledgements:**
