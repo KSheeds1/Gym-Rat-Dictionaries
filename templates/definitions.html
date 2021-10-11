@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gym Rat Dictionaries</title>
-</head>
-<body>
-    {% for definition in definitions %}
-        {{ definition.exercise_name }}<br>
-        {{ definition.category_name }}<br>
-        {{ definition.exercise_description }}<br>
-        {{ definition.tempo }}<br>
-        {{ definition.image_url }}<br>
-        {{ definition.created_by }}<br>
-        {{ definition.upvotes }}
-    {% endfor %}
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+    <h2>test 2</h2>
+        {% for definition in definitions %}
+            {{ definition.exercise_name }}<br>
+            {{ definition.category_name }}<br>
+            {{ definition.exercise_description }}<br>
+            {{ definition.tempo }}<br>
+            {{ definition.image_url }}<br>
+            {{ definition.created_by }}<br>
+            {{ definition.upvotes }}
+        {% endfor %}
+
+{% endblock %}
