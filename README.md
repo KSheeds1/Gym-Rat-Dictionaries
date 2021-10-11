@@ -121,7 +121,8 @@ The required content for the site is the framework put in place to guide users t
  INSERT IMG OF COLOUR PALETTE HERE
 
 **Typography:**
-The fonts chosen are simple and clean, in keeping with the overall aesthetic and purpose of the app. 
+The fonts chosen for the app are '[DM Serif Display](https://fonts.google.com/specimen/DM+Serif+Display?query=DM+)' and '[Raleway](https://fonts.google.com/specimen/Raleway?preview.text=Gym%20Rat%20Dictionaries&preview.text_type=custom)'. They were selected as both styles are clean and simple yet are similar to font styles seen in dictionaries worldwide, and therefore, in keeping with the overall aesthetic and purpose of the app.
+INSERT IMAGE OF FONTS HERE 
 
 **Images:**
 The images chosen are all fitness orientated and intuitively provide further context to the purpose of the site. The option for users to provide imagery along with their definition was included as it provides visual context to the definition. 
@@ -136,10 +137,15 @@ The navigation bar is available in the default position and allows users to quic
 
 **If the user is logged in, the navigation bar will display the following:**
 INSERT IMAGE OF LOGGED IN USER NAV BAR HERE
+
+
 **If the user logged in is a site admin:**
 INSERT IMG OF LOGGED IN ADMIN NAV BAR HERE
+
+
 **If the user is casually browsing the app:**
 INSERT IMG OF CASUALLY BROWSING USER NAV BAR HERE
+
 
 The changes in the sections presented in the navigation bar depend solely on the status of the user. Changes will be seen depending on whether you are casually browsing, are registered user, or a site admin. For both the registered user and site admin there is additional functionality made available. 
 
