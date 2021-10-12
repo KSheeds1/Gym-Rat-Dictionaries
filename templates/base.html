@@ -16,10 +16,10 @@
         <!--Main Navbar-->
         <nav class="nav-extended nav-dark">
             <div class="nav-wrapper">
-                <a href="{{ url_for('get_definitions') }}" class="brand-logo">GRD</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+                <a href="{{ url_for('get_definitions') }}" class="brand-logo left">GRD</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for('get_definitions') }}">Home</a></li>
+                    <li><a href="{{ url_for('get_definitions') }}"></a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Add Definition</a></li>
                     <li><a href="#">Categories</a></li>
@@ -30,15 +30,28 @@
             </div>
         </nav>
         <!--Mobile Sidenav-->
-        <ul class="sidenav" id="mobile-demo">
-            <li><a href="{{ url_for('get_definitions') }}">Home</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Add Definition</a></li>
-            <li><a href="#">Categories</a></li>
-            <li><a href="#">Log Out</a></li>
-            <li><a href="#">Log In</a></li>
-            <li><a href="#">Register</a></li>
+        <ul class="sidenav nav-dark" id="mobile-demo">
+            <li><a href="{{ url_for('get_definitions') }}" class="brand-logo"><span class="white-text">GRD</span></a>
+            </li>
+            <li><a href="{{ url_for('get_definitions') }}"><span class="white-text">Home</span></a></li>
+            <li><a href="#"><span class="white-text">Profile</span></a></li>
+            <li><a href="#"><span class="white-text">Add Definition</span></a></li>
+            <li><a href="#"><span class="white-text">Categories</span></a></li>
+            <li><a href="#"><span class="white-text">Log Out</span></a></li>
+            <li><a href="#"><span class="white-text">Log In</span></a></li>
+            <li><a href="#"><span class="white-text">Register</span></a></li>
         </ul>
+        <!--Floating Action Button (Search, add definition, scroll to top)-->
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large black">
+                <i class="fas fa-bars"></i>
+            </a>
+            <ul>
+                <li><a class="btn-floating search"><i class="fas fa-search"></i></a></li>
+                <li><a class="btn-floating add"><i class="fas fa-plus"></i></a></li>
+                <li><a class="btn-floating scroll-up"><i class="fas fa-arrow-circle-up"></i></a></li>
+            </ul>
+        </div>
     </header>
     
     {% block content %}

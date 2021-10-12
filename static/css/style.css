@@ -9,3 +9,16 @@ body {
     background-color: #030301;
     font-family: "DM Serif Display", serif;
 }
+
+/* Floating action buttons:*/
+.search {
+    background-color: #ff4365;
+}
+
+.add {
+    background-color: #17DCC6;
+}
+
+.scroll-up {
+    background-color: #A6A6A0;
+}
