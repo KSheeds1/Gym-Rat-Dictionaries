@@ -1,13 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 
+/* Genral: */
 body {
     background-color: #fffff3;
 }
 
+h1, h2, h3 {
+    font-family: "DM Serif Display", serif;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px rgb(0, 0, 0, 0.5);
+}
+
+/* Accent colours: */
+.pink {
+    color: #ff4365;
+}
+
+.blue {
+    color: #17DCC6;
+}
+
+.grey {
+    color: #A6A6A0;
+}
+
+.white {
+    color: #fffff3;
+}
+
+/*Navbar: */
 .nav-dark {
     background-color: #030301;
     font-family: "DM Serif Display", serif;
+}
+
+nav .brand-logo .left {
+    font-family: "DM Serif Display", serif;
+    font-size: 8vw;
 }
 
 /* Floating action buttons:*/
@@ -21,4 +53,22 @@ body {
 
 .scroll-up {
     background-color: #A6A6A0;
+}
+
+/* Flash Messages:*/
+.flashes h4 {
+    line-height: 2;
+}
+
+/* Card panels: */
+.card {
+    background-color: #fffff3;
+}
+
+/* Buttons: */
+.btn-large {
+    font-family: "Raleway", serif;
+    color: #fffff3;
+    text-transform: none;
+    font-size: larger;
 }

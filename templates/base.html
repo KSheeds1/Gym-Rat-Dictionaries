@@ -26,7 +26,7 @@
                     <li><a href="#">Categories</a></li>
                     <li><a href="#">Log Out</a></li>
                     <li><a href="#">Log In</a></li>
-                    <li><a href="#">Register</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
                 </ul>
             </div>
         </nav>
@@ -40,9 +40,23 @@
             <li><a href="#"><span class="white-text">Categories</span></a></li>
             <li><a href="#"><span class="white-text">Log Out</span></a></li>
             <li><a href="#"><span class="white-text">Log In</span></a></li>
-            <li><a href="#"><span class="white-text">Register</span></a></li>
+            <li><a href="{{ url_for('register') }}"><span class="white-text">Register</span></a></li>
         </ul>
     </header>
+
+    <section>
+        <!--Flash Messages-->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row flashes">
+                        <h4 class="center-align">{{ message }}</h4>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
+
     <!--Floating Action Button (Search, add definition, scroll to top)-->
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large black">
@@ -54,9 +68,11 @@
             <li><a class="btn-floating scroll-up"><i class="fas fa-arrow-circle-up"></i></a></li>
         </ul>
     </div>
-    
-    {% block content %}
-    {% endblock %}
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
