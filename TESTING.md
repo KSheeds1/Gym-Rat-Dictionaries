@@ -62,6 +62,51 @@ Logged in users can simply click on the 'Add to Favourites' icon featured on eac
 ## Bugs - Discovered & resolved during development stage:
 
 ## Manual functionality testing:
+### Registration functionality:
+Following completion of the function register(), the function and form were tested manually. The functionality was tested in the following manner: 
+
+1. Attempt registration by providing **neither** a username or password and clicking on the 'Register' button.:
+	INSERT PIC HERE
+	**Result:** User is prompted to fill in the fields. 
+	
+2. Attempt registration with an **invalid** username and **valid** password:
+INSERT PIC HERE
+**Result:** User is prompted to 'Please match the format requested', the form validation or pattern recognition required has not been met for the username. 
+
+3. Attempt registration by submitting the form filling out both inputs with nothing but spaces:
+INSERT PIC HERE
+**Result:** User is again prompted to 'Please match the format requested' and the form validation and pattern recognition are throwing errors. 
+
+4. Attempt registration with a **valid** username and an **invalid** password:
+INSERT PIC HERE
+**Result:** User is prompted to 'Please match the format requested'. The form validation and pattern recognition are throwing errors for the password. 
+
+5. Attempt registration with a **valid** username and **valid** password: 
+INSERT PIC HERE
+**Result:**  The form validation and pattern recognition are accepting both the username and password, the user is redirected to their profile and receive a flash message of 'Registration Successful'. 
+
+### Log In functionality:
+Following completion of the function login(), the function and form were tested manually. The functionality was tested in the following manner: 
+
+1. Attempt login by providing **neither** a username or password and clicking on the 'Register' button.:
+	INSERT PIC HERE
+	**Result:** Neither form validation or pattern recognition requirements have been met. The user is prompted to fill in the fields.
+	 
+2. Attempt login with an **invalid** username and **valid** password:
+INSERT PIC HERE
+**Result:** The form redirects back to the login page and the user is informed by the flash message that either an incorrect username or password have been entered. 
+
+3. Attempt login by submitting the form filling out both inputs with nothing but spaces:
+INSERT PIC HERE
+**Result:** User is again prompted to 'Please match the format requested' and the form validation and pattern recognition are throwing errors. 
+
+4. Attempt login with a **valid** username and an **invalid** password:
+INSERT PIC HERE
+**Result:** The form redirects back to the login page and the user is informed by the flash message that either an incorrect username or password have been entered. 
+
+5. Attempt login with a **valid** username and **valid** password: 
+INSERT PIC HERE
+**Result:**  The form validation and pattern recognition are accepting both the username and password, the user is redirected to their profile and receive a flash message of 'Welcome {username}'.
 
 ## Responsive Testing:
 
