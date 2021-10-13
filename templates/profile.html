@@ -4,13 +4,10 @@
     <!--Profile name panel-->
     <div class="row">
         <div class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
-            <h2 class="header center-align">Log In</h2>
-            <div class="card horizontal z-depth-5">
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <h3 class="center-align">{{ username }}' Profile</h3>
+            <div class="card profile-card z-depth-5">
+                    <div class="card-content white-text">
+                        <h3 class="center-align">{{ username }}'s Profile</h3>
                     </div>
-                </div>
             </div>
         </div>
     </div>

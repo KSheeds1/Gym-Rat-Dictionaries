@@ -70,6 +70,12 @@ nav .brand-logo .left {
     background-color: #fffff3;
 }
 
+.profile-card {
+    background-color: #030301;
+    color: #fffff3;
+    height: auto;
+    margin: 1rem 0 1rem 0;
+}
 /* Buttons: */
 .btn-large {
     font-family: "Raleway", serif;
