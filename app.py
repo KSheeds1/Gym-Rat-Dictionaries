@@ -87,7 +87,7 @@ def login():
                 flash("Incorrect Username or Password")
                 return redirect(url_for("login"))
 
-        else: 
+        else:
             # Username doesn't exist:
             flash("Incorrect Username or Password")
             return redirect(url_for("login"))
@@ -99,13 +99,33 @@ def login():
 def profile(username):
     """
     Once logged in or registered, the profile function will be triggered
-    and will redirect the session user to their profile page.
+    and will redirect the session user to their profile page. 
     """
     # Grab the session user's username from the db:
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    return render_template("profile.html", username=username)
+
+    # If session user cookie truthy, return to appropriate profile:
+    if session["user"]:
+        return render_template("profile.html", username=username)
+
+    # If false or doesn't exist, redirect to login:
+    return redirect(url_for("login"))
     
+
+@app.route("/logout")
+def logout():
+    """
+    Removes user from session cookie and specifies which
+    session cookie to delete. Before logging the user out,
+    they will get a flash message advising that they have
+    been logged out and will be redirected to login. 
+    """
+    # Remove user from session cookie:
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("login"))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
