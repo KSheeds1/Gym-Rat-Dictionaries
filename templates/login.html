@@ -3,7 +3,7 @@
 
     <!--Registration Form-->
     <div class="row">
-        <form class="col s12 offset-m2 m7" method="POST" action="{{ url_for('login') }}">
+        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
             <h2 class="header center-align">Log In</h2>
             <div class="card horizontal z-depth-5">
                 <div class="card-stacked">
@@ -29,19 +29,15 @@
                     <div class="card-action">
                         <div class="row">
                             <button type="submit" class="col s12 add btn-large">Log In</button>
+                            <p class="center-align">
+                                New here?
+                                <a href="{{ url_for('register') }}">Register Here</a>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
-    </div>
-    <div class="row">
-        <div class="col c12">
-            <p class="center-align">
-                New here?
-                <a href="{{ url_for('register') }}" class="blue">Register Here</a>
-            </p>
-        </div>
     </div>
 
 {% endblock %}
