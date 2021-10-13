@@ -17,20 +17,25 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-"""
-App route for the landing page of Gym Rat Dictionaries. 
-"""
+
 @app.route("/")
 @app.route("/get_definitions")
 def get_definitions():
+    """
+    App route for the landing page of Gym Rat Dictionaries.
+    Displays all recently added definitions. 
+    """
     definitions = mongo.db.definitions.find()
     return render_template("definitions.html", definitions=definitions)
 
-"""
-App route for the registration functionality and page.
-"""
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    App route for the registration functionality & page. Check to see if the 
+    username already exists in the database and if not, creates a dictionary
+    to insert the new username and password into the db. 
+    """
     if request.method == "POST":
         # Check if username already exists in the db:
         existing_user = mongo.db.users.find_one(
@@ -44,12 +49,48 @@ def register():
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
-        mongo.db.insert_one(register)
+        mongo.db.users.insert_one(register)
 
         # Put the new user into 'session' cookie:
         session["user"] = request.form.get("username").lower()
         flash("Registration successful!")
     return render_template("register.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    """
+    App log-in functionality. Defensively programmed to check
+    the existence of username in the db, whether the hashed 
+    password matches user input. Will either log user into session 
+    cookie or redirect back to login depending on whether the 
+    correct username and password are provided.
+    """
+    if request.method == "POST":
+        # Check if the username exists in the db:
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            # Ensure the hashed password matches user input: 
+            if check_password_hash(
+                existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome {}".format(
+                    request.form.get("username")))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
+            else:
+                # Invalid password hash:
+                flash("Incorrect Username or Password")
+                return redirect(url_for("login"))
+
+        else: 
+            # Username doesn't exist:
+            flash("Incorrect Username or Password")
+            return redirect(url_for("login"))
+
+    return render_template("login.html")
 
 
 if __name__ == "__main__":

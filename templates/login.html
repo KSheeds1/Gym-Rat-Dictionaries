@@ -3,15 +3,15 @@
 
     <!--Registration Form-->
     <div class="row">
-        <form class="col s12 offset-m2 m7" method="POST" action="{{ url_for('register') }}">
-            <h2 class="header center-align">Register</h2>
+        <form class="col s12 offset-m2 m7" method="POST" action="{{ url_for('login') }}">
+            <h2 class="header center-align">Log In</h2>
             <div class="card horizontal z-depth-5">
                 <div class="card-stacked">
                     <div class="card-content">
                         <!--Username-->
                         <div class="row">
                             <div class="input-field col s12">
-                                <i class="fas fa-user-plus pink-text prefix"></i>
+                                <i class="fas fa-user-cog pink-text prefix"></i>
                                 <input name="username" id="username" type="text" minlength="5" max="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                                 <label for="username">Username</label>
                             </div>
@@ -28,16 +28,20 @@
                     <!--Register Button-->
                     <div class="card-action">
                         <div class="row">
-                            <button type="submit" class="col s12 add btn-large">Register</button>
-                            <p class="center-align">
-                                Already Registered?
-                                <a href="{{ url_for('login') }}">Log In Here</a>
-                            </p>
+                            <button type="submit" class="col s12 add btn-large">Log In</button>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
+    </div>
+    <div class="row">
+        <div class="col c12">
+            <p class="center-align">
+                New here?
+                <a href="{{ url_for('register') }}" class="blue">Register Here</a>
+            </p>
+        </div>
     </div>
 
 {% endblock %}

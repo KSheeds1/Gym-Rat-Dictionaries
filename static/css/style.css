@@ -1,13 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 
-/* Genral: */
+/* General: */
 body {
     background-color: #fffff3;
 }
 
 h1, h2, h3 {
     font-family: "DM Serif Display", serif;
+}
+
+p {
+    color: #030301;
+    font-family: "Raleway", sans-serif;
 }
 
 .text-shadow {
@@ -71,4 +76,5 @@ nav .brand-logo .left {
     color: #fffff3;
     text-transform: none;
     font-size: larger;
+    margin: 5px;
 }
