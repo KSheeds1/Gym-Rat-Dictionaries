@@ -25,7 +25,7 @@ def get_definitions():
     App route for the landing page of Gym Rat Dictionaries.
     Displays all recently added definitions. 
     """
-    definitions = mongo.db.definitions.find()
+    definitions = list(mongo.db.definitions.find())
     return render_template("definitions.html", definitions=definitions)
 
 
