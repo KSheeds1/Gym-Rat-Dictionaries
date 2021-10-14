@@ -29,17 +29,19 @@
                     <label for="tempo">Tempo</label>
                 </div>
                 <!--Upload Image-->
+                <div class="input-field">
                 <form action="POST">
-                    <div class="col s12 file-field input-field inline right">
-                        <span><i class="fas fa-file-upload prefix pink-text"></i></span><br>
+                    <div class="col s12 file-field input-field">
                         <div class="btn-flat left">
-                            <input id="image_url" name="image_url" type="file">
+                            <input id="image_url" name="image_url" type="file"><br>
+                            <span><i class="fas fa-file-upload prefix pink-text"></i></span>
                         </div>
-                        <div class="file-path-wrapper inline">
+                        <div class="file-path-wrapper">
                             <input class="file-path validate" id="image_url" name="image_url" type="text" placeholder="Upload image">
                         </div>
                     </div>
                 </form>
+                </div>
                 <!--Created By-->
                 <div class="input-field col s12">
                     <i class="fas fa-user prefix pink-text"></i>
@@ -47,7 +49,7 @@
                         maxlength="5" type="text" class="validate" required>
                     <label for="created_by">Created By</label>
                 </div>
-                <!--Submit definition button: 'Add Definition'-->
+                <!--Submit definition button:'Add Definition'-->
                 <div class="row">
                     <div class="col s12 center-align">
                         <button class="btn add-btn center-align" type="submit" name="action">Add Definition</button>

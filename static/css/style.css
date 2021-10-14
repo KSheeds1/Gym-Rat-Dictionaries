@@ -194,3 +194,8 @@ footer p {
     background-color: #17DCC6;
     font-family: "Raleway", sans-serif;
 }
+
+/*---------------------- Add Definition Form: */
+.input-field .prefix {
+    left: 1rem;
+}
