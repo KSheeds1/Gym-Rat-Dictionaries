@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 
-/* General: */
+/*---------------------- General: */
 body {
     background-color: #fffff3;
 }
@@ -19,7 +19,7 @@ p {
     text-shadow: 2px 2px rgb(0, 0, 0, 0.5);
 }
 
-/* Accent colours: */
+/*---------------------- Accent colours: */
 .pink {
     color: #ff4365;
 }
@@ -36,7 +36,7 @@ p {
     color: #fffff3;
 }
 
-/*Navbar: */
+/*---------------------- Navbar: */
 .nav-dark {
     background-color: #030301;
     font-family: "DM Serif Display", serif;
@@ -47,7 +47,7 @@ nav .brand-logo .left {
     font-size: 8vw;
 }
 
-/* Footer: */
+/*---------------------- Footer: */
 .page-footer {
     background-color: #030301;
     padding-top: 10px;
@@ -79,7 +79,7 @@ footer p {
     color: #fffff3;
 }
 
-/* Floating action buttons:*/
+/*---------------------- Floating action buttons:*/
 .search {
     background-color: #ff4365;
 }
@@ -92,12 +92,12 @@ footer p {
     background-color: #A6A6A0;
 }
 
-/* Flash Messages:*/
+/*---------------------- Flash Messages:*/
 .flashes h4 {
     line-height: 2;
 }
 
-/* Card panels: */
+/*---------------------- Card panels: */
 .card {
     background-color: #fffff3;
 }
@@ -108,7 +108,12 @@ footer p {
     height: auto;
     margin: 1rem 0 1rem 0;
 }
-/* Buttons: */
+
+.grey {
+    background-color: #A6A6A0;
+}
+
+/*---------------------- Buttons: */
 .btn-large {
     font-family: "Raleway", serif;
     color: #fffff3;
