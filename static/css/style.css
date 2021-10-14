@@ -47,6 +47,38 @@ nav .brand-logo .left {
     font-size: 8vw;
 }
 
+/* Footer: */
+.page-footer {
+    background-color: #030301;
+    padding-top: 10px;
+}
+
+footer h5 {
+    font-family: "DM Serif Display", sans-serif;
+}
+
+.footer-row {
+    display: inline;
+}
+
+footer ul li {
+    display: inline;
+    margin: 0 2px 0 2px;
+}
+
+.footer-links li a i {
+    color: #fffff3;
+}
+
+.footer-links li a i:hover {
+    color: #ff4365;
+}
+
+footer p {
+    font-family: "Raleway", sans-serif;
+    color: #fffff3;
+}
+
 /* Floating action buttons:*/
 .search {
     background-color: #ff4365;
