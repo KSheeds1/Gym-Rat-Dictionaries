@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
     
-    
+    <!--Definitions card panel-->
     <div class="row">
         {% for definition in definitions %}
             <div class="col s12 m6">
                 <div class="card grey z-depth-5">
                     <div class="card-content black-text">
-                        <strong class="card-title">{{ definition.exercise_name }}</strong>
+                        <strong class="card-title">{{ definition.exercise_name }} <a class="modal-trigger right" data-target="#modal1{{ definition._id }}"><i class="fas fa-share-alt fa-lg"></i></a></strong>
                         <div class="divider black"></div>
                         <p class="defintion">{{ definition.exercise_description}}</p>
                         <p class="tempo">Tempo: {{ definition.tempo }}</p>
@@ -20,9 +20,29 @@
                     </div>
                 </div>
             </div>
+            <!--Share definition modal-->
+            <div id="#modal1{{ definition._id }}" class="modal">
+                <div class="modal-header">
+                    <h4>Share this definition?</h4>
+                </div>
+                <div class="modal-content">
+                    <ul class="share-def-socials center-align">
+                        <li><a class="text-shadow" href="https://www.facebook.com/" target="_blank" title="Share definition on Facebook" rel="noopener"><i
+                                    class="fab fa-facebook-f fa-3x"></i></a></li>
+                        <li><a class="text-shadow" href="https://www.tiktok.com/" target="_blank" title="Share definition on TikTok" rel="noopener"><i
+                                    class="fab fa-tiktok fa-3x"></i></a></li>
+                        <li><a class="text-shadow" href="https://www.instagram.com/" target="_blank" title="Share definition on Instagram" rel="noopener"><i
+                                    class="fab fa-instagram fa-3x"></i></a></li>
+                        <li><a class="text-shadow" href="https://www.youtube.com/" target="_blank" title="Share definition on YouTube" rel="noopener"><i
+                                    class="fab fa-youtube fa-3x"></i></a></li>
+                    </ul>
+                </div>
+                <div class="divider black"></div>
+                <div class="modal-footer">
+                    <a class="modal-close btn">Cancel</a>
+                </div>
+            </div>
         {% endfor %}
-    </div>
-        
-        
+    </div>       
 
 {% endblock %}

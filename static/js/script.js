@@ -3,5 +3,6 @@ $(document).ready(function(){
     $('.fixed-action-btn').floatingActionButton({
       direction: 'top'
     });
+    $('.modal').modal();
 });
        

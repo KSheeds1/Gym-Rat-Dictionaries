@@ -131,11 +131,56 @@ footer p {
     font-family: "DM Serif Display", sans-serif;
 }
 
+/*---------------------- Definitions card icons:*/
 .created_by i {
     color: #ff4365;
     margin-right: 5px;
 }
 
+.card-title i {
+    color: #17DCC6;
+}
+
+.card-title i:hover {
+    color: #fffff3;
+}
+
+/*----------------------Modals:*/
+.modal-header {
+    background-color: #030301;
+    color: #fffff3;
+    font-family: "DM Serif Display", sans-serif;
+    padding: 15px 15px 2px;
+}
+
+.modal-content {
+    background-color: #fffff3;
+    color: #030301;
+    font-family: "Raleway", sans-serif;
+}
+
+.share-def-socials li {
+    display: inline;
+}
+
+.share-def-socials li a i {
+    color: #17DCC6;
+    margin: 0 20px 0 20px;
+}
+
+.share-def-socials li a i:hover {
+    color: #ff4365;
+    font-size: xx-large;
+}
+
+.modal .modal-footer {
+    background-color: #fffff3;
+}
+
+.modal-close{
+    background-color: #030301;
+    color: #fffff3;
+}
 /*---------------------- Buttons: */
 .btn-large {
     font-family: "Raleway", serif;
