@@ -10,9 +10,13 @@
                 <div class="input-field col s12">
                     <i class="fas fa-folder-open prefix pink-text"></i>
                     <select id="category_name" name="category_name" class="validate" required>
-                        <option value="" disabled selected>Add Your Definition to a Category</option>
+                        <option value="" disabled>Add Your Definition to a Category</option>
                         {% for category in categories %}
+                            {% if category.category_name == definition.category_name %}
+                            <option value="{{ category.category_name}}" selected>{{ category.category_name }}</option>
+                            {% else %}
                             <option value="{{ category.category_name}}">{{ category.category_name }}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                     <label for="category_name">Choose Category</label>
@@ -23,44 +27,54 @@
                 <div class="input-field col s12">
                     <i class="fas fa-pencil-alt prefix pink-text"></i>
                     <input id="exercise_name" name="exercise_name" minlength="5" maxlength="60"
-                        type="text" class="validate" required>
+                        value="{{ definition.exercise_name}}" type="text" class="validate" required>
                     <label for="exercise_name">Exercise Name</label>
                 </div>
-                <!--Exercise Description-->
+            </div>
+            <!--Exercise Description-->
+            <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-align-left prefix pink-text"></i>
-                    <input id="exercise_description" name="exercise_description" minlength="5"
-                        maxlength="500" type="text" class="validate" required>
-                    <label for="exercise_description">Exercise Description</label>
+                    <textarea id="exercise_description" name="exercise_description" minlength="5"
+                        maxlength="500" class="materialize-textarea validate" required>
+                        {{- definition.exercise_description -}}
+                    </textarea>
+                    <label for="exercise_description">Textarea</label>
                 </div>
-                <!--Tempo-->
+            </div>
+            <!--Tempo-->
+            <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-stopwatch prefix pink-text"></i>
-                    <input id="tempo" name="tempo" minlength="2"
-                        maxlength="5" type="text" class="validate" required>
+                    <input id="tempo" name="tempo" minlength="2" maxlength="5"
+                        value="{{ definition.tempo }}" type="text" class="validate" required>
                     <label for="tempo">Tempo</label>
                 </div>
-                <!--Upload Image-->
+            </div>
+            <!--Upload Image-->
+            <div class="row">
                 <div class="input-field">
-                <form action="POST">
-                    <div class="col s12 file-field input-field">
-                        <div class="btn-flat left">
-                            <input id="image_url" name="image_url" type="file"><br>
-                            <span><i class="fas fa-file-upload prefix pink-text"></i></span>
+                    <form action="POST">
+                        <div class="col s12 file-field input-field">
+                            <div class="btn-flat left">
+                                <input id="image_url" name="image_url"  value="{{ image_url }}" type="file"><br>
+                                <span><i class="fas fa-file-upload prefix pink-text"></i></span>
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" id="image_url" name="image_url" type="text"
+                                    value="{{ image_url }}" placeholder="Upload image">
+                            </div>
                         </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" id="image_url" name="image_url" type="text" placeholder="Upload image">
-                        </div>
-                    </div>
-                </form>
+                    </form>
                 </div>
-                <!--Edit definition button-->
-                <div class="row">
-                    <div class="col s12 center-align">
-                        <button class="btn add-btn center-align" type="submit">Edit Definition</button>
-                    </div>
+            </div>
+            <!--Edit definition button-->
+            <div class="row">
+                <div class="col s12 center-align">
+                    <a href="{{ url_for('get_definitions') }}" class="btn delete">Cancel</a>
+                    <button class="edit btn center-align" type="submit">Edit Definition</button>
+
                 </div>
-                
             </div>
         </form>
     </div>
