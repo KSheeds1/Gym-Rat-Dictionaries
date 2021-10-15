@@ -2,15 +2,14 @@
 {% block content %}
 
     <h3 class="center-align">Add a Definition</h3>
-    <div class="divider"></div>
-
+    
     <div class="row card-panel z-depth-5 white">
         <form class="col s12" method="POST" action="{{ url_for('add_definition') }}">
             <!--Category selection-->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-folder-open prefix pink-text"></i>
-                    <select id="category_name" name="category_name" class="validate" required>
+                    <select multiple id="category_name" name="category_name" class="validate" required>
                         <option value="" disabled selected>Add Your Definition to a Category</option>
                         {% for category in categories %}
                             <option value="{{ category.category_name}}">{{ category.category_name }}</option>
@@ -31,7 +30,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-align-left prefix pink-text"></i>
                     <input id="exercise_description" name="exercise_description" minlength="5"
-                        maxlength="250" type="text" class="validate" required>
+                        maxlength="500" type="text" class="validate" required>
                     <label for="exercise_description">Exercise Description</label>
                 </div>
                 <!--Tempo-->
@@ -55,17 +54,10 @@
                     </div>
                 </form>
                 </div>
-                <!--Created By-->
-                <div class="input-field col s12">
-                    <i class="fas fa-user prefix pink-text"></i>
-                    <input id="created_by" name="created_by" minlength="2"
-                        maxlength="5" type="text" class="validate" required>
-                    <label for="created_by">Created By</label>
-                </div>
                 <!--Submit definition button:'Add Definition'-->
                 <div class="row">
                     <div class="col s12 center-align">
-                        <button class="btn add-btn center-align" type="submit" name="action">Add Definition</button>
+                        <button class="btn add-btn center-align" type="submit">Add Definition</button>
                     </div>
                 </div>
                 

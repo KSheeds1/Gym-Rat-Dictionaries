@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
     
+    <h3 class="center-align">Recently added</h3>
+    <div class="divider"></div>
+
     <!--Definitions card panel-->
     <div class="row">
         {% for definition in definitions %}
@@ -12,7 +15,7 @@
                         <p class="defintion">{{ definition.exercise_description}}</p>
                         <p class="tempo">Tempo: {{ definition.tempo }}</p>
                         <p class="image_url">{{ definition.image_url }}</p>
-                        <p class="created_by"><i class="fas fa-user"></i> {{ definition.created_by }}</p>
+                        <p class="created_by"><i class="fas fa-user"></i><em> {{ definition.created_by }}</em></p>
                     </div>
                     <div class="card-action">
                         <a class="add btn-small"><i class="fas fa-thumbs-up"> {{ definition.upvotes }}</i></a>
