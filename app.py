@@ -130,12 +130,12 @@ def logout():
 @app.route("/add_definition", methods=["GET", "POST"])
 def add_definition():
     """
-    This functions triggers the redirect to 
-    add_definition.html allowing the user to 
+    This functions triggers the redirect to
+    add_definition.html allowing the user to
     insert a new definition to the db and redirects
     them to the home page (definitions.html)
     """
-    # POST method functionality
+    # POST method functionality:
     if request.method == "POST":
         definition = {
             "category_name": request.form.getlist("category_name"),
@@ -156,16 +156,30 @@ def add_definition():
 def edit_definition(definition_id):
     """
     This function is triggered by the 'Edit'
-    buttons found on all definition card panels
-    it redirects the user to the edit_definition
+    buttons found on all definition card panels.
+    It redirects the user to the edit_definition
     form and allows them to edit a specific definition,
     updating it in the db.
 
     """
-    definition = mongo.db.definitions.find_one({"_id": ObjectId(definition_id)})
+    # POST method functionality:
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "exercise_name": request.form.get("exercise_name"),
+            "exercise_description": request.form.get("exercise_description"),
+            "tempo": request.form.get("tempo"),
+            "imge_url": request.form.get("image_url"),
+            "created_by": session["user"]
+        }
+        mongo.db.definitions.update({"_id": ObjectId(definition_id)}, submit)
+        flash("Your definition has been updated successfully.")
+
+    definition = mongo.db.definitions.find_one(
+        {"_id": ObjectId(definition_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_definition.html", definition=definition,
-            categories=categories)
+    return render_template("edit_definition.html",
+        definition=definition, categories=categories)
 
 
 if __name__ == "__main__":

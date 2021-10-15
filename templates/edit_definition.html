@@ -53,26 +53,24 @@
             </div>
             <!--Upload Image-->
             <div class="row">
-                <div class="input-field">
-                    <form action="POST">
-                        <div class="col s12 file-field input-field">
-                            <div class="btn-flat left">
-                                <input id="image_url" name="image_url"  value="{{ image_url }}" type="file"><br>
-                                <span><i class="fas fa-file-upload prefix pink-text"></i></span>
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" id="image_url" name="image_url" type="text"
-                                    value="{{ image_url }}" placeholder="Upload image">
-                            </div>
+                <div class="input-field col s12">
+                    <div class="col s12 file-field input-field">
+                        <div class="btn-flat left">
+                            <input id="image_url" name="image_url"  value="{{ image_url }}" type="file"><br>
+                            <span><i class="fas fa-file-upload prefix pink-text"></i></span>
                         </div>
-                    </form>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" id="image_url" name="image_url" type="text"
+                                value="{{ image_url }}" placeholder="Upload image">
+                        </div>
+                    </div>
                 </div>
             </div>
             <!--Edit definition button-->
             <div class="row">
                 <div class="col s12 center-align">
-                    <a href="{{ url_for('get_definitions') }}" class="btn delete">Cancel</a>
-                    <button class="edit btn center-align" type="submit">Edit Definition</button>
+                    <a href="{{ url_for('get_definitions') }}" class="btn-small delete">Cancel</a>
+                    <button type="submit" class="edit btn-small center-align">Edit Definition</button>
 
                 </div>
             </div>
