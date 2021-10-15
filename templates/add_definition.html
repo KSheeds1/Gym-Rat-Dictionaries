@@ -6,6 +6,19 @@
 
     <div class="row card-panel z-depth-5 white">
         <form class="col s12" method="POST" action="{{ url_for('add_definition') }}">
+            <!--Category selection-->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-folder-open prefix pink-text"></i>
+                    <select id="category_name" name="category_name" class="validate" required>
+                        <option value="" disabled selected>Add Your Definition to a Category</option>
+                        {% for category in categories %}
+                            <option value="{{ category.category_name}}">{{ category.category_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="category_name">Choose Category</label>
+                </div>
+            </div>
             <!--Exercise name-->
             <div class="row">
                 <div class="input-field col s12">

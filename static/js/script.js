@@ -4,5 +4,6 @@ $(document).ready(function(){
       direction: 'top'
     });
     $('.modal').modal();
+    $('select').formSelect()
 });
        
