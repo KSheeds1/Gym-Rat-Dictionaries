@@ -129,6 +129,12 @@ def logout():
 
 @app.route("/add_definition", methods=["GET", "POST"])
 def add_definition():
+    """
+    This functions triggers the redirect to 
+    add_definition.html allowing the user to 
+    insert a new definition to the db and redirects
+    them to the home page (definitions.html)
+    """
     # POST method functionality
     if request.method == "POST":
         definition = {
@@ -144,6 +150,22 @@ def add_definition():
         return redirect(url_for("get_definitions"))
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_definition.html", categories=categories)
+
+
+@app.route("/edit_definition/<definition_id>", methods=["GET", "POST"])
+def edit_definition(definition_id):
+    """
+    This function is triggered by the 'Edit'
+    buttons found on all definition card panels
+    it redirects the user to the edit_definition
+    form and allows them to edit a specific definition,
+    updating it in the db.
+
+    """
+    definition = mongo.db.definitions.find_one({"_id": ObjectId(definition_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("edit_definition.html", definition=definition,
+            categories=categories)
 
 
 if __name__ == "__main__":

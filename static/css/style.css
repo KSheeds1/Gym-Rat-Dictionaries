@@ -4,6 +4,7 @@
 /*---------------------- General: */
 body {
     background-color: #fffff3;
+    min-height: 100vh;
 }
 
 h1, h2, h3 {
@@ -90,6 +91,22 @@ footer p {
 
 .scroll-up {
     background-color: #A6A6A0;
+}
+
+.delete {
+    background-color: #CC0018;
+}
+
+.delete:hover {
+    background-color: #E2001A;
+}
+
+.edit {
+    background-color: #D95707;
+}
+
+.edit:hover {
+    background-color: #F86A12;
 }
 
 /*---------------------- Flash Messages:*/
@@ -193,6 +210,10 @@ footer p {
 .add-btn {
     background-color: #17DCC6;
     font-family: "Raleway", sans-serif;
+}
+
+.btn {
+    margin-right: 2px;
 }
 
 /*---------------------- Add Definition Form: */
