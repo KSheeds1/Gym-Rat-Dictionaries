@@ -182,6 +182,13 @@ def edit_definition(definition_id):
         definition=definition, categories=categories)
 
 
+@app.route("/delete_definition/<definition_id>")
+def delete_definition(definition_id):
+    mongo.db.definitions.remove({"_id": ObjectId(definition_id)})
+    flash("Definition successfully deleted.")
+    return redirect(url_for("get_definitions"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
