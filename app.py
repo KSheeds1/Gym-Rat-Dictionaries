@@ -184,6 +184,14 @@ def edit_definition(definition_id):
 
 @app.route("/delete_definition/<definition_id>")
 def delete_definition(definition_id):
+    """
+    This function is triggered by the 'Delete'
+    buttons found on all definition card panels.
+    When clicked, user confirmation is required
+    through a modal. Once deleted the definition
+    is removed from the database and the user is
+    redirected to the home page.
+    """
     mongo.db.definitions.remove({"_id": ObjectId(definition_id)})
     flash("Definition successfully deleted.")
     return redirect(url_for("get_definitions"))
@@ -191,8 +199,26 @@ def delete_definition(definition_id):
 
 @app.route("/get_categories")
 def get_categories():
+    """
+    App route for categories.html, which
+    displays categories to admin users from 
+    which they can perform CRUD operations to.
+    """
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template("categories.html", categories=categories)
+
+
+@app.route("/add_category", methods=["GET", "POST"])
+def add_category():
+    if request.method == "POST":
+        category = {
+            "category_name": request.form.get("category_name")
+        }
+        mongo.db.categories.insert_one(category)
+        flash("New Category Successfully Added")
+        return redirect(url_for("get_categories"))
+
+    return render_template("add_category.html")
 
 
 if __name__ == "__main__":
