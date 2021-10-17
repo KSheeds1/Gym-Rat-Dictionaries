@@ -74,7 +74,7 @@ def login():
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            # Ensure the hashed password matches user input: 
+            # Ensure the hashed password matches user input:
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
@@ -243,6 +243,19 @@ def edit_category(category_id):
 
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template("edit_category.html", category=category)
+
+
+@app.route("/delete_category/<category_id>")
+def delete_category(category_id):
+    """
+    This function deletes a specific category
+    from the database. Triggered by the 'Delete'
+    button, when clicked, user confirmation is required
+    through a modal.
+    """
+    mongo.db.categories.remove({"_id": ObjectId(category_id)})
+    flash("Category Successfully Deleted")
+    return redirect(url_for("get_categories"))
 
 
 if __name__ == "__main__":
