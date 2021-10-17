@@ -201,7 +201,7 @@ def delete_definition(definition_id):
 def get_categories():
     """
     App route for categories.html, which
-    displays categories to admin users from 
+    displays categories to admin users from
     which they can perform CRUD operations to.
     """
     categories = list(mongo.db.categories.find().sort("category_name", 1))
@@ -210,6 +210,10 @@ def get_categories():
 
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
+    """
+    This function inserts a new category into the
+    database, using the data from the add_category form.
+    """
     if request.method == "POST":
         category = {
             "category_name": request.form.get("category_name")
@@ -219,6 +223,26 @@ def add_category():
         return redirect(url_for("get_categories"))
 
     return render_template("add_category.html")
+
+
+@app.route("/edit_category/<category_id>", methods=["GET", "POST"])
+def edit_category(category_id):
+    """
+    This function edits a specific category
+    already stored in the database. Admins update
+    the existing data provided in the edit_category
+    form and update the category in the database.
+    """
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("category_name")
+        }
+        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+        flash("Category Update Successful")
+        return redirect(url_for("get_categories"))
+
+    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+    return render_template("edit_category.html", category=category)
 
 
 if __name__ == "__main__":
