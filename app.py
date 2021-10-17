@@ -29,6 +29,17 @@ def get_definitions():
     return render_template("definitions.html", definitions=definitions)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    """
+    App route for search functionality.
+    """
+    query = request.form.get("query")
+    definitions = list(mongo.db.definitions.find(
+        {"$text": {"$search": query}}))
+    return render_template("definitions.html", definitions=definitions)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """

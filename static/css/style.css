@@ -89,6 +89,18 @@ footer p {
     background-color: #ff4365;
 }
 
+.search:hover {
+    background-color: #d32646;
+}
+
+.reset {
+    background-color: #00e5ff;
+}
+
+.reset:hover {
+    background-color: #00b8d4;
+}
+
 .add {
     background-color: #17DCC6;
 }
@@ -235,4 +247,9 @@ footer p {
 /*---------------------- Add Definition Form: */
 .input-field .prefix {
     left: 1rem;
+}
+
+/*---------------------- Search bar*/
+.search-panel {
+    margin: 25px;
 }
