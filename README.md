@@ -168,6 +168,10 @@ Upon creating a definition, the user must as a requirement, select which categor
 **Creation/Management of categories:** 
 The functionality surrounding the creation and management of categories is restricted to the site owner and admin. While registered and casual users can browse the categories available, only the site owner and admin will have access to category CRUD operations. 
 
+### Admin functionality: 
+Alongside category management and creation, admin's also have the ability to delete definitions created by registered users. This functionality was introduced through conditional formatting to grant permission to admins to delete malicious or unrelated content from the site on behalf of the users.
+INSERT IMG OF JINJA {% IF SESSION.USER == ETC %} 
+
 **CRUD Operations:**
 The following CRUD operations are restricted to registered users of the app only: 
 * Create

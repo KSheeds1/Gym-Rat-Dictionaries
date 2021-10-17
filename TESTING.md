@@ -3,11 +3,15 @@
  * Testing User Stories
   * Bugs - Discovered & resolved during development
   * Manual functionality testing
+	* User Authentication
+	* CRUD Operations
+	* Cancel functionality
+	* Features 
   * Responsive Testing
   * Validation Testing
   * Lighthouse performance 
 
-## Testing User Stories:
+# Testing User Stories:
 ***As a regular user, I want to be able to:***
 * **UST1: *Login and out of my account:***
 A registered user can login to their account my clicking on 'Log In' located in the Navigation Bar on the right hand side. To log out of their account they must be logged into the account, navigate to the navigation bar and click on 'Log Out'.
@@ -59,9 +63,39 @@ This functionality is restricted to both the site owner and admin. To delete an 
 Logged in users can simply click on the 'Add to Favourites' icon featured on each individual definition panel to add a definition to their favourites. They can then view their favourites on their profile page. 
 
 
-## Bugs - Discovered & resolved during development stage:
+# Bugs - discovered & resolved during development stage:
+### Loss of functionality to 'add' and 'edit' buttons:
+A loss of functionality for the buttons featured on the add_definition and edit_definition forms was discovered following the completion of the POST method for the edit_definition form. When manually testing the edit_definition function, by updating a definition the 'edit' button would not send the updated definition to the database.
+Nor would the 'add' button on the add_definition form add a definition to the database. 
 
-## Manual functionality testing:
+With no errors being thrown, I check over both the add_definition and edit_definition functions in app.py but everything seemed in order, both form templates were rendering so I turned to the HTML for both templates. After running both forms through the [W3C Markup Validation Service](https://validator.w3.org/#validate_by_input) an error was thrown for the form tags surrounding the image_url input field on both forms that 'nested forms are not allowed'. 
+INSERT IMGS TO DO WITH THIS BUG
+
+Upon removal of the nested form, the functionality of both the 'add' and 'edit' buttons on their respective forms was restored. 
+
+
+### Multiple 'delete' buttons added to definitions created by admin:
+A bug was discovered when an admin user added a definition to the site. Once redirected back to the home page, the new definition card had two delete buttons. The conditional formatting put in place at the time to restrict access to the 'edit' and 'delete' buttons was as follows:
+INSERT IMG OF ORIGINAL CF HERE
+
+* If the session user created the definition, they had access to edit or delete the definition. 
+* Admins were also granted permission to delete user added definitions as a means of removing malicious or unrelated content from the site. 
+
+However, the template logic put in place was flawed, as the likely occurrence of an admin adding a definition to the site was overlooked. The conditional formatting that had been implemented was ill-defined, and so, was refactored.
+INSERT IMG OF REFACTORED CODE HERE
+
+Access to both the edit and delete functionality was granted under the following specifications: 
+* If the session user created the definition. 
+OR  
+* If the session user is an admin AND created the definition.
+ ELSE IF
+ * If the session user is an admin (they will have access to the delete function on all user added definitions.)
+
+The refactoring of the conditional formatting resolved the bug. 
+
+# Manual functionality testing:
+
+## User Authentication: 
 ### Registration functionality:
 Following completion of the function register(), the function and form were tested manually. The functionality was tested in the following manner: 
 
@@ -107,6 +141,113 @@ INSERT PIC HERE
 5. Attempt login with a **valid** username and **valid** password: 
 INSERT PIC HERE
 **Result:**  The form validation and pattern recognition are accepting both the username and password, the user is redirected to their profile and receive a flash message of 'Welcome {username}'.
+
+
+# CRUD OPERATIONS
+## Create/Add :
+### Add Definition:
+Following the completion of add_definition functionality, manual testing was carried out against the functionality. It was tested in the following manner:
+ 
+ * Click on 'Add Definition' in the Navbar.
+ * Once redirected to add definition form, fill out field inputs and click 'Add Definition' button.
+ * User is informed of a successful creation by the Flash message and is redirected to the home page.
+INSERT IMG OF FORM AND FLASH MESSAGE
+
+### Add Category: [Admin only]
+Following the completion of the add_category functionality, manual testing was carried out against the functionality. It was tested in the following manner:
+* Navigate to 'Category Management' via the navbar.
+* Click on the 'Add Category' panel.
+* Admin is redirected to the add category form.
+* Fill out the necessary input fields.
+* Click 'Add Category' button.
+* Following a successful category creation, the category management page is reloaded and the admin is provided with user confirmation via a Flash message. 
+INSERT IMG OF FORM AND FLASH MESSAGE 
+
+## Read:
+Users of the app have the ability to read data in the following areas of the site:
+
+**Home page:**
+* Recently added definitions.
+
+**Categories:**
+* Different categories available across the site, access and read definitions refined by category.
+
+**User profile:**
+* User created definitions.
+* User favourites. 
+
+ADD IMG OF ALL OF THE ABOVE
+
+## Update/Edit: 
+### Edit Definition:
+Following the completion of the edit_definition functionality, manual testing was carried out against the functionality. It was tested in the following manner:
+**Note:** Edit functionality is restricted to the users own definitions. 
+
+* Select the definition you wish to edit.
+* Click on the 'Edit' button available on the definition card panel.
+* Once redirected to the edit definition form, make the necessary edits to the definition. 
+* Click the 'Edit Definition' button to update the definition. 
+INSERT IMG OF FORM AND FLASH MESSAGE
+
+### Edit Category: [Admin only]
+Following the completion of the edit_categories functionality, manual testing was carried out against the functionality. It was tested in the following manner:
+* Navigate to 'Category Management' via the navbar.
+* Select the category to edit.
+* Edit the existing data in the edit category form.
+* Click on 'Edit Category' button.
+* Following a successful edit, the category management page is reloaded and the admin is provided with user confirmation via a Flash message.
+INSERT IMG OF FORM AND FLASH MESSAGE 
+
+## Delete:
+Delete functionality/operations are available across the following areas of the app: 
+
+**Delete definition:**
+Each individual definition card panel has a 'Delete' button. Prior to the deletion of a definition, a user will be prompted to provide user confirmation via a modal. Users can delete their own definitions in the following manner:
+	
+* Navigate to the definition you wish to delete. 
+* Click the 'Delete' button.  
+* Confirm action via the modal.
+* The user will be redirected back to their profile and will receive user feedback via a Flash message. 
+
+**Note:** The ability to delete a user added definition has also been extended to Admins. To delete a user added definition, admins also follow the steps outlined above. 
+
+**Delete category:  [Admin only]**
+
+Admins have the ability to delete categories as they see fit, each category panel has a 'Delete' button. Prior to the deletion of a category, the admin will be prompted to provide user confirmation via a modal. Admins can delete a category in the following manner: 
+* Navigate to the 'Category Management' using the navbar.
+* Select the category you wish to delete. 
+* Click the 'Delete' button on the selected panel.
+* Upon deletion of the category, the category management page will reload and the admin will be informed of a successful deletion through a Flash message. 
+* The deleted category will have been removed from the page. 
+INSERT PIC OF CATEGORY DELETION
+
+## Cancel functionality: 
+The ability to 'cancel' is available across the following areas of the app:
+
+**Add definition form:**
+If a user chooses not to add a new definition they can click on the 'Cancel' button on the add definition form and will be redirected back to the home page.
+INSERT IMG OF CANCEL BUTTON
+
+**Edit definition form:**
+If a user chooses not to edit an existing definition, they can click on the 'Cancel' button on the edit definition form and will be redirected back to the home page.
+INSERT IMG OF CANCEL BUTTON
+
+**Delete definition confirmation modal:**
+Prior to the deletion of a definition, a user will be prompted to provide user confirmation via a modal. If the user chooses not to delete a definition, they can click the 'Cancel' button and be redirected back to the home/profile page.
+INSERT IMG OF DELETION MODAL  
+
+**Add category form: [Admin only]**
+If an admin chooses not to add a new category, they can click on the 'Cancel' button on the add category form and will be redirected back to the category management page.
+INSERT IMG OF CANCEL BUTTON
+
+**Edit category form: [Admin only]**
+If an admin chooses not to edit an existing category, they can click the 'Cancel' button on the edit category form and will be redirected back to the category management page.
+INSERT IMG OF CANCEL BUTTON
+
+**Delete category confirmation modal: [Admin only]**
+Prior to the deletion of a category, the admin will be prompted to provide user confirmation via a modal. If an admin chooses not to delete a category, they can click on the 'Cancel' button and will be redirected back to the category management page. 
+INSERT IMG OF DELETION MODAL 
+ 
 
 ## Responsive Testing:
 
