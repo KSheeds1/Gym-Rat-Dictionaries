@@ -8,7 +8,11 @@ body {
 }
 
 h1, h2, h3 {
-    font-family: "DM Serif Display", serif;
+    font-family: "DM Serif Display", sans-serif;
+}
+
+h4, h5, h6 {
+    font-family: "Raleway", sans-serif;
 }
 
 p {
@@ -159,6 +163,18 @@ footer p {
 }
 
 .card-title i:hover {
+    color: #fffff3;
+}
+
+/*---------------------- Categories:*/
+.card-title a {
+    color: #030301;
+    text-decoration: underline;
+    text-decoration-thickness: from-font;
+
+}
+
+.card-title a:hover {
     color: #fffff3;
 }
 
