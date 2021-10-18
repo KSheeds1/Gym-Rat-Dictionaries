@@ -52,10 +52,23 @@ nav .brand-logo .left {
     font-size: 8vw;
 }
 
+nav ul li a:hover {
+    background-color: #fffff3;
+    color: #030301;
+}
+
+/*---------------------- Sidenav: */
+.sidenav .collapsible-header {
+    padding: 0 32px;
+}
+
+.sidenav .fa-caret-down:before {
+    font-size: small;
+}
+
 /*---------------------- Footer: */
 .page-footer {
     background-color: #030301;
-    padding-top: 10px;
 }
 
 footer h5 {
