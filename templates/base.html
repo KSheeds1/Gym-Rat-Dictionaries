@@ -21,7 +21,9 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <!--Dropdown1 menu-->
                 <ul id="dropdown1" class="dropdown-content">
-                    <li><a href="#!"></a></li>
+                    {% for category in categories %}
+                        <li><a href="{{ url_for('category_pg', category_id=category._id) }}">{{ category.category_name}}</a></li>
+                    {% endfor %}
                 </ul>
                 <ul class="right hide-on-med-and-down">
                     <li><a class="btn-floating btn-small search" id="search"><i class="fas fa-search"></i></a></li>
@@ -45,18 +47,27 @@
         </nav>
         <!--Mobile Sidenav-->
         <ul class="sidenav nav-dark" id="mobile-demo">
-            <li><a href="{{ url_for('get_definitions') }}" class="brand-logo"><span class="white-text">GRD</span></a>
+            <li><a href="{{ url_for('get_definitions') }}" class="brand-logo center-align"><span class="white-text">GRD</span></a>
             </li>
             <li><a href="{{ url_for('get_definitions') }}"><span class="white-text">Home</span></a></li>
             {% if session.user|lower != "admin"|lower %}
                 <!--Categories dropdown menu-->
-                <li>
-                    <a class="collapsible-header"><span class="white-text">Categories<i class="fas fa-caret-down fa-xs"></i></span></a>
-                    <div class="collapsible-body">
-                        <ul>
-                            <li><a href="#!">First</a></li>
-                        </ul>
-                    </div>
+                <li class="no-padding"></li>
+                <ul class="collapsible collapsible-accordion">
+                    <li>
+                        <a class="collapsible-header"><span class="white-text">Categories<i
+                                    class="fas fa-caret-down fa-xs"></i></span></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                {% for category in categories %}
+                                <li><a
+                                        href="{{ url_for('category_pg', category_id=category._id) }}">{{ category.category_name }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
                 </li>
             {% endif %}
             {% if session.user %}

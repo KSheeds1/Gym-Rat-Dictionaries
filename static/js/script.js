@@ -1,6 +1,9 @@
 $(document).ready(function(){
-    $(".dropdown-trigger").dropdown();
+    $(".dropdown-trigger").dropdown({
+        coverTrigger: false
+    });
     $('.sidenav').sidenav();
+    $('.collapsible').collapsible();
     $('.fixed-action-btn').floatingActionButton({
       direction: 'top'
     });

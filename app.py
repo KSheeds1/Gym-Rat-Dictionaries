@@ -18,6 +18,17 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+@app.context_processor
+def category_menu():
+    """
+    Injects a dictionary of the categories collection
+    automatically into the context of the template, in
+    this case, into the navbar dropdown menu in base.html. 
+    """
+    categories = list(mongo.db.categories.find())
+    return dict(categories=categories)
+
+
 @app.route("/")
 @app.route("/get_definitions")
 def get_definitions():
@@ -40,12 +51,26 @@ def search():
     return render_template("definitions.html", definitions=definitions)
 
 
+@app.route("/category_pg/<category_id>")
+def category_pg(category_id):
+    """
+    This function dynamically generates a page for the category
+    selected by the user in the nav dropdown menu. Users can view 
+    definitions filtered by category.     
+    """
+    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+    defintions = mongo.db.definitions.find(
+        {"category_name": category["category_name"]})
+    return render_template("category_pg.html", definitions=defintions,
+                           category=category)     
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """
-    App route for the registration functionality & page. Check to see if the 
+    App route for the registration functionality & page. Check to see if the
     username already exists in the database and if not, creates a dictionary
-    to insert the new username and password into the db. 
+    to insert the new username and password into the db.
     """
     if request.method == "POST":
         # Check if username already exists in the db:
@@ -159,7 +184,7 @@ def add_definition():
         mongo.db.definitions.insert_one(definition)
         flash("Your definition has been added successfully.")
         return redirect(url_for("get_definitions"))
-    categories = mongo.db.categories.find().sort("category_name", 1)
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template("add_definition.html", categories=categories)
 
 
@@ -188,9 +213,9 @@ def edit_definition(definition_id):
 
     definition = mongo.db.definitions.find_one(
         {"_id": ObjectId(definition_id)})
-    categories = mongo.db.categories.find().sort("category_name", 1)
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template("edit_definition.html",
-        definition=definition, categories=categories)
+                            definition=definition, categories=categories)
 
 
 @app.route("/delete_definition/<definition_id>")

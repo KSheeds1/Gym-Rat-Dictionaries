@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    
+    <!--Category page title-->
+    <div class="row">
+        <div class="col s12 center-align">
+            <h3 class="center-align">{{category.category_name}} collection</h3>
+            <h4>Browse all {{ category.category_name }} definitions</h4>
+            <div class="divider"></div>
+        </div>
+    </div>
+    <!--Definitions refined by category choice-->
+    <div class="row">
+        {% for definition in definitions %}
+            <div class="col s12 m6">
+                <div class="card grey z-depth-5">
+                    <div class="card-content black-text">
+                        <strong class="card-title">{{ definition.exercise_name }} <a class="modal-trigger right"
+                                data-target="#modal1{{ definition._id }}"><i class="fas fa-share-alt fa-lg"></i></a></strong>
+                        <div class="divider black"></div>
+                        <p class="defintion">{{ definition.exercise_description}}</p>
+                        <p class="tempo">Tempo: {{ definition.tempo }}</p>
+                        <p class="image_url">{{ definition.image_url }}</p>
+                        <p class="created_by"><i class="fas fa-user"></i><em> {{ definition.created_by }}</em></p>
+                    </div>
+                    <div class="card-action">
+                        <a class="add btn-small"><i class="fas fa-thumbs-up"> {{ definition.upvotes }}</i></a>
+                        <a class="add btn-small"><i class="fas fa-thumbs-down"></i> {{ definition.downvotes }}</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>      
+
+{% endblock %}
