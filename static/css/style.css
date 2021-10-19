@@ -41,6 +41,21 @@ p {
     color: #fffff3;
 }
 
+.delete {
+    background-color: #CC0018;
+}
+
+.delete:hover {
+    background-color: #E2001A;
+}
+
+.edit {
+    background-color: #D95707;
+}
+
+.edit:hover {
+    background-color: #F86A12;
+}
 /*---------------------- Navbar: */
 .nav-dark {
     background-color: #030301;
@@ -137,22 +152,6 @@ footer p {
 
 .scroll-up {
     background-color: #A6A6A0;
-}
-
-.delete {
-    background-color: #CC0018;
-}
-
-.delete:hover {
-    background-color: #E2001A;
-}
-
-.edit {
-    background-color: #D95707;
-}
-
-.edit:hover {
-    background-color: #F86A12;
 }
 
 /*---------------------- Flash Messages:*/
