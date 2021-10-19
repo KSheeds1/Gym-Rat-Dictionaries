@@ -283,3 +283,30 @@ footer p {
 .search-panel {
     margin: 25px;
 }
+
+/*----------------------Profile pg: */
+.collapsible {
+    background-color: #030301;
+    margin: 0;
+}
+.user-definitions {
+    font-family: "Raleway", sans-serif;
+    color: #fffff3;
+}
+
+.title {
+    font-family: "DM Serif Display", sans-serif;
+    font-size: 20px;
+}
+
+.collapsible-header {
+    background-color: #030301;
+    color: #fffff3;
+}
+.collapsible-header .col strong {
+    margin: 5px;
+}
+
+.collapsible-body p {
+    color: #fffff3;
+}

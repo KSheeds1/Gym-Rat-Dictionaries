@@ -143,11 +143,16 @@ def profile(username):
 
     # If session user cookie truthy, return to appropriate profile:
     if session["user"]:
-        return render_template("profile.html", username=username)
+       
+        # Find session user defintions with 'created_by' ID:
+        definitions = list(mongo.db.definitions.find(
+            {"created_by": session["user"]}))
+        return render_template("profile.html", username=username,
+                                definitions=definitions)
 
     # If false or doesn't exist, redirect to login:
     return redirect(url_for("login"))
-    
+
 
 @app.route("/logout")
 def logout():
