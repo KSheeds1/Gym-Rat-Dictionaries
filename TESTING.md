@@ -1,15 +1,15 @@
  # Testing documentation for Gym Rat Dictionaries
  ## Contents: 
- * Testing User Stories
-  * Bugs - Discovered & resolved during development
-  * Manual functionality testing
-	* User Authentication
-	* CRUD Operations
-	* Cancel functionality
-	* Features 
-  * Responsive Testing
-  * Validation Testing
-  * Lighthouse performance 
+ * [Testing User Stories](#testing-user-stories)
+  * [Bugs: discovered & resolved during development](#bugs:-dicovered-&-resolved-during-development)
+  * [Manual functionality testing](#manual-functionality-testing)
+	* [User Authentication](#user-authentication)
+	* [CRUD Operations](#crud-operations)
+	* [Cancel functionality](#cancel-functionality)
+	* [Features](#features) 
+  * [Responsive Testing](#repsonsive-testing)
+  * [Validation Testing](#validation-testing)
+  * [Lighthouse performance](#lighthouse-performance) 
 
 # Testing User Stories:
 ***As a regular user, I want to be able to:***
@@ -63,8 +63,8 @@ This functionality is restricted to both the site owner and admin. To delete an 
 Logged in users can simply click on the 'Add to Favourites' icon featured on each individual definition panel to add a definition to their favourites. They can then view their favourites on their profile page. 
 
 
-# Bugs - discovered & resolved during development stage:
-### Loss of functionality to 'add' and 'edit' buttons:
+# Bugs: discovered & resolved during development:
+## **Loss of functionality to 'add' and 'edit' buttons:**
 A loss of functionality for the buttons featured on the add_definition and edit_definition forms was discovered following the completion of the POST method for the edit_definition form. When manually testing the edit_definition function, by updating a definition the 'edit' button would not send the updated definition to the database.
 Nor would the 'add' button on the add_definition form add a definition to the database. 
 
@@ -74,7 +74,7 @@ INSERT IMGS TO DO WITH THIS BUG
 Upon removal of the nested form, the functionality of both the 'add' and 'edit' buttons on their respective forms was restored. 
 
 
-### Multiple 'delete' buttons added to definitions created by admin:
+## **Multiple 'delete' buttons added to definitions created by admin:**
 A bug was discovered when an admin user added a definition to the site. Once redirected back to the home page, the new definition card had two delete buttons. The conditional formatting put in place at the time to restrict access to the 'edit' and 'delete' buttons was as follows:
 INSERT IMG OF ORIGINAL CF HERE
 
@@ -92,6 +92,19 @@ OR
  * If the session user is an admin (they will have access to the delete function on all user added definitions.)
 
 The refactoring of the conditional formatting resolved the bug. 
+
+## **Loss of functionality to add and edit form's category select input:**
+
+Following the implementation of the @app.context_processor and the category_pg function there was a loss of functionality for both category select inputs on the add and edit forms. 
+The categories to choose from in the add definition form were no longer available and the pre-existing category in the edit from was also gone. 
+
+INSERT IMG OF THE TWO SELECTS
+
+Initially it was believed that the issue was due to the fact that the select inputs were actually `<ul><li>` structures and shared the same 'dropdown-content' class as the navbar and sidenav dropdown menus.
+INSERT IMG OF DEV TOOLS PIC WITH CSS
+
+ However, after reviewing both functions in app.py, it became clear that the bug arose from attempting to reuse lists in Jinja, the for-loop of 'categories' was now listed three times. To rectify the bug, the .find() functions in both add_definition and edit_definition were wrapped inside a python list to convert the Mongo cursor objects 'categories' into proper lists. Following this, functionality returned to both forms. The pre-existing category selection for edit was readily available, as were the category selection options in the add definition form. 
+ IMG OF REFACTORED CODE FOR BOTH ADD EDIT FUNCTIONS.
 
 # Manual functionality testing:
 

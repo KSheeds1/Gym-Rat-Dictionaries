@@ -8,48 +8,48 @@ Are you new to fitness and left a little confused by all exercise jargon? Still 
 Visit the live site here
 
 # Contents:
-### UX: 
-  * User Stories
-  * Strategies
-  * Scope
-  * Structure
-  * Skeleton
-  * Surface
+### UX:
+  * [User Stories](#user-stories)
+  * [Strategies](#strategies)
+  * [Scope](#scope)
+  * [Structure](#structure)
+  * [Skeleton](#skeleton)
+  * [Surface](#surface)
 
 ### Features:
-  * Existing Features
-  * Features left to implement
+  * [Existing Features](#existing-features)
+  * [Features left to implement](#features-left-to-implement)
 
 ### Technologies Used:
-  * Languages
-  * Frameworks and Libraries
-  * Others
+  * [Languages](#languages)
+  * [Frameworks and Libraries](#frameworks-and-libraries)
+  * [Others](#others)
 
 ### Database - MongoDB 
-  * Schema / Data Model
-  * Breakdown of collections and fields of each
+  * [Schema / Data Model](#schema-/-data-model)
+  * [Breakdown of collections](#breakdown-of-collections)
 
-### Testing: 
-* Testing User Stories
-* Bugs - Discovered and resolved during development
-* Manual functionality testing
-* Responsive Testing
-* Validation Testing
-* Lighthouse performance 
+### Testing:
+* [Testing User Stories](#testing-user-stories)
+* [Bugs: discovered & resolved during development](#bugs:-discovered-&-resolved-during-development)
+* [Manual functionality testing](#manual-functionality-testing)
+* [Responsive Testing](#responsive-testing)
+* [Validation Testing](#validation-testing)
+* [Lighthouse performance](#lighthouse-performance)
 
 ### Deployment:
-  * Git
-  * GitHub
-  * Heroku 
+  * [Git](#git)
+  * [GitHub](#github)
+  * [Heroku](#heroku) 
 
 ### Credits:
-  * Code
-  * Content
-  * Acknowledgements
+  * [Code](#code)
+  * [Content](#content)
+  * [Acknowledgements](#acknowledgements)
 
 
 # UX
-## User Stories: 
+## **User Stories:**
 *As a regular user, I want to be able to:*
 * Login and out of my account.
 * Upload an exercise definition. 
@@ -72,28 +72,28 @@ Visit the live site here
 * Provide the functionality to users to allow them to 'save' their favourite definitions to 'My Favourites'.
 
 
-  ## Strategies:
-  **Purpose & Objectives:**
+## **Strategies:**
+**Purpose & Objectives:**
   
  * The purpose of the site is to provide a well-structured app where users can provide definitions for exercise terminology. Registered users can create, read, edit and delete exercise definitions, while casual or first-time users can search and share definitions. Gym Rat Dictionaries is a community driven app, where users can help extend the variety of definitions available to others. Our purpose is to provide a site that will be beneficial to those at any level of fitness. For those who are just starting off and struggling with the overwhelming jargon associated with exercise, to those who are well versed in the fitness world and want to impart their knowledge to others. GRD will provide a community to those interested in fitness.
 
 * The objective of this app is to provide the framework necessary for users to perform CRUD operations on the data provided to the non-relational DBMS. As a community driven app, the content gained from the users is tracked and catalogued in the non-relational DBMS. Each definition entry has a unique ID and is sorted into its relevant category by the user when creating the definition. Combined with the use of Flask, Python, and Materialize, the app provides a user-friendly front-end to present the data to the user to manipulate in a polished, intuitive manner. From there, users  can perform CRUD operations, are able to browse through each category or search for a specific definition through the search bar. The save functionality also allows the user to track and catalogue the content specific to their interests or share a definition across various social media platforms. 
   
-  ### Owner Goals: 
- * To provide a community driven app to allow users to create, edit, delete and browse exercise definitions.
- * Provide users with the functionality to find and share definitions.
- * To provide a mobile-first app with search functionality for users on the go.
- * Provide upvoting functionality for users to express their satisfaction with particular definitions.
- * To collect quality definitions provided by a variety of users to create and publish a dictionary or e-book. 
- * To provide save functionality to allow users to save their favourite definitions. 
-  
-  
-  ##  Scope:
-  The functional requirements put in place help aid the user to access the content they are looking for quickly and easily, provide the framework for them to perform CRUD operations and provide the functionality to allow them to share this data across a variety of social media platforms. This is all combined to present a user-friendly intuitive front-end design to maximise UX:
-   * MongoDB
-   * Flask 
-   * Python 
-   * Materialize
+### **Owner Goals:**
+* To provide a community driven app to allow users to create, edit, delete and browse exercise definitions.
+* Provide users with the functionality to find and share definitions.
+* To provide a mobile-first app with search functionality for users on the go.
+* Provide upvoting functionality for users to express their satisfaction with particular definitions.
+* To collect quality definitions provided by a variety of users to create and publish a dictionary or e-book. 
+* To provide save functionality to allow users to save their favourite definitions. 
+
+
+##  **Scope:**
+The functional requirements put in place help aid the user to access the content they are looking for quickly and easily, provide the framework for them to perform CRUD operations and provide the functionality to allow them to share this data across a variety of social media platforms. This is all combined to present a user-friendly intuitive front-end design to maximise UX:
+  * MongoDB
+  * Flask 
+  * Python 
+  * Materialize
 
 
 The required content for the site is the framework put in place to guide users through performing CRUD operations, the content or data from then on, is provided by the users themselves: 
@@ -102,23 +102,23 @@ The required content for the site is the framework put in place to guide users t
 * Delete definition prompt 
 * Register/Login forms
   
-  ##  Structure:
- * The site is designed to foster intuitive learning; the aim is to provide an intuitive interaction between the user and the website.
- * Content is structured logically and grouped categorically.
- * Users can quickly identify and access the information they are looking for.
-  
-  ##  Skeleton:
-  **Wireframes:**
-  Wireframes were created for each HTML file across a variety of viewports. (mobile, tablet/iPad, laptop/desktop)
-  The wireframes for each can be viewed [here](). 
-  
-  ##  Surface:
-  **Aesthetic:**
-  As the app is orientated towards a fitness/exercise demographic, I wanted to keep the feel of the site modern, clean, and bright with pops of accent colours. 
-  
- **Colour Palette:** 
- I chose to use five colours throughout the site, three neutral colours to be used for the base and two contrasting accent colours to add some colour to text, icons and headings. 
- INSERT IMG OF COLOUR PALETTE HERE
+## **Structure:**
+* The site is designed to foster intuitive learning; the aim is to provide an intuitive interaction between the user and the website.
+* Content is structured logically and grouped categorically.
+* Users can quickly identify and access the information they are looking for.
+
+## **Skeleton:**
+**Wireframes:**
+Wireframes were created for each HTML file across a variety of viewports. (mobile, tablet/iPad, laptop/desktop)
+The wireframes for each can be viewed [here](). 
+
+## **Surface:**
+**Aesthetic:**
+As the app is orientated towards a fitness/exercise demographic, I wanted to keep the feel of the site modern, clean, and bright with pops of accent colours. 
+
+**Colour Palette:** 
+I chose to use five colours throughout the site, three neutral colours to be used for the base and two contrasting accent colours to add some colour to text, icons and headings. 
+INSERT IMG OF COLOUR PALETTE HERE
 
 **Typography:**
 The fonts chosen for the app are '[DM Serif Display](https://fonts.google.com/specimen/DM+Serif+Display?query=DM+)' and '[Raleway](https://fonts.google.com/specimen/Raleway?preview.text=Gym%20Rat%20Dictionaries&preview.text_type=custom)'. They were selected as both styles are clean and simple yet are similar to font styles seen in dictionaries worldwide, and therefore, in keeping with the overall aesthetic and purpose of the app.
@@ -127,8 +127,8 @@ INSERT IMAGE OF FONTS HERE
 **Images:**
 The images chosen are all fitness orientated and intuitively provide further context to the purpose of the site. The option for users to provide imagery along with their definition was included as it provides visual context to the definition. 
 
-# Features:
-  ## Existing Features:
+# **Features:**
+## **Existing Features:**
 **Navigation Bar:**
 The navigation bar is available in the default position and allows users to quickly identify the different sections of the site. On mobile and table viewports, these sections are available in a collapsible menu to provide a cleaner layout on smaller screens. The sections presented on the nav-bar change depending on the following: 
 1. Whether the user is logged in.
@@ -168,7 +168,7 @@ Upon creating a definition, the user must as a requirement, select which categor
 **Creation/Management of categories:** 
 The functionality surrounding the creation and management of categories is restricted to the site owner and admin. While registered and casual users can browse the categories available, only the site owner and admin will have access to category CRUD operations. 
 
-### Admin functionality: 
+### **Admin functionality:**
 Alongside category management and creation, admin's also have the ability to delete definitions created by registered users. This functionality was introduced through conditional formatting to grant permission to admins to delete malicious or unrelated content from the site on behalf of the users.
 INSERT IMG OF JINJA {% IF SESSION.USER == ETC %} 
 
@@ -197,20 +197,20 @@ The decision to integrate the option to share a definition was twofold, it would
 * To encourage further user interaction and satisfaction with the app, as sharing across platforms is standard/common practice amongst all apps. 
 
 
-## Features left to implement:
+## **Features left to implement:**
 * Introduce a 'definition of the day' functionality - where registered users receive a daily definition through email.
 * Random definition generator - would generate a random definition from the site.
 * Create a workout from the app definitions - to allow the user to compile definitions to create their own customised workout, which they could then share either on Gym Rat Dictionaries or on another social media platform. 
 * Create new categories for user-created workouts - Once users had compiled and created their own workouts from the app definitions, they could then upload it to the workout category. 
 
-# Technologies Used:
-  ## Languages:
-  * [HTML5](https://en.wikipedia.org/wiki/HTML5)
-  * [CSS3](https://en.wikipedia.org/wiki/CSS)
-  * [JavaScipt](https://en.wikipedia.org/wiki/JavaScript)
-  * [Python](https://www.python.org/)
+# **Technologies Used:**
+## **Languages:**
+* [HTML5](https://en.wikipedia.org/wiki/HTML5)
+* [CSS3](https://en.wikipedia.org/wiki/CSS)
+* [JavaScipt](https://en.wikipedia.org/wiki/JavaScript)
+* [Python](https://www.python.org/)
 
-  ## Frameworks, Packages, & Libraries:
+## **Frameworks, Packages, & Libraries:**
 * [Pip3](https://pip.pypa.io/)
 * [Dnspython](https://pypi.org/project/dnspython/)
 * [jQuery](https://jquery.com/)
@@ -223,7 +223,7 @@ The decision to integrate the option to share a definition was twofold, it would
 * [Werkzeug](https://werkzeug.palletsprojects.com/)
 
 
-## Other Technologies: 
+## **Other Technologies:** 
 * [GitHub](https://github.com/) used to host the GRD repository.
 * [Git](https://git-scm.com/) used for version control of GRD  project.
 * [GitPod](https://www.gitpod.io/) used to develop the project. 
@@ -240,11 +240,12 @@ The decision to integrate the option to share a definition was twofold, it would
 
 
 
-# Database - MongoDB: 
+# **Database - MongoDB:**
 ### **Schema:**
-  Below is the schema for the Gym Rat Dictionaries database: 
-  INSERT IMG OF SCHEMA 
-### **Categories:**
+Below is the schema for the Gym Rat Dictionaries database: 
+INSERT IMG OF SCHEMA 
+
+### **Breakdown of Collections:**
 INSERT IMG OF CATEGORIES
 
 ### **Users:**
@@ -254,12 +255,12 @@ INSERT IMG OF EXERCISES
 ### **user_favourites:**
 INSERT IMG OF USER_FAVOURITES
 
-# Testing:
+# **Testing:**
 Due to the size of the testing section, you can find all documentation related to the testing of Gym Rat Dictionaries [here]().
 
-# Deployment:
-## Git:
- **Using Git to add, commit and push code into a repository:**
+# **Deployment:**
+## **Git:**
+**Using Git to add, commit and push code into a repository:**
 Storing files in Git is a two-stage process:
 ​1. Files must be **added to the staging area** using the "**git add**" command followed by the specified file name.
 
@@ -279,8 +280,8 @@ This is achieved by connecting your local repository with your remote repository
 * Run "**git commit -m**" followed by your message contained in double quotation marks, adding the files to your local repository.
 *  Once the files have been committed, push them to the remote repository using "**git push**".
  
- ## GitHub:
- This repository is hosted by GitHub, but deployed by Heroku.
+## **GitHub:**
+This repository is hosted by GitHub, but deployed by Heroku.
     
 **Clone this repository:**
 To run  **locally**, you can clone this repository, or pull the code from this GitHub repository:
@@ -310,18 +311,21 @@ To fork this repository:
 
   
 
-## Heroku Deployment:
+## **Heroku Deployment:**
 This project was deployed using Heroku. Heroku integrates with GitHub to make it easy to deploy code living on GitHub to apps running on Heroku. <---When GitHub integration is configured for a Heroku app, Heroku can automatically build and release (if the build is successful) pushes to the specified GitHub repo.--> 
 
- **Requirements.txt & Procfile:** 
+**Requirements.txt & Procfile:** 
 Before creating the Heroku application, you must first set up two files which Heroku needs to run the app, requirements.txt and Procfile:
 * Requirements.txt is used to specify what packages are required to run the project.
 * The Procfile specifies the commands that are executed by the app on start-up. 
 
- To create these files, use the following code in the **GitHub Terminal**:
+To create these files, use the following code in the **GitHub Terminal**:
 
-    pip3 freeze --local>requirements.txt
-    echo web: python app.py > Procfile
+```
+pip3 freeze --local>requirements.txt
+echo web: python app.py > Procfile
+```
+
 **Note:**  The Procfile may have a blank line at the end of the file which can cause problems when running the app on Heroku, make sure to delete it and save the file. 
 
 **On Heroku:** 
@@ -337,11 +341,17 @@ From the dashboard, click on the **Deploy** tab:
 **Note:** 
 **BEFORE** you enable automatic deployment, click on '**Settings**' tab and click '**Reveal Conflict Vars**' to provide your **environment variables** from your **env.py** file to Heroku:
 
-    IP: 0.0.0.0
-    PORT: 5000
-    SECRET_KEY: YOUR_SECRET_KEY
-    MONGO_URI: YOUR_UNIQUE_MONGO_URI
-    MONGO_DBNAME: DATBASE_NAME
+  ```IP: 0.0.0.0
+
+  PORT: 5000
+
+  SECRET_KEY: YOUR_SECRET_KEY
+
+  MONGO_URI: YOUR_UNIQUE_MONGO_URI
+
+  MONGO_DBNAME: DATBASE_NAME
+  ```
+
 **Note:** It doesn't matter if you don't have your MONGO_URI at this time, just add it as blank.  
 
 * Click **Hide your config vars** and go back to the Deploy tab.
@@ -352,7 +362,9 @@ From the dashboard, click on the **Deploy** tab:
 * Back on Heroku, you can then '**Enable Automatic Deployment**' followed by '**Deploy Branch (main)**'.
 * You will be able to confirm a successful deployment from the Heroku. 
 
-## Credits:
-  **Code:**
-  **Content:**
-  **Acknowledgements:**
+# Credits:
+##  **Code:**
+
+##  **Content:**
+
+##  **Acknowledgements:**
