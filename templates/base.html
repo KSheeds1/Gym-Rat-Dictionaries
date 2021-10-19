@@ -104,12 +104,15 @@
             <i class="fas fa-bars"></i>
         </a>
         <ul>
-            <li><a class="btn-floating search"><i class="fas fa-search"></i></a></li>
-            <li><a class="btn-floating add"><i class="fas fa-plus"></i></a></li>
+            <li>
+                <a class="btn-floating search" id="search-btn"><i class="fas fa-search"></i></a>
+                
+            </li>
+            <li><a href="{{ url_for('add_definition') }}" class="btn-floating add"><i class="fas fa-plus"></i></a></li>
             <li><a class="btn-floating scroll-up"><i class="fas fa-arrow-circle-up"></i></a></li>
         </ul>
     </div>
-
+    
     <main class="container">
         {% block content %}
         {% endblock %}
