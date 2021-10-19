@@ -8,48 +8,72 @@
             <div class="divider black"></div>
         </div>
     </div>
-    <div class="row">
-        <div class="col s12 m12">
-            <h3 class="left">My definitions:</h3>
+    {% if definitions| length > 0 %}
+        <div class="row">
+            <div class="col s12 m12">
+                <h3 class="left">My definitions:</h3>
+            </div>
         </div>
-    </div>
-    {% for definition in definitions %}
-        {% if session.user|lower == definition.created_by|lower %}
-            <ul class="collapsible user-definitions">
-                <li>
-                    <div class="collapsible-header">
-                        <div class="col s3">
-                            <i class="fas fa-caret-down"></i>
+        {% for definition in definitions %}
+            {% if session.user|lower == definition.created_by|lower %}
+                <ul class="collapsible user-definitions">
+                    <li>
+                        <div class="collapsible-header">
+                            <div class="col s3">
+                                <i class="fas fa-caret-down"></i>
+                            </div>
+                            <div class="col s9">
+                                <strong class="title">{{ definition.exercise_name }}</strong>
+                                <a href="{{ url_for('edit_definition', definition_id=definition._id) }}" 
+                                            class="edit btn-small">Edit</a>
+                                <a href="#modal4" data-target="#modal4{{ definition._id }}" 
+                                            class="modal-trigger delete btn-small">Delete</a>
+                            </div>
                         </div>
-                        <div class="col s9">
-                            <strong class="title">{{ definition.exercise_name }}</strong>
-                            <a href="{{ url_for('edit_definition', definition_id=definition._id) }}" 
-                                        class="edit btn-small">Edit</a>
-                            <a href="{{ url_for('delete_definition', definition_id=definition._id) }}" 
-                                        class="delete btn-small">Delete</a>
+                        <div class="collapsible-body white-text">
+                            <strong>Category: {{ definition.category_name }}</strong>
+                            <p>{{ definition.exercise_description }}</p>
+                            <p>Tempo: {{ definition.tempo }}</p>
+                            <p class="image_url">{{ definition.image_url }}</p>
+                            <p class="created_by"><i class="fas fa-user"></i><em> {{ definition.created_by }}</em></p>
                         </div>
+                    </li>
+                </ul>
+                <!-- User confirmation modal for definition deletion -->
+                <div id="#modal4{{ definition._id }}" class="modal">
+                    <div class="modal-header">
+                        <h4>Delete this definition?</h4>
                     </div>
-                    <div class="collapsible-body white-text">
-                        <strong>Category: {{ definition.category_name }}</strong>
-                        <p>{{ definition.exercise_description }}</p>
-                        <p>Tempo: {{ definition.tempo }}</p>
-                        <p class="image_url">{{ definition.image_url }}</p>
-                        <p class="created_by"><i class="fas fa-user"></i><em> {{ definition.created_by }}</em></p>
+                    <div class="modal-content">
+                        <p><em>Are you sure you want to delete this definition?</em></p>
                     </div>
-                </li>
-            </ul>
-        {% endif %}
-    {% endfor %}
-    <div class="row">
-        <div class="col s12 m12">
-            <h3 class="left">My favourites:</h3>
+                    <div class="divider black"></div>
+                    <div class="modal-footer">
+                        <a href="{{ url_for('delete_definition', definition_id=definition._id) }}" class="btn delete">Delete</a>
+                        <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <div class="row">
+            <div class="col s12 center-align">
+                <h4>No definitions added yet! Wanna change that?</h4>
+                <a href="{{ url_for('add_definition') }}" class="z-depth-5 add btn-large">
+                    Add Definition <i class="far fa-plus-square"></i></a>
+            </div>
         </div>
-    </div>
-    <ul class="collapsible">
-        <li>
-            <div class="collapsible-header"><i class="material-icons">filter_drama</i></div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
-    </ul>
+    {% endif %}
+        <!--<div class="row">
+            <div class="col s12 m12">
+                <h3 class="left">My favourites:</h3>
+            </div>
+        </div>
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header"><i class="material-icons">filter_drama</i></div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+        </ul>-->
 
 {% endblock %}
