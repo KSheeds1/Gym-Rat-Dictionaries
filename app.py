@@ -50,7 +50,6 @@ def search():
         {"$text": {"$search": query}}))
     return render_template("definitions.html", definitions=definitions)
 
-
 @app.route("/category_pg/<category_id>")
 def category_pg(category_id):
     """
@@ -211,7 +210,7 @@ def edit_definition(definition_id):
             "exercise_description": request.form.get("exercise_description"),
             "tempo": request.form.get("tempo"),
             "imge_url": request.form.get("image_url"),
-            "created_by": session["user"]
+            "created_by": session["user"],
         }
         mongo.db.definitions.update({"_id": ObjectId(definition_id)}, submit)
         flash("Your definition has been updated successfully.")
@@ -236,6 +235,37 @@ def delete_definition(definition_id):
     mongo.db.definitions.remove({"_id": ObjectId(definition_id)})
     flash("Definition successfully deleted.")
     return redirect(url_for("get_definitions"))
+
+
+@app.route("/upvote/<definition_id>", methods=["GET", "POST"])
+def upvote(definition_id):
+    """
+    This function will increment the amount of 'upvotes'
+    on a post by +1, when the icon has been clicked on a
+    specific post
+
+    """
+    mongo.db.definitions.find_one_and_update(
+        {"_id": ObjectId(definition_id)},
+        {"$inc": {"upvote": 1}},
+        {"upsert": True}
+    )
+    return redirect(url_for('get_definitions'))
+
+
+@app.route("/downvote/<definition_id>")
+def downvote(definition_id):
+    """
+    This function is triggered when a user clicks
+    the 'downvote' icon on a specific definition, the function
+    increments the amount of downvotes by +1.
+    """
+    mongo.db.definitions.find_one_and_update(
+        {"_id": ObjectId(definition_id)},
+        {"$inc": {"downvote": 1}},
+        {"upsert": True}
+    )
+    return redirect(url_for('get_definitions'))
 
 
 @app.route("/get_categories")
