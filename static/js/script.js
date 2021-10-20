@@ -11,6 +11,7 @@ $(document).ready(function(){
     $('select').formSelect({
       isMultiple: true
     });
+    $('.tooltipped').tooltip();
 
     /* The code below is the CI solution for the Materialize select box validation issue taken from the 
     'Task manager' mini-project:
