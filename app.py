@@ -50,6 +50,7 @@ def search():
         {"$text": {"$search": query}}))
     return render_template("definitions.html", definitions=definitions)
 
+
 @app.route("/category_pg/<category_id>")
 def category_pg(category_id):
     """
@@ -116,7 +117,7 @@ def login():
                 flash("Welcome {}".format(
                     request.form.get("username")))
                 return redirect(url_for(
-                    "profile", username=session["user"]))
+                    "profile", user=session["user"]))
             else:
                 # Invalid password hash:
                 flash("Incorrect Username or Password")
@@ -130,23 +131,22 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
+@app.route("/profile/<user>", methods=["GET", "POST"])
+def profile(user):
     """
     Once logged in or registered, the profile function will be triggered
     and will redirect the session user to their profile page. 
     """
-    # Grab the session user's username from the db:
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    # Grab the session user from the db:
+    user = mongo.db.users.find_one(
+        {"username": session["user"]})
 
     # If session user cookie truthy, return to appropriate profile:
     if session["user"]:
        
-        # Find session user defintions with 'created_by' ID:
-        definitions = list(mongo.db.definitions.find(
-            {"created_by": session["user"]}))
-        return render_template("profile.html", username=username,
+        # Render all definitions to the profile page to be filtered:
+        definitions = list(mongo.db.definitions.find())
+        return render_template("profile.html", user=user,
                                 definitions=definitions)
 
     # If false or doesn't exist, redirect to login:
@@ -266,6 +266,36 @@ def downvote(definition_id):
         {"upsert": True}
     )
     return redirect(url_for('get_definitions'))
+
+
+@app.route("/get_definitions/<definition_id>")
+def add_to_favourites(definition_id):
+    """
+    This function adds definitions into users
+    'favourites', an array stored in each user document.
+    These definitions can then be viewed on their
+    profile page.
+    """
+    # Check user is logged in:
+    if "user" in session:
+        # Grab the session user's name from the db:
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+
+        # Find definition by definition_id:
+        mongo.db.definitions.find_one(
+            {"_id": ObjectId(definition_id)}
+        )
+        # Insert definition_id into user-favourites array:
+        mongo.db.users.find_one_and_update(
+            {"username": username},
+            {"$addToSet": {"user_favourites": ObjectId(definition_id)}}
+        )
+        flash("Saved to your favourites")
+        return render_template("definitions.html")
+    else:
+        flash("You must be logged in to save a definition to your favourites")
+        return redirect(url_for('login'))
 
 
 @app.route("/get_categories")
