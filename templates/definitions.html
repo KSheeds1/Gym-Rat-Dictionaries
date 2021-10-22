@@ -20,7 +20,7 @@
 
 
     <!--Definitions card panel-->
-    {% if definitions|length > 0 %}
+    {% if definitions.count() > 0 %}
     <h3 class="center-align">Recently added</h3>
     <div class="divider"></div>
 
@@ -96,6 +96,11 @@
     </div>
     {% else %}
         <h3 class="center-align">Sorry, no results found!</h3>
-    {% endif %}       
+    {% endif %}
+    <div class="pagination-section center-align">
+        {% if definitions.count() > 0 %}
+            {{ pagination.links }}
+        {% endif %}
+    </div>       
 
 {% endblock %}

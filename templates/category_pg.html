@@ -30,6 +30,11 @@
                 </div>
             </div>
         {% endfor %}
-    </div>      
+    </div>
+    <div class="pagination-section center-align">
+        {% if definitions.count() > 0 %}
+            {{ pagination.links }}
+        {% endif %}
+    </div>       
 
 {% endblock %}

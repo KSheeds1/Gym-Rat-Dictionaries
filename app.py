@@ -5,6 +5,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_paginate import Pagination, get_page_args
 if os.path.exists("env.py"):
     import env
 
@@ -23,7 +24,7 @@ def category_menu():
     """
     Injects a dictionary of the categories collection
     automatically into the context of the template, in
-    this case, into the navbar dropdown menu in base.html. 
+    this case, into the navbar dropdown menu in base.html.
     """
     categories = list(mongo.db.categories.find())
     return dict(categories=categories)
@@ -34,10 +35,24 @@ def category_menu():
 def get_definitions():
     """
     App route for the landing page of Gym Rat Dictionaries.
-    Displays all recently added definitions. 
+    Displays all recently added definitions.
     """
-    definitions = list(mongo.db.definitions.find())
-    return render_template("definitions.html", definitions=definitions)
+    # Definition pagination:
+    # pylint: disable=unbalanced-tuple-unpacking
+    page, per_page, offset = get_page_args(page_parameter='page',
+                                            per_page_parameter='per_page')
+    per_page = 8
+    total = mongo.db.definitions.find().count()
+    # Find definitions to display on definitions.html:
+    definitions = (mongo.db.definitions.find())
+    definitions_pagination = definitions[offset: offset + per_page]
+    pagination = Pagination(page=page, per_page=per_page,
+                            total=total, css_framework='materializecss')
+    return render_template("definitions.html",
+                            definitions=definitions_pagination,
+                            page=page,
+                            per_page=per_page,
+                            pagination=pagination)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -46,23 +61,54 @@ def search():
     App route for search functionality.
     """
     query = request.form.get("query")
-    definitions = list(mongo.db.definitions.find(
-        {"$text": {"$search": query}}))
-    return render_template("definitions.html", definitions=definitions)
+    # Pagination for returned search queries:
+    # pylint: disable=unbalanced-tuple-unpacking
+    page, per_page, offset = get_page_args(page_parameter='page',
+                                            per_page_parameter='per_page')
+    per_page = 8
+    total = mongo.db.definitions.find({"$text": {"$search": query}}).count()
+    # Perform a $search on any $text index from the collection 
+    # using query variable:
+    definitions = mongo.db.definitions.find(
+        {"$text": {"$search": query}})
+    definitions_pagination = definitions[offset: offset + per_page]
+    pagination = Pagination(page=page, per_page=per_page,
+                            total=total,
+                            css_framework='materializecss')
+    return render_template("definitions.html",
+                            definitions=definitions_pagination,
+                            page=page, per_page=per_page,
+                            pagination=pagination,)
 
 
 @app.route("/category_pg/<category_id>")
 def category_pg(category_id):
     """
     This function dynamically generates a page for the category
-    selected by the user in the nav dropdown menu. Users can view 
-    definitions filtered by category.     
+    selected by the user in the nav dropdown menu. Users can view
+    definitions filtered by category.
     """
+    # Pagination for definitions displayed in category_pg:
+    # pylint: disable=unbalanced-tuple-unpacking
+    page, per_page, offset = get_page_args(page_parameter='page',
+                                            per_page_parameter='per_page')
+    per_page = 8
+    # Find category by ID:
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
-    defintions = mongo.db.definitions.find(
+    # Find definitions by category name:
+    definitions = mongo.db.definitions.find(
         {"category_name": category["category_name"]})
-    return render_template("category_pg.html", definitions=defintions,
-                           category=category)     
+    total = definitions.count()
+    definitions_pagination = definitions[offset: offset + per_page]
+    pagination = Pagination(page=page, per_page=per_page,
+                            total=total,
+                            css_framework='materializecss')
+    return render_template("category_pg.html",
+                           definitions=definitions_pagination,
+                           category=category,
+                           page=page,
+                           per_page=per_page,
+                           pagination=pagination,)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -99,9 +145,9 @@ def register():
 def login():
     """
     App log-in functionality. Defensively programmed to check
-    the existence of username in the db, whether the hashed 
-    password matches user input. Will either log user into session 
-    cookie or redirect back to login depending on whether the 
+    the existence of username in the db, whether the hashed
+    password matches user input. Will either log user into session
+    cookie or redirect back to login depending on whether the
     correct username and password are provided.
     """
     if request.method == "POST":
@@ -135,7 +181,7 @@ def login():
 def profile(user):
     """
     Once logged in or registered, the profile function will be triggered
-    and will redirect the session user to their profile page. 
+    and will redirect the session user to their profile page.
     """
     # Grab the session user from the db:
     user = mongo.db.users.find_one(
@@ -143,7 +189,6 @@ def profile(user):
 
     # If session user cookie truthy, return to appropriate profile:
     if session["user"]:
-       
         # Render all definitions to the profile page to be filtered:
         definitions = list(mongo.db.definitions.find())
         return render_template("profile.html", user=user,
@@ -159,7 +204,7 @@ def logout():
     Removes user from session cookie and specifies which
     session cookie to delete. Before logging the user out,
     they will get a flash message advising that they have
-    been logged out and will be redirected to login. 
+    been logged out and will be redirected to login.
     """
     # Remove user from session cookie:
     flash("You have been logged out")
