@@ -106,6 +106,12 @@ INSERT IMG OF DEV TOOLS PIC WITH CSS
  However, after reviewing both functions in app.py, it became clear that the bug arose from attempting to reuse lists in Jinja, the for-loop of 'categories' was now listed three times. To rectify the bug, the .find() functions in both add_definition and edit_definition were wrapped inside a python list to convert the Mongo cursor objects 'categories' into proper lists. Following this, functionality returned to both forms. The pre-existing category selection for edit was readily available, as were the category selection options in the add definition form. 
  IMG OF REFACTORED CODE FOR BOTH ADD EDIT FUNCTIONS.
 
+## **Displaying user favourites on profile page:**
+An issue arose when attempting to display user favourites on the profile page. A user's favourites are saved to an array 'user_favourites' in the users collection. While the definitions were being updated into the array, and filtered for-loops were employed in profile.html to display only session user created definitions and user favourite definitions all attempts to display the user favourite definitions were unsuccessful. 
+
+The bug was discovered while reviewing the profile function. Initially "username" was being passed through, which only pointed to a string. In order to resolve the bug the profile view was altered to gain access to all user document fields by passing through the Mongo Object "user" and the projection parameter was removed from the find method. This allowed for all definitions to be accessible from the profile page and then filtered by the for-loops. The changes made to the profile view, resolved the bug and both session user created definitions and their favourite definitions were now displaying on the profile page.   
+INSERT IMGS FOR THIS
+
 # Manual functionality testing:
 
 ## User Authentication: 
