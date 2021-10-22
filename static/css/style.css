@@ -189,8 +189,9 @@ footer p {
     margin: 10px 0 5px 0;
 }
 
-.card-title {
+.card .card-title {
     font-family: "DM Serif Display", sans-serif;
+    font-size: 22px;
 }
 
 /*---------------------- Definitions card icons:*/
