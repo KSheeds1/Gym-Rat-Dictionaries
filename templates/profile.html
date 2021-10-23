@@ -8,7 +8,7 @@
             <div class="divider black"></div>
         </div>
     </div>
-    {% if definitions| length > 0 %}
+    {% if definitions|length > 0 %}
         <div class="row">
             <div class="col s12 m12">
                 <h3 class="left">My definitions:</h3>
@@ -53,6 +53,36 @@
                 </div>
             </div>
         {% endfor %}
+        <div class="row">
+            <div class="col s12 m12">
+                <h3 class="left">My favourites:</h3>
+            </div>
+        </div>
+        {% for definition in definitions if definition._id in user.user_favourites %}
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">
+                        <div class="col s3">
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div class="col s9">
+                            <strong class="title">{{ definition.exercise_name }}</strong>
+                            <a href="{{ url_for('edit_definition', definition_id=definition._id) }}" 
+                                        class="edit btn-small">Edit</a>
+                            <a href="#modal4" data-target="#modal4{{ definition._id }}" 
+                                        class="modal-trigger delete btn-small">Delete</a>
+                        </div>
+                    </div>
+                    <div class="collapsible-body white-text">
+                        <strong>Category: {{ definition.category_name }}</strong>
+                        <p>{{ definition.exercise_description }}</p>
+                        <p>Tempo: {{ definition.tempo }}</p>
+                        <p class="image_url">{{ definition.image_url }}</p>
+                        <p class="created_by"><i class="fas fa-user"></i><em> {{ definition.created_by }}</em></p>
+                    </div>
+                </li>
+            </ul>
+        {% endfor %}
     {% else %}
         <div class="row">
             <div class="col s12 center-align">
@@ -62,34 +92,4 @@
             </div>
         </div>
     {% endif %}
-    <div class="row">
-        <div class="col s12 m12">
-            <h3 class="left">My favourites:</h3>
-        </div>
-    </div>
-    {% for definition in definitions if definition._id in user.user_favourites %}
-        <ul class="collapsible">
-            <li>
-                <div class="collapsible-header">
-                    <div class="col s3">
-                        <i class="fas fa-caret-down"></i>
-                    </div>
-                    <div class="col s9">
-                        <strong class="title">{{ definition.exercise_name }}</strong>
-                        <a href="{{ url_for('edit_definition', definition_id=definition._id) }}" 
-                                    class="edit btn-small">Edit</a>
-                        <a href="#modal4" data-target="#modal4{{ definition._id }}" 
-                                    class="modal-trigger delete btn-small">Delete</a>
-                    </div>
-                </div>
-                <div class="collapsible-body white-text">
-                    <strong>Category: {{ definition.category_name }}</strong>
-                    <p>{{ definition.exercise_description }}</p>
-                    <p>Tempo: {{ definition.tempo }}</p>
-                    <p class="image_url">{{ definition.image_url }}</p>
-                    <p class="created_by"><i class="fas fa-user"></i><em> {{ definition.created_by }}</em></p>
-                </div>
-            </li>
-        </ul>
-    {% endfor %}
 {% endblock %}

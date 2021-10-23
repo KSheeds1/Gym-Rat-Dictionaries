@@ -40,11 +40,13 @@ def get_definitions():
     # Definition pagination:
     # pylint: disable=unbalanced-tuple-unpacking
     page, per_page, offset = get_page_args(page_parameter='page',
-                                            per_page_parameter='per_page')
+                                           per_page_parameter='per_page')
+    # Reset per_page and offset values:
     per_page = 8
+    offset = (page -1) * per_page
     total = mongo.db.definitions.find().count()
     # Find definitions to display on definitions.html:
-    definitions = (mongo.db.definitions.find())
+    definitions = list(mongo.db.definitions.find())
     definitions_pagination = definitions[offset: offset + per_page]
     pagination = Pagination(page=page, per_page=per_page,
                             total=total, css_framework='materializecss')
@@ -60,17 +62,19 @@ def search():
     """
     App route for search functionality.
     """
-    query = request.form.get("query")
+    query = request.args.get("query")
     # Pagination for returned search queries:
     # pylint: disable=unbalanced-tuple-unpacking
     page, per_page, offset = get_page_args(page_parameter='page',
                                             per_page_parameter='per_page')
+    # Reset per_page and offset values:
     per_page = 8
+    offset = (page -1) * per_page
     total = mongo.db.definitions.find({"$text": {"$search": query}}).count()
-    # Perform a $search on any $text index from the collection 
+    # Perform a $search on any $text index from the collection
     # using query variable:
-    definitions = mongo.db.definitions.find(
-        {"$text": {"$search": query}})
+    definitions = list(mongo.db.definitions.find(
+        {"$text": {"$search": query}}))
     definitions_pagination = definitions[offset: offset + per_page]
     pagination = Pagination(page=page, per_page=per_page,
                             total=total,
@@ -92,13 +96,15 @@ def category_pg(category_id):
     # pylint: disable=unbalanced-tuple-unpacking
     page, per_page, offset = get_page_args(page_parameter='page',
                                             per_page_parameter='per_page')
+    # Reset per_page and offset values:
     per_page = 8
+    offset = (page -1) * per_page
     # Find category by ID:
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     # Find definitions by category name:
-    definitions = mongo.db.definitions.find(
-        {"category_name": category["category_name"]})
-    total = definitions.count()
+    definitions = list(mongo.db.definitions.find(
+        {"category_name": category["category_name"]}))
+    total = len(definitions)
     definitions_pagination = definitions[offset: offset + per_page]
     pagination = Pagination(page=page, per_page=per_page,
                             total=total,
@@ -223,7 +229,7 @@ def add_definition():
     # POST method functionality:
     if request.method == "POST":
         definition = {
-            "category_name": request.form.getlist("category_name"),
+            "category_name": request.form.get("category_name"),
             "exercise_name": request.form.get("exercise_name"),
             "exercise_description": request.form.get("exercise_description"),
             "tempo": request.form.get("tempo"),
@@ -337,7 +343,7 @@ def add_to_favourites(definition_id):
             {"$addToSet": {"user_favourites": ObjectId(definition_id)}}
         )
         flash("Saved to your favourites")
-        return render_template("definitions.html")
+        return render_template("definitions.html", username=username)
     else:
         flash("You must be logged in to save a definition to your favourites")
         return redirect(url_for('login'))

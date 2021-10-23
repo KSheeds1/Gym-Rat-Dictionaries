@@ -3,7 +3,7 @@
     
     <!--Search functionality-->
     <div class="row card-panel search-panel black">
-        <form action="{{ url_for('search') }}" method="POST" class="col s12">
+        <form action="{{ url_for('search') }}" method="GET" class="col s12">
             <div class="row valign-wrapper center-align">
                 <div class="input-field col s12 m8">
                     <i class="fas fa-search prefix pink-text"></i>
@@ -20,7 +20,7 @@
 
 
     <!--Definitions card panel-->
-    {% if definitions.count() > 0 %}
+    {% if definitions|length> 0 %}
     <h3 class="center-align">Recently added</h3>
     <div class="divider"></div>
 
@@ -98,7 +98,7 @@
         <h3 class="center-align">Sorry, no results found!</h3>
     {% endif %}
     <div class="pagination-section center-align">
-        {% if definitions.count() > 0 %}
+        {% if definitions|length > 0 %}
             {{ pagination.links }}
         {% endif %}
     </div>       
