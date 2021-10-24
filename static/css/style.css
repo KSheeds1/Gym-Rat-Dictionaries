@@ -279,12 +279,12 @@ footer p {
     left: 1rem;
 }
 
-a, .image_url {
+a .image_url {
     color: #17DCC6;
     font-family: "Raleway", sans-serif;
 }
 
-a, .image_url:hover {
+a .image_url:hover {
     color: #fffff3;
 }
 
