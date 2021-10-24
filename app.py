@@ -239,8 +239,10 @@ def add_definition():
         mongo.db.definitions.insert_one(definition)
         flash("Your definition has been added successfully.")
         return redirect(url_for("get_definitions"))
-    categories = list(mongo.db.categories.find().sort("category_name", 1))
-    return render_template("add_definition.html", categories=categories)
+    categories = list(mongo.db.categories.find().sort(
+                            "category_name", 1))
+    return render_template("add_definition.html",
+                            categories=categories)
 
 
 @app.route("/edit_definition/<definition_id>", methods=["GET", "POST"])
@@ -263,14 +265,16 @@ def edit_definition(definition_id):
             "imge_url": request.form.get("image_url"),
             "created_by": session["user"],
         }
-        mongo.db.definitions.update({"_id": ObjectId(definition_id)}, submit)
+        mongo.db.definitions.update(
+            {"_id": ObjectId(definition_id)}, submit)
         flash("Your definition has been updated successfully.")
 
     definition = mongo.db.definitions.find_one(
         {"_id": ObjectId(definition_id)})
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template("edit_definition.html",
-                            definition=definition, categories=categories)
+                            definition=definition,
+                            categories=categories)
 
 
 @app.route("/delete_definition/<definition_id>")
@@ -340,7 +344,8 @@ def add_to_favourites(definition_id):
         # Insert definition_id into user-favourites array:
         mongo.db.users.find_one_and_update(
             {"username": username},
-            {"$addToSet": {"user_favourites": ObjectId(definition_id)}}
+            {"$addToSet":
+                {"user_favourites": ObjectId(definition_id)}}
         )
         flash("Saved to your favourites")
         return render_template("definitions.html", username=username)
@@ -356,8 +361,19 @@ def get_categories():
     displays categories to admin users from
     which they can perform CRUD operations to.
     """
-    categories = list(mongo.db.categories.find().sort("category_name", 1))
-    return render_template("categories.html", categories=categories)
+    user = mongo.db.users.find_one(
+        {"username": session["user"]}
+    )
+
+    if session["user"] == "admin":
+        categories = list(mongo.db.categories.find().sort(
+            "category_name", 1))
+        return render_template("categories.html",
+                                categories=categories,
+                                user=user)
+    else:
+        flash("Sorry this page is only available to Admin users")
+        return render_template('403.html')
 
 
 @app.route("/add_category", methods=["GET", "POST"])
@@ -389,11 +405,13 @@ def edit_category(category_id):
         submit = {
             "category_name": request.form.get("category_name")
         }
-        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+        mongo.db.categories.update(
+            {"_id": ObjectId(category_id)}, submit)
         flash("Category Update Successful")
         return redirect(url_for("get_categories"))
 
-    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+    category = mongo.db.categories.find_one(
+        {"_id": ObjectId(category_id)})
     return render_template("edit_category.html", category=category)
 
 
