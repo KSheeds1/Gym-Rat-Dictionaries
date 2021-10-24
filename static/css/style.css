@@ -279,6 +279,19 @@ footer p {
     left: 1rem;
 }
 
+a, .image_url {
+    color: #17DCC6;
+    font-family: "Raleway", sans-serif;
+}
+
+a, .image_url:hover {
+    color: #fffff3;
+}
+
+a .image_url:visited {
+    color: #1f998b;
+}
+
 /*---------------------- Search bar*/
 .search-panel {
     margin: 25px;
