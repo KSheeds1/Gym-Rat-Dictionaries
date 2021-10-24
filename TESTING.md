@@ -112,10 +112,37 @@ An issue arose when attempting to display user favourites on the profile page. A
 The bug was discovered while reviewing the profile function. Initially "username" was being passed through, which only pointed to a string. In order to resolve the bug the profile view was altered to gain access to all user document fields by passing through the Mongo Object "user" and the projection parameter was removed from the find method. This allowed for all definitions to be accessible from the profile page and then filtered by the for-loops. The changes made to the profile view, resolved the bug and both session user created definitions and their favourite definitions were now displaying on the profile page.   
 INSERT IMGS FOR THIS
 
+### **Pagination bugs:**
+Three routes for the project were refactored to include pagination: 
+* get_definitions
+* categories_pg
+* search
+
+When first implemented, the pagination seemed functional, definition panels per page were limited and the pagination links were in working order on definitions.html and category_pg.html. However when attempting to search an error was thrown pointing at the if statement in definitions.html
+INSERT IMG TYPE ERROR CURSOR NO LEN
+Following some research of this issue, a suitable fix was found in this [Stack Overflow question.](https://stackoverflow.com/questions/65477524/flask-and-jinja-template-throwing-error-object-of-type-cursor-has-no-len)
+To resolve the TypeError  the 'definitions' lists were changed to return a cursor object and the if statements were updated also. 
+INSERT IMG OF DEFINITIONS.HTML .COUNT() 
+These changes to the code seemed to rectify the issue and all aspects of the Flask pagination seemed to be functional. These changes were then pushed to Git. 
+
+However, when later returning to development again, and attempting to save a definition to 'favourites', an error was thrown and new bug had appeared. While the definition was being added to the user_favourites array in the User collection, the profile page was no longer accessible.
+INSERT IMG OF DEFINITIONS NOT DEFINED. 
+
+Upon reviewing the app.py file and definitions.html it was decided that this bug was due to the change from lists to cursor objects, 'definitions' was no longer iterable more than once. The decision was made to return the cursor objects to lists and attempt to deal with the search functionality differently. Once this change had been made, functionality was returned. Even access to the search functionality also seemed possible, however when attempting to view the second page of search results an error was thrown:
+INSERT IMG OF SEARCH RESULTS ERROR THROWN
+
+Some research and guidance was necessary to resolve this bug. Initially, the plan to resolve this issue was to build a second route to split the search functionality. Maintain the original route as a post request, the initial search query and build a second route to deal with the pagination and subsequent requests. However this was abandoned for a much more straightforward approach. 
+
+It was decided to keep the current pagination and just change the form from `POST` to `GET`. Following this approach, the `GET` method passes the query term into the URL args, using `request.args.get()` to get it from the args, to search the database and paginate. So the query cannot be lost from the args upon pagination. The following alterations were made to the code to implement this: 
+INSERT IMG OF ARGS IN SEARCH() AND GET IN DEF SEARCH FORM. 
+
+Following this all aspects of pagination were manually tested and all bugs and issues surrounding pagination had been resolved. 
+
 # Manual functionality testing:
 
-## User Authentication: 
-### Registration functionality:
+# User Authentication: 
+
+## **Registration functionality:**
 Following completion of the function register(), the function and form were tested manually. The functionality was tested in the following manner: 
 
 1. Attempt registration by providing **neither** a username or password and clicking on the 'Register' button.:
@@ -138,7 +165,7 @@ INSERT PIC HERE
 INSERT PIC HERE
 **Result:**  The form validation and pattern recognition are accepting both the username and password, the user is redirected to their profile and receive a flash message of 'Registration Successful'. 
 
-### Log In functionality:
+## **Log In functionality:**
 Following completion of the function login(), the function and form were tested manually. The functionality was tested in the following manner: 
 
 1. Attempt login by providing **neither** a username or password and clicking on the 'Register' button.:
@@ -161,9 +188,39 @@ INSERT PIC HERE
 INSERT PIC HERE
 **Result:**  The form validation and pattern recognition are accepting both the username and password, the user is redirected to their profile and receive a flash message of 'Welcome {username}'.
 
+## **Log Out functionality:** 
+Following completion of the function logout(), manual testing was carried out against the functionality. The functionality was tested in the following manner:
+
+**1. Log in as user and logout:**
+INSERT PIC HERE
+
+**Results:** Once logged in as a user, the changes in the nav-items is apparent, a regular user has access to the following nav-items: 
+* Home
+* Profile
+* Add Definition
+* Categories
+* Log Out
+
+The users login status can be confirmed in 'Cookies' found in the 'Application' section of Dev Tools, as the 'session cookie' is present. To logout the user clicks on the 'Log Out' nav-item and receives a flash message to inform them that they have been logged out and are redirected to login page. Checking against Dev Tools 'Cookies', it's noted that the session cookie has been deleted. 
+
+
+
+**2. Log in as admin and logout:** 
+INSERT PIC HERE
+
+**Results:** Once logged in as an admin, the changes in the nav-items is apparent, an admin has access to the following nav-items:
+* Home
+* Profile
+* Add definition
+* Category Management
+* Log Out
+
+The admin's login status can be confirmed in 'Cookies' found in the 'Application' section of Dev Tools, as the 'session cookie' is present. To logout the admin clicks on the 'Log Out' nav-item and receives a flash message to inform them that they have been logged out and are redirected to login page. Checking against Dev Tools 'Cookies', it's noted that the session cookie has been deleted.
+
+
 
 # CRUD OPERATIONS
-## Create/Add :
+## **Create/Add:**
 ### Add Definition:
 Following the completion of add_definition functionality, manual testing was carried out against the functionality. It was tested in the following manner:
  
@@ -172,7 +229,7 @@ Following the completion of add_definition functionality, manual testing was car
  * User is informed of a successful creation by the Flash message and is redirected to the home page.
 INSERT IMG OF FORM AND FLASH MESSAGE
 
-### Add Category: [Admin only]
+### Add Category: **Admin only**
 Following the completion of the add_category functionality, manual testing was carried out against the functionality. It was tested in the following manner:
 * Navigate to 'Category Management' via the navbar.
 * Click on the 'Add Category' panel.
@@ -182,7 +239,7 @@ Following the completion of the add_category functionality, manual testing was c
 * Following a successful category creation, the category management page is reloaded and the admin is provided with user confirmation via a Flash message. 
 INSERT IMG OF FORM AND FLASH MESSAGE 
 
-## Read:
+## **Read:**
 Users of the app have the ability to read data in the following areas of the site:
 
 **Home page:**
@@ -197,7 +254,7 @@ Users of the app have the ability to read data in the following areas of the sit
 
 ADD IMG OF ALL OF THE ABOVE
 
-## Update/Edit: 
+## **Update/Edit:** 
 ### Edit Definition:
 Following the completion of the edit_definition functionality, manual testing was carried out against the functionality. It was tested in the following manner:
 **Note:** Edit functionality is restricted to the users own definitions. 
@@ -208,7 +265,7 @@ Following the completion of the edit_definition functionality, manual testing wa
 * Click the 'Edit Definition' button to update the definition. 
 INSERT IMG OF FORM AND FLASH MESSAGE
 
-### Edit Category: [Admin only]
+### Edit Category: **Admin only**
 Following the completion of the edit_categories functionality, manual testing was carried out against the functionality. It was tested in the following manner:
 * Navigate to 'Category Management' via the navbar.
 * Select the category to edit.
@@ -217,10 +274,11 @@ Following the completion of the edit_categories functionality, manual testing wa
 * Following a successful edit, the category management page is reloaded and the admin is provided with user confirmation via a Flash message.
 INSERT IMG OF FORM AND FLASH MESSAGE 
 
-## Delete:
+## **Delete:**
 Delete functionality/operations are available across the following areas of the app: 
 
-**Delete definition:**
+### Delete definition:
+
 Each individual definition card panel has a 'Delete' button. Prior to the deletion of a definition, a user will be prompted to provide user confirmation via a modal. Users can delete their own definitions in the following manner:
 	
 * Navigate to the definition you wish to delete. 
@@ -230,7 +288,7 @@ Each individual definition card panel has a 'Delete' button. Prior to the deleti
 
 **Note:** The ability to delete a user added definition has also been extended to Admins. To delete a user added definition, admins also follow the steps outlined above. 
 
-**Delete category:  [Admin only]**
+### Delete category:  **Admin only**
 
 Admins have the ability to delete categories as they see fit, each category panel has a 'Delete' button. Prior to the deletion of a category, the admin will be prompted to provide user confirmation via a modal. Admins can delete a category in the following manner: 
 * Navigate to the 'Category Management' using the navbar.
@@ -267,6 +325,166 @@ INSERT IMG OF CANCEL BUTTON
 Prior to the deletion of a category, the admin will be prompted to provide user confirmation via a modal. If an admin chooses not to delete a category, they can click on the 'Cancel' button and will be redirected back to the category management page. 
 INSERT IMG OF DELETION MODAL 
  
+
+ ## **Base.html**
+
+| **Element**                 | **Action** | **Expected Outcome**                                        | **Pass/Fail** | **Notes**                                                             |
+|-------------------------|--------|---------------------------------------------------------|-----------|-------------------------------------------------------------------|
+| **Navbar**                  |        |                                                         |           |                                                                   |
+| Navbar Brand            | Click  | Redirect to home                                        | Pass      |                                                                   |
+| Home                    | Click  | Redirect to home                                        | Pass      |                                                                   |
+| Profile                 | Click  | Redirect to Profile                                     | Pass      |                                                                   |
+| Categories              | Click  | Opens dropdown menu for category selection              | Pass      | Only available to users not Admin                                 |
+| Add Definition          | Click  | Redirects to Add definition form                        | Pass      | Only available if user is logged in                               |
+| Category Management     | Click  | Redirect to Category Management                         | Pass      | Only available to Admin users                                     |
+| Log In                  | Click  | Redirect to Log In page                                 | Pass      | Not visible if user is logged in                                  |
+| Log Out                 | Click  | Logs user out of account, redirecting to Log In page    | Pass      | Only visible if user is logged in                                 |
+| Register                | Click  | Redirects to register page                              | Pass      | Not visible if user is logged in                                  |
+| **SideNav**                 |        |                                                         |           |                                                                   |
+| Hamburger Icon          | Click  | Opens sidenav menu                                      | Pass      | Available on smaller viewports.                                   |
+| Navbar Brand            | Click  | Redirects to home page                                  | Pass      |                                                                   |
+| Home                    | Click  | Redirects to home page                                  | Pass      |                                                                   |
+| Profile                 | Click  | Redirects to profile page                               | Pass      | Only available to logged in users                                 |
+| Categories              | Click  | Opens dropdown categories menu                          | Pass      | Only available to users not admin                                 |
+| Add Definition          | Click  | Redirects to Add definition form                        | Pass      | Only available if user is logged in                               |
+| Category Management     | Click  | Redirects to category management                        | Pass      | Only available to Admin users                                     |
+| Log In                  | Click  | Redirects to log in page                                | Pass      | Not available to logged in users                                  |
+| Log Out                 | Click  | Logs user out and redirects to login page               | Pass      | Only available if user is logged in                               |
+| Register                | Click  | Redirects to register page                              | Pass      | Not visible to logged in users                                    |
+| **Section**                 |        |                                                         |           |                                                                   |
+| Message Flashing        | Click  | Displays user feedback across site                      | Pass      |                                                                   |
+| Floating Action Buttons | Click  | Displays icons for search, add definition and scroll up | Pass      | Add definition functionality is only available to logged in users |
+| Search                  | Click  | Renders search bar to screen                            | Pass      |                                                                   |
+| Add definition          | Click  | Redirects to add definition form                        | Pass      | Only available to logged in users                                 |
+| Scroll to the top       | Click  | Automatically scrolls user back to the top of the page  | Pass      |                                                                   |
+| **Footer**                  |        |                                                         |           |                                                                   |
+| Facebook Link           | Click  | Opens Facebook in a new tab                             | Pass      |                                                                   |
+| TikTok Link             | Click  | Opens Tiktok in a new tab                               | Pass      |                                                                   |
+| Instagram Link          | Click  | Opens Instagram in a new tab                            | Pass      |                                                                   |
+| Youtube                 | Click  | Opens Youtube in a new tab                              | Pass      |                                                                   |
+
+## **Definitions.html:**
+| **Element**                | **Action** | **Expected Output**                                                          | **Pass/Fail** | **Notes**                                                                        |
+|------------------------|--------|--------------------------------------------------------------------------|-----------|------------------------------------------------------------------------------|
+| **Search**             |   |                                                              |     || Search Bar             | Search | Input search query                                                       | Pass      |                                                                              |
+| Search Btn             | Search | Triggers search of database using query                                  | Pass      |                                                                              |
+| Reset Btn              | Reset  | Redirects to the home page definition.html                               | Pass      |                                                                              |
+| **Definition Card Panel**  |        |                                                                          |           |                                                                              |
+| Add to favourites icon | Click  | Triggers add_to_favourites and saves definition to user_favourites array | Pass      | Only available to logged in users, will trigger redirect to login            |
+| Share icon             | Click  | Triggers share modal and presents platforms to share to                  | Pass      |                                                                              |
+| Upvote icon            | Click  | Increments the upvote count for a specific definition                    | Pass      | Only available to logged in users                                            |
+| Downvote icon          | Click  | Increments the downvote count for a specific definition                  | Pass      | Only available to logged in users                                            |
+| Tooltips               | Hover  | Provide further information on icons when icon is hovered over           | Pass      |                                                                              |
+| Edit Btn               | Click  | Redirects to edit definition form                                        | Pass      | Only available to logged in users                                            |
+| Delete Btn             | Click  | Triggers delete confirmation modal                                       | Pass      | Must click 'Delete' on confirmation modal to delete, available to admin also |
+| **Modals**                 |        |                                                                          |           |                                                                              |
+| Share Modal            | Click  | Click social media platform you wish to share on                         | Pass      | Triggered by share icon                                                      |
+| Facebook link          | Click  | Opens Facebook in new tab                                                | Pass      |                                                                              |
+| TikTok link            | Click  | Opens TikTok in new tab                                                  | Pass      |                                                                              |
+| Instagram link         | Click  | Opens Instagram in new tab                                               | Pass      |                                                                              |
+| Youtube link           | Click  | Opens Youtube in new tab                                                 | Pass      |                                                                              |
+| Cancel Btn             | Click  | Closes modal                                                             | Pass      |                                                                              |
+| Delete Modal           | Click  | Confirm to delete specific definition                                    | Pass      | Triggered by Delete btn                                                      |
+| Delete Btn             | Click  | Triggers delete_definition function and deletes specific definition      | Pass      |                                                                              |
+| Cancel Btn             | Click  | Closes modal                                                             | Pass      |
+| **Pagination**             |   |                                                              |     |                                                                              |
+| << Btn                 | Click  | Redirects back to previous definitions page                              | Pass      |                                                                              |
+| Pagination Links       | Click  | Numbered buttons to redirect to specific page                            | Pass      |                                                                              |
+| >> Btn                 | Click  | Redirects forward to next definitions page                               | Pass      |                                                                              |
+
+
+## **Add_definition.html:**
+| **Element**            | **Action** | **Expected Output**                                        | **Pass/Fail** | **Notes**                                                                              |
+|--------------------|--------|--------------------------------------------------------|-----------|------------------------------------------------------------------------------------|
+| **Form**              | POST   | Fill out and submit definition to database             |           |                                                                                    |
+| Category Dropdown  | Click  | Reveals category options to choose from                | Pass      | Required                                                                           |
+| Input text fields  | Type   | Text appears, green line if validated, red line if not | Pass      | Required                                                                           |
+| Textarea           | Type   | Text appears, green line if validated, red line if not | Pass      | Required                                                                           |
+| URL upload         | Click  | Paste in URL for image to upload with definition       | Pass      | Not required                                                                       |
+| Tooltips           | Hover  | Provide further instruction for form fields            | Pass      |                                                                                    |
+| Add definition Btn | Click  | Submits definition to the database                     | Pass      | Form will not submit if not correctly validated and all required fields filled out |
+| Cancel Btn         | Click  | Cancel action and redirects back to home page          | Pass      |                                                                                    | 
+
+## **Edit_definition.html:**
+| **Elements**                 | **Action** | **Expected Output**                                                 | **Pass/Fail** | **Notes**                                                 |
+|--------------------------|--------|-----------------------------------------------------------------|-----------|-------------------------------------------------------|
+| **Form**                     | POST   | Edit specific definition form and update in database                       | Pass      | Filled with pre-existing data to be edited as chosen |
+| Category select dropdown | Click  | Reveals category selection options                              | Pass      | Required                                              |
+| Input text fields        | Type   | Text appears, green line if validated, red line if not          | Pass      | Required                                              |
+| Textarea                 | Type   | Text appears, green line if validated, red line if not          | Pass      | Required                                              |
+| Tooltip                  | Hover  | Provides further instruction for form fields                    | Pass      |                                                       |
+| URL image upload         | Click  | Include URL of image to upload with definition                  | Pass      | Not required                                          |
+| Edit Btn                 | Click  | Triggers edit_definition function and uploads edited definition | Pass      |                                                       |
+| Cancel Btn               | Click  | Cancels edit of definition, redirects back to home page         | Pass      |                                                       |
+
+
+## **Categories.html:**
+| **Elements**                 | **Action** | **Expected Output**                                                 | **Pass/Fail** | **Notes**                                                 |
+|--------------------------|--------|-----------------------------------------------------------------|-----------|-------------------------------------------------------|
+| **Category Card**    |        | Holds the edit/delete btns for category management                    |           |       |
+| Edit Btn         | Click  | Triggers edit_category function and redirects to edit category form   | Pass      |       |
+| Delete Btn       | Click  | Triggers deletion confirmation modal                                  | Pass      |       |
+| Delete Modal     | Click  | Triggered by delete btn, confirmation is required prior to deletion   | Pass      |       |
+| Delete Btn       | Click  | Triggers delete_definition function and deletes a specific definition | Pass      |       |
+| Add Category Btn | Click  | Triggers add_category function and redirects to add category form     | Pass      |       |
+
+## Category_pg.html:
+| **Elements**         | **Action** | **Expected Output**                                                       | **Pass/Fail** | **Notes**                                             |
+|------------------|--------|-----------------------------------------------------------------------|-----------|---------------------------------------------------|
+| **Category_pg**      |        | Dynamically generates category page upon selection from dropdown menu | Pass      |                                                   |
+| Card Panel       |        | Definition panels refined by category                                 |           |                                                   |
+| Upvote icon      | Click  | Increments upvote count                                               | Pass      | Users must be logged in to use this functionality |
+| Downvote icon    | Click  | Increments downvote count                                             | Pass      | Users must be logged in to use this functionality |
+| **Pagination**             |   |                                                              |     |
+| << Btn           | Click  | Redirect to previous page                                             | Pass      |                                                   |
+| Pagination Links | Click  | Numbered buttons to redirect to specific page                         | Pass      |                                                   |
+| >> Btn           | Click  | Redirect to next page                                                 | Pass      |                                                   |
+
+
+## **Edit_category.html:**
+| **Element**           | **Action** | **Expected Output**                                           | **Pass/Fail** | **Notes**                                           |
+|-------------------|--------|-----------------------------------------------------------|-----------|-------------------------------------------------|
+| **Form**              | POST   | Edit specific category form and submit to database        | Pass      | Filled with pre-existing data to edit as chosen |
+| Input text fields | Type   | Text appears, green line if validated, red line if not    | Pass      | Required                                        |
+| Tooltip          | Hover  | Provides further instruction for form fields            | Pass      |          |
+| Edit Btn          | Click  | Triggers submission of edited category                    | Pass      |                                                 |
+| Cancel Btn        | Click  | Cancels edit of category and redirects to get_categories  | Pass      |                                                 |
+
+## **Login.html:**
+| **Element**          | **Action** | **Expected Output**                           | **Pass/Fail** | **Notes**    |
+|------------------|--------|--------------------------------------------------------|-----------|----------|
+| Form             | POST   | Log In form, logs in user to site                      | Pass      |          |
+| Input text field | Type   | Text appears, green line if validated, red line if not | Pass      | Required |
+| Tooltip          | Hover  | Provides further instruction for form fields            | Pass      |          |
+| Log In Btn       | Click  | Submit btn logs user into the app                      | Pass      |          |
+| Register Link    | Click  | Redirects unregistered user to register.html           | Pass      |          |
+ 
+## **Registration.html:**
+| **Element**          | **Action** | **Expected Output**                           | **Pass/Fail** | **Notes**    |
+|------------------|--------|---------------------------------------------------------|-----------|----------|
+| Form             | POST   | Registration form to sign up site visitor               | Pass      |          |
+| Input text field | Type   | Text appears, green line if validated, red line if not  | Pass      | Required |
+| Tooltip          | Hover  | Provides further instruction for form fields            | Pass      |          |
+| Register Btn     | Click  | Submits registry information to the database            | Pass      |          |
+| Log In Link      | Click  | Redirect to Log In page for previously registered users | Pass      |          |
+
+
+## **Profile.html:**
+| **Element**          | **Action** | **Expected Output**                           | **Pass/Fail** | **Notes**    |
+|-----------------------|--------|-------------------------------------------------------------------------|-----------|-------|
+| Collapsible Accordian |        | Displays user created definitions                                       | Pass      |       |
+| Edit Btn              | Click  | Triggers edit_definition function and redirects to edit form            | Pass      |       |
+| Delete Btn            | Click  | Triggers delete modal for specific definition                           | Pass      |       |
+| Modal                 |        | User confirmation for definition deletion                               |           |       |
+| Delete Btn            | Click  | Triggers delete_definition function and deletes specific definition     | Pass      |       |
+| Cancel Btn            | Click  | Modal close                                                             | Pass      |       |
+| Collapsible Accordian |        | Displays user favourite definitions                                     | Pass      |       |
+| Delete Btn            | Click  | Triggers delete modal for specific user favourite                       | Pass      |       |
+| Edit Btn              | Click  | Triggers edit_definition function and redirects to edit definition form | Pass      |       |
+| Modal                 |        | User confirmation for definition deletion                               | Pass      |       |
+| Delete Btn            | Click  | Triggers delete_definition function and deletes specific definition     | Pass      |       |
+| Cancel                | Click  | Modal close                                                             | Pass      |       |
+| Add definition Btn    | Click  | Redirects to add_definition form                                        | Pass      |       |
 
 ## Responsive Testing:
 

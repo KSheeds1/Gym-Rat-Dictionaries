@@ -241,19 +241,40 @@ The decision to integrate the option to share a definition was twofold, it would
 
 
 # **Database - MongoDB:**
-### **Schema:**
+## **Schema:**
 Below is the schema for the Gym Rat Dictionaries database: 
 INSERT IMG OF SCHEMA 
 
-### **Breakdown of Collections:**
-INSERT IMG OF CATEGORIES
+## **Breakdown of Collections:**
+### **Categories:**
+| Key           | Value Type |
+|---------------|------------|
+| _id           | ObjectId   |
+| category_name | String     |
+
 
 ### **Users:**
-INSERT IMG OF USERS
-### **Exercises:**
-INSERT IMG OF EXERCISES
-### **user_favourites:**
-INSERT IMG OF USER_FAVOURITES
+| Key             | Value    | Description                                  |
+|-----------------|----------|----------------------------------------------|
+| _id             | ObjectId |                                              |
+| username        | String   |                                              |
+| password        | String   | Hashed/Salted for security                   |
+| user_favourites | Array    | Definition_id of users favourite definitions |
+
+
+### **Definitions:**
+| Key                  | Value    | Description                                   |
+|----------------------|----------|-----------------------------------------------|
+| _id                  | ObjectId |                                               |
+| category_name        | String   | Category chosen by user from Categories       |
+| exercise_name        | String   |                                               |
+| exercise_description | String   | Breakdown of how to perform the exercise      |
+| tempo                | Int      | Pace the exercise should be performed at      |
+| image_url            | String   | URL of image users can upload with definition |
+| created_by           | ObjectId | ObjectId taken from users                     |
+| Upvote               | Int      | Amount of upvotes a specific definition has   |
+| Downvote             | Int      | Amount of downvotes a specific definition has |
+
 
 # **Testing:**
 Due to the size of the testing section, you can find all documentation related to the testing of Gym Rat Dictionaries [here]().
