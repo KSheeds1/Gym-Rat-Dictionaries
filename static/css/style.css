@@ -271,7 +271,7 @@ footer p {
 }
 
 .btn {
-    margin-right: 2px;
+    margin: 5px 2px 2px 0;
 }
 
 /*---------------------- Add Definition Form: */
@@ -352,5 +352,13 @@ font-size: 150%;
 @media only screen and (max-width: 600px) {
     .search-panel {
         display: block;
+    }
+
+    .search-panel label {
+        font-size: .8rem;
+    }
+
+    .btn {
+        float: none !important;
     }
 }
