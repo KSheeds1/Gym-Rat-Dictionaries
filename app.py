@@ -410,6 +410,36 @@ def delete_category(category_id):
     return redirect(url_for("get_categories"))
 
 
+# Error handlers
+# https://flask.palletsprojects.com/en/2.0.x/errorhandling/#custom-error-pages
+
+@app.errorhandler(403)
+def forbidden(e):
+    """
+    403 Forbidden client error status
+    response code custom HTML page.
+    """
+    return render_template('403.html'), 403
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """
+    404 page not found error status
+    response code custom HTML page.
+    """
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(500)
+def generic(e):
+    """
+    500 Internal server error status
+    response code custom HTML page.
+    """
+    return render_template('500.html'), 500
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="col s12 m7 center-align">
+        <h2 class="header">Uh oh</h2>
+        <div class="card horizontal">
+        <div class="card-stacked">
+            <div class="card-content">
+            <h3>I'm afraid this is forbidden</h3>
+            <p>You're not supposed to be here, let's help you find your way home from here</p>
+            </div>
+            <div class="card-action">
+            <a href="{{ url_for('get_definitions') }}">Home</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+{% endblock %}
