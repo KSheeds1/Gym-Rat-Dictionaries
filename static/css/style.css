@@ -294,6 +294,7 @@ a .image_url:visited {
 
 /*---------------------- Search bar*/
 .search-panel {
+    display: none;
     margin: 25px;
 }
 
@@ -344,4 +345,12 @@ font-size: 150%;
 
 .pagination li.active a {
     background-color: #030301;
+}
+
+/*----------------------Media Queries: */
+
+@media only screen and (max-width: 600px) {
+    .search-panel {
+        display: block;
+    }
 }

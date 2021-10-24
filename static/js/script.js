@@ -15,6 +15,13 @@ $(document).ready(function(){
     $('.scroll-up').on('click', function() {
         $('html, body').animate({scrollTop:0}, '300');
     });
+    $('#search').click(function() {
+        $('.search-panel').show("slow");
+    });
+    $('.search').on('click', function() {
+        $('html, body').animate({scrollTop:0}, '300')
+        $('.search-panel').show("slow");
+    });
 
     /* The code below is the CI solution for the Materialize select box validation issue taken from the 
     'Task manager' mini-project:
