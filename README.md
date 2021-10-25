@@ -272,8 +272,8 @@ INSERT IMG OF SCHEMA
 | tempo                | Int      | Pace the exercise should be performed at      |
 | image_url            | String   | URL of image users can upload with definition |
 | created_by           | ObjectId | ObjectId taken from users                     |
-| Upvote               | Int      | Amount of upvotes a specific definition has   |
-| Downvote             | Int      | Amount of downvotes a specific definition has |
+| Upvote               | Int      | Increment the amount of upvotes a specific definition has   |
+| Downvote             | Int      | Increment the amount of downvotes a specific definition has |
 
 
 # **Testing:**
@@ -387,10 +387,13 @@ From the dashboard, click on the **Deploy** tab:
 ##  **Code:**
 * The Materialize select box validation solution was the solution provided during the CI ['Task Manager'](https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/04-AddingATask-WritingToTheDatabase/02-materialize-select-validation/static/js/script.js) mini-project. 
 * This [demo](https://gist.github.com/mozillazg/69fb40067ae6d80386e10e105e6803c9) on GitHub helped me to refactor three of my functions to implement Flask-Paginate. 
-* This [Stackoverflow question](https://stackoverflow.com/questions/65477524/flask-and-jinja-template-throwing-error-object-of-type-cursor-has-no-len) helped me resolve the TypeError: object of type 'Cursor' has no len().
+* This [Stackoverflow question](https://stackoverflow.com/questions/65477524/flask-and-jinja-template-throwing-error-object-of-type-cursor-has-no-len) helped me resolve the TypeError: object of type 'Cursor' has no len(). (See TESTING.md)
 * This [Stackoverflow question](https://stackoverflow.com/questions/27980121/pylint-warning-possible-unbalanced-tuple-unpacking-with-sequence) helped me to remove the Pylint warning for 'possible unbalanced tuple unpacking'.
+* This [GitHub Gist](https://gist.github.com/toshimaru/6102647) helped me to detect scrolling to the bottom of the page using jQuery. It was modified slightly to get the innerHeight of the window so it would function on all viewports. 
+* This [GeeksforGeeks article](https://www.geeksforgeeks.org/how-to-detect-a-mobile-device-in-jquery/) showed me how to detect smaller viewports using JavaScript's `window.matchMedia();`
 
 ##  **Content:**
-Content for the defintions was supplied by the *Move With Us* App.
+Content for the defintions was supplied by the *Move With Us*.
 
 ##  **Acknowledgements:**
+A big thank you to my mentor Precious for guiding me through this milestone project and my family and friends for all their support!
