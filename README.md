@@ -118,7 +118,7 @@ As the app is orientated towards a fitness/exercise demographic, I wanted to kee
 
 **Colour Palette:** 
 I chose to use five colours throughout the site, three neutral colours to be used for the base and two contrasting accent colours to add some colour to text, icons and headings. 
-INSERT IMG OF COLOUR PALETTE HERE
+![Site color palette](static/images/README/grd-color-palette.png)
 
 **Typography:**
 The fonts chosen for the app are '[DM Serif Display](https://fonts.google.com/specimen/DM+Serif+Display?query=DM+)' and '[Raleway](https://fonts.google.com/specimen/Raleway?preview.text=Gym%20Rat%20Dictionaries&preview.text_type=custom)'. They were selected as both styles are clean and simple yet are similar to font styles seen in dictionaries worldwide, and therefore, in keeping with the overall aesthetic and purpose of the app.
@@ -242,8 +242,8 @@ The decision to integrate the option to share a definition was twofold, it would
 
 # **Database - MongoDB:**
 ## **Schema:**
-Below is the schema for the Gym Rat Dictionaries database: 
-INSERT IMG OF SCHEMA 
+![Below is the schema for the Gym Rat Dictionaries database:](static/images/README/grd-schema.png)
+
 
 ## **Breakdown of Collections:**
 ### **Categories:**
