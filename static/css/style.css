@@ -130,6 +130,9 @@ footer p {
 }
 
 /*---------------------- Floating action buttons:*/
+#FAB {
+    background-color: #030301;
+}
 .search {
     background-color: #ff4365;
 }
