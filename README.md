@@ -122,7 +122,8 @@ I chose to use five colours throughout the site, three neutral colours to be use
 
 **Typography:**
 The fonts chosen for the app are '[DM Serif Display](https://fonts.google.com/specimen/DM+Serif+Display?query=DM+)' and '[Raleway](https://fonts.google.com/specimen/Raleway?preview.text=Gym%20Rat%20Dictionaries&preview.text_type=custom)'. They were selected as both styles are clean and simple yet are similar to font styles seen in dictionaries worldwide, and therefore, in keeping with the overall aesthetic and purpose of the app.
-INSERT IMAGE OF FONTS HERE 
+
+![Typography example](static/images/README/Typography.png)
 
 **Images:**
 The images chosen are all fitness orientated and intuitively provide further context to the purpose of the site. The option for users to provide imagery along with their definition was included as it provides visual context to the definition. 
@@ -135,22 +136,34 @@ The navigation bar is available in the default position and allows users to quic
 2. Whether the user logged in is actually a site admin.
 3. Whether the user is casually browsing the app.
 
-**If the user is logged in, the navigation bar will display the following:**
-INSERT IMAGE OF LOGGED IN USER NAV BAR HERE
+### **If the user is logged in, the navigation bar will display the following:**
+
+![Logged in user](static/images/README/user-navbar.png)
+
+### **Mobile:**
+![Logged in user mobile](static/images/README/user-mobile-navbar.png)
 
 
-**If the user logged in is a site admin:**
-INSERT IMG OF LOGGED IN ADMIN NAV BAR HERE
+### **If the user logged in is a site admin:**
+
+![Logged in Admin](static/images/README/admin-navbar.png)
+
+### **Mobile:**
+![Logged in Admin mobile](static/images/README/admin-mobile-nav.png)
 
 
-**If the user is casually browsing the app:**
-INSERT IMG OF CASUALLY BROWSING USER NAV BAR HERE
+### **If the user is casually browsing the app:**
+
+![Casual user not logged in](static/images/README/not-logged-in-navbar.png)
+
+### **Mobile:**
+![Casual user not logged in mobile](static/images/README/not-logged-in-mobile-navbar.png)
 
 
 The changes in the sections presented in the navigation bar depend solely on the status of the user. Changes will be seen depending on whether you are casually browsing, are registered user, or a site admin. For both the registered user and site admin there is additional functionality made available. 
 
 **Search Functionality:**
-As the app was constructed in a mobile-first approach with user interaction and experience in mind, the choice was made to build the search bar functionality into the navigation bar. This was implemented to aid users on the go, perhaps at the gym, mid-workout.  It minimises the amount of limited time a user has to spend trying to find the exercise definition they are looking for. As the site's function is primarily a glossary or dictionary, its search functionality needs to be easily identified and accessed.  
+As the app was constructed in a mobile-first approach with user interaction and experience in mind, the choice was made to build the search bar functionality below the navigation bar. This was implemented to aid users on the go, perhaps at the gym, mid-workout.  It minimises the amount of limited time a user has to spend trying to find the exercise definition they are looking for. As the site's function is primarily a glossary or dictionary, its search functionality needs to be easily identified and accessed. The search functionality can also be accessed from the floating action button. On larger viewports the search bar is hidden but can be accessed from the either the search icon on the navbar or the floating action button. 
 
 **User Accounts:**
 To register or create an account with the app, the user is required to provide a unique, validated username and password. Upon logging-in, a registered user will be prompted to provide this username and password to gain access to their account. Security measures have been put in place by the site owner to protect user log-in details. 
@@ -183,13 +196,13 @@ The following CRUD operations are restricted to registered users of the app only
 Casual or first-time users of the app are able to browse through definitions and categories but, will not be permitted to perform the aforementioned operations. 
 
 **Floating Buttons:**
-The addition of floating buttons (Search and Scroll to the top) were added to enhance both UI and UX. On any page where the navigation bar is no longer visible, users can instead use the floating buttons to either search for a definition or, to trigger scroll to the top. This was implemented primarily for smaller viewports but was added to all viewports to increase user satisfaction towards the app. 
+The addition of floating buttons (scroll to the top, add definition and search) were added to enhance both UI and UX. On any page where the navigation bar is no longer visible, users can instead use the floating buttons to either search for a definition, add a definition, or scroll to the top. This was implemented primarily for smaller viewports but was added to all viewports to increase user satisfaction towards the app. 
 
 **My Favourites:**
 The my favourites functionality was provided to allow users to save their favourite definitions onto their profile page, alongside their own uploaded definitions. Users can add a definition to their 'My Favourites' by clicking on the HEART icon available on each definition panel, further increasing user interaction with the app.
 
-**Upvoting functionality:**
-Promotes further user interaction with the app and also gives the user a sense of community, as the upvote functionality displays the amount of 'votes' a definition has gotten from the Gym Rat Dictionaries community. The icon to upvote a definition is displayed on each definition panel and a user can simply click it to upvote a definition. 
+**Upvote and downvote functionality:**
+Promotes further user interaction with the app and also gives the user a sense of community, as the functionality displays the amount of 'upvotes' or 'downvotes' a definition has gotten from the Gym Rat Dictionaries community. Both icons to vote on a definition are displayed on each definition panel and a user can simply click it to vote on a definition.
 
 **Share a definition:**
 The decision to integrate the option to share a definition was twofold, it would help: 
@@ -277,7 +290,7 @@ The decision to integrate the option to share a definition was twofold, it would
 
 
 # **Testing:**
-Due to the size of the testing section, you can find all documentation related to the testing of Gym Rat Dictionaries [here]().
+Due to the size of the testing section, you can find all documentation related to the testing of Gym Rat Dictionaries [here](/TESTING.md).
 
 # **Deployment:**
 ## **Git:**
@@ -382,6 +395,8 @@ From the dashboard, click on the **Deploy** tab:
 
 * Back on Heroku, you can then '**Enable Automatic Deployment**' followed by '**Deploy Branch (main)**'.
 * You will be able to confirm a successful deployment from the Heroku. 
+
+![Heroku Deployment successful](static/images/README/successful-deployment-to-heroku.png)
 
 # Credits:
 ##  **Code:**
