@@ -162,13 +162,17 @@ The navigation bar is available in the default position and allows users to quic
 
 The changes in the sections presented in the navigation bar depend solely on the status of the user. Changes will be seen depending on whether you are casually browsing, are registered user, or a site admin. For both the registered user and site admin there is additional functionality made available. 
 
-**Search Functionality:**
-As the app was constructed in a mobile-first approach with user interaction and experience in mind, the choice was made to build the search bar functionality below the navigation bar. This was implemented to aid users on the go, perhaps at the gym, mid-workout.  It minimises the amount of limited time a user has to spend trying to find the exercise definition they are looking for. As the site's function is primarily a glossary or dictionary, its search functionality needs to be easily identified and accessed. The search functionality can also be accessed from the floating action button. On larger viewports the search bar is hidden but can be accessed from the either the search icon on the navbar or the floating action button. 
+### **Search Functionality:**
+As the app was constructed in a mobile-first approach with user interaction and experience in mind, the choice was made to build the search bar functionality below the navigation bar. This was implemented to aid users on the go, perhaps at the gym, mid-workout.  It minimises the amount of limited time a user has to spend trying to find the exercise definition they are looking for. As the site's function is primarily a glossary or dictionary, its search functionality needs to be easily identified and accessed. The search functionality can also be accessed from the floating action button. On larger viewports the search bar is hidden but can be accessed from the either the search icon on the navbar or the floating action button.
 
-**User Accounts:**
+
+![Search Icon](static/images/README/search-icon.png)
+![Search bar](static/images/README/search-bar.png)  
+![Search btn in FAB](static/images/README/floating-action-btns.png)
+### **User Accounts:**
 To register or create an account with the app, the user is required to provide a unique, validated username and password. Upon logging-in, a registered user will be prompted to provide this username and password to gain access to their account. Security measures have been put in place by the site owner to protect user log-in details. 
 
-**Categories:**
+### **Categories:**
 To present the data in an organised and intuitive fashion, the site owner has chosen to track and catalogue the exercise definitions by category. The following breakdown of categories have been created to help organise the definitions: 
 * Upper Body Exercises
 * Lower Body Exercises
@@ -178,14 +182,15 @@ To present the data in an organised and intuitive fashion, the site owner has ch
 
 Upon creating a definition, the user must as a requirement, select which category the definition fall underneath. 
 
-**Creation/Management of categories:** 
+### **Creation/Management of categories:** 
 The functionality surrounding the creation and management of categories is restricted to the site owner and admin. While registered and casual users can browse the categories available, only the site owner and admin will have access to category CRUD operations. 
 
 ### **Admin functionality:**
 Alongside category management and creation, admin's also have the ability to delete definitions created by registered users. This functionality was introduced through conditional formatting to grant permission to admins to delete malicious or unrelated content from the site on behalf of the users.
-INSERT IMG OF JINJA {% IF SESSION.USER == ETC %} 
 
-**CRUD Operations:**
+![Jinja formatting for delete](static/images/README/access-to-delete-admin.png)  
+
+### **CRUD Operations:**
 The following CRUD operations are restricted to registered users of the app only: 
 * Create
 * Update/Edit
@@ -195,20 +200,41 @@ The following CRUD operations are restricted to registered users of the app only
 
 Casual or first-time users of the app are able to browse through definitions and categories but, will not be permitted to perform the aforementioned operations. 
 
-**Floating Buttons:**
+### **Floating Buttons:**
 The addition of floating buttons (scroll to the top, add definition and search) were added to enhance both UI and UX. On any page where the navigation bar is no longer visible, users can instead use the floating buttons to either search for a definition, add a definition, or scroll to the top. This was implemented primarily for smaller viewports but was added to all viewports to increase user satisfaction towards the app. 
 
-**My Favourites:**
+![FAB](static/images/README/floating-action-btns.png)
+
+### **My Favourites:**
 The my favourites functionality was provided to allow users to save their favourite definitions onto their profile page, alongside their own uploaded definitions. Users can add a definition to their 'My Favourites' by clicking on the HEART icon available on each definition panel, further increasing user interaction with the app.
 
-**Upvote and downvote functionality:**
+![My favourites icon](static/images/README/add-to-faves-icon.png)
+
+![My favourites](static/images/README/my-faves.png)
+
+### **Upvote and downvote functionality:**
 Promotes further user interaction with the app and also gives the user a sense of community, as the functionality displays the amount of 'upvotes' or 'downvotes' a definition has gotten from the Gym Rat Dictionaries community. Both icons to vote on a definition are displayed on each definition panel and a user can simply click it to vote on a definition.
 
-**Share a definition:**
+![Up/down vote](static/images/README/up-down-vote.png)
+
+### **Share a definition:**
 The decision to integrate the option to share a definition was twofold, it would help: 
 * To increase traffic to the app by allowing users to share definitions across various social media platforms. 
 * To encourage further user interaction and satisfaction with the app, as sharing across platforms is standard/common practice amongst all apps. 
 
+![Share icon](static/images/README/share-icon.png)
+
+![Share Modal](static/images/README/share-modal.png)
+
+### **Pagination:**
+Was implemented in the following areas to increase UX and to break up content-heavy pages:
+* Home
+* Search results (if necessary)
+* Individual category pages 
+
+This will be extremely helpful as the database expands and will help users navigate the site more easily. Each of the following areas will only display 8 definitions per page so as not to overwhelm the user and allow them to process the information at a reasonable pace. 
+
+![Pagination](static/images/README/pagination.png)
 
 ## **Features left to implement:**
 * Introduce a 'definition of the day' functionality - where registered users receive a daily definition through email.
