@@ -348,7 +348,7 @@ def add_to_favourites(definition_id):
                 {"user_favourites": ObjectId(definition_id)}}
         )
         flash("Saved to your favourites")
-        return render_template("definitions.html", username=username)
+        return redirect(url_for('get_definitions'))
     else:
         flash("You must be logged in to save a definition to your favourites")
         return redirect(url_for('login'))
