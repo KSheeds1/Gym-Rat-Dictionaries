@@ -33,13 +33,18 @@
                 </div>
             </div>
         {% endfor %}
-    </div>
-    <!--Add category button-->
-    <div class="row">
-        <div class="col s12 center-align">
-            <a href="{{ url_for('add_category') }}" class="btn-large z-depth-5">
-                Add Category <i class="fas fa-plus-square right"></i>
-            </a>
+         <!--Add category card and button-->
+        <div class="col s12 m4">
+            <div class="card center-align grey z-depth-5">
+                <div class="card-content black-text">
+                    <span class="card-title">Create new category?</span> 
+                </div>
+                <div class="card-action">
+                    <a href="{{ url_for('add_category') }}" class="btn-small add">
+                        <i class="fas fa-plus-square"></i> Add Category
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 

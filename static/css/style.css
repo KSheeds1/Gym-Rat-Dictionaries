@@ -56,6 +56,10 @@ p {
 .edit:hover {
     background-color: #F86A12;
 }
+
+.add {
+    background-color: #17DCC6;
+}
 /*---------------------- Navbar: */
 .nav-dark {
     background-color: #030301;
