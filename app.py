@@ -334,16 +334,17 @@ def add_to_favourites(definition_id):
     # Check user is logged in:
     if "user" in session:
         # Grab the session user's name from the db:
-        username = mongo.db.users.find_one(
-            {"username": session["user"]})["username"]
+        user = mongo.db.users.find_one(
+            {"username": session["user"]})
+        
+        # Check if definition_id is already in user_favourites array:
+        if ObjectId(definition_id) in user["user_favourites"]:
+            flash("You've already added this definition to your favourites")
+            return redirect(url_for('get_definitions'))
 
-        # Find definition by definition_id:
-        mongo.db.definitions.find_one(
-            {"_id": ObjectId(definition_id)}
-        )
-        # Insert definition_id into user-favourites array:
+        # Insert definition_id into user_favourites array:
         mongo.db.users.find_one_and_update(
-            {"username": username},
+            {"username": user["username"]},
             {"$addToSet":
                 {"user_favourites": ObjectId(definition_id)}}
         )
