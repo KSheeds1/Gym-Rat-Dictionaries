@@ -1,55 +1,65 @@
  # Testing documentation for Gym Rat Dictionaries
  ## Contents: 
- * [Testing User Stories](#testing-user-stories)
-  * [Bugs: discovered & resolved during development](#bugs:-dicovered-&-resolved-during-development)
-  * [Manual functionality testing](#manual-functionality-testing)
+* [Testing User Stories](#testing-user-stories)
+* [Bugs: discovered & resolved during development](#bugs:-discovered-&-resolved-during-development:)
+* [Manual functionality testing](#manual-functionality-testing)
 	* [User Authentication](#user-authentication)
 	* [CRUD Operations](#crud-operations)
 	* [Cancel functionality](#cancel-functionality)
 	* [Features](#features) 
-  * [Responsive Testing](#repsonsive-testing)
-  * [Validation Testing](#validation-testing)
-  * [Lighthouse performance](#lighthouse-performance) 
+* [Responsive Testing](#repsonsive-testing)
+* [Validation Testing](#validation-testing)
+* [Lighthouse performance](#lighthouse-performance) 
 
 # Testing User Stories:
-***As a regular user, I want to be able to:***
-* **UST1: *Login and out of my account:***
+## ***As a regular user, I want to be able to:***
+> ### **UST1: *Login and out of my account:***
 
-A registered user can login to their account my clicking on 'Log In' located in the Navigation Bar on the right hand side. To log out of their account they must be logged into the account, navigate to the navigation bar and click on 'Log Out'.
+A registered user can login to their account by clicking on 'Log In' in the Navigation Bar on the right hand side. To log out of their account, they must be logged into their account, navigate to the navigation bar and click on 'Log Out'.
+
 ![Login navbar](static/images/TESTING/UST-login.png)
 ![Login page](static/images/TESTING/UST-login-2.png)
 
-* **UST2: *Upload an exercise definition:*** 
+> ### **UST2: *Upload an exercise definition:*** 
 
-Registered users can click create or add a definition from three places, once logged in, they can either click on the '+' icon in the navigation bar or the '+' icon FAB located on the bottom right hand corner of the screen. Otherwise, they can navigate to their 'Profile' page from the navigation and click on the button to 'Add a Definition'.
+Once logged in, registered users can add a definition from three places:
+* 'Add Definition' nav-link
+* The '+' icon in the floating action button
+* 'Add Definition' button on their profile page
 
 ![Add definition - navbar](static/images/TESTING/UST-add-def.png)
 ![Add definition - FAB](static/images/TESTING/UST-add-def-2.png)
 ![Add definition - form](static/images/TESTING/UST-add-def-form.png)
 
-* **UST3: *View all my uploaded exercises in one place:***
+> ### **UST3: *View all my uploaded exercises in one place:***
 
-Once logged in users can navigate to their 'Profile' page from the Navigation bar and view their uploaded definitions from there.
+Once logged in, users can navigate to their 'Profile' page from the Navigation bar and view their uploaded definitions from there.
 
 ![My definitions](static/images/TESTING/UST-view-my-defs.png)
 
  
-* **UST4: *Save or add all my favourite definitions to 'My Favourites':***
+> ### **UST4: *Save or add all my favourite definitions to 'My Favourites':***
 
 Once logged in, users can simply click on the 'Add to Favourites' icon featured on each individual definition card panel to add a definition to their favourites. They can then view their favourites on their profile page. 
 
 ![My Favourites](static/images/TESTING/UST-view-my-faves.png)
 
-* **UST5: *'Upvote' or 'Downvote' a definition:***
+> ### **UST5: *'Upvote' or 'Downvote' a definition:***
 
-Logged in users can 'upvote' or 'Downvote' a definition by simply clicking on the thumbs up or down icon featured on each individual definition card panel, the amount of votes for both are displayed on the icon and increment by one when clicked.
+Logged in users can 'upvote' or 'Downvote' a definition by simply clicking on the thumbs up or down icon featured on each individual definition card panel, the amount of votes for both are displayed on the icon and incremented by one when clicked.
 
 ![Up/Down vote](static/images/TESTING/UST-up-down-vote.png)
  
-* **UST6: *Edit or delete any definition I have added:***
+> ### **UST6: *Edit or delete any definition I have added:***
 
-A logged in user can choose to edit or delete any of their own added definitions. To do so, they can simply navigate to their profile from the navigation bar and view their 'My Definitions' or, by searching for the name of the definition using the search feature and clicking on the edit or delete button in the search results. Each card panel has two buttons, 'Edit' & 'Delete'. 
-	* To edit a definition, a user can click the 'Edit' button, which will redirect them to the 'Edit Definition' form and will be able to make the edit to the definition, they can either choose to save the changes or cancel. 
+A logged in user can choose to edit or delete any of their own added definitions. This can be achieved across the site:
+* On the users profile
+* On the home page
+* On any of the category pages
+* By searching for a specific definition in the search bar and deleting the definition in the search results. 
+
+ Each card panel has two buttons, 'Edit' & 'Delete'. 
+	* To edit a definition, a user can click the 'Edit' button, which will redirect them to the 'Edit Definition' form. From there, they will be able to edit the pre-existing data, and choose to save the changes or cancel. 
 	* To delete a definition, a user can click on the 'Delete' button attached to each definition card panel. They will be prompted to confirm the action once, to delete they can click the 'Delete' button offered in the user-confirmation modal or they can choose to 'Cancel' and the profile page will reload.
 
 ![Edit/Delete - Profile](static/images/TESTING/UST-edit-delete-2.png)
@@ -57,67 +67,71 @@ A logged in user can choose to edit or delete any of their own added definitions
 ![Edit definition form](static/images/TESTING/UST-edit-def-form.png)
 ![Delete definition](static/images/TESTING/UST-delete-confirm.png)
 
-***As a first-time user, I want to be able to:***
-* **UST7: *Identify the different categories of definitions available on the app:***
+## ***As a first-time user, I want to be able to:***
+> ### **UST7: *Identify the different categories of definitions available on the app:***
 
-First-time users can browse the different categories of exercise definitions by clicking on the 'Categories' nav-item and selecting a category they wish to browse from the dropdown.
+First-time users can browse the different categories of exercise definitions by clicking on the 'Categories' nav-item and selecting a category they wish to browse from the dropdown. This will direct them to the specific category collection.
 
 ![Category menu](static/images/TESTING/UST-see-categories.png)
 ![Category pg](static/images/TESTING/UST-view-category.png)
 
-* **UST8: *Search for a particular definition quickly:***
+> ### **UST8: *Search for a particular definition quickly:***
 
-Casual users of the site can search for a particular definition quickly by using the search bar, which can be accessed in two places, the Navigation bar or the magnify glass icon FAB located on the bottom right hand side of the app.
+Casual users of the site can search for a particular definition quickly by using the search bar, which can be accessed in two places: 
+* From the magnify glass icon in the Navigation bar, which triggers the search bar 
+* The magnify glass icon FAB located on the bottom right hand side of the app, which scrolls the user to the top and triggers the search bar. 
 
 ![Search - Nav](static/images/TESTING/UST-search-bar.png)
-![Search - Fab](static/images/TESTING/UST-search-fab.png)   
-* **UST8: *Create an account if I like the content of the site:***
+![Search - Fab](static/images/TESTING/UST-search-fab.png)
+
+> ### **UST8: *Create an account if I like the content of the site:***
 
 First-time users can create an account or register with the app by navigating to the nav-bar and clicking on the nav-item for 'Register'. From there they will be prompted to create a unique username and to provide a validated password. The user will know that they have succeeded in creating an account as they will be redirected to their new profile page and will see a successful registration flash message. 
 
 ![Register - Nav](static/images/TESTING/UST-register.png)
 ![Register - Form](static/images/TESTING/UST-register-2.png)
 
-* **UST9: *To share a definition on my Facebook or Instagram account:***
+> ### **UST9: *To share a definition on my Facebook or Instagram account:***
 
-Even casual, first-time users can choose to share a definition from GRD to their social media account, this can be achieved by clicking on the share icon featured on each individual definition card panel and choosing from the options made available. 
+Even casual, first-time users can choose to share a definition from GRD to their social media account, this can be achieved by clicking on the share icon featured on each individual definition card panel and choosing from the options made available in the share modal. 
 
 ![Share icon](static/images/TESTING/UST-share-2.png)
 ![Share modal](static/images/TESTING/UST-share.png)
 
-* **UST10: *To quickly find a definition while I'm at the gym:***
+> ### **UST10: *To quickly find a definition while I'm at the gym:***
 
-Anyone can quickly find a definition on the go by accessing the site and searching for the definition using the search bar located in either the nav-bar of the FAB. If the definition has been added, it will return in the search request, if it has not been added, the app will inform the user thusly. 
+Anyone can quickly find a definition on the go by accessing the site and searching for the definition using the search bar. This can be accessed from the magnify icon in the nav-bar or in the floating action buttons. If the definition has been added, it will be returned in the search request, if it has not been added, the app will inform the user thusly. 
 
 ![Search Nav](static/images/TESTING/UST-quick-find-2.png)
 ![Search FAB](static/images/TESTING/UST-quick-find.png)
 
-***As the site owner/Admin, I want to be able to:***
-* **UST11: *Add a new workout type category to the site:***
+## ***As the site owner/Admin, I want to be able to:***
+> ### **UST11: *Add a new category to the site:***
 
-Adding a new category to the app is restricted to both the site owner and admin. Once logged in as either, they can navigate to the 'Categories' from the navigation bar and click on the card panel that reads 'Add New Category', from their they can fill out the form to create a new category and select to 'Create' or 'Cancel'.
+Adding a new category to the app is restricted to both the site owner and admin. Once logged in as either, they can navigate to the 'Category Management' page from the navigation bar and click on the card panel that reads 'Add New Category'. From there they can fill out the form to create a new category and select to 'Create' or 'Cancel' if they decide not to add a new category.
 
 ![Add new category btn](static/images/TESTING/UST-add-new-cat.png)
 ![Add new category form](static/images/TESTING/UST-add-new-cat-form.png)
 
 
-* **UST12: *Edit an existing workout type category:***
+> ### **UST12: *Edit an existing workout type category:***
 
-This functionality is restricted to both the site owner and admin. To edit a category, navigate to the categories section, click on the nav-item 'Categories'. Once redirected to the categories page, the admin or site owner will have the option to click on the 'Edit' button offered on each category. Once selected, fill out the 'Edit' form and make the necessary changes. If they want to save the changes select the 'Save' button or to cancel the changes, select 'Cancel'. 
+This functionality is restricted to both the site owner and admin. To edit a category, navigate to Category Management, by clicking on the nav-item 'Category Management'. Once redirected to the page, the admin or site owner will have the option to click on the 'Edit' button offered on each category panel. Once selected, an admin can edit the pre-existing data in the 'Edit Category form'. If they wish to save the changes select the 'Edit Category' button or to cancel the changes, select 'Cancel'. 
 
 ![Edit category btn](static/images/TESTING/UST-edit-cat-btn.png)
 ![Edit category form](static/images/TESTING/UST-edit-cat-form.png)
 
-* **UST13: *Delete an existing workout type category:*** 
+> ### **UST13: *Delete an existing workout type category:*** 
 
-This functionality is restricted to both the site owner and admin. To delete an existing category, navigate to the categories section, click on the nav-item 'Categories'. Once redirected to the categories page, the admin or site owner will have the option to click the 'Delete' button attached to each category. Once clicked the user will be prompted to confirm the action prior to deletion, they can choose to either delete or cancel the deletion. 
+This functionality is restricted to both the site owner and admin. To delete an existing category, navigate to the Category Management page from the nav-bar. Once redirected to the page, the admin or site owner will have the option to click the 'Delete' button attached to each category. Once clicked, the user will be prompted to confirm the action prior to deletion, they can choose to either delete or cancel to be redirected to the category management page. 
 
 ![Delete category btn](static/images/TESTING/UST-edit-cat-btn.png)
 ![Delete category modal](static/images/TESTING/UST-delete-cat-confirm.png)
 
 
 
-# Bugs: discovered & resolved during development:
+# Bugs discovered and resolved during development:
+
 ## **Loss of functionality to 'add' and 'edit' buttons:**
 A loss of functionality for the buttons featured on the add_definition and edit_definition forms was discovered following the completion of the POST method for the edit_definition form. When manually testing the edit_definition function, by updating a definition the 'edit' button would not send the updated definition to the database.
 Nor would the 'add' button on the add_definition form add a definition to the database. 
