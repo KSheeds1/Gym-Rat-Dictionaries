@@ -227,6 +227,18 @@ footer p {
     color: #fffff3;
 }
 
+.category-cards .card-content a{
+    text-decoration: underline;
+    color: #030301;
+}
+
+.category-cards .card-content a:hover {
+    color: #fffff3;
+}
+
+.category-cards .card-content a .card-title:hover {
+    color: #fffff3 !important;
+}
 /*----------------------Modals:*/
 .modal-header {
     background-color: #030301;

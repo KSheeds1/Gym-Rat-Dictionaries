@@ -9,8 +9,8 @@
         {% for category in categories %}
             <div class="col s12 m4">
                 <div class="card center-align category-cards grey z-depth-5">
-                    <div class="card-content black-text">
-                        <span class="card-title">{{ category.category_name }}</span>
+                    <div class="card-content">
+                        <a href="{{ url_for('category_pg', category_id=category._id) }}"><span class="black-text card-title">{{ category.category_name }}</span></a>
                     </div>
                     <div class="card-action">
                         <a href="{{ url_for('edit_category', category_id=category._id) }}" class="edit btn-small">Edit</a>
