@@ -61,9 +61,7 @@
                         <div class="collapsible-body">
                             <ul>
                                 {% for category in categories %}
-                                <li><a
-                                        href="{{ url_for('category_pg', category_id=category._id) }}">{{ category.category_name }}</a>
-                                </li>
+                                <li><a href="{{ url_for('category_pg', category_id=category._id) }}">{{ category.category_name }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -85,7 +83,6 @@
             {% endif %}
         </ul>
     </header>
-
     <section>
         <!--Flash Messages-->
         {% with messages = get_flashed_messages() %}
@@ -98,6 +95,26 @@
             {% endif %}
         {% endwith %}
     </section>
+    <!--Search functionality-->
+    <div class="container">
+        <div class="row card-panel search-panel black">
+            <form action="{{ url_for('search') }}" method="GET" class="col s12">
+                <div class="row valign-wrapper center-align">
+                    <div class="input-field col s12">
+                        <i class="fas fa-search prefix pink-text"></i>
+                        <input type="text" name="query" id="query" minlength="3" class="validate white-text" required>
+                        <label for="query">Search for definitions</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <button type="submit" class="btn search white-text"><i class="fas fa-search left"></i>Search</button>
+                        <a href="{{ url_for('get_definitions') }}" class="btn reset white-text">Reset</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!--Floating Action Button (Search, add definition, scroll to top)-->
     <div class="fixed-action-btn click-to-toggle">
@@ -105,10 +122,7 @@
             <i class="fas fa-bars"></i>
         </a>
         <ul>
-            <li>
-                <a class="btn-floating search" id="search-btn"><i class="fas fa-search"></i></a>
-                
-            </li>
+            <li><a class="btn-floating search" id="search-btn"><i class="fas fa-search"></i></a></li>
             <li><a href="{{ url_for('add_definition') }}" class="btn-floating add"><i class="fas fa-plus"></i></a></li>
             <li><a class="btn-floating scroll-up"><i class="fas fa-arrow-circle-up"></i></a></li>
         </ul>
@@ -118,7 +132,8 @@
         {% block content %}
         {% endblock %}
     </main>
-
+    
+    <!--Footer-->
     <footer class="page-footer">
         <div class="container">
             <div class="row footer-row center-align">

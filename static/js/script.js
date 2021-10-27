@@ -16,12 +16,9 @@ $(document).ready(function(){
     $('.scroll-up').on('click', function() {
         $('html, body').animate({scrollTop:0}, '300');
     });
-    $('#search').click(function() {
-        $('.search-panel').show("slow");
-    });
-    $('.search').on('click', function() {
+    $('#search, .search').on('click', function() {
         $('html, body').animate({scrollTop:0}, '300')
-        $('.search-panel').show("slow");
+        $('.search-panel').toggle("slow");
     });
     /*Detect scroll to the bottom sourced from https://gist.github.com/toshimaru/6102647 */
     $(window).on("scroll", function() {
