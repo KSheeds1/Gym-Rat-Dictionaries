@@ -27,7 +27,7 @@ $(document).ready(function(){
     $(window).on("scroll", function() {
         var scrollHeight = $(document).height();
         var scrollPosition = $(window).innerHeight() + $(window).scrollTop();
-        if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
+        if ((scrollHeight - scrollPosition) < 1) {
             $('#FAB').css('background-color', 'white')
             $('.fa-bars').css('color', 'black')
         } else {
