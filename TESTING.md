@@ -133,76 +133,123 @@ This functionality is restricted to both the site owner and admin. To delete an 
 # Bugs discovered and resolved during development:
 
 ## **Loss of functionality to 'add' and 'edit' buttons:**
-A loss of functionality for the buttons featured on the add_definition and edit_definition forms was discovered following the completion of the POST method for the edit_definition form. When manually testing the edit_definition function, by updating a definition the 'edit' button would not send the updated definition to the database.
-Nor would the 'add' button on the add_definition form add a definition to the database. 
+A loss of functionality for the 'add' and 'edit' buttons featured on the add_definition and edit_definition forms was discovered following the completion of the POST method for the edit_definition form. When manually testing the edit_definition function, by updating a definition, the 'edit' button would not send the updated definition to the database. Nor would the 'add' button on the add_definition form add a definition to the database. A change in color of the buttons when clicked was also noted. 
 
-With no errors being thrown, I check over both the add_definition and edit_definition functions in app.py but everything seemed in order, both form templates were rendering so I turned to the HTML for both templates. After running both forms through the [W3C Markup Validation Service](https://validator.w3.org/#validate_by_input) an error was thrown for the form tags surrounding the image_url input field on both forms that 'nested forms are not allowed'. 
-INSERT IMGS TO DO WITH THIS BUG
+![Add btn failure](static/images/TESTING/Bugs/add-edit-buttons.png)
+
+With no errors being thrown, I check over both the add_definition and edit_definition functions in app.py but everything seemed in order. Both form templates were rendering so I turned to the HTML for both templates. After running both forms through the [W3C Markup Validation Service](https://validator.w3.org/#validate_by_input) an error was thrown for the form tags surrounding the image_url input field on both forms that 'nested forms are not allowed'. The addition of this nested form was the root of the issue. 
+
+![Validation service output](static/images/TESTING/Bugs/button-bug.png)
+![Image URL code](static/images/TESTING/Bugs/add-def-2.png)
 
 Upon removal of the nested form, the functionality of both the 'add' and 'edit' buttons on their respective forms was restored. 
 
 
 ## **Multiple 'delete' buttons added to definitions created by admin:**
-A bug was discovered when an admin user added a definition to the site. Once redirected back to the home page, the new definition card had two delete buttons. The conditional formatting put in place at the time to restrict access to the 'edit' and 'delete' buttons was as follows:
-INSERT IMG OF ORIGINAL CF HERE
+A bug was discovered when an admin user added a definition to the site. Once redirected back to the home page, the new definition card had two delete buttons. The conditional rendering put in place at the time to restrict access to the 'edit' and 'delete' buttons was as follows:
+
+![Orginial conditional rendering](static/images/TESTING/Bugs/templating-bug.png)
 
 * If the session user created the definition, they had access to edit or delete the definition. 
 * Admins were also granted permission to delete user added definitions as a means of removing malicious or unrelated content from the site. 
 
-However, the template logic put in place was flawed, as the likely occurrence of an admin adding a definition to the site was overlooked. The conditional formatting that had been implemented was ill-defined, and so, was refactored.
-INSERT IMG OF REFACTORED CODE HERE
+![Admin button bug](static/images/TESTING/Bugs/Admin-created-definition-bug.png)
+
+However, the template logic put in place was flawed, as the likely occurrence of an admin adding a definition to the site was overlooked. The conditional rendering that had been implemented was ill-defined, and so, was refactored.
+
+![Refactored conditional rendering](static/images/TESTING/Bugs/refactored-code-admin-def-bug.png)
 
 Access to both the edit and delete functionality was granted under the following specifications: 
-* If the session user created the definition. 
-OR  
+* If the session user created the definition.
+
+OR
+
 * If the session user is an admin AND created the definition.
- ELSE IF
- * If the session user is an admin (they will have access to the delete function on all user added definitions.)
+
+ELSE 
+
+* If the session user is an admin (they will have access to the delete function on all user added definitions.)
 
 The refactoring of the conditional formatting resolved the bug. 
 
 ## **Loss of functionality to add and edit form's category select input:**
 
-Following the implementation of the @app.context_processor and the category_pg function there was a loss of functionality for both category select inputs on the add and edit forms. 
-The categories to choose from in the add definition form were no longer available and the pre-existing category in the edit from was also gone. 
+Following the implementation of the @app.context_processor and the category_pg function, there was a loss of functionality for both category select inputs on the add and edit definition forms. The categories to choose from in the add definition form were no longer available and the pre-existing category in the edit from was also gone. 
 
-INSERT IMG OF THE TWO SELECTS
+![Add definition form bug](static/images/TESTING/Bugs/Select-category-bug-add-def.png)
+![Edit definition form bug](static/images/TESTING/Bugs/select-category-bug-edit-def.png)
 
 Initially it was believed that the issue was due to the fact that the select inputs were actually `<ul><li>` structures and shared the same 'dropdown-content' class as the navbar and sidenav dropdown menus.
-INSERT IMG OF DEV TOOLS PIC WITH CSS
 
- However, after reviewing both functions in app.py, it became clear that the bug arose from attempting to reuse lists in Jinja, the for-loop of 'categories' was now listed three times. To rectify the bug, the .find() functions in both add_definition and edit_definition were wrapped inside a python list to convert the Mongo cursor objects 'categories' into proper lists. Following this, functionality returned to both forms. The pre-existing category selection for edit was readily available, as were the category selection options in the add definition form. 
- IMG OF REFACTORED CODE FOR BOTH ADD EDIT FUNCTIONS.
+![Select category code](static/images/TESTING/Bugs/category-selection-bug-3.png)
+
+ However, after reviewing both functions in app.py, it became clear that the bug arose from attempting to reuse lists in Jinja, the for-loop of 'categories' was now listed three times. To rectify the bug, the find() methods in both add_definition and edit_definition were wrapped inside a python list to convert the Mongo cursor objects 'categories' into proper lists. Following this, functionality returned to both forms. The pre-existing category selection for edit was readily available, as were the category selection options in the add definition form. 
+ 
+![Refactored code](static/images/TESTING/Bugs/category-selection-bug.png)
+![Refactored code](static/images/TESTING/Bugs/select-input-bug-fix.png)
 
 ## **Displaying user favourites on profile page:**
-An issue arose when attempting to display user favourites on the profile page. A user's favourites are saved to an array 'user_favourites' in the users collection. While the definitions were being updated into the array, and filtered for-loops were employed in profile.html to display only session user created definitions and user favourite definitions all attempts to display the user favourite definitions were unsuccessful. 
+An issue arose when attempting to display user favourites on the profile page. A user's favourites are saved to an array 'user_favourites' in the users collection. While the definitions were being updated into the array, and for-loops and Jinja conditional 'if' statements were employed in profile.html to display only session user created definitions and user favourite definitions, all attempts to display the user favourite definitions were unsuccessful.
 
-The bug was discovered while reviewing the profile function. Initially "username" was being passed through, which only pointed to a string. In order to resolve the bug the profile view was altered to gain access to all user document fields by passing through the Mongo Object "user" and the projection parameter was removed from the find method. This allowed for all definitions to be accessible from the profile page and then filtered by the for-loops. The changes made to the profile view, resolved the bug and both session user created definitions and their favourite definitions were now displaying on the profile page.   
-INSERT IMGS FOR THIS
+![Mongo user favourites array](static/images/TESTING/Bugs/display-array.png)
+![Favourites view](static/images/TESTING/Bugs/favourites-app-py.png)
+![Favourites HTML](static/images/TESTING/Bugs/profile-fave-loop.png)
 
-### **Pagination bugs:**
+To resolve this issue, both the profile and add_to_user_favourites views were reviewed. When reviewing the profile view, initially "username" was being passed through, which only pointed to a string and the definitions variable was only returning definitions specific to those created by the session user. The original filter was too specific.
+
+![Orginial profile code](static/images/TESTING/Bugs/profile.png)
+
+In order to resolve the bug the profile view was altered to gain access to all user document fields by passing through the Mongo Object "user" and the projection parameter was removed from the find method. This allowed for all definitions to be accessible from the profile page. A slight refactoring of the add_to_favourites view was also implemented, it was decided to only store the ObjectId for each definition in the user_favourites array rather than the whole definition and to get.
+
+![Refactored profile code](static/images/TESTING/Bugs/profile-refactored.png)
+![Refactored add-to-faves code](static/images/TESTING/Bugs/refactored-add-to-faves.png)
+![Mongo user](static/images/TESTING/Bugs/user-coll.png)
+
+The next step in resolving the bug was to figure out how to phrase the Jinja for loops to filter the definitions on the profile. Firstly it was confirmed that the array of ObjectId's were being rendered to the profile template using `{{ user.user_favourites }}`
+
+![Objects rendering to template](static/images/TESTING/Bugs/obj.png)
+
+A filtered for-loop was then employed to check all definitions against the conditional if statement using the IDs as the check, and displaying those that match the filter. The changes made to the profile and add_to favourites views, and the filtered for-loop on profile.html resolved the bug and both session user created definitions and their favourite definitions were now displaying on the profile page.
+
+![Filtered for-loop](static/images/TESTING/Bugs/refactored-filter-for-loop.png)
+
+## **Pagination bugs:**
 Three routes for the project were refactored to include pagination: 
 * get_definitions
 * categories_pg
 * search
 
 When first implemented, the pagination seemed functional, definition panels per page were limited and the pagination links were in working order on definitions.html and category_pg.html. However when attempting to search an error was thrown pointing at the if statement in definitions.html
-INSERT IMG TYPE ERROR CURSOR NO LEN
+
+![Cursor no len](static/images/TESTING/Bugs/List-prior-to-being-cursor-and-change-to-count.png)
+
 Following some research of this issue, a suitable fix was found in this [Stack Overflow question.](https://stackoverflow.com/questions/65477524/flask-and-jinja-template-throwing-error-object-of-type-cursor-has-no-len)
-To resolve the TypeError  the 'definitions' lists were changed to return a cursor object and the if statements were updated also. 
-INSERT IMG OF DEFINITIONS.HTML .COUNT() 
+To resolve the TypeError  the 'definitions' lists were changed to return a cursor object instead and the if statements were updated also. 
+
+![Definitions function](static/images/TESTING/Bugs/get-def-function.png)
+![Category pg function](static/images/TESTING/Bugs/category_pg-function.png)
+![Search function](static/images/TESTING/Bugs/search-function.png)
+![Change from len to count](static/images/TESTING/Bugs/definitions-count.png)
+
 These changes to the code seemed to rectify the issue and all aspects of the Flask pagination seemed to be functional. These changes were then pushed to Git. 
 
 However, when later returning to development again, and attempting to save a definition to 'favourites', an error was thrown and new bug had appeared. While the definition was being added to the user_favourites array in the User collection, the profile page was no longer accessible.
-INSERT IMG OF DEFINITIONS NOT DEFINED. 
+
+![Definition not defined](static/images/TESTING/Bugs/After-change-from-list-to-cursor-and-count-instead-of-length.png) 
 
 Upon reviewing the app.py file and definitions.html it was decided that this bug was due to the change from lists to cursor objects, 'definitions' was no longer iterable more than once. The decision was made to return the cursor objects to lists and attempt to deal with the search functionality differently. Once this change had been made, functionality was returned. Even access to the search functionality also seemed possible, however when attempting to view the second page of search results an error was thrown:
-INSERT IMG OF SEARCH RESULTS ERROR THROWN
+
+![Search bug](static/images/TESTING/Bugs/search-bug.png)
 
 Some research and guidance was necessary to resolve this bug. Initially, the plan to resolve this issue was to build a second route to split the search functionality. Maintain the original route as a post request, the initial search query and build a second route to deal with the pagination and subsequent requests. However this was abandoned for a much more straightforward approach. 
 
 It was decided to keep the current pagination and just change the form from `POST` to `GET`. Following this approach, the `GET` method passes the query term into the URL args, using `request.args.get()` to get it from the args, to search the database and paginate. So the query cannot be lost from the args upon pagination. The following alterations were made to the code to implement this: 
-INSERT IMG OF ARGS IN SEARCH() AND GET IN DEF SEARCH FORM. 
+
+![Search HTML](static/images/TESTING/Bugs/get-method.png)
+
+![Query request args](static/images/TESTING/Bugs/Search-args.png)
+
+![Page 2 pagination](static/images/TESTING/Bugs/search-paginate-pg2.png)
 
 Following this all aspects of pagination were manually tested and all bugs and issues surrounding pagination had been resolved. 
 
