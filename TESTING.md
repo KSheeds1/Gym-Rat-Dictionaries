@@ -439,6 +439,180 @@ INSERT IMG OF CANCEL BUTTON
 **Delete category confirmation modal: [Admin only]**
 Prior to the deletion of a category, the admin will be prompted to provide user confirmation via a modal. If an admin chooses not to delete a category, they can click on the 'Cancel' button and will be redirected back to the category management page. 
 INSERT IMG OF DELETION MODAL 
+
+# **Features:**
+## **Upvote/Downvote:**
+This functionality has been implemented in the following areas of the site: 
+* Definitions.html
+* Category_pg.html
+* Search query results
+
+Users **must be logged in to 'upvote' or 'downvote'** on a definition, this functionality is available on all definition panels. This functionality was tested in the following manner:
+
+**On definitions.html:**
+* Login or register with the site.
+* Navigate to the home page from the nav-bar
+*   Choose whether to  'upvote' or 'downvote' a definition
+	* Click on 'thumbs up' icon to upvote
+	* Click on 'thumbs down' icon to downvote
+* This triggers either the upvote or downvote function and increments the count by one 
+
+**On category_pg.html:**
+* Login or register with the site.
+* Navigate to the category page of your choosing from the nav-bar
+*   Choose whether to  'upvote' or 'downvote' a definition
+	* Click on 'thumbs up' icon to upvote
+	* Click on 'thumbs down' icon to downvote
+* This triggers either the upvote or downvote function and increments the count by one
+
+**From search query results:**
+* Login or register with the site.
+* Navigate to the home page from the nav-bar
+* On larger viewports, click on either of the magnify icon in the nav-bar or in the FAB to reveal the search bar
+* On smaller viewports, navigate to the search bar by using the search FAB.
+* Once redirected to the search bar, provide a search query and hit search
+*  This triggers the search function and the search query results are made available to user below the search bar
+*   Choose whether to  'upvote' or 'downvote' a definition
+	* Click on 'thumbs up' icon to upvote
+	* Click on 'thumbs down' icon to downvote
+* This triggers either the upvote or downvote function and increments the count by one 
+
+## **User favourites:** 
+This functionality has been implemented in the following areas of the site: 
+* Definitions.html
+* Category_pg.html
+* Search query results
+
+Once the user adds a definition to their favourites, they can be viewed on their profile page. Adding a definition to user favourites was manually tested in the following manner:
+
+**On definitions.html:**
+* Choose the definition you wish to add to your favourites
+* Click on the 'add to favourites' icon available on all definition cards
+* The page is reloaded and user feedback is provided in the form of a flash message "Saved to favourites."
+
+**On category_pg.html:**
+* Choose the category from the nav-bar dropdown menu and click to redirect to that page
+* Choose the definition you wish to add to your favourites
+* Click on the 'add to favourites' icon available on all definition cards
+* The page is reloaded and user feedback is provided in the form of a flash message "Saved to favourites."
+
+**From search query results:**
+* On larger viewports, click on either of the access options (magnify icon in the navbar or in the FAB) to reveal the search bar
+* On smaller viewports, navigate to the search bar by using the search FAB or navigate to the home page from the nav-bar.
+* Once redirected to the search bar, provide a search query and hit search
+*  This triggers the search function and the search query results are made available to user below the search bar
+*  Choose the definition you wish to add to your favourites
+* Click on the 'add to favourites' icon available on all definition cards
+* The page is reloaded and user feedback is provided in the form of a flash message "Saved to favourites."
+ 
+
+## **Search functionality:**
+The search functionality has been implemented on definitions.html but can be accessed on any page of the site by using:
+* Magnify icon in the search bar
+* Magnify icon in the FAB
+
+Clicking on either of these will redirect the user to the search bar. The search functionality was manually tested in the following manner:
+
+* On larger viewports, click on either of the access options above to reveal the search bar
+* On smaller viewports, navigate to the search bar by using the search FAB or navigate to the home page from the nav-bar.
+* Once redirected to the search bar, provide a search query and hit search
+*  This triggers the search function and the search query results are made available to user below the search bar
+* Click 'Reset' to clear the query and recently added definitions are returned below the search bar
+* Provide two different words in the search query eg. "glutes" "upper" and click 'search'
+This triggers the search function and the search query results are made available to user below the search bar, displaying a variety of definitions from the 'glutes' and 'upper body' categories
+* Click 'Reset' to clear the query and recently added definitions are returned below the search bar
+* Provide a search query that will not return a definition in the results eg. "Elephant" and click 'search'
+* This triggers the search function and the site conditionally renders the code block for if there are no definitions related to this query. 
+INSERT IMGS HERE
+* This can be cleared by selecting the 'reset' button in the search bar 
+
+
+## **Share definitions:**
+Share definition functionality is available in the following areas of the site:
+* Definitions.html
+* Category_pg.html
+* Search query results
+
+This functionality is available to all users, not just those who are logged in or have created an account. The share definition functionality was testing the following manner:
+
+**On definitions.html:**
+* Select definition you wish to share
+* Click on the 'share' icon 
+* Icon trigger the share modal
+* Select the social media platform you wish to share on and click to open the site in a new tab
+
+**On Category_pg.html:**
+* Navigate to the category page of your choosing from the nav-bar dropdown menu
+* Select definition you wish to share
+* Click on the 'share' icon 
+* Icon trigger the share modal
+* Select the social media platform you wish to share on and click to open the site in a new tab
+
+**From search query results:**
+* Navigate to the search bar from either the nav-bar or FAB
+* Search for a particular definition
+* From the search query results, select the definition you wish to share
+* Click on the 'share' icon 
+* Icon trigger the share modal
+* Select the social media platform you wish to share on and click to open the site in a new tab
+
+
+## **Floating Action Buttons:**
+The floating action buttons are available across the site. They were tested in the following manner across multiple viewports:
+
+**Scroll to top button:**
+* Scroll to the bottom of the page
+* On larger viewports: hover over the FAB to open
+	* Click the 'scroll to top' button
+	* Button triggers the function and user is scrolled to top
+On smaller viewports: click on the FAB to open
+	* Click on the 'scroll to top' button
+	* Button triggers the function and user is scrolled to top
+
+**Add Definition:**
+*  On larger viewports: hover over the FAB to open
+	* Click the '+' icon to add definition
+	* Button triggers the function and user is redirected to the add definition form.
+* On smaller viewports: click on the FAB to open
+	* Click the '+' icon to add definition
+	* Button triggers the function and user is redirected to the add definition form.
+
+**Search function:**
+*  On larger viewports: hover over the FAB to open
+	* Click the magnify icon to search for a definition
+	* Button triggers the function and user is redirected to the top of definitions.html and the search bar is triggered. 
+* On smaller viewports: click on the FAB to open
+	* Click the magnify icon to search for a definition
+	* Button triggers the function and user is  redirected to the top of definitions.html where the search bar is NOT hidden on smaller screens. 
+
+## **Pagination:**
+Flask pagination has been implemented in the following areas of the site:
+* Definitions.html
+* Category_pg.html
+* Search query results (if necessary)
+
+This functionality was tested in the following manner on a variety of viewports: 
+**On definitions.html:**
+* Scroll to the bottom of the page
+* Move to the 'Next' page of results using the numbered pagination link
+* Move to the 'Next' page using the >> icon pagination link
+* Move to the 'Previous' page using the numbered pagination link
+* Move to the 'Previous page using the << icon pagination link
+
+**On Category_pg.html:**
+* Scroll to the bottom of the page 
+* Move to the 'Next' page of results using the numbered pagination link
+* Move to the 'Next' page using the >> icon pagination link
+* Move to the 'Previous' page using the numbered pagination link
+* Move to the 'Previous page using the << icon pagination link
+
+**For search query results:**
+* Scroll to the bottom of the page 
+* Move to the 'Next' page of results using the numbered pagination link
+* Move to the 'Next' page using the >> icon pagination link
+* Move to the 'Previous' page using the numbered pagination link
+* Move to the 'Previous page using the << icon pagination link
+
  
 
  ## **Base.html**
