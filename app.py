@@ -135,7 +135,8 @@ def register():
         # 'register' is the dict that will be inserted in to the db:
         register = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "user_favourites": []
         }
         mongo.db.users.insert_one(register)
 
