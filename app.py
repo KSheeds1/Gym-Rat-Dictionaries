@@ -227,23 +227,27 @@ def add_definition():
     insert a new definition to the db and redirects
     them to the home page (definitions.html)
     """
-    # POST method functionality:
-    if request.method == "POST":
-        definition = {
-            "category_name": request.form.get("category_name"),
-            "exercise_name": request.form.get("exercise_name"),
-            "exercise_description": request.form.get("exercise_description"),
-            "tempo": request.form.get("tempo"),
-            "imge_url": request.form.get("image_url"),
-            "created_by": session["user"]
-        }
-        mongo.db.definitions.insert_one(definition)
-        flash("Your definition has been added successfully.")
-        return redirect(url_for("get_definitions"))
-    categories = list(mongo.db.categories.find().sort(
-                            "category_name", 1))
-    return render_template("add_definition.html",
-                            categories=categories)
+    if "user" in session:
+        # POST method functionality:
+        if request.method == "POST":
+            definition = {
+                "category_name": request.form.get("category_name"),
+                "exercise_name": request.form.get("exercise_name"),
+                "exercise_description": request.form.get("exercise_description"),
+                "tempo": request.form.get("tempo"),
+                "imge_url": request.form.get("image_url"),
+                "created_by": session["user"]
+            }
+            mongo.db.definitions.insert_one(definition)
+            flash("Your definition has been added successfully.")
+            return redirect(url_for("get_definitions"))
+        categories = list(mongo.db.categories.find().sort(
+                                "category_name", 1))
+        return render_template("add_definition.html",
+                                categories=categories)
+    else:
+        flash("You must be logged in to add a definition")
+        return redirect(url_for('login'))
 
 
 @app.route("/edit_definition/<definition_id>", methods=["GET", "POST"])
