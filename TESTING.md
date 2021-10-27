@@ -130,9 +130,11 @@ This functionality is restricted to both the site owner and admin. To delete an 
 
 
 
-# Bugs discovered and resolved during development:
+# **Bugs: discovered and resolved during development:**
 
-## **Loss of functionality to 'add' and 'edit' buttons:**
+
+
+# **Loss of functionality to 'add' and 'edit' buttons:**
 A loss of functionality for the 'add' and 'edit' buttons featured on the add_definition and edit_definition forms was discovered following the completion of the POST method for the edit_definition form. When manually testing the edit_definition function, by updating a definition, the 'edit' button would not send the updated definition to the database. Nor would the 'add' button on the add_definition form add a definition to the database. A change in color of the buttons when clicked was also noted. 
 
 ![Add btn failure](static/images/TESTING/Bugs/add-edit-buttons.png)
@@ -145,7 +147,7 @@ With no errors being thrown, I check over both the add_definition and edit_defin
 Upon removal of the nested form, the functionality of both the 'add' and 'edit' buttons on their respective forms was restored. 
 
 
-## **Multiple 'delete' buttons added to definitions created by admin:**
+# **Multiple 'delete' buttons added to definitions created by admin:**
 A bug was discovered when an admin user added a definition to the site. Once redirected back to the home page, the new definition card had two delete buttons. The conditional rendering put in place at the time to restrict access to the 'edit' and 'delete' buttons was as follows:
 
 ![Orginial conditional rendering](static/images/TESTING/Bugs/templating-bug.png)
@@ -172,7 +174,7 @@ ELSE
 
 The refactoring of the conditional formatting resolved the bug. 
 
-## **Loss of functionality to add and edit form's category select input:**
+# **Loss of functionality to add and edit form's category select input:**
 
 Following the implementation of the @app.context_processor and the category_pg function, there was a loss of functionality for both category select inputs on the add and edit definition forms. The categories to choose from in the add definition form were no longer available and the pre-existing category in the edit from was also gone. 
 
@@ -188,7 +190,7 @@ Initially it was believed that the issue was due to the fact that the select inp
 ![Refactored code](static/images/TESTING/Bugs/category-selection-bug.png)
 ![Refactored code](static/images/TESTING/Bugs/select-input-bug-fix.png)
 
-## **Displaying user favourites on profile page:**
+# **Displaying user favourites on profile page:**
 An issue arose when attempting to display user favourites on the profile page. A user's favourites are saved to an array 'user_favourites' in the users collection. While the definitions were being updated into the array, and for-loops and Jinja conditional 'if' statements were employed in profile.html to display only session user created definitions and user favourite definitions, all attempts to display the user favourite definitions were unsuccessful.
 
 ![Mongo user favourites array](static/images/TESTING/Bugs/display-array.png)
@@ -213,7 +215,7 @@ A filtered for-loop was then employed to check all definitions against the condi
 
 ![Filtered for-loop](static/images/TESTING/Bugs/refactored-filter-for-loop.png)
 
-## **Pagination bugs:**
+# **Pagination bugs:**
 Three routes for the project were refactored to include pagination: 
 * get_definitions
 * categories_pg
@@ -252,6 +254,26 @@ It was decided to keep the current pagination and just change the form from `POS
 ![Page 2 pagination](static/images/TESTING/Bugs/search-paginate-pg2.png)
 
 Following this all aspects of pagination were manually tested and all bugs and issues surrounding pagination had been resolved. 
+
+
+# **Registration bug:**
+A bug was discovered when registering a new user to the site, relating to both the register view function and the user_favourites array. 
+
+![Register Error](static/images/TESTING/Bugs/user-fave-array-bug-on-register.png)
+
+After reviewing the 'User' collection on MongoDB, it was noted that newly created users being inserted into the collection did not have a 'user_favourites' array. To rectify this issue, the register view needed to be refactored. Prior to this, the register function inserted a dictionary object 'register' into the database, inserting the username and password. 
+
+![Original register code](static/images/TESTING/Bugs/original-register-f.png)
+
+This was the root of the bug, an empty 'user_favourites' array needed to be inserted along with the username and password for new users to add definitions into. This issue had been overlooked by the developer as when building the add_to_favourites function, she manually inserted the empty array into users accounts to test the functionality. The bug was resolved easily by adding an empty array into the register dictionary to be inserted into the User collection.
+
+![Refactored register code](static/images/TESTING/Bugs/refactored-register-f.png)
+
+The refactored function was then tested manually by registering a new user. The register dict no longer threw a TypeError and was redirected to their profile page. The user was then able to select definitions to add to their favourites, the add_to_favourites function inserts the definition_id into the array and the definition is then displayed on their profile page.
+
+![Array in mongo](static/images/TESTING/Bugs/new-user-array.png)
+![user-faves in newly registered user](static/images/TESTING/Bugs/register-user-faves.png)
+
 
 # Manual functionality testing:
 
