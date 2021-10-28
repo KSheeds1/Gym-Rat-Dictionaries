@@ -258,28 +258,48 @@ def edit_definition(definition_id):
     It redirects the user to the edit_definition
     form and allows them to edit a specific definition,
     updating it in the db.
-
     """
-    # POST method functionality:
-    if request.method == "POST":
-        submit = {
-            "category_name": request.form.get("category_name"),
-            "exercise_name": request.form.get("exercise_name"),
-            "exercise_description": request.form.get("exercise_description"),
-            "tempo": request.form.get("tempo"),
-            "imge_url": request.form.get("image_url"),
-            "created_by": session["user"],
-        }
-        mongo.db.definitions.update(
-            {"_id": ObjectId(definition_id)}, submit)
-        flash("Your definition has been updated successfully.")
+    if "user" in session:
+        # Grab user from database:
+        user = session["user"]
 
-    definition = mongo.db.definitions.find_one(
-        {"_id": ObjectId(definition_id)})
-    categories = list(mongo.db.categories.find().sort("category_name", 1))
-    return render_template("edit_definition.html",
-                            definition=definition,
-                            categories=categories)
+        # Find definition_id:
+        definition = mongo.db.definitions.find_one(
+            {"_id": ObjectId(definition_id)}
+        )
+
+        creator = definition["created_by"]
+
+        # Confirm session user created this definition prior to edit:
+        if user == creator:
+        
+            # POST method functionality:
+            if request.method == "POST":
+                submit = {
+                    "category_name": request.form.get("category_name"),
+                    "exercise_name": request.form.get("exercise_name"),
+                    "exercise_description": request.form.get(
+                                            "exercise_description"),
+                    "tempo": request.form.get("tempo"),
+                    "imge_url": request.form.get("image_url"),
+                    "created_by": session["user"],
+                }
+                mongo.db.definitions.update(
+                    {"_id": ObjectId(definition_id)}, submit)
+                flash("Your definition has been updated successfully.")
+
+            definition = mongo.db.definitions.find_one(
+                {"_id": ObjectId(definition_id)})
+            categories = list(mongo.db.categories.find().sort("category_name", 1))
+            return render_template("edit_definition.html",
+                                    definition=definition,
+                                    categories=categories)
+        else:
+            flash("I'm afraid you can only edit your own posts")
+            return redirect(url_for('get_definitions'))
+    else:
+        flash("you must be logged in to edit a definition")
+        return redirect(url_for('login'))
 
 
 @app.route("/delete_definition/<definition_id>")
