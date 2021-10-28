@@ -260,7 +260,7 @@ def edit_definition(definition_id):
     updating it in the db.
     """
     if "user" in session:
-        # Grab user from database:
+        # Assign session user to variable:
         user = session["user"]
 
         # Find definition_id:
@@ -268,6 +268,7 @@ def edit_definition(definition_id):
             {"_id": ObjectId(definition_id)}
         )
 
+        # Assign definition creator to variable:
         creator = definition["created_by"]
 
         # Confirm session user created this definition prior to edit:
@@ -298,7 +299,7 @@ def edit_definition(definition_id):
             flash("I'm afraid you can only edit your own posts")
             return redirect(url_for('get_definitions'))
     else:
-        flash("you must be logged in to edit a definition")
+        flash("You must be logged in to edit a definition")
         return redirect(url_for('login'))
 
 
@@ -312,9 +313,30 @@ def delete_definition(definition_id):
     is removed from the database and the user is
     redirected to the home page.
     """
-    mongo.db.definitions.remove({"_id": ObjectId(definition_id)})
-    flash("Definition successfully deleted.")
-    return redirect(url_for("get_definitions"))
+    if "user" in session:
+        # Assing session user to variable:
+        user = session["user"]
+
+        # Find definition by ID:
+        definition = mongo.db.definitions.find_one(
+            {"_id": ObjectId(definition_id)})
+
+        # Assing definition creator to variable:
+        creator = definition["created_by"]
+
+        # Confirm the session user is the creator of the definition
+        # or a site admin:
+        if user == creator or session["user"] == "admin":
+            # Delete definition:
+            mongo.db.definitions.remove({"_id": ObjectId(definition_id)})
+            flash("Definition successfully deleted.")
+            return redirect(url_for("get_definitions"))
+        else:
+            flash("I'm afraid you cannot delete another users post")
+            return render_template("definitions.html")
+    else:
+        flash("You must be logged in to delete a post")
+        return redirect(url_for('login'))
 
 
 @app.route("/upvote/<definition_id>", methods=["GET", "POST"])
