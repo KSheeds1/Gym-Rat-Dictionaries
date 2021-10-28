@@ -221,6 +221,12 @@ footer p {
     color: #fffff3;
 }
 
+.definitions-icons a i {
+    text-decoration: none;
+    float: right;
+    margin-right: 8px;
+}
+
 /*---------------------- Categories:*/
 .card-title a {
     color: #030301;
@@ -293,10 +299,6 @@ footer p {
 .add-btn {
     background-color: #17DCC6;
     font-family: "Raleway", sans-serif;
-}
-
-.btn {
-    margin: 5px 2px 2px 0;
 }
 
 .home-btn {
@@ -402,5 +404,13 @@ font-size: 150%;
 
     .btn {
         float: none !important;
+        margin: 2px 2px 2px 0;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .card-title a i {
+        float: right;
+        margin: 0 4px 0 4px;
     }
 }

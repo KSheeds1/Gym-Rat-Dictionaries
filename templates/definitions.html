@@ -11,14 +11,15 @@
                 <div class="def-cards col s12">
                     <div class="card grey z-depth-5">
                         <div class="card-content black-text">
-                            <strong class="card-title">{{ definition.exercise_name }}  
-                                <a href="{{ url_for('add_to_favourites', definition_id=definition._id) }}" class="tooltipped" data-position="right" data-tooltip="Add definition to Favourites">
-                                    <i class="fas fa-bookmark right"></i>
+                            <div class="definitions-icons">
+                                <a href="{{ url_for('add_to_favourites', definition_id=definition._id) }}" class="card-title tooltipped" data-position="right" data-tooltip="Add definition to Favourites">
+                                    <i class="fas fa-bookmark"></i>
                                 </a>
-                                <a class="modal-trigger right tooltipped" data-target="#modal1{{ definition._id }}" 
-                                    data-position="right" data-tooltip="Share Definition"><i class="fas fa-share-alt right"></i>
+                                <a class="modal-trigger card-title tooltipped" data-target="#modal1{{ definition._id }}" 
+                                    data-position="right" data-tooltip="Share Definition"><i class="fas fa-share-alt"></i>
                                 </a>
-                            </strong>
+                            </div>
+                            <strong class="card-title">{{ definition.exercise_name }}</strong>
                             <div class="divider black"></div>
                             <p class="defintion">{{ definition.exercise_description }}</p>
                             <p class="tempo">Tempo: {{ definition.tempo }}</p>
