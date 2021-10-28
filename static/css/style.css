@@ -293,6 +293,18 @@ footer p {
     margin: 5px 2px 2px 0;
 }
 
+.home-btn {
+    font-family: "Raleway", sans-serif;
+    margin: 5px;
+    background-color: #030301;
+    color: #fffff3;
+}
+
+.home-btn:hover {
+    background-color: #fffff3;
+    color: #030301;
+}
+
 /*---------------------- Add Definition Form: */
 .input-field .prefix {
     left: 1rem;
@@ -342,6 +354,11 @@ a .image_url:visited {
 
 .collapsible-body p {
     color: #fffff3;
+}
+
+/*----------------------Error Pages: */
+.error {
+    margin: 25px;
 }
 
 /*----------------------Flask Pagination: */
