@@ -300,31 +300,40 @@ def delete_definition(definition_id):
 @app.route("/upvote/<definition_id>", methods=["GET", "POST"])
 def upvote(definition_id):
     """
-    This function will increment the amount of 'upvotes'
-    on a post by +1, when the icon has been clicked on a
-    specific post
-
+    This function will add the user_id to the upvote
+    array in the definitions collection and 
+    display the length of the array on the upvote icon.
     """
-    mongo.db.definitions.find_one_and_update(
-        {"_id": ObjectId(definition_id)},
-        {"$inc": {"upvote": 1}},
-        {"upsert": True}
-    )
-    return redirect(url_for('get_definitions'))
+    if "user" in session:
+        # Grab user from the database:
+        user = mongo.db.users.find_one(
+            {"username": session["user"]})
+        
+        mongo.db.definitions.find_one_and_update(
+            {"_id": ObjectId(definition_id)},
+            {"$addToSet": {"upvote": user["_id"]}}
+        )
+        
+        return redirect(url_for('get_definitions'))
 
 
 @app.route("/downvote/<definition_id>")
 def downvote(definition_id):
     """
-    This function is triggered when a user clicks
-    the 'downvote' icon on a specific definition, the function
-    increments the amount of downvotes by +1.
+    This function will add the user_id to the downvote
+    array in the definitions collection and display
+    the length of the array on the downvote icon.
     """
-    mongo.db.definitions.find_one_and_update(
-        {"_id": ObjectId(definition_id)},
-        {"$inc": {"downvote": 1}},
-        {"upsert": True}
-    )
+    if "user" in session:
+        # Grab user from the database:
+        user = mongo.db.users.find_one(
+            {"username": session["user"]})
+        
+        mongo.db.definitions.find_one_and_update(
+            {"_id": ObjectId(definition_id)},
+            {"$addToSet": {"downvote": user["_id"]}}
+        )
+
     return redirect(url_for('get_definitions'))
 
 
@@ -338,7 +347,7 @@ def add_to_favourites(definition_id):
     """
     # Check user is logged in:
     if "user" in session:
-        # Grab the session user's name from the db:
+        # Grab the session user from the db:
         user = mongo.db.users.find_one(
             {"username": session["user"]})
         
