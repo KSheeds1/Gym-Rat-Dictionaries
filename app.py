@@ -124,6 +124,10 @@ def register():
     username already exists in the database and if not, creates a dictionary
     to insert the new username and password into the db.
     """
+    if "user" in session:
+        flash("You are already registered and signed in!")
+        return redirect(url_for('get_definitions'))
+
     if request.method == "POST":
         # Check if username already exists in the db:
         existing_user = mongo.db.users.find_one(
@@ -157,6 +161,19 @@ def login():
     cookie or redirect back to login depending on whether the
     correct username and password are provided.
     """
+    # Check user is logged in:
+    if "user" in session:
+        
+        # Check if the username exists in the db:
+        existing_user = mongo.db.users.find_one(
+            {"username": session["user"]})
+
+        # Confirm if existing user is already logged in if not,
+        # redirect to login:
+        if existing_user:
+            flash("You are already logged in!")
+            return redirect(url_for('get_definitions'))
+
     if request.method == "POST":
         # Check if the username exists in the db:
         existing_user = mongo.db.users.find_one(
@@ -182,6 +199,7 @@ def login():
             return redirect(url_for("login"))
 
     return render_template("login.html")
+    
 
 
 @app.route("/profile/<user>", methods=["GET", "POST"])
@@ -190,19 +208,23 @@ def profile(user):
     Once logged in or registered, the profile function will be triggered
     and will redirect the session user to their profile page.
     """
-    # Grab the session user from the db:
-    user = mongo.db.users.find_one(
-        {"username": session["user"]})
+    if "user" in session:
+        # Grab the session user from the db:
+        user = mongo.db.users.find_one(
+            {"username": session["user"]})
 
-    # If session user cookie truthy, return to appropriate profile:
-    if session["user"]:
-        # Render all definitions to the profile page to be filtered:
-        definitions = list(mongo.db.definitions.find())
-        return render_template("profile.html", user=user,
-                                definitions=definitions)
+        # If session user cookie truthy, return to appropriate profile:
+        if session["user"]:
+            # Render all definitions to the profile page to be filtered:
+            definitions = list(mongo.db.definitions.find())
+            return render_template("profile.html", user=user,
+                                    definitions=definitions)
 
-    # If false or doesn't exist, redirect to login:
-    return redirect(url_for("login"))
+        # If false or doesn't exist, redirect to login:
+        return redirect(url_for("login"))
+    else:
+        flash("You must be logged in to view your profile page!")
+        return render_template("login.html")
 
 
 @app.route("/logout")
@@ -213,10 +235,15 @@ def logout():
     they will get a flash message advising that they have
     been logged out and will be redirected to login.
     """
-    # Remove user from session cookie:
-    flash("You have been logged out")
-    session.pop("user")
-    return redirect(url_for("login"))
+    # Check user is logged in:
+    if "user" in session:
+        # Remove user from session cookie:
+        flash("You have been logged out")
+        session.pop("user")
+        return redirect(url_for("login"))
+    else:
+        flash("You are not logged in yet!")
+        return render_template("login.html")
 
 
 @app.route("/add_definition", methods=["GET", "POST"])
