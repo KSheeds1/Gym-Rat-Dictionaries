@@ -357,6 +357,9 @@ def upvote(definition_id):
         )
         
         return redirect(url_for('get_definitions'))
+    else:
+        flash("You must be logged in to upvote a definition")
+        return redirect(url_for('login'))
 
 
 @app.route("/downvote/<definition_id>")
@@ -376,7 +379,10 @@ def downvote(definition_id):
             {"$addToSet": {"downvote": user["_id"]}}
         )
 
-    return redirect(url_for('get_definitions'))
+        return redirect(url_for('get_definitions'))
+    else:
+        flash("You must be logged in to downvote a definition")
+        return redirect(url_for('login'))
 
 
 @app.route("/get_definitions/<definition_id>")
