@@ -14,12 +14,12 @@
                     </div>
                     <div class="card-action">
                         <a href="{{ url_for('edit_category', category_id=category._id) }}" class="edit btn-small">Edit</a>
-                        <a href="{{ url_for('delete_category', category_id=category._id) }}" data-target="#modal3" class="delete modal-trigger btn-small">Delete</a>
+                        <a href="{{ url_for('delete_category', category_id=category._id) }}" data-target="#modal3{{ category._id }}" class="delete modal-trigger btn-small">Delete</a>
                     </div>
                 </div>
             </div>
             <!-- User confirmation modal for category deletion -->
-            <div id="#modal3" class="modal">
+            <div id="#modal3{{ category._id }}" class="modal">
                 <div class="modal-header">
                     <h4>Delete this category?</h4>
                 </div>

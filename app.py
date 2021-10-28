@@ -424,19 +424,22 @@ def get_categories():
     displays categories to admin users from
     which they can perform CRUD operations to.
     """
-    user = mongo.db.users.find_one(
-        {"username": session["user"]}
-    )
+    # Confirm user is logged in, else, redirect to login:
+    if "user" in session:
 
-    if session["user"] == "admin":
-        categories = list(mongo.db.categories.find().sort(
-            "category_name", 1))
-        return render_template("categories.html",
-                                categories=categories,
-                                user=user)
+        # Confirm session user is an admin else redirect:
+        if session["user"] == "admin":
+            categories = list(mongo.db.categories.find().sort(
+                "category_name", 1))
+            return render_template("categories.html",
+                                    categories=categories,
+                                    user=session["user"])
+        else:
+            flash("Whoops!")
+            return render_template("403.html")
     else:
-        flash("Sorry this page is only available to Admin users")
-        return render_template('403.html')
+        flash("You must be logged in to view this page")
+        return redirect(url_for('login'))
 
 
 @app.route("/add_category", methods=["GET", "POST"])
@@ -445,15 +448,26 @@ def add_category():
     This function inserts a new category into the
     database, using the data from the add_category form.
     """
-    if request.method == "POST":
-        category = {
-            "category_name": request.form.get("category_name")
-        }
-        mongo.db.categories.insert_one(category)
-        flash("New Category Successfully Added")
-        return redirect(url_for("get_categories"))
+    # Confirm user is logged in, else redirect to login:
+    if "user" in session:
 
-    return render_template("add_category.html")
+        # Confirm session user is an admin else redirect:
+        if session["user"] == "admin":
+            if request.method == "POST":
+                category = {
+                    "category_name": request.form.get("category_name")
+                }
+                mongo.db.categories.insert_one(category)
+                flash("New Category Successfully Added")
+                return redirect(url_for("get_categories"))
+
+            return render_template("add_category.html")
+        else:
+            flash("Whoops!")
+            return render_template("403.html")
+    else:
+        flash("You must be logged in to view this page")
+        return redirect(url_for('login'))
 
 
 @app.route("/edit_category/<category_id>", methods=["GET", "POST"])
@@ -464,18 +478,31 @@ def edit_category(category_id):
     the existing data provided in the edit_category
     form and update the category in the database.
     """
-    if request.method == "POST":
-        submit = {
-            "category_name": request.form.get("category_name")
-        }
-        mongo.db.categories.update(
-            {"_id": ObjectId(category_id)}, submit)
-        flash("Category Update Successful")
-        return redirect(url_for("get_categories"))
+    # Confirm user is logged in else, redirect to login:
+    if "user" in session:
 
-    category = mongo.db.categories.find_one(
-        {"_id": ObjectId(category_id)})
-    return render_template("edit_category.html", category=category)
+        # Confirm session user is an admin else redirect:
+        if session["user"] == "admin":
+            if request.method == "POST":
+                # Insert dictionary into database:
+                submit = {
+                    "category_name": request.form.get("category_name")
+                }
+                mongo.db.categories.update(
+                    {"_id": ObjectId(category_id)}, submit)
+                flash("Category Update Successful")
+                return redirect(url_for("get_categories"))
+            
+            category = mongo.db.categories.find_one(
+                    {"_id": ObjectId(category_id)})       
+            return render_template("edit_category.html",
+                                    category=category)
+        else:
+            flash("Whoops!")
+            return render_template("403.html")
+    else:
+        flash("You must be logged in to view this page")
+        return redirect(url_for('login'))
 
 
 @app.route("/delete_category/<category_id>")
@@ -486,9 +513,21 @@ def delete_category(category_id):
     button, when clicked, user confirmation is required
     through a modal.
     """
-    mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    flash("Category Successfully Deleted")
-    return redirect(url_for("get_categories"))
+    # Confirm user is logged in else, redirect to login:
+    if "user" in session:
+
+        # Confirm session user is an admin else redirect:
+        if session["user"] == "admin":
+            mongo.db.categories.remove(
+                {"_id": ObjectId(category_id)})
+            flash("Category Successfully Deleted")
+            return redirect(url_for("get_categories"))
+        else:
+            flash("Whoops!")
+            return render_template("403.html")
+    else:
+        flash("You must be logged in to view this page")
+        return redirect(url_for('login'))
 
 
 # Error handlers
