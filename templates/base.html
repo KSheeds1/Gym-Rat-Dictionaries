@@ -28,7 +28,8 @@
                 </ul>
                 <ul class="right hide-on-med-and-down">
                     <li><a class="btn-floating btn-small search" id="search"><i class="fas fa-search"></i></a></li>
-                    <li><a href="{{ url_for('get_definitions') }}">Home</a></li>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('get_definitions') }}">Definitions</a></li>
                     {% if session.user|lower != "admin"|lower %}
                         <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Categories <i class="fas fa-caret-down fa-sm"></i></a></li>
                     {% endif %}
@@ -50,7 +51,8 @@
         <ul class="sidenav nav-dark" id="mobile-demo">
             <li><a href="{{ url_for('get_definitions') }}" class="brand-logo center-align"><span class="white-text">GRD</span></a>
             </li>
-            <li><a href="{{ url_for('get_definitions') }}"><span class="white-text">Home</span></a></li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('get_definitions') }}"><span class="white-text">Definitions</span></a></li>
             {% if session.user|lower != "admin"|lower %}
                 <!--Categories dropdown menu-->
                 <li class="no-padding"></li>
@@ -115,7 +117,6 @@
             </form>
         </div>
     </div>
-
     <!--Floating Action Button (Search, add definition, scroll to top)-->
     <div class="fixed-action-btn click-to-toggle">
         <a class="btn-floating btn-large" id="FAB">
@@ -127,12 +128,12 @@
             <li><a class="btn-floating scroll-up"><i class="fas fa-arrow-circle-up"></i></a></li>
         </ul>
     </div>
-    
+    {% block landing %}
+    {% endblock %}
     <main class="container">
         {% block content %}
         {% endblock %}
     </main>
-    
     <!--Footer-->
     <footer class="page-footer">
         <div class="container">
