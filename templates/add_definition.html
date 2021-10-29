@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-pencil-alt prefix pink-text"></i>
-                    <input id="exercise_name" name="exercise_name" minlength="5" maxlength="60" type="text"
+                    <input id="exercise_name" name="exercise_name" pattern="^(?!\s*$)[-a-zA-Z0-9_:,'.\s]{5,60}$" minlength="5" maxlength="60" type="text"
                         class="validate" required>
                     <label for="exercise_name">Exercise Name</label>
                 </div>
@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-align-left prefix pink-text"></i>
-                    <input id="exercise_description" name="exercise_description" minlength="5" maxlength="500"
+                    <input id="exercise_description" name="exercise_description" pattern="^(?!\s*$)[-a-zA-Z0-9_:,'.\s]{5,500}$" minlength="5" maxlength="500"
                         type="text" class="validate" required>
                     <label for="exercise_description">Exercise Description</label>
                 </div>
@@ -40,22 +40,18 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-stopwatch prefix pink-text"></i>
-                    <input id="tempo" name="tempo" minlength="2" maxlength="5" type="text" class="validate" required>
+                    <input id="tempo" name="tempo" minlength="2" maxlength="5" type="number" class="validate" required>
                     <label for="tempo">Tempo</label>
                 </div>
             </div>
             <!--Upload Image-->
             <div class="row">
                 <div class="input-field">
-                    <div class="col s12 file-field input-field">
-                        <div class="btn-flat left">
-                            <input id="image_url" name="image_url" type="file"><br>
-                            <span><i class="fas fa-file-upload prefix pink-text"></i></span>
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="img_url" id="image_url" name="image_url" type="text"
-                                placeholder="Upload image URL">
-                        </div>
+                    <div class="input-field col s12">
+                        <i class="fas fa-file-upload prefix pink-text"></i>
+                        <input id="image_url" name="image_url" pattern="https?://.+" type="url" placeholder="Insert image URL if you like" 
+                            class="validate">
+                        <label for="image_url">Image URL</label>
                     </div>
                 </div>
             </div>
