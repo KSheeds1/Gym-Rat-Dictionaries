@@ -111,6 +111,7 @@ nav ul li a:hover {
 /*---------------------- Footer: */
 .page-footer {
     background-color: #030301;
+    padding-bottom: 2px;
 }
 
 footer h5 {
@@ -119,6 +120,7 @@ footer h5 {
 
 .footer-row {
     display: inline;
+    
 }
 
 footer ul li {
@@ -429,6 +431,10 @@ font-size: 150%;
     .header {
         font-size: 3.5rem;
         margin: 0.5rem 0 1.68rem 0;
+    }
+
+    .footer-row {
+        text-align: center;
     }
 }
 
