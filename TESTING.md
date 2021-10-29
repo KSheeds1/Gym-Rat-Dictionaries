@@ -38,7 +38,7 @@ Once logged in, users can navigate to their 'Profile' page from the Navigation b
 ![My definitions](static/images/TESTING/UST/UST-view-my-defs.png)
 
  
-> ### **UST4: *Save or add all my favourite definitions to 'My Favourites':***
+> ### **UST4: *Add all my favourite definitions to 'My Favourites':***
 
 Once logged in, users can simply click on the 'Add to Favourites' icon featured on each individual definition card panel to add a definition to their favourites. They can then view their favourites on their profile page. 
 
@@ -50,32 +50,44 @@ Logged in users can 'upvote' or 'Downvote' a definition by simply clicking on th
 
 ![Up/Down vote](static/images/TESTING/UST/UST-up-down-vote.png)
  
-> ### **UST6: *Edit or delete any definition I have added:***
+> ### **UST6: *Edit any definition I have added:***
 
-A logged in user can choose to edit or delete any of their own added definitions. This can be achieved across the site:
-* On the users profile
+A logged in user can choose to edit any of their own added definitions. This can be achieved across the site:
+* On the users profile page
 * On the home page
 * On any of the category pages
-* By searching for a specific definition in the search bar and deleting the definition in the search results. 
+* By searching for a specific definition in the search bar and accessing the definition in the search results. Click on the edit button to redirect to the edit definition form. 
 
- Each card panel has two buttons, 'Edit' & 'Delete'. 
+ Each card panel has an 'Edit' button. 
 	* To edit a definition, a user can click the 'Edit' button, which will redirect them to the 'Edit Definition' form. From there, they will be able to edit the pre-existing data, and choose to save the changes or cancel. 
-	* To delete a definition, a user can click on the 'Delete' button attached to each definition card panel. They will be prompted to confirm the action once, to delete they can click the 'Delete' button offered in the user-confirmation modal or they can choose to 'Cancel' and the profile page will reload.
 
-![Edit/Delete - Profile](static/images/TESTING/UST/UST-edit-delete-2.png)
-![Edit/Delete - Home pg](static/images/TESTING/UST/UST-edit-delete.png)
+
+![Edit - Profile](static/images/TESTING/UST/UST-edit-delete-2.png)
+![Edit - Home pg](static/images/TESTING/UST/UST-edit-delete.png)
 ![Edit definition form](static/images/TESTING/UST/UST-edit-def-form.png)
+
+### **UST7: *Delete any definition I have added:***
+A logged in user can choose to delete any of their own added definitions. This can be achieved across the site:
+* On the users profile page
+* On the home page
+* On any of the category pages
+* By searching for a specific definition in the search bar and accessing the definition in the search results. Click on the delete button. 
+
+**Note:** Clicking on the delete button triggers a user confirmation modal, the user must confirm their choice by clicking on the delete button in the modal to delete the definition. 
+
+![Delete- Profile](static/images/TESTING/UST/UST-edit-delete-2.png)
+![Delete - Home pg](static/images/TESTING/UST/UST-edit-delete.png)
 ![Delete definition](static/images/TESTING/UST/UST-delete-confirm.png)
 
 ## ***As a first-time user, I want to be able to:***
-> ### **UST7: *Identify the different categories of definitions available on the app:***
+> ### **UST8: *Identify the different categories of definitions available on the app:***
 
 First-time users can browse the different categories of exercise definitions by clicking on the 'Categories' nav-item and selecting a category they wish to browse from the dropdown. This will direct them to the specific category collection.
 
 ![Category menu](static/images/TESTING/UST/UST-see-categories.png)
 ![Category pg](static/images/TESTING/UST/UST-view-category.png)
 
-> ### **UST8: *Search for a particular definition quickly:***
+> ### **UST9: *Search for a particular definition quickly:***
 
 Casual users of the site can search for a particular definition quickly by using the search bar, which can be accessed in two places: 
 * From the magnify glass icon in the Navigation bar, which triggers the search bar 
@@ -84,21 +96,21 @@ Casual users of the site can search for a particular definition quickly by using
 ![Search - Nav](static/images/TESTING/UST/UST-search-bar.png)
 ![Search - Fab](static/images/TESTING/UST/UST-search-fab.png)
 
-> ### **UST8: *Create an account if I like the content of the site:***
+> ### **UST10: *Create an account if I like the content of the site:***
 
 First-time users can create an account or register with the app by navigating to the nav-bar and clicking on the nav-item for 'Register'. From there they will be prompted to create a unique username and to provide a validated password. The user will know that they have succeeded in creating an account as they will be redirected to their new profile page and will see a successful registration flash message. 
 
 ![Register - Nav](static/images/TESTING/UST/UST-register.png)
 ![Register - Form](static/images/TESTING/UST/UST-register-2.png)
 
-> ### **UST9: *To share a definition on my Facebook or Instagram account:***
+> ### **UST11: *To share a definition on my Facebook or Instagram account:***
 
 Even casual, first-time users can choose to share a definition from GRD to their social media account, this can be achieved by clicking on the share icon featured on each individual definition card panel and choosing from the options made available in the share modal. 
 
 ![Share icon](static/images/TESTING/UST/UST-share-2.png)
 ![Share modal](static/images/TESTING/UST/UST-share.png)
 
-> ### **UST10: *To quickly find a definition while I'm at the gym:***
+> ### **UST12: *To quickly find a definition while I'm at the gym:***
 
 Anyone can quickly find a definition on the go by accessing the site and searching for the definition using the search bar. This can be accessed from the magnify icon in the nav-bar or in the floating action buttons. If the definition has been added, it will be returned in the search request, if it has not been added, the app will inform the user thusly. 
 
@@ -106,7 +118,7 @@ Anyone can quickly find a definition on the go by accessing the site and searchi
 ![Search FAB](static/images/TESTING/UST/UST-quick-find.png)
 
 ## ***As the site owner/Admin, I want to be able to:***
-> ### **UST11: *Add a new category to the site:***
+> ### **UST13: *Add a new category to the site:***
 
 Adding a new category to the app is restricted to both the site owner and admin. Once logged in as either, they can navigate to the 'Category Management' page from the navigation bar and click on the card panel that reads 'Add New Category'. From there they can fill out the form to create a new category and select to 'Create' or 'Cancel' if they decide not to add a new category.
 
@@ -114,14 +126,14 @@ Adding a new category to the app is restricted to both the site owner and admin.
 ![Add new category form](static/images/TESTING/UST/UST-add-new-cat-form.png)
 
 
-> ### **UST12: *Edit an existing workout type category:***
+> ### **UST14: *Edit an existing workout type category:***
 
 This functionality is restricted to both the site owner and admin. To edit a category, navigate to Category Management, by clicking on the nav-item 'Category Management'. Once redirected to the page, the admin or site owner will have the option to click on the 'Edit' button offered on each category panel. Once selected, an admin can edit the pre-existing data in the 'Edit Category form'. If they wish to save the changes select the 'Edit Category' button or to cancel the changes, select 'Cancel'. 
 
 ![Edit category btn](static/images/TESTING/UST/UST-edit-cat-btn.png)
 ![Edit category form](static/images/TESTING/UST/UST-edit-cat-form.png)
 
-> ### **UST13: *Delete an existing workout type category:*** 
+> ### **UST15: *Delete an existing workout type category:*** 
 
 This functionality is restricted to both the site owner and admin. To delete an existing category, navigate to the Category Management page from the nav-bar. Once redirected to the page, the admin or site owner will have the option to click the 'Delete' button attached to each category. Once clicked, the user will be prompted to confirm the action prior to deletion, they can choose to either delete or cancel to be redirected to the category management page. 
 
