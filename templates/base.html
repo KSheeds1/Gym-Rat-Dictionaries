@@ -51,7 +51,7 @@
         <ul class="sidenav nav-dark" id="mobile-demo">
             <li><a href="{{ url_for('get_definitions') }}" class="brand-logo center-align"><span class="white-text">GRD</span></a>
             </li>
-            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('home') }}"><span class="white-text">Home</span></a></li>
             <li><a href="{{ url_for('get_definitions') }}"><span class="white-text">Definitions</span></a></li>
             {% if session.user|lower != "admin"|lower %}
                 <!--Categories dropdown menu-->
@@ -123,9 +123,9 @@
             <i class="fas fa-bars"></i>
         </a>
         <ul>
-            <li><a class="btn-floating search" id="search-btn"><i class="fas fa-search"></i></a></li>
-            <li><a href="{{ url_for('add_definition') }}" class="btn-floating add"><i class="fas fa-plus"></i></a></li>
-            <li><a class="btn-floating scroll-up"><i class="fas fa-arrow-circle-up"></i></a></li>
+            <li><a class="btn-floating search tooltipped" data-position="left" data-tooltip="Search" id="search-btn"><i class="fas fa-search"></i></a></li>
+            <li><a href="{{ url_for('add_definition') }}" class="btn-floating add tooltipped" data-position="left" data-tooltip="Add definition"><i class="fas fa-plus"></i></a></li>
+            <li><a class="btn-floating scroll-up tooltipped" data-position="left" data-tooltip="Scroll tp the top"><i class="fas fa-arrow-circle-up"></i></a></li>
         </ul>
     </div>
     {% block landing %}
@@ -136,25 +136,23 @@
     </main>
     <!--Footer-->
     <footer class="page-footer">
-        <div class="container">
-            <div class="row footer-row center-align">
-                <div class="col l3 s12">
-                    <h5 class="white-text">Gym Rat Dictionaries</h5>
-                    <p><em>Debunking exercise terminology</em></p>
-                </div>
-                <div class="col l6 s12">
-                    <h5 class="white-text">Follow Us</h5>
-                    <ul class="footer-links center-align">
-                        <li><a href="https://www.facebook.com/" target="_blank" title="Facebook Link" rel="noopener"><i class="fab fa-facebook-f fa-lg"></i></a></li>
-                        <li><a href="https://www.tiktok.com/" target="_blank" title="TikTok Link" rel="noopener"><i class="fab fa-tiktok fa-lg"></i></a></li>
-                        <li><a href="https://www.instagram.com/" target="_blank" title="Instagram Link" rel="noopener"><i class="fab fa-instagram fa-lg"></i></a></li>
-                        <li><a href="https://www.youtube.com/" target="_blank" title="YouTube Link" rel="noopener"><i class="fab fa-youtube fa-lg"></i></a></li>
-                    </ul>
-                </div>
-                <div class="col l3 s12">
-                    <h5>Copyright</h5>
-                    <p><em>Katie Sheedy © 2021. For educational purposes only.</em></p>
-                </div>
+        <div class="row footer-row">
+            <div class="col l3 m3 s12">
+                <h5 class="white-text">Gym Rat Dictionaries</h5>
+                <p><em>Debunking exercise terminology</em></p>
+            </div>
+            <div class="col l6 m6 s12">
+                <h5 class="white-text center-align">Follow Us</h5>
+                <ul class="footer-links center-align">
+                    <li><a href="https://www.facebook.com/" target="_blank" title="Facebook Link" rel="noopener"><i class="fab fa-facebook-f fa-lg"></i></a></li>
+                    <li><a href="https://www.tiktok.com/" target="_blank" title="TikTok Link" rel="noopener"><i class="fab fa-tiktok fa-lg"></i></a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank" title="Instagram Link" rel="noopener"><i class="fab fa-instagram fa-lg"></i></a></li>
+                    <li><a href="https://www.youtube.com/" target="_blank" title="YouTube Link" rel="noopener"><i class="fab fa-youtube fa-lg"></i></a></li>
+                </ul>
+            </div>
+            <div class="col l3 m3 s12">
+                <h5 class="white-text">Copyright</h5>
+                <p><em>Katie Sheedy, 2021. For educational purposes.</em></p>
             </div>
         </div>
     </footer>
