@@ -53,14 +53,15 @@ Visit the live site here
 *As a regular user, I want to be able to:*
 * Login and out of my account.
 * Upload an exercise definition. 
-*  View all my uploaded definition in one place.
-* Save or add all my favourite definitions to 'My Favourites'. 
+* View all my uploaded definition in one place.
+* Add all my favourite definitions to 'My Favourites'. 
 * 'Like' or 'upvote' a definition.
-* Edit or delete any definition I have added.
+* Edit any definition I have added.
+* Delete any definition I have added.
 
 *As a first-time user, I want to be able to:*
 * Identify the different categories of definitions available on the app.
-*  Search for a particular exercise quickly.
+* Search for a particular exercise quickly.
 * Create an account if I like the content of the site.
 * To share a definition on my Facebook or Instagram account. 
 * To quickly find a definition while I'm at the gym. 
@@ -131,7 +132,7 @@ The images chosen are all fitness orientated and intuitively provide further con
 # **Features:**
 ## **Existing Features:**
 **Navigation Bar:**
-The navigation bar is available in the default position and allows users to quickly identify the different sections of the site. On mobile and table viewports, these sections are available in a collapsible menu to provide a cleaner layout on smaller screens. The sections presented on the nav-bar change depending on the following: 
+The navigation bar is available in the default position and allows users to quickly identify the different sections of the site. On mobile and tablet viewports, these sections are available in a collapsible menu to provide a cleaner layout on smaller screens. The sections presented on the nav-bar change depending on the following: 
 1. Whether the user is logged in.
 2. Whether the user logged in is actually a site admin.
 3. Whether the user is casually browsing the app.
@@ -160,15 +161,17 @@ The navigation bar is available in the default position and allows users to quic
 ![Casual user not logged in mobile](static/images/README/not-logged-in-mobile-navbar.png)
 
 
-The changes in the sections presented in the navigation bar depend solely on the status of the user. Changes will be seen depending on whether you are casually browsing, are registered user, or a site admin. For both the registered user and site admin there is additional functionality made available. 
+The changes in the nav-items presented in the navigation bar depend solely on the status of the user. Changes will be seen depending on whether you are casually browsing, are registered user, or a site admin. For both the registered user and site admin there is additional functionality made available. 
 
 ### **Search Functionality:**
-As the app was constructed in a mobile-first approach with user interaction and experience in mind, the choice was made to build the search bar functionality below the navigation bar. This was implemented to aid users on the go, perhaps at the gym, mid-workout.  It minimises the amount of limited time a user has to spend trying to find the exercise definition they are looking for. As the site's function is primarily a glossary or dictionary, its search functionality needs to be easily identified and accessed. The search functionality can also be accessed from the floating action button. On larger viewports the search bar is hidden but can be accessed from the either the search icon on the navbar or the floating action button.
+As the app was constructed in a mobile-first approach with user interaction and experience in mind, the choice was made to build the search bar functionality directly below the navigation bar. It is hidden until toggled by the search icons as seen in the navbar (on larger viewports) and in the floating action button available on the bottom right hand corner of the screen. This was implemented to aid users on the go, perhaps at the gym, mid-workout.  It minimises the amount of limited time a user has to spend trying to find the exercise definition they are looking for. As the site's function is primarily a glossary or dictionary, its search functionality needs to be easily identified and accessed. 
 
 
 ![Search Icon](static/images/README/search-icon.png)
 ![Search bar](static/images/README/search-bar.png)  
 ![Search btn in FAB](static/images/README/floating-action-btns.png)
+
+
 ### **User Accounts:**
 To register or create an account with the app, the user is required to provide a unique, validated username and password. Upon logging-in, a registered user will be prompted to provide this username and password to gain access to their account. Security measures have been put in place by the site owner to protect user log-in details. 
 
@@ -244,25 +247,24 @@ This will be extremely helpful as the database expands and will help users navig
 
 # **Technologies Used:**
 ## **Languages:**
-* [HTML5](https://en.wikipedia.org/wiki/HTML5)
-* [CSS3](https://en.wikipedia.org/wiki/CSS)
-* [JavaScipt](https://en.wikipedia.org/wiki/JavaScript)
-* [Python](https://www.python.org/)
+* [HTML5](https://en.wikipedia.org/wiki/HTML5) provided the structure and content for this project.
+* [CSS3](https://en.wikipedia.org/wiki/CSS) provided the style of the HTML5 elements.
+* [jQuery](https://jquery.com/) was used to implement JavaScript functionality across the site.
+* [Python](https://www.python.org/) the backend of the project was written using Python.
 
-## **Frameworks, Packages, & Libraries:**
-* [Pip3](https://pip.pypa.io/)
-* [Dnspython](https://pypi.org/project/dnspython/)
-* [jQuery](https://jquery.com/)
-* [Font Awesome](https://fontawesome.com/)
-* [Google Fonts](https://fonts.google.com/)
-* [Materialize](https://materializecss.com/)
-* [Flask](https://flask.palletsprojects.com/)
-* [Flask-PyMongo](https://flask-pymongo.readthedocs.io/en/latest/)
-* [Jinja](https://jinja.palletsprojects.com/)
-* [Werkzeug](https://werkzeug.palletsprojects.com/)
+## **Frameworks, packages, libraries & toolkits:**
+* [Pip3](https://pip.pypa.io/) was used to install packages for python.
+* [Dnspython](https://pypi.org/project/dnspython/) was used as a DNS toolkit for python.
+* [Font Awesome](https://fontawesome.com/) supplied the icons used across the site.
+* [Google Fonts](https://fonts.google.com/) supplied the two fonts used across the site.
+* [Materialize](https://materializecss.com/) was used for the design framework.
+* [Flask](https://flask.palletsprojects.com/) framework provided the tools, libraries and technologies needed to build this web application. 
+* [Flask-PyMongo](https://flask-pymongo.readthedocs.io/en/latest/) is the Mongodb driver for python. This flask application leveraged PyMongo to access the MongoDB Atlas database. 
+* [Jinja](https://jinja.palletsprojects.com/) template engine and language that renders the pages of this site. Jinja is a Flask dependency.
+* [Werkzeug](https://werkzeug.palletsprojects.com/) was used for password hashing and to provide authentication. 
 
 
-## **Other Technologies:** 
+## **Other technologies:** 
 * [GitHub](https://github.com/) used to host the GRD repository.
 * [Git](https://git-scm.com/) used for version control of GRD  project.
 * [GitPod](https://www.gitpod.io/) used to develop the project. 
@@ -272,10 +274,18 @@ This will be extremely helpful as the database expands and will help users navig
 * [PowerMapper](https://www.powermapper.com/) used to verify cross-browser compatibility. 
 * [Favicon.io](https://favicon.io/) used to create GRD favicon.
 * [RandomKeygen](https://randomkeygen.com/) used to generate a secure password for environment variable `SECRET_KEY`.
-* [Upsplash](https://unsplash.com/) free images used throughout site found on Upsplash. (Acknowledgments in the credits section)
+* [Upsplash](https://unsplash.com/) free images site that provided the images used throughout the site. (Acknowledgments in the credits section)
 * [Autoprefixer CSS](https://autoprefixer.github.io/) used to parse CSS and add vendor prefixes to custom CSS file. 
 * [Am I Responsive](http://ami.responsivedesign.is/) used to create the demo image seen in the README.
 * [Lighthouse](https://developers.google.com/web/tools/lighthouse) used to audit the app for improved performance and UI.
+
+
+## **Testing:**
+* [Chrome Dev Tooks](https://developer.chrome.com/docs/devtools/) was used to detect issues and test the responsiveness of the site. 
+* [W3C Markup Validation Service](https://validator.w3.org/) is a validator used to test for errors in the HTML5 code.
+* [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) is a validator and was used to test for errors in the CSS3 code. 
+* [JShint](https://jshint.com/) is a validator and was used to test for error in the Javascript code.
+* [PEP8]() is a python style guide checker installed to test the python code against the style conventions in PEP8. 
 
 
 
@@ -332,7 +342,7 @@ Storing files in Git is a two-stage process:
 
 This is achieved by connecting your local repository with your remote repository and pushing the code from local to remote. Storing your code in a remote repository on a remote server allows it to be backed up and also be accessed by others. Once you have added the files to the storing area, committed the files to the repository, you then push your files to GitHub. Using the "**git push**" command to push the code from your local repository to the remote repository. 
 
-**To back up your code:**
+**To commit changes to your local repository and push to your remote repository:**
 * Start from the terminal by pressing  **CTRL+C**  to stop the server.
 * Run "**ls**" to list the files.
 * Begin adding and committing the code as outlined in step 1 & 2 of storing files in Git.
@@ -340,31 +350,72 @@ This is achieved by connecting your local repository with your remote repository
 * Run "**git commit -m**" followed by your message contained in double quotation marks, adding the files to your local repository.
 *  Once the files have been committed, push them to the remote repository using "**git push**".
  
+For more information on commonly used Git CLI instructions, check out this [cheatsheet](https://training.github.com/downloads/github-git-cheat-sheet.pdf)
+
 ## **GitHub:**
 This repository is hosted by GitHub, but deployed by Heroku.
     
 **Clone this repository:**
 To run  **locally**, you can clone this repository, or pull the code from this GitHub repository:
+
+Method 1:
 * Navigate to the main page of the repository.  
-* Above the list of files, click '**Code**'.
+* Above the list of files, click the '**Code**' button.
 * To clone the repository using  **HTTPS**, under  '**Clone with HTTPS**', click the  **clipboard**  symbol.
 * Open Git Bash.
 * Change the current working directory to the location where you want the cloned directory.
 * Type  `git clone`  and paste in the copied URL
-`$ git clone https://INSERT GITHUB REPO URL HERE`
+`$ git clone https://https://github.com/KSheeds1/Gym-Rat-Dictionaries`
 * Press  **Enter**  to create your local clone.
 
-**Note:** In order to clone this repository, you will need to create the following:
-* An env.py file using your own variables.
-* A MongoDB database similar to the database documented in the Database section of this README.
-* Install all packages listed in the requirements.txt file, this can be achieved by running the following command in the terminal: 
-`pip install -r requirements.txt`
+Method 2:
+* Click **Open with GitHub Desktop**.
+* Follow the prompts in the GitHub Desktop application or follow the steps outlined in the [GitHub Docs](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) for cloning a repository.
+
+
+### **Note:** In order to clone this repository, you will need to create the following:
+#### 1. Install necessary packages listed in the requirements.txt file:
+This can be achieved by running the following command in the terminal of your IDE: 
+`pip3 install -r requirements.txt`
+
+
+#### 2. MongoDB database:
+(Or a database similar to the database documented in the Database section of this README.)
+* Login or register with MongoDB.
+* Create a cluster and a database.
+* Create three collections in the database: **Categories**, **Users**, and **definitions**.
+* Add the neccessary key-value pairs for each of the collections. The schema breakdown for this project can be found [here](#schema-/-data-model) and can be used to set up your collections. 
+
+#### 3. Create the necessary environment variables:
+* Create a .gitignore file in the root directory of the project. 
+(A gitignore file specifies intentionally untracked files that Git should ignore. For more information on gitignore files, check out the [Git documentation for gitignore](https://git-scm.com/docs/gitignore).)
+* Add the env.py file to the gitignore file: `env.py`
+* Create the env.py file (this can be done from the terminal: `touch env.py`)
+* This file will contain the environment variables: 
+
+       Import os
+        
+        os.environ.setdefault("IP", "INSERT IP")
+        
+        os.environ.setdefault("PORT", "INSERT PORT")
+        
+        os.environ.setdefault("SECRET_KEY", "INSERT SECRET_KEY")
+        
+        os.environ.setdefault("MONGO_URI", "INSERT MONGO_URI")
+        
+        os.environ.setdefault("MONGO_DBNAME", "INSERT MONGO_DBNAME")
+  
+#### 4. Run the app:
+* In the terminal of your IDE, type the following command to run the app:
+`python3 app.py`
+* Click on option to view the site in the **browser**.
+
 
 **Fork this repository:**
-A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project.
+A fork is a copy of a repository that you manage. Forking a repository allows you to freely experiment with changes without affecting the original project.
 
 To fork this repository:
-* Log into GitHub and navigate to this repository [here](ENTER GITHUB REPO URL HERE)
+* Log into GitHub and navigate to this repository [here](https://github.com/KSheeds1/Gym-Rat-Dictionaries)
 * In the top-right corner of the page, click '**Fork**'.
 * From there, you will have a copy of the repository.
 
@@ -372,14 +423,16 @@ To fork this repository:
   
 
 ## **Heroku Deployment:**
-This project was deployed using Heroku. Heroku integrates with GitHub to make it easy to deploy code living on GitHub to apps running on Heroku. <---When GitHub integration is configured for a Heroku app, Heroku can automatically build and release (if the build is successful) pushes to the specified GitHub repo.--> 
+This project was deployed using Heroku. Heroku is a platform as a service that enables developer to build, run and operate applications entirely in the cloud. Heroku integrates with GitHub to make it easy to deploy code living on GitHub to apps running on Heroku. 
+
+### Prior to creating the Heroku application:
+Before creating the Heroku application, you must first set up two files which Heroku needs to run the app
 
 **Requirements.txt & Procfile:** 
-Before creating the Heroku application, you must first set up two files which Heroku needs to run the app, requirements.txt and Procfile:
 * Requirements.txt is used to specify what packages are required to run the project.
 * The Procfile specifies the commands that are executed by the app on start-up. 
 
-To create these files, use the following code in the **GitHub Terminal**:
+To **create these files**, use the following code in the **GitHub Terminal**:
 
 ```
 pip3 freeze --local>requirements.txt
@@ -388,12 +441,13 @@ echo web: python app.py > Procfile
 
 **Note:**  The Procfile may have a blank line at the end of the file which can cause problems when running the app on Heroku, make sure to delete it and save the file. 
 
-**On Heroku:** 
+### **On Heroku:** 
 Sign in or create an account on heroku.com:
 * Click '**New**' on the dashboard and select '**Create new app**'. 
 * Provide a unique app name including dashes, select your region, and click '**Create App**'.
 
 **Connecting to GitHub:**
+
 From the dashboard, click on the **Deploy** tab:
 * From the '**Deployment Method**' section, click on '**GitHub**'.
 * Provide your repository name and click '**Search**', once it finds your repository, click '**Connect**'. 
@@ -418,23 +472,36 @@ From the dashboard, click on the **Deploy** tab:
 
 **Note:** 
 **Before you deploy**, you need to **push** the Procfile and requirements from the GitHub terminal.
+* Navigate back to your code and in the **GitHub terminal** use the following commands:
+  
+      $ git add requirements.txt
+      $ git commit -m "Add requirements.txt file."
+      $ git add Procfile 
+      $ git commit -m "Add procfile."
+      $ git push
 
-* Back on Heroku, you can then '**Enable Automatic Deployment**' followed by '**Deploy Branch (main)**'.
+
+* Back on Heroku, you can then '**Enable Automatic Deployment**' from the deploy tab by clicking on **Enable Automatic Deploys** followed by '**Deploy Branch (main)**'.
 * You will be able to confirm a successful deployment from the Heroku. 
 
 ![Heroku Deployment successful](static/images/README/successful-deployment-to-heroku.png)
+
+Click on **Open App** in the right hand corner of your Heroku account, this will open your live site in another tab. 
 
 # Credits:
 ##  **Code:**
 * The Materialize select box validation solution was the solution provided during the CI ['Task Manager'](https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/04-AddingATask-WritingToTheDatabase/02-materialize-select-validation/static/js/script.js) mini-project. 
 * This [demo](https://gist.github.com/mozillazg/69fb40067ae6d80386e10e105e6803c9) on GitHub helped me to refactor three of my functions to implement Flask-Paginate. 
-* This [Stackoverflow question](https://stackoverflow.com/questions/65477524/flask-and-jinja-template-throwing-error-object-of-type-cursor-has-no-len) helped me resolve the TypeError: object of type 'Cursor' has no len(). (See TESTING.md)
-* This [Stackoverflow question](https://stackoverflow.com/questions/27980121/pylint-warning-possible-unbalanced-tuple-unpacking-with-sequence) helped me to remove the Pylint warning for 'possible unbalanced tuple unpacking'.
+* This [Stack Overflow question](https://stackoverflow.com/questions/65477524/flask-and-jinja-template-throwing-error-object-of-type-cursor-has-no-len) helped me resolve the TypeError: object of type 'Cursor' has no len(). (See TESTING.md)
+* This [Stack Overflow question](https://stackoverflow.com/questions/27980121/pylint-warning-possible-unbalanced-tuple-unpacking-with-sequence) helped me to remove the Pylint warning for 'possible unbalanced tuple unpacking'.
 * This [GitHub Gist](https://gist.github.com/toshimaru/6102647) helped me to detect scrolling to the bottom of the page using jQuery. It was modified slightly to get the innerHeight of the window so it would function on all viewports. 
 * This [GeeksforGeeks article](https://www.geeksforgeeks.org/how-to-detect-a-mobile-device-in-jquery/) showed me how to detect smaller viewports using JavaScript's `window.matchMedia();`
+* This [Stack Overflow question](https://stackoverflow.com/questions/5599934/regular-expression-that-allows-spaces-in-a-string-but-not-only-blank-spaces/5599987) provided me with the regex pattern used to validate the form and search inputs across the site. 
 
 ##  **Content:**
-Content for the defintions was supplied by the *Move With Us*.
+* Exercise descriptions for the defintions was supplied by *Move With Us*.
+* The hero image used on the home page was found on [Upsplash](https://unsplash.com/photos/oYSUTt7Cj60). This image was uploaded to Upsplash by Lorenzo Fattò Offidani.
+
 
 ##  **Acknowledgements:**
 A big thank you to my mentor Precious for guiding me through this milestone project and my family and friends for all their support!
