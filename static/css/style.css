@@ -377,6 +377,14 @@ a .image_url:visited {
     font-size: 20px;
 }
 
+h6 a {
+    color: #17DCC6;
+}
+
+h6 a:hover {
+    color: #0ea08f;
+}
+
 .collapsible-header {
     background-color: #030301;
     color: #fffff3;

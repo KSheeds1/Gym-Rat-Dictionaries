@@ -8,13 +8,13 @@
             <div class="divider black"></div>
         </div>
     </div>
-    {% if definitions|length > 0 %}
+    {% if definitions|length > 0 or definitions|length == 0 and user_favourites|length > 0 or definitions|length > 0 and user_favourites|length == 0 %}
         <div class="row">
             <div class="col s12 m12">
                 <h3 class="left">My definitions:</h3>
             </div>
-        </div>
-        {% for definition in definitions if session.user|lower == definition.created_by|lower %}
+        </div>       
+        {% for definition in definitions %}
             <ul class="collapsible user-definitions">
                 <li>
                     <div class="collapsible-header">
@@ -53,12 +53,22 @@
                 </div>
             </div>
         {% endfor %}
+        {% if definitions|length == 0 and user_favourites|length > 0 %}
+            <div class="row">
+                <div class="col s12">
+                    <h6>No definitions added yet, wanna change that?</h6>
+                    <a href="{{ url_for('add_definition') }}" class="z-depth-5 add-btn btn">
+                        Add Definition <i class="far fa-plus-square"></i>
+                    </a>
+                </div>
+            </div>
+        {% endif %}
         <div class="row">
             <div class="col s12 m12">
                 <h3 class="left">My favourites:</h3>
             </div>
-        </div>
-        {% for definition in definitions if definition._id in user.user_favourites %}
+        </div>       
+        {% for definition in user_favourites %}
             <ul class="collapsible favourites">
                 <li>
                     <div class="collapsible-header">
@@ -102,13 +112,26 @@
                 </div>
             </div>
         {% endfor %}
+        {% if definitions|length > 0 and user_favourites|length == 0 %}
+            <div class="row">
+                <div class="col s12">
+                    <h6>No definitions added to your favourites yet, wanna change that?</h6>
+                    <h6>Head over to the<a href="{{ url_for('get_definitions') }}">
+                        definitions page
+                    </a> and click on the <i class="fas fa-bookmark"></i> favourites icon to add the definition to your favourites!</h6>
+                </div>
+            </div>
+        {% endif %}
     {% else %}
         <div class="row">
             <div class="col s12 center-align">
                 <h4>No definitions added yet! Wanna change that?</h4>
-                <a href="{{ url_for('add_definition') }}" class="z-depth-5 add btn-large">
-                    Add Definition <i class="far fa-plus-square"></i></a>
+                <a href="{{ url_for('add_definition') }}" class="z-depth-5 add-btn btn-large">
+                    Add Definition <i class="far fa-plus-square"></i>
+                </a>
             </div>
         </div>
     {% endif %}
+
+    
 {% endblock %}

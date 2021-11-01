@@ -33,13 +33,16 @@ def category_menu():
 @app.route("/")
 @app.route("/home")
 def home():
+    """
+    App route for the landing page of Gym Rat Dictionaries.
+    """
     return render_template("index.html")
 
 
 @app.route("/get_definitions")
 def get_definitions():
     """
-    App route for the landing page of Gym Rat Dictionaries.
+    App route for the definitions page of Gym Rat Dictionaries.
     Displays all recently added definitions.
     """
     # Definition pagination:
@@ -168,7 +171,6 @@ def login():
     """
     # Check user is logged in:
     if "user" in session:
-        
         # Check if the username exists in the db:
         existing_user = mongo.db.users.find_one(
             {"username": session["user"]})
@@ -204,7 +206,6 @@ def login():
             return redirect(url_for("login"))
 
     return render_template("login.html")
-    
 
 
 @app.route("/profile/<user>", methods=["GET", "POST"])
@@ -220,10 +221,19 @@ def profile(user):
 
         # If session user cookie truthy, return to appropriate profile:
         if session["user"]:
-            # Render all definitions to the profile page to be filtered:
-            definitions = list(mongo.db.definitions.find())
+            # Render user_definitions and favourites to the profile page:
+            user_definitions = list(mongo.db.definitions.find(
+                {"created_by": session["user"]}
+            ))
+            # Create new array for definitions in user_favourites:
+            new_arr = [x for x in user["user_favourites"]]
+            # Find id in new array to match to correct array:
+            favourites = list(mongo.db.definitions.find(
+                {"_id": {"$in": new_arr}}
+            ))
             return render_template("profile.html", user=user,
-                                    definitions=definitions)
+                                    definitions=user_definitions,
+                                    user_favourites=favourites)
 
         # If false or doesn't exist, redirect to login:
         return redirect(url_for("login"))
@@ -265,7 +275,8 @@ def add_definition():
             definition = {
                 "category_name": request.form.get("category_name"),
                 "exercise_name": request.form.get("exercise_name"),
-                "exercise_description": request.form.get("exercise_description"),
+                "exercise_description": request.form.get(
+                                    "exercise_description"),
                 "tempo": request.form.get("tempo"),
                 "imge_url": request.form.get("image_url"),
                 "created_by": session["user"]
@@ -305,7 +316,6 @@ def edit_definition(definition_id):
 
         # Confirm session user created this definition prior to edit:
         if user == creator:
-        
             # POST method functionality:
             if request.method == "POST":
                 submit = {
@@ -375,19 +385,19 @@ def delete_definition(definition_id):
 def upvote(definition_id):
     """
     This function will add the user_id to the upvote
-    array in the definitions collection and 
+    array in the definitions collection and
     display the length of the array on the upvote icon.
     """
     if "user" in session:
         # Grab user from the database:
         user = mongo.db.users.find_one(
             {"username": session["user"]})
-        
+
         mongo.db.definitions.find_one_and_update(
             {"_id": ObjectId(definition_id)},
             {"$addToSet": {"upvote": user["_id"]}}
         )
-        
+
         return redirect(url_for('get_definitions'))
     else:
         flash("You must be logged in to upvote a definition")
@@ -405,7 +415,7 @@ def downvote(definition_id):
         # Grab user from the database:
         user = mongo.db.users.find_one(
             {"username": session["user"]})
-        
+
         mongo.db.definitions.find_one_and_update(
             {"_id": ObjectId(definition_id)},
             {"$addToSet": {"downvote": user["_id"]}}
@@ -430,7 +440,7 @@ def add_to_favourites(definition_id):
         # Grab the session user from the db:
         user = mongo.db.users.find_one(
             {"username": session["user"]})
-        
+
         # Check if definition_id is already in user_favourites array:
         if ObjectId(definition_id) in user["user_favourites"]:
             flash("You've already added this definition to your favourites")
@@ -524,9 +534,9 @@ def edit_category(category_id):
                     {"_id": ObjectId(category_id)}, submit)
                 flash("Category Update Successful")
                 return redirect(url_for("get_categories"))
-            
+
             category = mongo.db.categories.find_one(
-                    {"_id": ObjectId(category_id)})       
+                    {"_id": ObjectId(category_id)})
             return render_template("edit_category.html",
                                     category=category)
         else:
