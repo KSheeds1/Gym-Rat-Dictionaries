@@ -287,6 +287,36 @@ The refactored function was then tested manually by registering a new user. The 
 ![user-faves in newly registered user](static/images/TESTING/Bugs/register-user-faves.png)
 
 
+# Displaying the profile page rendered for newly registered users:
+It was noticed when a new user registered with the site that the 'else' block of the profile page was not rendering to the site. When overviewing the profile function in app.py, it was noted that the jinja if statement, {% if definitions|length > 0 %} would always be considered as true as the developer was sending the definitions collection to the profile so that they could be filtered to display my definitions and my favourites.
+
+![Original profile function](static/images/TESTING/Bugs/profile-refactored.png) 
+
+This was the root of the bug, the else block of the code was never going to be rendered as definitions were always going to be greater than zero on profile.html. In order to resolve this issue, it was decided to only send definitions created by the session user and to create a new array of the user_favourites array (a field in each definition in the definitions collection) to match the definitions by ID to those saved in the session users 'user_favourites' array and send that to the profile.
+
+![Refactored profile function](static/images/TESTING/Bugs/refactored-profile-f.png)
+
+On profile.html some refactoring was necessary to help render the profile depending on the users status. The jinja conditional rendering for my definitions and my favourites was paired backed, and additional conditional formatting statements were added to render elements depending on the users status. These changes resolved the issue at hand, when registering as a new user the else block of the code now displayed to the profile.
+
+![Refactored if statement jinja profile](static/images/TESTING/Bugs/refactored-jinja.png)
+![Refactored for-loop for definitions](static/images/TESTING/Bugs/refactored-for-loop-defs.png)
+![Refactored for-loop for user faves](static/images/TESTING/Bugs/refactored-for-loop-user-fave.png)
+![Profile else block](static/images/TESTING/Bugs/profile-else-block.png)
+![Newly reg user profile rendering](static/images/TESTING/Bugs/new-reg-user.png)
+
+### Additional rendering was also put in place to pre-emptively plan for the event that the newly registered user:
+
+* **Added a definition to site but did **not** add a definition to 'My Favourites':**
+
+![Jinja for add definition but not user faves](static/images/TESTING/Bugs/added-def-no-faves-jinja.png)
+![Profile rendering of added def but no user faves](static/images/TESTING/Bugs/added-def-no-faves.png)
+
+* **Added a definition to 'My Favourites' but did **not** add a definition to the site:** 
+
+![Jinja for no def added but added user fave](static/images/TESTING/Bugs/added-faves-no-defs-jinja.png)
+![Profile rendering of added user faves no added def](static/images/TESTING/Bugs/added-faves-no-defs.png)
+
+
 # Manual functionality testing:
 
 # User Authentication: 
