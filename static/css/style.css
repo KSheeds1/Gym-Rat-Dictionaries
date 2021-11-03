@@ -1,3 +1,11 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
+
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 
@@ -5,12 +13,19 @@
 body {
     background-color: #fffff3;
     min-height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 main {
-    flex: 1 0 auto;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
 }
 
 h1, h2, h3 {
@@ -176,7 +191,7 @@ footer p {
 
 /*---------------------- Index pg: */
 .hero-image {
-    background: url('../images/site-images/home-pg-img-2-min.jpg');
+    background: url('../images/site-images/home-pg-img.webp');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;

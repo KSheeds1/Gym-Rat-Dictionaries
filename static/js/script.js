@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 $(document).ready(function(){
     $(".dropdown-trigger").dropdown({
         coverTrigger: false
@@ -13,11 +15,13 @@ $(document).ready(function(){
       isMultiple: true
     });
     $('.tooltipped').tooltip();
+    /*Scroll to the top functionality*/
     $('.scroll-up').on('click', function() {
         $('html, body').animate({scrollTop:0}, '300');
     });
+    /*Trigger search bar, scroll to the top of page first, if necessary toggle search bar */
     $('#search, .search').on('click', function() {
-        $('html, body').animate({scrollTop:0}, '300')
+        $('html, body').animate({scrollTop:0}, '300');
         $('.search-panel').toggle("slow");
     });
     /*Detect scroll to the bottom sourced from https://gist.github.com/toshimaru/6102647 */
@@ -25,18 +29,18 @@ $(document).ready(function(){
         var scrollHeight = $(document).height();
         var scrollPosition = $(window).innerHeight() + $(window).scrollTop();
         if ((scrollHeight - scrollPosition) < 1) {
-            $('#FAB').css('background-color', 'white')
-            $('.fa-bars').css('color', 'black')
+            $('#FAB').css('background-color', 'white');
+            $('.fa-bars').css('color', 'black');
         } else {
-            $('#FAB').css('background-color', 'black')
-            $('.fa-bars').css('color', 'white')
+            $('#FAB').css('background-color', 'black');
+            $('.fa-bars').css('color', 'white');
         }
     });
     /* Disable hoverEnabled option on floating action button for mobile & tablet viewports */
     if (window.matchMedia("(max-width: 600px)").matches) {
         $('.fixed-action-btn').floatingActionButton({
             hoverEnabled: false
-        })
+        });
     }
 
     /* The code below is the CI solution for the Materialize select box validation issue taken from the 
