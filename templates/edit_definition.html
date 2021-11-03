@@ -64,14 +64,14 @@
             <div class="row">
                 <div class="input-field vote col s2">
                   <input hidden type="number" 
-                    value="{{ definition.upvote|count }}" name="upvote" class="validate">
-                  <label for="disabled">Upvote</label>
+                    value="{{ definition.upvote|count }}" id="upvote" name="upvote" class="validate">
+                  <label for="upvote">Upvote</label>
                 </div>
               </div><div class="row">
                 <div class="input-field vote col s2">
                   <input hidden type="number" 
-                    value="{{ definition.downvote|count }}" name="downvote" class="validate">
-                  <label for="disabled">Downvote</label>
+                    value="{{ definition.downvote|count }}" id="downvote" name="downvote" class="validate">
+                  <label for="downvote">Downvote</label>
                 </div>
               </div>
             <!--Edit definition button-->
