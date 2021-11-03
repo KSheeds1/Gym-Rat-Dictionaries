@@ -397,6 +397,10 @@ h6 a:hover {
     color: #fffff3;
 }
 
+/*----------------------Edit Definitions form: */
+.vote {
+    display: none;
+}
 /*----------------------Error Pages: */
 .error {
     margin: 25px;

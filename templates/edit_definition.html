@@ -60,6 +60,20 @@
                     </div>
                 </div>
             </div>
+            <!--Hidden input fields to hold the upvote and downvote count. Inputs are hidden as they are not to be edited by user-->
+            <div class="row">
+                <div class="input-field vote col s2">
+                  <input hidden type="number" 
+                    value="{{ definition.upvote|count }}" name="upvote" class="validate">
+                  <label for="disabled">Upvote</label>
+                </div>
+              </div><div class="row">
+                <div class="input-field vote col s2">
+                  <input hidden type="number" 
+                    value="{{ definition.downvote|count }}" name="downvote" class="validate">
+                  <label for="disabled">Downvote</label>
+                </div>
+              </div>
             <!--Edit definition button-->
             <div class="row">
                 <div class="col s12 center-align">

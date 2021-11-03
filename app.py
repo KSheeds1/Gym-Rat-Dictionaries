@@ -279,7 +279,9 @@ def add_definition():
                                     "exercise_description"),
                 "tempo": request.form.get("tempo"),
                 "imge_url": request.form.get("image_url"),
-                "created_by": session["user"]
+                "created_by": session["user"],
+                "upvote": [],
+                "downvote": []
             }
             mongo.db.definitions.insert_one(definition)
             flash("Your definition has been added successfully.")
@@ -326,11 +328,11 @@ def edit_definition(definition_id):
                     "tempo": request.form.get("tempo"),
                     "imge_url": request.form.get("image_url"),
                     "created_by": session["user"],
+                    "upvote": request.form.get("upvote", 0),
+                    "downvote": request.form.get("downvote", 0)
                 }
-                mongo.db.definitions.update(
-                    {"_id": ObjectId(definition_id)}, submit)
+                mongo.db.definitions.update_one({"_id": ObjectId(definition_id)}, {"$set": submit})
                 flash("Your definition has been updated successfully.")
-
             definition = mongo.db.definitions.find_one(
                 {"_id": ObjectId(definition_id)})
             categories = list(mongo.db.categories.find().sort("category_name", 1))
@@ -393,12 +395,34 @@ def upvote(definition_id):
         user = mongo.db.users.find_one(
             {"username": session["user"]})
 
-        mongo.db.definitions.find_one_and_update(
-            {"_id": ObjectId(definition_id)},
-            {"$addToSet": {"upvote": user["_id"]}}
+        # Grab definition from the db using the definition ID:
+        definition = mongo.db.definitions.find_one(
+            {"_id": ObjectId(definition_id)}
         )
 
-        return redirect(url_for('get_definitions'))
+        # Check if user has already downvoted the same definition:
+        if user["_id"] in definition["downvote"]:
+            flash("You've already downvoted this definition")
+            return redirect(url_for('get_definitions'))
+        # Check if user has already upvoted the definition and pull
+        # user ID from upvote array:
+        elif user["_id"] in definition["upvote"]:
+            mongo.db.definitions.find_one_and_update(
+                {"_id": ObjectId(definition_id)},
+                {"$pull": {"upvote": user["_id"]}}
+            )
+            flash("Your upvote on this definition has been removed")
+            return redirect(url_for('get_definitions'))
+        else:
+            # Find definition by ID and update the upvote array with the
+            # user ID:
+            mongo.db.definitions.find_one_and_update(
+                {"_id": ObjectId(definition_id)},
+                {"$addToSet": {"upvote": user["_id"]}},
+                {"upsert": "true"}
+            )
+
+            return redirect(url_for('get_definitions'))
     else:
         flash("You must be logged in to upvote a definition")
         return redirect(url_for('login'))
@@ -415,13 +439,33 @@ def downvote(definition_id):
         # Grab user from the database:
         user = mongo.db.users.find_one(
             {"username": session["user"]})
-
-        mongo.db.definitions.find_one_and_update(
-            {"_id": ObjectId(definition_id)},
-            {"$addToSet": {"downvote": user["_id"]}}
+        
+        # Grab definition from the db using the definition ID:
+        definition = mongo.db.definitions.find_one(
+            {"_id": ObjectId(definition_id)}
         )
 
-        return redirect(url_for('get_definitions'))
+        # Check if user has already upvoted this definition_id:
+        if user["_id"] in definition["upvote"]:
+            flash("You've already upvoted this definition")
+            return redirect(url_for('get_definitions'))
+        # Check if user has already downvoted this definition
+        # and pull user ID from downvote array:
+        elif user["_id"] in definition["downvote"]:
+            mongo.db.definitions.find_one_and_update(
+                {"_id": ObjectId(definition_id)},
+                {"$pull": {"upvote": user["_id"]}}
+            )
+            flash("Your downvote on this definition has been removed")
+            return redirect(url_for('get_definitions'))
+        else:
+            mongo.db.definitions.find_one_and_update(
+                {"_id": ObjectId(definition_id)},
+                {"$addToSet": {"downvote": user["_id"]}},
+                {"upsert": "true"}
+            )
+
+            return redirect(url_for('get_definitions'))
     else:
         flash("You must be logged in to downvote a definition")
         return redirect(url_for('login'))
