@@ -13,8 +13,8 @@
                     <div class="card grey z-depth-5">
                         <div class="card-content black-text">
                             <div class="definitions-icons">
-                                <a href="{{ url_for('add_to_favourites', definition_id=definition._id) }}" class="card-title tooltipped" data-position="right" data-tooltip="Add definition to Favourites">
-                                    <i class="fas fa-bookmark"></i>
+                                <a href="{{ url_for('add_to_favourites', definition_id=definition._id) }}" class="card-title tooltipped" 
+                                    data-position="right" data-tooltip="Add definition to Favourites"><i class="fas fa-bookmark"></i>
                                 </a>
                                 <a class="modal-trigger card-title tooltipped" data-target="#modal1{{ definition._id }}" 
                                     data-position="right" data-tooltip="Share Definition"><i class="fas fa-share-alt"></i>
@@ -31,16 +31,16 @@
                         </div>
                         <div class="card-action">
                             <a href="{{ url_for('upvote', definition_id=definition._id) }}" class="add btn-small tooltipped"
-                                data-position="right" data-tooltip="Upvote this definition"><i class="fas fa-thumbs-up"> {{ definition.upvote|length }}</i></a>
+                                data-position="right" data-tooltip="Upvote this definition"><i class="fas fa-thumbs-up"> {{ definition.upvote|length }}</i>
+                            </a>
                             <a href="{{ url_for('downvote', definition_id=definition._id) }}" class="add btn-small tooltipped" 
-                                data-position="right" data-tooltip="Downvote this definition"><i class="fas fa-thumbs-down"> {{ definition.downvote|length }}</i></a>
+                                data-position="right" data-tooltip="Downvote this definition"><i class="fas fa-thumbs-down"> {{ definition.downvote|length }}</i>
+                            </a>
                             {% if session.user|lower == definition.created_by|lower or session.user|lower == "admin"|lower and session.user|lower == definition.created_by|lower %}
                                 <a href="#modal2" data-target="#modal2{{ definition._id }}" class="modal-trigger btn delete right"><i class="far fa-trash-alt"></i> Delete</a>
-                                <a href="{{ url_for('edit_definition', definition_id=definition._id) }}" class="btn edit right">
-                                    <i class="far fa-edit"></i> Edit</a>
+                                <a href="{{ url_for('edit_definition', definition_id=definition._id) }}" class="btn edit right"><i class="far fa-edit"></i> Edit</a>
                             {% elif session.user|lower == "admin"|lower %}
-                                <a href="{{ url_for('delete_definition', definition_id=definition._id) }}"
-                                    class="btn delete right"><i class="far fa-trash-alt"></i> Delete</a>
+                                <a href="{{ url_for('delete_definition', definition_id=definition._id) }}" class="btn delete right"><i class="far fa-trash-alt"></i> Delete</a>
                             {% endif %}
                         </div>
                     </div>

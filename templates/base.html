@@ -19,10 +19,10 @@
         <!--Main Navbar-->
         <nav class="nav-extended nav-dark">
             <div class="nav-wrapper">
-                <a href="{{ url_for('get_definitions') }}" class="brand-logo left">Gym Rat Dictionaries</a>
+                <a href="{{ url_for('home') }}" class="brand-logo left">Gym Rat Dictionaries</a>
                 <!--Sidenav trigger-->
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
-                <!--Dropdown1 menu-->
+                <a href="#" data-target="mobile-demo" title="Dropdown menu trigger" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+                <!--Categories dropdown menu-->
                 <ul id="dropdown1" class="dropdown-content">
                     {% for category in categories %}
                         <li><a href="{{ url_for('category_pg', category_id=category._id) }}">{{ category.category_name}}</a></li>
@@ -51,31 +51,29 @@
         </nav>
         <!--Mobile Sidenav-->
         <ul class="sidenav nav-dark" id="mobile-demo">
-            <li><a href="{{ url_for('get_definitions') }}" class="brand-logo center-align"><span class="white-text">GRD</span></a>
-            </li>
+            <li><a href="{{ url_for('get_definitions') }}" class="brand-logo center-align"><span class="white-text">GRD</span></a></li>
             <li><a href="{{ url_for('home') }}"><span class="white-text">Home</span></a></li>
             <li><a href="{{ url_for('get_definitions') }}"><span class="white-text">Definitions</span></a></li>
             {% if session.user|lower != "admin"|lower %}
                 <!--Categories dropdown menu-->
-                <li class="no-padding"></li>
-                <ul class="collapsible collapsible-accordion">
-                    <li>
-                        <a class="collapsible-header"><span class="white-text">Categories<i
-                                    class="fas fa-caret-down fa-xs"></i></span></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                {% for category in categories %}
-                                <li><a href="{{ url_for('category_pg', category_id=category._id) }}">{{ category.category_name }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li>
+                            <a class="collapsible-header"><span class="white-text">Categories<i
+                                        class="fas fa-caret-down fa-xs"></i></span></a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    {% for category in categories %}
+                                    <li><a href="{{ url_for('category_pg', category_id=category._id) }}">{{ category.category_name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
                 </li>
             {% endif %}
             {% if session.user %}
-                <li><a href="{{ url_for('profile', user=session['user']) }}"><span class="white-text">Profile</span></a>
-                </li>
+                <li><a href="{{ url_for('profile', user=session['user']) }}"><span class="white-text">Profile</span></a></li>
                 <li><a href="{{ url_for('add_definition') }}"><span class="white-text">Add Definition</span></a></li>
                 {% if session.user|lower == "admin"|lower %}
                     <li><a href="{{ url_for('get_categories') }}"><span class="white-text">Category Management</span></a></li>
