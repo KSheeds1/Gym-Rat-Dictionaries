@@ -8,7 +8,10 @@
             <div class="divider black"></div>
         </div>
     </div>
+    <!--Render this if user created definitions is greater than zero OR equal to zero AND user favourites
+        is greater than zero OR definitions is greater than zero AND user favourites is equal to zero-->
     {% if definitions|length > 0 or definitions|length == 0 and user_favourites|length > 0 or definitions|length > 0 and user_favourites|length == 0 %}
+        <!--User created definitions collapsible-->
         <div class="row">
             <div class="col s12 m12">
                 <h3 class="left">My definitions:</h3>
@@ -53,6 +56,7 @@
                 </div>
             </div>
         {% endfor %}
+        <!--Render this if there is no user created definitions and more than zero user favourites-->
         {% if definitions|length == 0 and user_favourites|length > 0 %}
             <div class="row">
                 <div class="col s12">
@@ -63,6 +67,7 @@
                 </div>
             </div>
         {% endif %}
+        <!--User favourited definitions collapsible-->
         <div class="row">
             <div class="col s12 m12">
                 <h3 class="left">My favourites:</h3>
@@ -112,6 +117,7 @@
                 </div>
             </div>
         {% endfor %}
+        <!--Render this if there is more than zero user created definitions and zero user favourites-->
         {% if definitions|length > 0 and user_favourites|length == 0 %}
             <div class="row">
                 <div class="col s12">
@@ -123,6 +129,7 @@
             </div>
         {% endif %}
     {% else %}
+    <!--Render this when user first registers with the site-->
         <div class="row">
             <div class="col s12 center-align">
                 <h4>No definitions added yet! Wanna change that?</h4>

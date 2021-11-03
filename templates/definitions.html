@@ -2,11 +2,12 @@
 {% block content %}
     
 
-    <!--Definitions card panel-->
+    <!--Render this if definitions are greater than zero-->
     {% if definitions|length> 0 %}
         <h3 class="center-align">Recently added</h3>
         <div class="divider"></div>
         {% for definition in definitions %}
+        <!--Definitions card panel-->
             <div class="row">
                 <div class="def-cards col s12">
                     <div class="card grey z-depth-5">
@@ -85,6 +86,7 @@
     {% else %}
         <h3 class="center-align">Sorry, no results found!</h3>
     {% endif %}
+    <!--Pagination-->
     <div class="pagination-section center-align">
         {% if definitions|length > 0 %}
             {{ pagination.links }}
