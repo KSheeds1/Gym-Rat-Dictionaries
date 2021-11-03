@@ -51,7 +51,7 @@ def get_definitions():
                                            per_page_parameter='per_page')
     # Reset per_page and offset values:
     per_page = 8
-    offset = (page -1) * per_page
+    offset = (page - 1) * per_page
     total = mongo.db.definitions.find().count()
     # Find definitions to display on definitions.html:
     definitions = list(mongo.db.definitions.find())
@@ -59,10 +59,10 @@ def get_definitions():
     pagination = Pagination(page=page, per_page=per_page,
                             total=total, css_framework='materializecss')
     return render_template("definitions.html",
-                            definitions=definitions_pagination,
-                            page=page,
-                            per_page=per_page,
-                            pagination=pagination)
+                           definitions=definitions_pagination,
+                           page=page,
+                           per_page=per_page,
+                           pagination=pagination)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -74,10 +74,10 @@ def search():
     # Pagination for returned search queries:
     # pylint: disable=unbalanced-tuple-unpacking
     page, per_page, offset = get_page_args(page_parameter='page',
-                                            per_page_parameter='per_page')
+                                           per_page_parameter='per_page')
     # Reset per_page and offset values:
     per_page = 8
-    offset = (page -1) * per_page
+    offset = (page - 1) * per_page
     total = mongo.db.definitions.find({"$text": {"$search": query}}).count()
     # Perform a $search on any $text index from the collection
     # using query variable:
@@ -88,9 +88,9 @@ def search():
                             total=total,
                             css_framework='materializecss')
     return render_template("definitions.html",
-                            definitions=definitions_pagination,
-                            page=page, per_page=per_page,
-                            pagination=pagination,)
+                           definitions=definitions_pagination,
+                           page=page, per_page=per_page,
+                           pagination=pagination,)
 
 
 @app.route("/category_pg/<category_id>")
@@ -103,10 +103,10 @@ def category_pg(category_id):
     # Pagination for definitions displayed in category_pg:
     # pylint: disable=unbalanced-tuple-unpacking
     page, per_page, offset = get_page_args(page_parameter='page',
-                                            per_page_parameter='per_page')
+                                           per_page_parameter='per_page')
     # Reset per_page and offset values:
     per_page = 8
-    offset = (page -1) * per_page
+    offset = (page - 1) * per_page
     # Find category by ID:
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     # Find definitions by category name:
@@ -189,7 +189,7 @@ def login():
         if existing_user:
             # Ensure the hashed password matches user input:
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
+                    existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome {}".format(
                     request.form.get("username")))
@@ -232,8 +232,8 @@ def profile(user):
                 {"_id": {"$in": new_arr}}
             ))
             return render_template("profile.html", user=user,
-                                    definitions=user_definitions,
-                                    user_favourites=favourites)
+                                   definitions=user_definitions,
+                                   user_favourites=favourites)
 
         # If false or doesn't exist, redirect to login:
         return redirect(url_for("login"))
@@ -289,7 +289,7 @@ def add_definition():
         categories = list(mongo.db.categories.find().sort(
                                 "category_name", 1))
         return render_template("add_definition.html",
-                                categories=categories)
+                               categories=categories)
     else:
         flash("You must be logged in to add a definition")
         return redirect(url_for('login'))
@@ -331,14 +331,16 @@ def edit_definition(definition_id):
                     "upvote": request.form.get("upvote", 0),
                     "downvote": request.form.get("downvote", 0)
                 }
-                mongo.db.definitions.update_one({"_id": ObjectId(definition_id)}, {"$set": submit})
+                mongo.db.definitions.update_one(
+                    {"_id": ObjectId(definition_id)}, {"$set": submit})
                 flash("Your definition has been updated successfully.")
             definition = mongo.db.definitions.find_one(
                 {"_id": ObjectId(definition_id)})
-            categories = list(mongo.db.categories.find().sort("category_name", 1))
+            categories = list(mongo.db.categories.find().sort(
+                "category_name", 1))
             return render_template("edit_definition.html",
-                                    definition=definition,
-                                    categories=categories)
+                                   definition=definition,
+                                   categories=categories)
         else:
             flash("I'm afraid you can only edit your own posts")
             return redirect(url_for('get_definitions'))
@@ -439,7 +441,7 @@ def downvote(definition_id):
         # Grab user from the database:
         user = mongo.db.users.find_one(
             {"username": session["user"]})
-        
+
         # Grab definition from the db using the definition ID:
         definition = mongo.db.definitions.find_one(
             {"_id": ObjectId(definition_id)}
@@ -518,8 +520,8 @@ def get_categories():
             categories = list(mongo.db.categories.find().sort(
                 "category_name", 1))
             return render_template("categories.html",
-                                    categories=categories,
-                                    user=session["user"])
+                                   categories=categories,
+                                   user=session["user"])
         else:
             flash("Whoops!")
             return render_template("403.html")
@@ -582,7 +584,7 @@ def edit_category(category_id):
             category = mongo.db.categories.find_one(
                     {"_id": ObjectId(category_id)})
             return render_template("edit_category.html",
-                                    category=category)
+                                   category=category)
         else:
             flash("Whoops!")
             return render_template("403.html")
@@ -616,7 +618,7 @@ def delete_category(category_id):
         return redirect(url_for('login'))
 
 
-# Error handlers
+# Error handlers custom pages
 # https://flask.palletsprojects.com/en/2.0.x/errorhandling/#custom-error-pages
 
 @app.errorhandler(403)
