@@ -81,6 +81,24 @@ p {
 .add {
     background-color: #17DCC6;
 }
+
+.login {
+    background-color: #080886;
+}
+
+.login:hover {
+    background-color: #3b3bec;
+    
+}
+
+.register {
+    background-color: #801124;
+}
+
+.register:hover {
+    background-color: #cf0820
+}
+
 /*---------------------- Navbar: */
 .nav-dark {
     background-color: #030301;
@@ -189,6 +207,21 @@ footer p {
     line-height: 2;
 }
 
+/*---------------------- Login/Register:*/
+.card 
+.card-action 
+a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating){
+    color: #ce1678;
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+}
+
+.card 
+.card-action 
+a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
+    color: #f859ae;
+}
+
 /*---------------------- Index pg: */
 .hero-image {
     background: url('../images/site-images/home-pg-img.webp');
@@ -197,7 +230,7 @@ footer p {
     background-repeat: no-repeat;
     position: relative;
     background-size: cover;
-    height: 80vh;
+    height: 70vh;
 }
 
 .intro {
@@ -210,7 +243,22 @@ footer p {
 }
 
 .home-info a {
-    color: #17DCC6;
+    color: #310bda;
+}
+
+.home-info a:hover {
+    color: #281096;
+}
+
+.join a {
+    font-family: "Raleway", sans-serif;
+    color: #fffff3;
+}
+
+.join .search {
+    color: #ffffff;
+    background-color: #d81d3f;
+    text-shadow: 2px 1px 1px #030301;
 }
 /*---------------------- Card panels: */
 .card {
@@ -334,6 +382,8 @@ footer p {
     text-transform: none;
     font-size: larger;
     margin: 5px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #030301;
 }
 
 .add-btn {

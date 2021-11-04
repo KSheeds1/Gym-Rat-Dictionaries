@@ -9,12 +9,12 @@
             <div class="col s12">
                 <h1 class="header black-text">Welcome to Gym Rat Dictionaries</h1>
                 <div class="divider"></div>
-                <h3><em>Your one stop shop for exercise definitions!</em></h3>
+                <h2><em>Your one stop shop for exercise definitions!</em></h2>
                 <p class="home-info">Have you ever came across an exercise and not known how to perform the movement? 
                     Confused by terms such as Barbell Good Mornings or Dumbbell External Rotations? Well look no further!
                     GRD is a dictionary of exercise terms curated by our wonderful users! Browse through our most recently 
                     added definitions over on <a href="{{ url_for('get_definitions') }}">definitions</a> or search for a specific 
-                    definition using our search feature! <a class="btn-floating btn-small search" id="search"><i class="fas fa-search fa-xs"></i></a>
+                    definition using our search feature! <a class="btn-floating btn-small search"><i class="fas fa-search fa-xs"></i></a>
                 </p>
                 <p class="home-info">GRD is a community built site, with gym rats of all fitness levels coming together to contribute a variety
                     of exercise definitions to help cut through the jargon associated with exercise. Our purpose is to provide a 
@@ -32,10 +32,10 @@
                     <h3 class="black-text">Got knowledge to impart? - Join our community!</h3>
                     <p class="home-info">Register with us today and be able to add your own definitions to Gym Rat Dictionaries!</p>
                 </div>
-                <div>
-                    <a href="{{ url_for('register') }}" class="delete btn-large z-depth-3"><strong>Register</strong></a>
-                    <a href="{{ url_for('login') }}" class="add btn-large z-depth-3"><strong>Login</strong></a>
-                    <a class="search btn-large z-depth-3"><strong>Search</strong></a>
+                <div class="join">
+                    <a href="{{ url_for('register') }}" class="register btn-large z-depth-3">Register</a>
+                    <a href="{{ url_for('login') }}" class="login btn-large z-depth-3">Login</a>
+                    <a class="search btn-large z-depth-3">Search</a>
                 </div>
             </div>
         </div>
