@@ -1,14 +1,15 @@
 # Gym Rat Dictionaries
 
-*Gym Rat Dictionaries* is a online glossary of all the workout and exercise terminology you may come across when beginning your fitness journey. *GRD* is a community built site, with gym rats of all fitness levels coming together to contribute a variety of exercises that you may come across in your fitness journey. 
+*Gym Rat Dictionaries* is a online glossary of all the workout and exercise terminology you may come across during your fitness journey. *GRD* is a community built site, with gym rats of all fitness levels coming together to contribute a variety of exercises that you may come across in your fitness journey. 
 
-Are you new to fitness and left a little confused by all exercise jargon? Still working out what a Barbell Good Morning is?
+Are you new to fitness and left a little confused by all exercise jargon? Still working out what a Barbell Good Morning is? Well look no further! *Gym Rat Dictionaries* is a dictionary of exercise terms curated by our wonderful users. Our purpose is to provide a site that will be beneficial to those at any level of fitness. For those who are just starting off and struggling with the terminology, to those who are well versed in the fitness world and want to impart their knowledge to others!
 
 # Demo
-Visit the live site here
+Visit the live site [here](https://gym-rat-dictionaries.herokuapp.com/)
+![Am I Responsive image]()
 
 # Contents:
-### UX:
+### [UX:](#ux)
   * [User Stories](#user-stories)
   * [Strategies](#strategies)
   * [Scope](#scope)
@@ -16,33 +17,33 @@ Visit the live site here
   * [Skeleton](#skeleton)
   * [Surface](#surface)
 
-### Features:
+### [Features:](#features)
   * [Existing Features](#existing-features)
   * [Features left to implement](#features-left-to-implement)
 
-### Technologies Used:
+### [Technologies Used:](#technology-used)
   * [Languages](#languages)
   * [Frameworks and Libraries](#frameworks-and-libraries)
   * [Others](#others)
 
-### Database - MongoDB 
+### [Database - MongoDB](#database---mongodb) 
   * [Schema / Data Model](#schema-/-data-model)
   * [Breakdown of collections](#breakdown-of-collections)
 
-### Testing:
+### [Testing:](#testing)
 * [Testing User Stories](#testing-user-stories)
-* [Bugs: discovered & resolved during development](#bugs:-discovered-&-resolved-during-development)
+* [Bugs: discovered & resolved during development:](#bugs-discovered-and-resolved-during-development)
 * [Manual functionality testing](#manual-functionality-testing)
 * [Responsive Testing](#responsive-testing)
 * [Validation Testing](#validation-testing)
 * [Lighthouse performance](#lighthouse-performance)
 
-### Deployment:
+### [Deployment:](#deployment)
   * [Git](#git)
   * [GitHub](#github)
   * [Heroku](#heroku) 
 
-### Credits:
+### [Credits:](#credits)
   * [Code](#code)
   * [Content](#content)
   * [Acknowledgements](#acknowledgements)
@@ -173,20 +174,22 @@ As the app was constructed in a mobile-first approach with user interaction and 
 
 
 ### **User Accounts:**
-To register or create an account with the app, the user is required to provide a unique, validated username and password. Upon logging-in, a registered user will be prompted to provide this username and password to gain access to their account. Security measures have been put in place by the site owner to protect user log-in details. 
+To register or create an account with the app, the user is required to provide a unique, validated username and password. To log in, a registered user will be prompted to provide this username and password to gain access to their account. Security measures have been put in place by the site owner to protect user log-in details. Once logged in the user will be redirected to their profile page.
+
+![Login](static/images/TESTING/UST/UST-register-2.png)
+![Profile](static/images/TESTING/UST/UST-view-my-defs.png)
 
 ### **Categories:**
 To present the data in an organised and intuitive fashion, the site owner has chosen to track and catalogue the exercise definitions by category. The following breakdown of categories have been created to help organise the definitions: 
-* Upper Body Exercises
-* Lower Body Exercises
-* Full Body Exercises
-* Core Exercises
-* Mobility Exercises
+
+![Category Dropdown Menu](static/images/TESTING/UST/UST-see-categories.png)
 
 Upon creating a definition, the user must as a requirement, select which category the definition fall underneath. 
 
 ### **Creation/Management of categories:** 
-The functionality surrounding the creation and management of categories is restricted to the site owner and admin. While registered and casual users can browse the categories available, only the site owner and admin will have access to category CRUD operations. 
+The functionality surrounding the creation and management of categories is restricted to the site owner and admin. While registered and casual users can browse the categories available, only the site owner and admin will have access to category CRUD operations. Admin can access the individual category pages through clicking on its title in category management. 
+
+![Category management](static/images/TESTING/UST/UST-add-new-cat.png)
 
 ### **Admin functionality:**
 Alongside category management and creation, admin's also have the ability to delete definitions created by registered users. This functionality was introduced through conditional formatting to grant permission to admins to delete malicious or unrelated content from the site on behalf of the users.

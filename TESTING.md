@@ -448,6 +448,9 @@ INSERT IMG OF FORM AND FLASH MESSAGE
 Users of the app have the ability to read data in the following areas of the site:
 
 **Home page:**
+* Site information and links.
+
+**Definitions:**
 * Recently added definitions.
 
 **Categories:**
@@ -541,7 +544,7 @@ Users **must be logged in to 'upvote' or 'downvote'** on a definition, this func
 
 **On definitions.html:**
 * Login or register with the site.
-* Navigate to the home page from the nav-bar
+* Navigate to the definitions page from the nav-bar
 *   Choose whether to  'upvote' or 'downvote' a definition
 	* Click on 'thumbs up' icon to upvote
 	* Click on 'thumbs down' icon to downvote
@@ -557,7 +560,6 @@ Users **must be logged in to 'upvote' or 'downvote'** on a definition, this func
 
 **From search query results:**
 * Login or register with the site.
-* Navigate to the home page from the nav-bar
 * On larger viewports, click on either of the magnify icon in the nav-bar or in the FAB to reveal the search bar
 * On smaller viewports, navigate to the search bar by using the search FAB.
 * Once redirected to the search bar, provide a search query and hit search
@@ -566,6 +568,8 @@ Users **must be logged in to 'upvote' or 'downvote'** on a definition, this func
 	* Click on 'thumbs up' icon to upvote
 	* Click on 'thumbs down' icon to downvote
 * This triggers either the upvote or downvote function and increments the count by one 
+
+**Note:** If a user has already upvoted or downvoted a definition, they will notified of this and the count will not be incremented. To remove an upvote or downvote, click on the vote chosen again to remove your vote from the count. Users are then available to vote again. 
 
 ## **User favourites:** 
 This functionality has been implemented in the following areas of the site: 
@@ -588,28 +592,29 @@ Once the user adds a definition to their favourites, they can be viewed on their
 
 **From search query results:**
 * On larger viewports, click on either of the access options (magnify icon in the navbar or in the FAB) to reveal the search bar
-* On smaller viewports, navigate to the search bar by using the search FAB or navigate to the home page from the nav-bar.
+* On smaller viewports, navigate to the search bar by using the search FAB.
 * Once redirected to the search bar, provide a search query and hit search
 *  This triggers the search function and the search query results are made available to user below the search bar
 *  Choose the definition you wish to add to your favourites
 * Click on the 'add to favourites' icon available on all definition cards
 * The page is reloaded and user feedback is provided in the form of a flash message "Saved to favourites."
- 
+
+**Note:** If a user has already added the definition to their favourites, they will be prompted of this through a flash message and a duplicate of the definition will not be added to their favourites.
+INSERT IMG OF FLASH
 
 ## **Search functionality:**
-The search functionality has been implemented on definitions.html but can be accessed on any page of the site by using:
+The search functionality has been implemented on base.html but can be accessed on any page of the site by using:
 * Magnify icon in the search bar
 * Magnify icon in the FAB
 
 Clicking on either of these will redirect the user to the search bar. The search functionality was manually tested in the following manner:
 
 * On larger viewports, click on either of the access options above to reveal the search bar
-* On smaller viewports, navigate to the search bar by using the search FAB or navigate to the home page from the nav-bar.
+* On smaller viewports, navigate to the search bar by using the search FAB
 * Once redirected to the search bar, provide a search query and hit search
 *  This triggers the search function and the search query results are made available to user below the search bar
 * Click 'Reset' to clear the query and recently added definitions are returned below the search bar
-* Provide two different words in the search query eg. "glutes" "upper" and click 'search'
-This triggers the search function and the search query results are made available to user below the search bar, displaying a variety of definitions from the 'glutes' and 'upper body' categories
+* Provide two different words in the search query eg. "glutes" "upper" and click 'search'. This triggers the search function and the search query results are made available to user below the search bar, displaying a variety of definitions from the 'glutes' and 'upper body' categories
 * Click 'Reset' to clear the query and recently added definitions are returned below the search bar
 * Provide a search query that will not return a definition in the results eg. "Elephant" and click 'search'
 * This triggers the search function and the site conditionally renders the code block for if there are no definitions related to this query. 
@@ -646,6 +651,7 @@ This functionality is available to all users, not just those who are logged in o
 * Icon trigger the share modal
 * Select the social media platform you wish to share on and click to open the site in a new tab
 
+The share functionality was tested as a casual user, a logged in user and admin. 
 
 ## **Floating Action Buttons:**
 The floating action buttons are available across the site. They were tested in the following manner across multiple viewports:
@@ -655,7 +661,7 @@ The floating action buttons are available across the site. They were tested in t
 * On larger viewports: hover over the FAB to open
 	* Click the 'scroll to top' button
 	* Button triggers the function and user is scrolled to top
-On smaller viewports: click on the FAB to open
+* On smaller viewports: click on the FAB to open
 	* Click on the 'scroll to top' button
 	* Button triggers the function and user is scrolled to top
 
@@ -682,6 +688,7 @@ Flask pagination has been implemented in the following areas of the site:
 * Search query results (if necessary)
 
 This functionality was tested in the following manner on a variety of viewports: 
+
 **On definitions.html:**
 * Scroll to the bottom of the page
 * Move to the 'Next' page of results using the numbered pagination link
@@ -732,8 +739,14 @@ This functionality was tested in the following manner on a variety of viewports:
 | Register                | Click  | Redirects to register page                              | Pass      | Not visible to logged in users                                    |
 | **Section**                 |        |                                                         |           |                                                                   |
 | Message Flashing        | Click  | Displays user feedback across site                      | Pass      |                                                                   |
+| **Search Functionality** |   |   |   |   |
+| Search Bar  | GET    | Trigger search of database using query                                      | Pass | Can be accessed and rendered from base.html to any page on the site. Query results rendered on definitions.html |
+| Input Field | Type   | Query to search the database                                                | Pass | Regex pattern specifies the search pattern                                                                      |
+|             |        | Green line if validated, red line if not                                    | Pass | Required will not accept whitespace entries                                                                     |
+| Search Btn  | Click  | Triggers search function and searches the database using the query provided | Pass |                                                                                                                 |
+| Reset Btn   | Click  | Clears the prior query from the search input field                          | Pass |                                                                                                                 |
+| **Floating action buttons** |   |   |   |   |
 | Floating Action Buttons | Click  | Displays icons for search, add definition and scroll up | Pass      | Add definition functionality is only available to logged in users |
-| Search                  | Click  | Renders search bar to screen                            | Pass      |                                                                   |
 | Add definition          | Click  | Redirects to add definition form                        | Pass      | Only available to logged in users                                 |
 | Scroll to the top       | Click  | Automatically scrolls user back to the top of the page  | Pass      |                                                                   |
 | **Footer**                  |        |                                                         |           |                                                                   |
@@ -745,9 +758,6 @@ This functionality was tested in the following manner on a variety of viewports:
 ## **Definitions.html:**
 | **Element**                | **Action** | **Expected Output**                                                          | **Pass/Fail** | **Notes**                                                                        |
 |------------------------|--------|--------------------------------------------------------------------------|-----------|------------------------------------------------------------------------------|
-| **Search**             |   |                                                              |     || Search Bar             | Search | Input search query                                                       | Pass      |                                                                              |
-| Search Btn             | Search | Triggers search of database using query                                  | Pass      |                                                                              |
-| Reset Btn              | Reset  | Redirects to the home page definition.html                               | Pass      |                                                                              |
 | **Definition Card Panel**  |        |                                                                          |           |                                                                              |
 | Add to favourites icon | Click  | Triggers add_to_favourites and saves definition to user_favourites array | Pass      | Only available to logged in users, will trigger redirect to login            |
 | Share icon             | Click  | Triggers share modal and presents platforms to share to                  | Pass      |                                                                              |
@@ -777,8 +787,7 @@ This functionality was tested in the following manner on a variety of viewports:
 |--------------------|--------|--------------------------------------------------------|-----------|------------------------------------------------------------------------------------|
 | **Form**              | POST   | Fill out and submit definition to database             |           |                                                                                    |
 | Category Dropdown  | Click  | Reveals category options to choose from                | Pass      | Required                                                                           |
-| Input text fields  | Type   | Text appears, green line if validated, red line if not | Pass      | Required                                                                           |
-| Textarea           | Type   | Text appears, green line if validated, red line if not | Pass      | Required                                                                           |
+| Input text fields  | Type   | Text appears, green line if validated, red line if not | Pass      | Required, regex pattern specifies the input pattern                                                                          |
 | URL upload         | Click  | Paste in URL for image to upload with definition       | Pass      | Not required                                                                       |
 | Tooltips           | Hover  | Provide further instruction for form fields            | Pass      |                                                                                    |
 | Add definition Btn | Click  | Submits definition to the database                     | Pass      | Form will not submit if not correctly validated and all required fields filled out |
@@ -789,8 +798,7 @@ This functionality was tested in the following manner on a variety of viewports:
 |--------------------------|--------|-----------------------------------------------------------------|-----------|-------------------------------------------------------|
 | **Form**                     | POST   | Edit specific definition form and update in database                       | Pass      | Filled with pre-existing data to be edited as chosen |
 | Category select dropdown | Click  | Reveals category selection options                              | Pass      | Required                                              |
-| Input text fields        | Type   | Text appears, green line if validated, red line if not          | Pass      | Required                                              |
-| Textarea                 | Type   | Text appears, green line if validated, red line if not          | Pass      | Required                                              |
+| Input text fields        | Type   | Text appears, green line if validated, red line if not          | Pass      | Required, regex pattern specifies the input pattern                                             |
 | Tooltip                  | Hover  | Provides further instruction for form fields                    | Pass      |                                                       |
 | URL image upload         | Click  | Include URL of image to upload with definition                  | Pass      | Not required                                          |
 | Edit Btn                 | Click  | Triggers edit_definition function and uploads edited definition | Pass      |                                                       |
@@ -807,7 +815,7 @@ This functionality was tested in the following manner on a variety of viewports:
 | Delete Btn       | Click  | Triggers delete_definition function and deletes a specific definition | Pass      |       |
 | Add Category Btn | Click  | Triggers add_category function and redirects to add category form     | Pass      |       |
 
-## Category_pg.html:
+## **Category_pg.html:**
 | **Elements**         | **Action** | **Expected Output**                                                       | **Pass/Fail** | **Notes**                                             |
 |------------------|--------|-----------------------------------------------------------------------|-----------|---------------------------------------------------|
 | **Category_pg**      |        | Dynamically generates category page upon selection from dropdown menu | Pass      |                                                   |
@@ -819,12 +827,20 @@ This functionality was tested in the following manner on a variety of viewports:
 | Pagination Links | Click  | Numbered buttons to redirect to specific page                         | Pass      |                                                   |
 | >> Btn           | Click  | Redirect to next page                                                 | Pass      |                                                   |
 
+## **Add_category.html:**
+
+| Element          | Action | Expected Output                                        | Pass/Fail | Notes                                                          |
+|------------------|--------|--------------------------------------------------------|-----------|----------------------------------------------------------------|
+| Form             | POST   | Fill out and submit new category to the database       |           |                                                                |
+| Input field      | Type   | Text appears, green line if validated, red line if not | Pass      | Required field, cannot be left blank or filled with whitespace. Regex pattern specifies the input pattern |
+| Add Category Btn | Click  | Submits new category to the database                   | Pass      |                                                                |
+| Cancel Btn       | Click  | Redirects back to the category management page         | Pass      |                                                                |
 
 ## **Edit_category.html:**
 | **Element**           | **Action** | **Expected Output**                                           | **Pass/Fail** | **Notes**                                           |
 |-------------------|--------|-----------------------------------------------------------|-----------|-------------------------------------------------|
 | **Form**              | POST   | Edit specific category form and submit to database        | Pass      | Filled with pre-existing data to edit as chosen |
-| Input text fields | Type   | Text appears, green line if validated, red line if not    | Pass      | Required                                        |
+| Input text fields | Type   | Text appears, green line if validated, red line if not    | Pass      | Required, regex pattern specifies the input pattern                                        |
 | Tooltip          | Hover  | Provides further instruction for form fields            | Pass      |          |
 | Edit Btn          | Click  | Triggers submission of edited category                    | Pass      |                                                 |
 | Cancel Btn        | Click  | Cancels edit of category and redirects to get_categories  | Pass      |                                                 |
@@ -833,7 +849,7 @@ This functionality was tested in the following manner on a variety of viewports:
 | **Element**          | **Action** | **Expected Output**                           | **Pass/Fail** | **Notes**    |
 |------------------|--------|--------------------------------------------------------|-----------|----------|
 | Form             | POST   | Log In form, logs in user to site                      | Pass      |          |
-| Input text field | Type   | Text appears, green line if validated, red line if not | Pass      | Required |
+| Input text field | Type   | Text appears, green line if validated, red line if not | Pass      | Required, regex pattern specifies the input pattern |
 | Tooltip          | Hover  | Provides further instruction for form fields            | Pass      |          |
 | Log In Btn       | Click  | Submit btn logs user into the app                      | Pass      |          |
 | Register Link    | Click  | Redirects unregistered user to register.html           | Pass      |          |
@@ -842,7 +858,7 @@ This functionality was tested in the following manner on a variety of viewports:
 | **Element**          | **Action** | **Expected Output**                           | **Pass/Fail** | **Notes**    |
 |------------------|--------|---------------------------------------------------------|-----------|----------|
 | Form             | POST   | Registration form to sign up site visitor               | Pass      |          |
-| Input text field | Type   | Text appears, green line if validated, red line if not  | Pass      | Required |
+| Input text field | Type   | Text appears, green line if validated, red line if not  | Pass      | Required, regex pattern specifies the input pattern |
 | Tooltip          | Hover  | Provides further instruction for form fields            | Pass      |          |
 | Register Btn     | Click  | Submits registry information to the database            | Pass      |          |
 | Log In Link      | Click  | Redirect to Log In page for previously registered users | Pass      |          |
@@ -864,6 +880,22 @@ This functionality was tested in the following manner on a variety of viewports:
 | Delete Btn            | Click  | Triggers delete_definition function and deletes specific definition     | Pass      |       |
 | Cancel                | Click  | Modal close                                                             | Pass      |       |
 | Add definition Btn    | Click  | Redirects to add_definition form                                        | Pass      |       |
+
+## **Index.html:**
+| Element          | Action | Expected Output                                         | Pass/Fail | Notes                                               |
+|------------------|--------|---------------------------------------------------------|-----------|-----------------------------------------------------|
+| Definitions Link | Click  | Redirect to definition.html                             | Pass      |                                                     |
+| Search icon      | Click  | Scroll to the top of the page and toggle the search bar | Pass      | If user is at the top of site search bar is toggled |
+| Register Link    | Click  | Redirect to register.html                               | Pass      |                                                     |
+| Login Link       | Click  | Redirect to login.html                                  | Pass      |                                                     |
+| Search Link      | Click  | Scroll to the top of the page and toggle the search bar | Pass      | If user is at the top of site search bar is toggled |
+
+## **Error handler Custom pages:**
+403.html/ 404.html/ 500.html
+
+| Element     	| Action 	| Expected Output       	| Pass/Fail 	|
+|-------------	|--------	|-----------------------	|-----------	|
+| Home Button 	| Click  	| Redirect to home page 	| Pass      	|
 
 # Validation Testing
 
