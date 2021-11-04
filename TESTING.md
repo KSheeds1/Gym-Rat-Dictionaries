@@ -1,15 +1,16 @@
  # Testing documentation for Gym Rat Dictionaries
  ## Contents: 
 * [Testing User Stories](#testing-user-stories)
-* [Bugs: discovered & resolved during development](#bugs:-discovered-&-resolved-during-development:)
+* [Bugs: discovered and resolved during development:](#bugs-discovered-and-resolved-during-development)
 * [Manual functionality testing](#manual-functionality-testing)
 	* [User Authentication](#user-authentication)
 	* [CRUD Operations](#crud-operations)
 	* [Cancel functionality](#cancel-functionality)
 	* [Features](#features) 
-* [Responsive Testing](#repsonsive-testing)
 * [Validation Testing](#validation-testing)
-* [Lighthouse performance](#lighthouse-performance) 
+* [Lighthouse performance](#lighthouse-performance)
+* [Cross-browser Compatibility](#cross-browser-compatibility)
+* [Responsive Testing](#repsonsive-testing) 
 
 # Testing User Stories:
 ## ***As a regular user, I want to be able to:***
@@ -315,6 +316,31 @@ On profile.html some refactoring was necessary to help render the profile depend
 
 ![Jinja for no def added but added user fave](static/images/TESTING/Bugs/added-faves-no-defs-jinja.png)
 ![Profile rendering of added user faves no added def](static/images/TESTING/Bugs/added-faves-no-defs.png)
+
+# Maintaining the amount of upvotes and downvotes on a definition that has been 'edited'.
+While the original functionality for upvote and downvote was working, a bug arose when the a definition was updated or edited. The initial functionality added the user_id into either the upvote or downvote array stored in each definition document depending on the button clicked. It was noted however that the 'upvote' and 'downvote' arrays were emptied and the count on the respective buttons were reset to zero on a definition that had been edited. In order to resolve this issue, all aspects of the functionality was assessed. 
+
+To resolve this issue, it was necessary for the amount of upvotes and downvotes to be included in the pre-existing data sent to the edit_definition form. In order to do so, two hidden inputs were added to the edit_definition form, as these inputs do not need to be edited, they are hidden from the user. The value attribute set provides the count of the arrays. In app.py, both the upvote and downvote are requested from the form and a pre-emptive default amount is set. They are then updated with the rest of the submit dictionary.
+
+![Hidden inputs on edit definition form](static/images/TESTING/Bugs/hidden-inputs.png)
+![Sumbit dictionary from edit definition function](static/images/TESTING/Bugs/edit-def-dict.png)
+![Definition vote expression](static/images/TESTING/Bugs/definitions-page-votes.png)
+
+ 
+At this stage, the developer also introduced some structure to user voting:
+* If a user has upvoted a definition, they cannot also downvote the same definition and vice versa.
+* To remove their vote a user can click on the button again and are now free to vote again. 
+
+![Upvote function](static/images/TESTING/Bugs/upvote-f.png)
+![Downvote function](static/images/TESTING/Bugs/downvote-f.png)
+
+Upon implementing this structure, it was necessary to create two arrays for 'upvote' and 'downvote' upon creation of a definition.
+
+![Add definition dictionary from add definition function](static/images/TESTING/Bugs/add-def-dict.png)
+
+Following the changes made above the bug was resolved and a greater degree of structure was implemented to the voting functionality. 
+
+
 
 
 # Manual functionality testing:
@@ -839,8 +865,80 @@ This functionality was tested in the following manner on a variety of viewports:
 | Cancel                | Click  | Modal close                                                             | Pass      |       |
 | Add definition Btn    | Click  | Redirects to add_definition form                                        | Pass      |       |
 
-## Responsive Testing:
+# Validation Testing
 
-## Validation Testing:
+## HTML
+The HTML5 for this site was tested and validated using [W3C Markup Validation Service](https://validator.w3.org/). Due to the jinja templating used throughout, the site was tested by coping the page source of the live site and running it through the validator. Certain pages were ran through multiple times as they can render differently depending on, for example, the status of the user or, the amount of definitions that have been added to a particular category. This was the case for the following pages:
+* Profile page
+* Category_pg
 
-## Lighthouse Performance: 
+All pages were passed and validated. 
+
+## CSS
+The style.css file for this site was tested and validated using [W3C CSS Markup Validation Service](https://jigsaw.w3.org/css-validator/).  The CSS returned free of errors. Following this, the CSS was then parsed and had vendor prefixes added using [Autoprefixer CSS Online](https://autoprefixer.github.io/).
+INSERT IMG OF CSS VALIDATION
+
+## JavaScript
+The script.js file for this project was validated using [JSHint](https://jshint.com/).  The file was flagged for missing semicolons, however once this was rectified there was no errors in the script.js file. 
+
+## Python
+The app.py file was validated using [PEP8 Online](http://pep8online.com/). The only errors flagged were due to either 'continuation line with the same indent as next logical line' or continuation line over/under indented for visual indent.' Once the changes were made the code passed all checks.
+
+
+# Lighthouse Performance
+Coming to the end of the development stage for the project, a lighthouse report was generated using [Chrome Dev Tools](https://developers.google.com/web/tools/lighthouse). The initial scores suggested some improvements could be made.
+INSERT IMG OF FIRST LIGHTHOUSE
+
+The following changes were made to improve the scores: 
+
+**Performance:**
+* The hero image used on index.html was converted from JPEG to WebP format for better compression and a quicker first contextual paint. 
+* The height of the hero image was also reduced.
+
+**Accessibility:**
+* Use sequential headers throughout the site. 
+* Alter the color of buttons and anchor links to increase visibility and contrast.
+
+**SEO:**
+* Include additional metadata tags in the head of base.html
+
+The changes made helped increase these scores. While I would have preferred a higher score for the performance and SEO. However, when reports were generated for other pages of the site, higher scores in these areas were achieved.
+
+# Cross-browser compatibility 
+To test for cross-browser compatibility, the site was tested using [PowerMapper](https://www.powermapper.com/). Cross-browser compatibility tested well. 
+
+The only issue flagged here was:
+"The `display: flex` CSS property (that was added to the body element) does not work correctly in some browsers" and indicated that this would be an issue with Internet Explorer 11.
+
+To verify this issue, I consulted [Browserling](https://www.browserling.com/). While the `display: flex` did not seem to cause an issue, the newly formatted hero image was no longer displaying. While the WebP format is widely supported across modern browsers, it is not a format that is supported by older browsers.
+
+To rectify this issue, 
+
+
+
+# Responsive Testing
+The site's responsiveness was testing on the following devices in person:
+
+**Mobile:**
+* Huawei P30 Pro
+	* Google Chrome
+	* Huawei Browser
+* Samsung 
+	* Google Chrome
+	* Samsung Internet
+
+**Tablet:**
+* HP Envy x360 - Tablet mode (portrait & landscape)
+
+**Desktop:**
+* HP Envy x360
+	* Google Chrome
+	* Microsoft Edge
+	* Mozilla Firefox
+	* Opera 
+
+**Chrome Dev Tools:**
+Was employed to view the site on a larger variety viewports. 
+
+**Responsinator:**
+Was employed where a device or browser wasn't accessible.
