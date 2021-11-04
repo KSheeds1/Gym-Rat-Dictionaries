@@ -403,6 +403,9 @@ a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):h
     color: #030301;
 }
 
+.btn {
+    margin: 0.5px;
+}
 /*---------------------- Add Definition Form: */
 .input-field .prefix {
     left: 1rem;
