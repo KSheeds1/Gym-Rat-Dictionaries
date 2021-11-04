@@ -348,57 +348,78 @@ Following the changes made above the bug was resolved and a greater degree of st
 # User Authentication: 
 
 ## **Registration functionality:**
-Following completion of the function register(), the function and form were tested manually. The functionality was tested in the following manner: 
+Following completion of the function register, the function and form were tested manually. The functionality was tested in the following manner: 
 
-1. Attempt registration by providing **neither** a username or password and clicking on the 'Register' button.:
-	INSERT PIC HERE
+1. Attempt registration by providing **neither** a username or password and clicking on the 'Register' button:
+
+	![Register img](static/images/TESTING/MT/register-1-min.png)
+
 	**Result:** User is prompted to fill in the fields. 
 	
 2. Attempt registration with an **invalid** username and **valid** password:
-INSERT PIC HERE
-**Result:** User is prompted to 'Please match the format requested', the form validation or pattern recognition required has not been met for the username. 
+
+	![Register 2](static/images/TESTING/MT/register-2-min.png)
+
+	**Result:** User is prompted to 'Please match the format requested', the form validation or pattern recognition required has not been met for the username. 
 
 3. Attempt registration by submitting the form filling out both inputs with nothing but spaces:
-INSERT PIC HERE
-**Result:** User is again prompted to 'Please match the format requested' and the form validation and pattern recognition are throwing errors. 
+
+	![Register 3](static/images/TESTING/MT/register-3-min.png)
+
+	**Result:** User is again prompted to 'Please match the format requested' and the form validation and pattern recognition are throwing errors. 
 
 4. Attempt registration with a **valid** username and an **invalid** password:
-INSERT PIC HERE
-**Result:** User is prompted to 'Please match the format requested'. The form validation and pattern recognition are throwing errors for the password. 
+
+	![Register 4](static/images/TESTING/MT/register-4-min.png)
+
+	**Result:** User is prompted to 'Please match the format requested'. The form validation and pattern recognition are throwing errors for the password. 
 
 5. Attempt registration with a **valid** username and **valid** password: 
-INSERT PIC HERE
-**Result:**  The form validation and pattern recognition are accepting both the username and password, the user is redirected to their profile and receive a flash message of 'Registration Successful'. 
+	
+	![Register 4](static/images/TESTING/MT/register-5-min.png)
+
+	**Result:**  The form validation and pattern recognition are accepting both the username and password, the user is redirected to their profile and receive a flash message of 'Registration Successful'. 
 
 ## **Log In functionality:**
-Following completion of the function login(), the function and form were tested manually. The functionality was tested in the following manner: 
+Following completion of the function login, the function and form were tested manually. The functionality was tested in the following manner: 
 
-1. Attempt login by providing **neither** a username or password and clicking on the 'Register' button.:
-	INSERT PIC HERE
+1. Attempt login by providing **neither** a username or password and clicking on the 'Register' button:
+	
+	![Login 1](static/images/TESTING/MT/login-1-min.png)
+
 	**Result:** Neither form validation or pattern recognition requirements have been met. The user is prompted to fill in the fields.
 	 
 2. Attempt login with an **invalid** username and **valid** password:
-INSERT PIC HERE
-**Result:** The form redirects back to the login page and the user is informed by the flash message that either an incorrect username or password have been entered. 
+	
+	![Login 2](static/images/TESTING/MT/login-2-min.png)
+
+	**Result:** The form redirects back to the login page and the user is informed by the flash message that either an incorrect username or password have been entered. 
 
 3. Attempt login by submitting the form filling out both inputs with nothing but spaces:
-INSERT PIC HERE
-**Result:** User is again prompted to 'Please match the format requested' and the form validation and pattern recognition are throwing errors. 
+	
+	![Login 3](static/images/TESTING/MT/login-3-min.png)
+
+	**Result:** User is again prompted to 'Please match the format requested' and the form validation and pattern recognition are throwing errors. 
 
 4. Attempt login with a **valid** username and an **invalid** password:
-INSERT PIC HERE
-**Result:** The form redirects back to the login page and the user is informed by the flash message that either an incorrect username or password have been entered. 
+	
+	![Login 4](static/images/TESTING/MT/login-4-min.png)
+
+	**Result:** The form redirects back to the login page and the user is informed by the flash message that either an incorrect username or password have been entered. 
 
 5. Attempt login with a **valid** username and **valid** password: 
-INSERT PIC HERE
-**Result:**  The form validation and pattern recognition are accepting both the username and password, the user is redirected to their profile and receive a flash message of 'Welcome {username}'.
+	
+	![Login 5](static/images/TESTING/MT/login-5-min.png)
+
+	**Result:**  The form validation and pattern recognition are accepting both the username and password, the user is redirected to their profile and receive a flash message of 'Welcome {username}'.
 
 ## **Log Out functionality:** 
-Following completion of the function logout(), manual testing was carried out against the functionality. The functionality was tested in the following manner:
+Following completion of the function logout, manual testing was carried out against the functionality. The functionality was tested in the following manner:
 
 **1. Log in as user and logout:**
-INSERT PIC HERE
 
+![Nav for user](static/images/TESTING/MT/nav-1-min.png)
+	
 **Results:** Once logged in as a user, the changes in the nav-items is apparent, a regular user has access to the following nav-items: 
 * Home
 * Profile
@@ -408,10 +429,12 @@ INSERT PIC HERE
 
 The users login status can be confirmed in 'Cookies' found in the 'Application' section of Dev Tools, as the 'session cookie' is present. To logout the user clicks on the 'Log Out' nav-item and receives a flash message to inform them that they have been logged out and are redirected to login page. Checking against Dev Tools 'Cookies', it's noted that the session cookie has been deleted. 
 
-
+![Session cookie](static/images/TESTING/MT/nav-session-cookie-min.png)
+![Log Out user](static/images/TESTING/MT/logged-out-min.png)
 
 **2. Log in as admin and logout:** 
-INSERT PIC HERE
+
+![Nav for Admin](static/images/TESTING/MT/nav-2-min.png)
 
 **Results:** Once logged in as an admin, the changes in the nav-items is apparent, an admin has access to the following nav-items:
 * Home
@@ -421,6 +444,9 @@ INSERT PIC HERE
 * Log Out
 
 The admin's login status can be confirmed in 'Cookies' found in the 'Application' section of Dev Tools, as the 'session cookie' is present. To logout the admin clicks on the 'Log Out' nav-item and receives a flash message to inform them that they have been logged out and are redirected to login page. Checking against Dev Tools 'Cookies', it's noted that the session cookie has been deleted.
+
+![Session cookie](static/images/TESTING/MT/nav-session-cookie-min.png)
+![Log Out user](static/images/TESTING/MT/logged-out-min.png)
 
 
 
@@ -432,7 +458,10 @@ Following the completion of add_definition functionality, manual testing was car
  * Click on 'Add Definition' in the Navbar.
  * Once redirected to add definition form, fill out field inputs and click 'Add Definition' button.
  * User is informed of a successful creation by the Flash message and is redirected to the home page.
-INSERT IMG OF FORM AND FLASH MESSAGE
+
+![Crud add def form](static/images/TESTING/MT/crud-create-2-min.png)
+![Crud Add def flash](static/images/TESTING/MT/crud-create-min.png)
+
 
 ### Add Category: **Admin only**
 Following the completion of the add_category functionality, manual testing was carried out against the functionality. It was tested in the following manner:
@@ -442,7 +471,9 @@ Following the completion of the add_category functionality, manual testing was c
 * Fill out the necessary input fields.
 * Click 'Add Category' button.
 * Following a successful category creation, the category management page is reloaded and the admin is provided with user confirmation via a Flash message. 
-INSERT IMG OF FORM AND FLASH MESSAGE 
+
+![Crud add category](static/images/TESTING/MT/crud-create-admin-min.png)
+![Crud add category flash](static/images/TESTING/MT/crud-create-admin-2-min.png)
 
 ## **Read:**
 Users of the app have the ability to read data in the following areas of the site:
@@ -460,7 +491,6 @@ Users of the app have the ability to read data in the following areas of the sit
 * User created definitions.
 * User favourites. 
 
-ADD IMG OF ALL OF THE ABOVE
 
 ## **Update/Edit:** 
 ### Edit Definition:
@@ -471,7 +501,9 @@ Following the completion of the edit_definition functionality, manual testing wa
 * Click on the 'Edit' button available on the definition card panel.
 * Once redirected to the edit definition form, make the necessary edits to the definition. 
 * Click the 'Edit Definition' button to update the definition. 
-INSERT IMG OF FORM AND FLASH MESSAGE
+
+![Edit btn](static/images/TESTING/UST/UST-edit-delete.png)
+![Edit form](static/images/TESTING/UST/UST-edit-def-form.png)
 
 ### Edit Category: **Admin only**
 Following the completion of the edit_categories functionality, manual testing was carried out against the functionality. It was tested in the following manner:
@@ -480,7 +512,10 @@ Following the completion of the edit_categories functionality, manual testing wa
 * Edit the existing data in the edit category form.
 * Click on 'Edit Category' button.
 * Following a successful edit, the category management page is reloaded and the admin is provided with user confirmation via a Flash message.
-INSERT IMG OF FORM AND FLASH MESSAGE 
+
+![Edit Category Btn](static/images/TESTING/UST/UST-edit-cat-btn.png)
+![Edit Category Form](static/images/TESTING/UST/UST-edit-cat-form.png)
+ 
 
 ## **Delete:**
 Delete functionality/operations are available across the following areas of the app: 
@@ -494,6 +529,9 @@ Each individual definition card panel has a 'Delete' button. Prior to the deleti
 * Confirm action via the modal.
 * The user will be redirected back to their profile and will receive user feedback via a Flash message. 
 
+![Delete def btn](static/images/TESTING/UST/UST-edit-delete.png)
+![Delete confirmation](static/images/TESTING/UST/UST-delete-confirm.png)
+
 **Note:** The ability to delete a user added definition has also been extended to Admins. To delete a user added definition, admins also follow the steps outlined above. 
 
 ### Delete category:  **Admin only**
@@ -504,34 +542,43 @@ Admins have the ability to delete categories as they see fit, each category pane
 * Click the 'Delete' button on the selected panel.
 * Upon deletion of the category, the category management page will reload and the admin will be informed of a successful deletion through a Flash message. 
 * The deleted category will have been removed from the page. 
-INSERT PIC OF CATEGORY DELETION
+
+![Delete Category btn](static/images/TESTING/UST/UST-edit-cat-btn.png)
+![Delete category confirmation](static/images/TESTING/UST/UST-delete-cat-confirm.png)
 
 ## Cancel functionality: 
 The ability to 'cancel' is available across the following areas of the app:
 
 **Add definition form:**
 If a user chooses not to add a new definition they can click on the 'Cancel' button on the add definition form and will be redirected back to the home page.
-INSERT IMG OF CANCEL BUTTON
+
+![Cancel add def form](static/images/TESTING/MT/crud-create-2-min.png)
 
 **Edit definition form:**
 If a user chooses not to edit an existing definition, they can click on the 'Cancel' button on the edit definition form and will be redirected back to the home page.
-INSERT IMG OF CANCEL BUTTON
+
+![Edit form](static/images/TESTING/UST/UST-edit-def-form.png)
+
 
 **Delete definition confirmation modal:**
 Prior to the deletion of a definition, a user will be prompted to provide user confirmation via a modal. If the user chooses not to delete a definition, they can click the 'Cancel' button and be redirected back to the home/profile page.
-INSERT IMG OF DELETION MODAL  
+
+![Delete confirmation](static/images/TESTING/UST/UST-delete-confirm.png)
 
 **Add category form: [Admin only]**
 If an admin chooses not to add a new category, they can click on the 'Cancel' button on the add category form and will be redirected back to the category management page.
-INSERT IMG OF CANCEL BUTTON
+
+![Crud add category](static/images/TESTING/MT/crud-create-admin-min.png)
 
 **Edit category form: [Admin only]**
 If an admin chooses not to edit an existing category, they can click the 'Cancel' button on the edit category form and will be redirected back to the category management page.
-INSERT IMG OF CANCEL BUTTON
+
+![Edit Category Form](static/images/TESTING/UST/UST-edit-cat-form.png)
 
 **Delete category confirmation modal: [Admin only]**
 Prior to the deletion of a category, the admin will be prompted to provide user confirmation via a modal. If an admin chooses not to delete a category, they can click on the 'Cancel' button and will be redirected back to the category management page. 
-INSERT IMG OF DELETION MODAL 
+
+![Delete category confirmation](static/images/TESTING/UST/UST-delete-cat-confirm.png)
 
 # **Features:**
 ## **Upvote/Downvote:**
@@ -571,6 +618,8 @@ Users **must be logged in to 'upvote' or 'downvote'** on a definition, this func
 
 **Note:** If a user has already upvoted or downvoted a definition, they will notified of this and the count will not be incremented. To remove an upvote or downvote, click on the vote chosen again to remove your vote from the count. Users are then available to vote again. 
 
+![Up Down vote](static/images/README/up-down-vote.png)
+
 ## **User favourites:** 
 This functionality has been implemented in the following areas of the site: 
 * Definitions.html
@@ -599,6 +648,9 @@ Once the user adds a definition to their favourites, they can be viewed on their
 * Click on the 'add to favourites' icon available on all definition cards
 * The page is reloaded and user feedback is provided in the form of a flash message "Saved to favourites."
 
+![User favourite icon](static/images/README/add-to-faves-icon.png)
+![User Favourites Collection](static/images/TESTING/UST/UST-view-my-faves.png)
+
 **Note:** If a user has already added the definition to their favourites, they will be prompted of this through a flash message and a duplicate of the definition will not be added to their favourites.
 INSERT IMG OF FLASH
 
@@ -620,6 +672,10 @@ Clicking on either of these will redirect the user to the search bar. The search
 * This triggers the search function and the site conditionally renders the code block for if there are no definitions related to this query. 
 INSERT IMGS HERE
 * This can be cleared by selecting the 'reset' button in the search bar 
+
+![Search icon nav](static/images/README/search-icon.png)
+![Search bar](static/images/TESTING/UST/UST-search-bar.png)
+![Search icon FAB](static/images/README/floating-action-btns.png)
 
 
 ## **Share definitions:**
@@ -653,6 +709,9 @@ This functionality is available to all users, not just those who are logged in o
 
 The share functionality was tested as a casual user, a logged in user and admin. 
 
+![Share icon](static/images/README/share-icon.png)
+![Share modal](static/images/README/share-modal.png)
+
 ## **Floating Action Buttons:**
 The floating action buttons are available across the site. They were tested in the following manner across multiple viewports:
 
@@ -680,6 +739,8 @@ The floating action buttons are available across the site. They were tested in t
 * On smaller viewports: click on the FAB to open
 	* Click the magnify icon to search for a definition
 	* Button triggers the function and user is  redirected to the top of definitions.html where the search bar is NOT hidden on smaller screens. 
+
+![Floating action button](static/images/README/floating-action-btns.png)
 
 ## **Pagination:**
 Flask pagination has been implemented in the following areas of the site:
@@ -710,7 +771,7 @@ This functionality was tested in the following manner on a variety of viewports:
 * Move to the 'Previous' page using the numbered pagination link
 * Move to the 'Previous page using the << icon pagination link
 
- 
+![Pagination](static/images/README/pagination.png)
 
  ## **Base.html**
 
