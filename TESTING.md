@@ -504,6 +504,7 @@ Following the completion of the edit_definition functionality, manual testing wa
 
 ![Edit btn](static/images/TESTING/UST/UST-edit-delete.png)
 ![Edit form](static/images/TESTING/UST/UST-edit-def-form.png)
+![Edit def flash](static/images/TESTING/MT/edit-def-flash.png)
 
 ### Edit Category: **Admin only**
 Following the completion of the edit_categories functionality, manual testing was carried out against the functionality. It was tested in the following manner:
@@ -515,6 +516,7 @@ Following the completion of the edit_categories functionality, manual testing wa
 
 ![Edit Category Btn](static/images/TESTING/UST/UST-edit-cat-btn.png)
 ![Edit Category Form](static/images/TESTING/UST/UST-edit-cat-form.png)
+![Edit flash](static/images/TESTING/MT/cat-edit-flash.png)
  
 
 ## **Delete:**
@@ -531,6 +533,7 @@ Each individual definition card panel has a 'Delete' button. Prior to the deleti
 
 ![Delete def btn](static/images/TESTING/UST/UST-edit-delete.png)
 ![Delete confirmation](static/images/TESTING/UST/UST-delete-confirm.png)
+![Delete def flash](static/images/TESTING/MT/delete-def-flash.png)
 
 **Note:** The ability to delete a user added definition has also been extended to Admins. To delete a user added definition, admins also follow the steps outlined above. 
 
@@ -545,6 +548,7 @@ Admins have the ability to delete categories as they see fit, each category pane
 
 ![Delete Category btn](static/images/TESTING/UST/UST-edit-cat-btn.png)
 ![Delete category confirmation](static/images/TESTING/UST/UST-delete-cat-confirm.png)
+![Delete category flash](static/images/TESTING/MT/cat-delete-flash.png)
 
 ## Cancel functionality: 
 The ability to 'cancel' is available across the following areas of the app:
@@ -619,6 +623,8 @@ Users **must be logged in to 'upvote' or 'downvote'** on a definition, this func
 **Note:** If a user has already upvoted or downvoted a definition, they will notified of this and the count will not be incremented. To remove an upvote or downvote, click on the vote chosen again to remove your vote from the count. Users are then available to vote again. 
 
 ![Up Down vote](static/images/README/up-down-vote.png)
+![Already upvoted](static/images/TESTING/MT/already-upvoted-flash.png)
+![Removed upvote](static/images/TESTING/MT/upvote-removed-flash.png)
 
 ## **User favourites:** 
 This functionality has been implemented in the following areas of the site: 
@@ -670,12 +676,12 @@ Clicking on either of these will redirect the user to the search bar. The search
 * Click 'Reset' to clear the query and recently added definitions are returned below the search bar
 * Provide a search query that will not return a definition in the results eg. "Elephant" and click 'search'
 * This triggers the search function and the site conditionally renders the code block for if there are no definitions related to this query. 
-INSERT IMGS HERE
-* This can be cleared by selecting the 'reset' button in the search bar 
+* Queries can be cleared by selecting the 'reset' button in the search bar 
 
 ![Search icon nav](static/images/README/search-icon.png)
 ![Search bar](static/images/TESTING/UST/UST-search-bar.png)
 ![Search icon FAB](static/images/README/floating-action-btns.png)
+![Search no result](static/images/TESTING/MT/search-no-results-min.png)
 
 
 ## **Share definitions:**
