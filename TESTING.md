@@ -749,6 +749,27 @@ The floating action buttons are available across the site. They were tested in t
 
 ![Floating action button](static/images/README/floating-action-btns.png)
 
+## Adding an image or video URL:
+Adding an image URL to a definition can be achieved in the following areas of the site:
+* Add definition form
+* Edit definition form
+
+This functionality was tested in the following manner:
+
+**Add definition form:**
+* Navigate to Add definition form from the navbar
+* Fill out form fields
+* Attempt to add a URL that doesn't meet the specified regex pattern - validation and regex pattern requirements are not met, form does not submit.
+* Attempt to add a URL that meets the specified regex pattern - validation and regex pattern requirements are met, form is submitted. 
+
+**Edit definition form:**
+* Navigate to the definition you wish to add a URL to.
+* Click 'Edit' button
+* Once redirected to edit definition form, attempt to add a URL that doesn't meet the specified regex pattern - validation and regex pattern requirements are not met, form does not submit.
+* Attempt to add a URL that meets the specified regex pattern - validation and regex pattern requirements are met, form is submitted.
+
+ADD IMGS FOR TESTING
+
 ## **Pagination:**
 Flask pagination has been implemented in the following areas of the site:
 * Definitions.html
@@ -856,7 +877,7 @@ This functionality was tested in the following manner on a variety of viewports:
 | **Form**              | POST   | Fill out and submit definition to database             |           |                                                                                    |
 | Category Dropdown  | Click  | Reveals category options to choose from                | Pass      | Required                                                                           |
 | Input text fields  | Type   | Text appears, green line if validated, red line if not | Pass      | Required, regex pattern specifies the input pattern                                                                          |
-| URL upload         | Click  | Paste in URL for image to upload with definition       | Pass      | Not required                                                                       |
+| URL upload         | Type  | Paste in URL for image to upload with definition       | Pass      | Not a required field, regex pattern specifies the URL pattern                                                                       |
 | Tooltips           | Hover  | Provide further instruction for form fields            | Pass      |                                                                                    |
 | Add definition Btn | Click  | Submits definition to the database                     | Pass      | Form will not submit if not correctly validated and all required fields filled out |
 | Cancel Btn         | Click  | Cancel action and redirects back to home page          | Pass      |                                                                                    | 
@@ -868,7 +889,7 @@ This functionality was tested in the following manner on a variety of viewports:
 | Category select dropdown | Click  | Reveals category selection options                              | Pass      | Required                                              |
 | Input text fields        | Type   | Text appears, green line if validated, red line if not          | Pass      | Required, regex pattern specifies the input pattern                                             |
 | Tooltip                  | Hover  | Provides further instruction for form fields                    | Pass      |                                                       |
-| URL image upload         | Click  | Include URL of image to upload with definition                  | Pass      | Not required                                          |
+| URL image upload         | Type  | Include URL of image to upload with definition                  | Pass      | Not a required field, regex pattern specifies the URL pattern                                       |
 | Edit Btn                 | Click  | Triggers edit_definition function and uploads edited definition | Pass      |                                                       |
 | Cancel Btn               | Click  | Cancels edit of definition, redirects back to home page         | Pass      |                                                       |
 
