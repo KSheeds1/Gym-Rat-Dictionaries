@@ -658,7 +658,8 @@ Once the user adds a definition to their favourites, they can be viewed on their
 ![User Favourites Collection](static/images/TESTING/UST/UST-view-my-faves.png)
 
 **Note:** If a user has already added the definition to their favourites, they will be prompted of this through a flash message and a duplicate of the definition will not be added to their favourites.
-INSERT IMG OF FLASH
+
+![Already saved in defs](static/images/TESTING/MT/already-in-faves-min.png)
 
 ## **Search functionality:**
 The search functionality has been implemented on base.html but can be accessed on any page of the site by using:
