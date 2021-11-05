@@ -28,6 +28,9 @@
                         <li><a href="{{ url_for('category_pg', category_id=category._id) }}">{{ category.category_name}}</a></li>
                     {% endfor %}
                 </ul>
+                <ul class="show-on-medium hide-on-large-only hide-on-small-only right">
+                    <li><a class="btn-floating btn-small search" id="search"><i class="fas fa-search"></i></a></li>  
+                </ul>
                 <ul class="right hide-on-med-and-down">
                     <li><a class="btn-floating btn-small search" id="search"><i class="fas fa-search"></i></a></li>
                     <li><a href="{{ url_for('home') }}">Home</a></li>
