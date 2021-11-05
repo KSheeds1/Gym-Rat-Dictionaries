@@ -96,7 +96,7 @@ p {
 }
 
 .register:hover {
-    background-color: #cf0820
+    background-color: #cf0820;
 }
 
 /*---------------------- Navbar: */
@@ -411,17 +411,17 @@ a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):h
     left: 1rem;
 }
 
-a .image_url {
-    color: #17DCC6;
+a.image_url {
+    color: #cf0820;
     font-family: "Raleway", sans-serif;
 }
 
-a .image_url:hover {
+a.image_url:hover {
     color: #fffff3;
 }
 
-a .image_url:visited {
-    color: #1f998b;
+a.image_url:visited {
+    color: #0f554d;
 }
 
 /*---------------------- Search bar*/

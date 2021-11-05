@@ -24,8 +24,9 @@
                             <div class="divider black"></div>
                             <p class="defintion">{{ definition.exercise_description }}</p>
                             <p class="tempo">Tempo: {{ definition.tempo }}</p>
-                            {% if definition.image_url %}
-                                <a href="{{ definition.image_url }}" target="_blank" class="image_url">View the exercise in action!</a>
+                            {% if definition.imge_url %}
+                                <p>View the exercise in action<a href="{{ definition.imge_url }}" target="_blank" 
+                                    rel="noopener" title="Url for image or video of the exercise" class="image_url"> here!</a></p>
                             {% endif %}
                             <p class="created_by"><i class="fas fa-user"></i><em> {{ definition.created_by }}</em></p>
                         </div>
