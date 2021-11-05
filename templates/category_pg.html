@@ -28,12 +28,12 @@
                                 </strong>
                                 <div class="divider black"></div>
                                 <p class="defintion">{{ definition.exercise_description}}</p>
-                                <p class="tempo">Tempo: {{ definition.tempo }}</p>
+                                <p class="tempo"><b>Tempo:</b> {{ definition.tempo }}</p>
                                 {% if definition.imge_url %}
-                                    <p>View the exercise in action<a href="{{ definition.imge_url }}" target="_blank"
+                                    <p><b>View the exercise in action</b><a href="{{ definition.imge_url }}" target="_blank"
                                         rel="noopener" title="Url for image or video of the exercise" class="image_url"> here!</a></p>
                                 {% endif %}
-                                <p class="created_by"><i class="fas fa-user"></i><em> {{ definition.created_by }}</em></p>
+                                <p class="created_by"><i class="fas fa-user"></i><em><b> {{ definition.created_by }}</b></em></p>
                             </div>
                             <div class="card-action">
                                 <a href="{{ url_for('upvote', definition_id=definition._id) }}" class="add btn-small tooltipped"

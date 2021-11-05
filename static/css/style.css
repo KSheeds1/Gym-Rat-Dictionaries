@@ -286,7 +286,7 @@ a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):h
 }
 
 .card .card-content p {
-    color: #fffff3;
+    color: #030301;
     margin: 10px 0 5px 0;
 }
 
@@ -411,17 +411,18 @@ a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):h
     left: 1rem;
 }
 
+/*---------------------- Definition card panel image url:*/
 a.image_url {
     color: #cf0820;
     font-family: "Raleway", sans-serif;
 }
 
-a.image_url:hover {
-    color: #fffff3;
+a.image_url:visited {
+    color: #CC0018;
 }
 
-a.image_url:visited {
-    color: #0f554d;
+a.image_url:hover {
+    color: #fffff3;
 }
 
 /*---------------------- Search bar*/
