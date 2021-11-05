@@ -112,7 +112,103 @@ The required content for the site is the framework put in place to guide users t
 ## **Skeleton:**
 **Wireframes:**
 Wireframes were created for each HTML file across a variety of viewports. (mobile, tablet/iPad, laptop/desktop)
-The wireframes for each can be viewed [here](). 
+
+**Landing/Home page:**
+
+[Desktop](static/images/README/wireframes/home-pg-desktop.png)
+
+[Tablet](static/images/README/wireframes/home-pg-tablet.png)
+
+[Mobile](static/images/README/wireframes/home-pg-mobile.png)
+
+**Definitions Page:**
+
+[Desktop](static/images/README/wireframes/definitions-pg-desktop.png)
+
+[Tablet](static/images/README/wireframes/definitions-pg-tablet.png)
+
+[Mobile](static/images/README/wireframes/definitions-pg-mobile.png)
+
+**Add Definition Page:**
+
+[Desktop](static/images/README/wireframes/create-definition-pg-desktop.png)
+
+[Tablet](static/images/README/wireframes/create-definition-pg-tablet.png)
+
+[Mobile](static/images/README/wireframes/create-definition-pg-mobile.png)
+
+**Edit Definition Page:**
+
+[Desktop](static/images/README/wireframes/edit-definition-form-desktop.png)
+
+[Tablet](static/images/README/wireframes/edit-definition-form-tablet.png)
+
+[Mobile](static/images/README/wireframes/edit-definition-form-mobile.png)
+
+**Category Page:**
+
+[Desktop](static/images/README/wireframes/category_pg-desktop.png)
+
+[Tablet](static/images/README/wireframes/category_pg-tablet.png)
+
+[Mobile](static/images/README/wireframes/category_pg-mobile.png)
+
+**Category Management:**
+
+[Desktop](static/images/README/wireframes/categories-desktop.png)
+
+[Tablet](static/images/README/wireframes/categories-tablet.png)
+
+[Mobile](static/images/README/wireframes/categories-mobile.png)
+
+**Add Category Page:**
+
+[Desktop](static/images/README/wireframes/add-category-desktop.png)
+
+[Tablet](static/images/README/wireframes/add-category-tablet.png)
+
+[Mobile](static/images/README/wireframes/add-category-mobile.png)
+
+**Edit Category Page:**
+
+[Desktop](static/images/README/wireframes/edit-category-desktop.png)
+
+[Tablet](static/images/README/wireframes/edit-category-tablet.png)
+
+[Mobile](static/images/README/wireframes/edit-category-mobile.png)
+
+**Profile Page:**
+
+[Desktop](static/images/README/wireframes/profile-pg-desktop.png)
+
+[Tablet](static/images/README/wireframes/profile-pg-tablet.png)
+
+[Mobile](static/images/README/wireframes/profile-pg-mobile.png)
+
+**Login Page:**
+
+[Desktop](static/images/README/wireframes/login-pg-desktop.png)
+
+[Tablet](static/images/README/wireframes/login-pg-tablet.png)
+
+[Mobile](static/images/README/wireframes/login-pg-mobile.png)
+
+**Register Page:**
+
+[Desktop](static/images/README/wireframes/register-pg-desktop.png)
+
+[Tablet](static/images/README/wireframes/register-pg-tablet.png)
+
+[Mobile](static/images/README/wireframes/register-pg-mobile.png)
+
+**Error Pages:**
+
+[Desktop](static/images/README/wireframes/error-handler-pg-desktop.png)
+
+[Tablet](static/images/README/wireframes/error-handler-pg-tablet.png)
+
+[Mobile](static/images/README/wireframes/error-handler-pg-mobile.png)
+
 
 ## **Surface:**
 **Aesthetic:**
@@ -165,7 +261,9 @@ The navigation bar is available in the default position and allows users to quic
 The changes in the nav-items presented in the navigation bar depend solely on the status of the user. Changes will be seen depending on whether you are casually browsing, are registered user, or a site admin. For both the registered user and site admin there is additional functionality made available. 
 
 ### **Search Functionality:**
-As the app was constructed in a mobile-first approach with user interaction and experience in mind, the choice was made to build the search bar functionality directly below the navigation bar. It is hidden until toggled by the search icons as seen in the navbar (on larger viewports) and in the floating action button available on the bottom right hand corner of the screen. This was implemented to aid users on the go, perhaps at the gym, mid-workout.  It minimises the amount of limited time a user has to spend trying to find the exercise definition they are looking for. As the site's function is primarily a glossary or dictionary, its search functionality needs to be easily identified and accessed. 
+As the app was constructed in a mobile-first approach with user interaction and experience in mind, the choice was made to build the search bar functionality directly below the navigation bar. It is hidden until toggled by the search icons as seen in the navbar, or in the floating action button available on the bottom right hand corner of the screen. This was implemented to aid users on the go, perhaps at the gym, mid-workout. It minimises the amount of limited time a user has to spend trying to find the exercise definition they are looking for. As the site's function is primarily a glossary or dictionary, its search functionality needs to be easily identified and accessed.
+
+Initially, in the pre-development stage of the project, the plan was to add the search bar into the navbar itself, as documented in the wireframes of the project. However it was decided to alter its positioning in the development stage to just below the navigation. It is accessible on all site pages and the search results are rendered on definitions.html.s 
 
 
 ![Search Icon](static/images/README/search-icon.png)
@@ -231,6 +329,12 @@ The decision to integrate the option to share a definition was twofold, it would
 ![Share icon](static/images/README/share-icon.png)
 
 ![Share Modal](static/images/README/share-modal.png)
+
+### **Adding an image or video URL:**
+
+Users have the option to upload an image or video URL to include with their definition. This can be done when creating a new definition by pasting the URL into the appropriate input field, or can be added at a later stage by adding the URL to the appropriate field in the edit definition form. Only URL's will be accepted into this input field to be uploaded to the database. The images or videos will not be displayed on the definition panel or the site but will be accessed in a new, external tab. This functionality was implemented solely to supplement the definitions and provide further visual context to the user. 
+
+INSERT IMG HERE OF LINK
 
 ### **Pagination:**
 Was implemented in the following areas to increase UX and to break up content-heavy pages:
@@ -329,7 +433,7 @@ This will be extremely helpful as the database expands and will help users navig
 
 
 # **Testing:**
-Due to the size of the testing section, you can find all documentation related to the testing of Gym Rat Dictionaries [here](/TESTING.md).
+Due to the size of the testing section, you can find all documentation related to the testing of Gym Rat Dictionaries [here](/TESTING.md)
 
 # **Deployment:**
 ## **Git:**
