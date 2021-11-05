@@ -109,7 +109,9 @@
                         <i class="fas fa-search prefix pink-text"></i>
                         <!--Regex pattern used is taken from https://stackoverflow.com/questions/5599934/regular-expression-that-allows-spaces-in-a-string-but-not-only-blank-spaces/5599987-->
                         <input type="text" name="query" id="query" pattern="^(?!\s*$)[-a-zA-Z0-9_:,'.\s]{3,60}$" 
-                                minlength="3" maxlength="60" class="validate white-text" required>
+                                minlength="3" maxlength="60" class="validate white-text"
+                                oninvalid="this.setCustomValidity('The search field accepts a-zA-Z0-9. Entries consisting of just blank spaces will not be accepted.')"
+                                oninput="this.setCustomValidity('')" required>
                         <label for="query">Search for definitions</label>
                     </div>
                 </div>
