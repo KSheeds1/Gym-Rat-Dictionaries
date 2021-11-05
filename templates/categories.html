@@ -10,11 +10,15 @@
             <div class="col s12 m4">
                 <div class="card center-align category-cards grey z-depth-5">
                     <div class="card-content">
-                        <a href="{{ url_for('category_pg', category_id=category._id) }}"><span class="black-text card-title">{{ category.category_name }}</span></a>
+                        <a href="{{ url_for('category_pg', category_id=category._id) }}">
+                            <span class="black-text card-title">{{ category.category_name }}</span>
+                        </a>
                     </div>
                     <div class="card-action">
                         <a href="{{ url_for('edit_category', category_id=category._id) }}" class="edit btn-small">Edit</a>
-                        <a href="{{ url_for('delete_category', category_id=category._id) }}" data-target="#modal3{{ category._id }}" class="delete modal-trigger btn-small">Delete</a>
+                        <a href="{{ url_for('delete_category', category_id=category._id) }}" 
+                            data-target="#modal3{{ category._id }}" class="delete modal-trigger btn-small">Delete
+                        </a>
                     </div>
                 </div>
             </div>
@@ -37,11 +41,11 @@
         <div class="col s12 m4">
             <div class="card center-align grey z-depth-5">
                 <div class="card-content black-text">
-                    <span class="card-title">Create new category?</span> 
+                    <span class="card-title">Add new category?</span> 
                 </div>
                 <div class="card-action">
                     <a href="{{ url_for('add_category') }}" class="btn-small add">
-                        <i class="fas fa-plus-square"></i> Add Category
+                        Add Category
                     </a>
                 </div>
             </div>
