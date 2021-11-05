@@ -23,8 +23,9 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-pencil-alt prefix pink-text"></i>
-                    <input id="exercise_name" name="exercise_name" pattern="^(?!\s*$)[-a-zA-Z0-9_:,'.\s]{5,60}$" minlength="5" maxlength="60" type="text"
-                        class="validate" required>
+                    <input id="exercise_name" name="exercise_name" pattern="^(?!\s*$)[-a-zA-Z0-9_:,?!'.\s]{5,60}$" minlength="5" maxlength="60" type="text"
+                        class="validate" oninvalid="this.setCustomValidity('This field accepts a-zA-Z0-9,?!. Entries consisting of just blank spaces will not be accepted.')"
+                        oninput="this.setCustomValidity('')" required>
                     <label for="exercise_name">Exercise Name</label>
                 </div>
             </div>
@@ -32,8 +33,11 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-align-left prefix pink-text"></i>
-                    <input id="exercise_description" name="exercise_description" pattern="^(?!\s*$)[-a-zA-Z0-9_:,'.\s]{5,500}$" minlength="5" maxlength="500"
-                        type="text" class="validate" required>
+                    <input id="exercise_description" name="exercise_description" pattern="^(?!\s*$)[-a-zA-Z0-9_:,?!'.\s]{5,500}$" minlength="5" maxlength="500"
+                        type="text" class="validate tooltipped" data-position="bottom" 
+                        data-tooltip="Please provide a detailed description of the exercise"
+                        oninvalid="this.setCustomValidity('This field accepts a-zA-Z0-9,?!. Entries consisting of just blank spaces will not be accepted.')"
+                        oninput="this.setCustomValidity('')" required>
                     <label for="exercise_description">Exercise Description</label>
                 </div>
             </div>
@@ -41,7 +45,10 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-stopwatch prefix pink-text"></i>
-                    <input id="tempo" name="tempo" type="number" class="validate" required>
+                    <input id="tempo" name="tempo" type="number" class="validate tooltipped" data-position="bottom" 
+                        data-tooltip="Tempo is the rate or pace at which an exercise is performed at"
+                        oninvalid="this.setCustomValidity('Tempo field only accepts numbers for eg. 2021')"
+                        oninput="this.setCustomValidity('')" required>
                     <label for="tempo">Tempo</label>
                 </div>
             </div>
@@ -51,7 +58,8 @@
                     <div class="input-field col s12">
                         <i class="fas fa-file-upload prefix pink-text"></i>
                         <input id="image_url" name="image_url" pattern="https?://.+" type="url" placeholder="Insert URL of an image or video of the exercise if you like" 
-                            class="validate">
+                            class="validate" oninvalid="this.setCustomValidity('Must be a valid URL eg. www.google.ie')" 
+                            oninput="this.setCustomValidity('')">
                         <label for="image_url">Image URL</label>
                     </div>
                 </div>

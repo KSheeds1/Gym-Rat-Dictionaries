@@ -13,7 +13,9 @@
                             <div class="input-field col s12">
                                 <i class="fas fa-user-plus pink-text prefix"></i>
                                 <!--Regex pattern used throughout this form is taken from CI Task Manager Mini-project 'User Authentication Adding registration functionality'-->
-                                <input name="username" id="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                                <input name="username" id="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate"
+                                oninvalid="this.setCustomValidity('Please create a username. A username can consist of a-zA-Z0-9. Entries consisting of just blank spaces will not be accepted.')"
+                                oninput="this.setCustomValidity('')" required>
                                 <label for="username">Username</label>
                             </div>
                         </div>
@@ -21,7 +23,9 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="fas fa-user-lock pink-text prefix"></i>
-                                <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                                <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate"
+                                oninvalid="this.setCustomValidity('Please create a password. A password can consist of a-zA-Z0-9. Entries consisting of just blank spaces will not be accepted.')"
+                                oninput="this.setCustomValidity('')" required>
                                 <label for="password">Password</label>
                             </div>
                         </div>
