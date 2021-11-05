@@ -1,3 +1,11 @@
+"""
+App.py file for Gym Rat Dictionaries:
+- User authentication
+- CRUD operations for definitions and categories
+- Upvote and downvote functionality
+- Add to favourites functionality
+- Error handling
+"""
 import os
 from flask import (
     Flask, flash, render_template,
@@ -9,7 +17,7 @@ from flask_paginate import Pagination, get_page_args
 if os.path.exists("env.py"):
     import env
 
-
+# Add additional configuration to the app:
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -54,7 +62,7 @@ def get_definitions():
     offset = (page - 1) * per_page
     total = mongo.db.definitions.find().count()
     # Find definitions to display on definitions.html:
-    definitions = list(mongo.db.definitions.find())
+    definitions = list(mongo.db.definitions.find().sort("_id", -1))
     definitions_pagination = definitions[offset: offset + per_page]
     pagination = Pagination(page=page, per_page=per_page,
                             total=total, css_framework='materializecss')
@@ -144,13 +152,13 @@ def register():
             flash("Sorry! This username already exists")
             return redirect(url_for("register"))
 
-        # 'register' is the dict that will be inserted in to the db:
-        register = {
+        # 'registry' is the dict that will be inserted in to the db:
+        registry = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
             "user_favourites": []
         }
-        mongo.db.users.insert_one(register)
+        mongo.db.users.insert_one(registry)
 
         # Put the new user into 'session' cookie:
         session["user"] = request.form.get("username").lower()
@@ -159,6 +167,8 @@ def register():
 
     return render_template("register.html")
 
+
+# User Authentication:
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -261,6 +271,8 @@ def logout():
         return render_template("login.html")
 
 
+# Definition CRUD operations:
+
 @app.route("/add_definition", methods=["GET", "POST"])
 def add_definition():
     """
@@ -328,8 +340,8 @@ def edit_definition(definition_id):
                     "tempo": request.form.get("tempo"),
                     "imge_url": request.form.get("image_url"),
                     "created_by": session["user"],
-                    "upvote": request.form.get("upvote", 0),
-                    "downvote": request.form.get("downvote", 0)
+                    "upvote": request.form.get("upvote"),
+                    "downvote": request.form.get("downvote")
                 }
                 mongo.db.definitions.update_one(
                     {"_id": ObjectId(definition_id)}, {"$set": submit})
@@ -384,6 +396,8 @@ def delete_definition(definition_id):
         flash("You must be logged in to delete a post")
         return redirect(url_for('login'))
 
+
+# Additional site functionality/features:
 
 @app.route("/upvote/<definition_id>", methods=["GET", "POST"])
 def upvote(definition_id):
@@ -505,6 +519,7 @@ def add_to_favourites(definition_id):
         return redirect(url_for('login'))
 
 
+# Category CRUD operations:
 @app.route("/get_categories")
 def get_categories():
     """
