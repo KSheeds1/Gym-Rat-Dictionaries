@@ -5,11 +5,12 @@
 Are you new to fitness and left a little confused by all exercise jargon? Still working out what a Barbell Good Morning is? Well look no further! *Gym Rat Dictionaries* is a dictionary of exercise terms curated by our wonderful users. Our purpose is to provide a site that will be beneficial to those at any level of fitness. For those who are just starting off and struggling with the terminology, to those who are well versed in the fitness world and want to impart their knowledge to others!
 
 # Demo
-Visit the live site [here](https://gym-rat-dictionaries.herokuapp.com/)
-![Am I Responsive image]()
+### Visit the live site [here](https://gym-rat-dictionaries.herokuapp.com/).
+
+![Am I Responsive image](static/images/README/responsive-img.png)
 
 # Contents:
-### [UX:](#ux)
+* [UX](#ux)
   * [User Stories](#user-stories)
   * [Strategies](#strategies)
   * [Scope](#scope)
@@ -17,39 +18,40 @@ Visit the live site [here](https://gym-rat-dictionaries.herokuapp.com/)
   * [Skeleton](#skeleton)
   * [Surface](#surface)
 
-### [Features:](#features)
+
+* [Features](#features)
   * [Existing Features](#existing-features)
   * [Features left to implement](#features-left-to-implement)
 
-### [Technologies Used:](#technology-used)
-  * [Languages](#languages)
-  * [Frameworks and Libraries](#frameworks-and-libraries)
-  * [Others](#others)
 
-### [Database - MongoDB](#database---mongodb) 
-  * [Schema / Data Model](#schema-/-data-model)
+* [Technologies Used](#technologies-used)
+  * [Languages](#languages)
+  * [Frameworks, packages, libraries and toolkits](#frameworks-packages-libraries-and-toolkits)
+  * [Other Technologies](#other-technologies)
+  * [Testing Technologies](#testing-technologies)
+
+
+* [Database MongoDB](#database-mongodb) 
+  * [Schema](#schema)
   * [Breakdown of collections](#breakdown-of-collections)
 
-### [Testing:](#testing)
-* [Testing User Stories](#testing-user-stories)
-* [Bugs: discovered & resolved during development:](#bugs-discovered-and-resolved-during-development)
-* [Manual functionality testing](#manual-functionality-testing)
-* [Responsive Testing](#responsive-testing)
-* [Validation Testing](#validation-testing)
-* [Lighthouse performance](#lighthouse-performance)
 
-### [Deployment:](#deployment)
+* [Testing](#testing)
+
+
+* [Deployment](#deployment)
   * [Git](#git)
   * [GitHub](#github)
-  * [Heroku](#heroku) 
+  * [Heroku Deployment](#heroku-deployment) 
 
-### [Credits:](#credits)
+
+* [Credits](#credits)
   * [Code](#code)
   * [Content](#content)
   * [Acknowledgements](#acknowledgements)
 
 
-# UX
+# **UX:**
 ## **User Stories:**
 *As a regular user, I want to be able to:*
 * Login and out of my account.
@@ -305,7 +307,7 @@ The following CRUD operations are restricted to registered users of the app only
 Casual or first-time users of the app are able to browse through definitions and categories but, will not be permitted to perform the aforementioned operations. 
 
 ### **Floating Buttons:**
-The addition of floating buttons (scroll to the top, add definition and search) were added to enhance both UI and UX. On any page where the navigation bar is no longer visible, users can instead use the floating buttons to either search for a definition, add a definition, or scroll to the top. This was implemented primarily for smaller viewports but was added to all viewports to increase user satisfaction towards the app. 
+The addition of floating buttons (scroll to the top, add definition, and search) were added to enhance both UI and UX. On any page where the navigation bar is no longer visible, users can instead use the floating buttons to either search for a definition, add a definition, or scroll to the top. This was implemented primarily for smaller viewports but was added to all viewports to increase user satisfaction towards the app. 
 
 ![FAB](static/images/README/floating-action-btns.png)
 
@@ -334,7 +336,7 @@ The decision to integrate the option to share a definition was twofold, it would
 
 Users have the option to upload an image or video URL to include with their definition. This can be done when creating a new definition by pasting the URL into the appropriate input field, or can be added at a later stage by adding the URL to the appropriate field in the edit definition form. Only URL's will be accepted into this input field to be uploaded to the database. The images or videos will not be displayed on the definition panel or the site but will be accessed in a new, external tab. This functionality was implemented solely to supplement the definitions and provide further visual context to the user. 
 
-INSERT IMG HERE OF LINK
+![Image URL](static/images/README/url-img.png)
 
 ### **Pagination:**
 Was implemented in the following areas to increase UX and to break up content-heavy pages:
@@ -359,9 +361,9 @@ This will be extremely helpful as the database expands and will help users navig
 * [jQuery](https://jquery.com/) was used to implement JavaScript functionality across the site.
 * [Python](https://www.python.org/) the backend of the project was written using Python.
 
-## **Frameworks, packages, libraries & toolkits:**
+## **Frameworks, packages, libraries and toolkits:**
 * [Pip3](https://pip.pypa.io/) was used to install packages for python.
-* [Dnspython](https://pypi.org/project/dnspython/) was used as a DNS toolkit for python.
+* [Dnspython](https://pypi.org/project/dnspython/) was installed to use the Mongo SVR connection string.
 * [Font Awesome](https://fontawesome.com/) supplied the icons used across the site.
 * [Google Fonts](https://fonts.google.com/) supplied the two fonts used across the site.
 * [Materialize](https://materializecss.com/) was used for the design framework.
@@ -387,7 +389,7 @@ This will be extremely helpful as the database expands and will help users navig
 * [Lighthouse](https://developers.google.com/web/tools/lighthouse) used to audit the app for improved performance and UI.
 
 
-## **Testing:**
+## **Testing Technologies:**
 * [Chrome Dev Tooks](https://developer.chrome.com/docs/devtools/) was used to detect issues and test the responsiveness of the site. 
 * [W3C Markup Validation Service](https://validator.w3.org/) is a validator used to test for errors in the HTML5 code.
 * [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) is a validator and was used to test for errors in the CSS3 code. 
@@ -396,7 +398,7 @@ This will be extremely helpful as the database expands and will help users navig
 
 
 
-# **Database - MongoDB:**
+# **Database MongoDB:**
 ## **Schema:**
 ![Below is the schema for the Gym Rat Dictionaries database:](static/images/README/grd-schema.png)
 
@@ -595,7 +597,10 @@ From the dashboard, click on the **Deploy** tab:
 
 Click on **Open App** in the right hand corner of your Heroku account, this will open your live site in another tab. 
 
-# Credits:
+If you need any more information on Heroku Deployment click [here](https://devcenter.heroku.com/start).
+
+# **Credits:**
+
 ##  **Code:**
 * The Materialize select box validation solution was the solution provided during the CI ['Task Manager'](https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/04-AddingATask-WritingToTheDatabase/02-materialize-select-validation/static/js/script.js) mini-project. 
 * This [demo](https://gist.github.com/mozillazg/69fb40067ae6d80386e10e105e6803c9) on GitHub helped me to refactor three of my functions to implement Flask-Paginate. 

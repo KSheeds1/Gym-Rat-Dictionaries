@@ -1,7 +1,7 @@
  # Testing documentation for Gym Rat Dictionaries
  ## Contents: 
 * [Testing User Stories](#testing-user-stories)
-* [Bugs: discovered and resolved during development:](#bugs-discovered-and-resolved-during-development)
+* [Bugs: discovered and resolved during development](#bugs-discovered-and-resolved-during-development)
 * [Manual functionality testing](#manual-functionality-testing)
 	* [User Authentication](#user-authentication)
 	* [CRUD Operations](#crud-operations)
@@ -10,7 +10,8 @@
 * [Validation Testing](#validation-testing)
 * [Lighthouse performance](#lighthouse-performance)
 * [Cross-browser Compatibility](#cross-browser-compatibility)
-* [Responsive Testing](#repsonsive-testing) 
+* [Responsive Testing](#repsonsive-testing)
+* [Known bugs and issues](#known-bugs-and-issues)
 
 # Testing User Stories:
 ## ***As a regular user, I want to be able to:***
@@ -43,6 +44,7 @@ Once logged in, users can navigate to their 'Profile' page from the Navigation b
 
 Once logged in, users can simply click on the 'Add to Favourites' icon featured on each individual definition card panel to add a definition to their favourites. They can then view their favourites on their profile page. 
 
+![Add to favourites icon](static/images/README/add-to-faves-icon.png)
 ![My Favourites](static/images/TESTING/UST/UST-view-my-faves.png)
 
 > ### **UST5: *'Upvote' or 'Downvote' a definition:***
@@ -338,9 +340,14 @@ Upon implementing this structure, it was necessary to create two arrays for 'upv
 
 ![Add definition dictionary from add definition function](static/images/TESTING/Bugs/add-def-dict.png)
 
-Following the changes made above the bug was resolved and a greater degree of structure was implemented to the voting functionality. 
+Following the changes made above the bug seemed to be resolved and a greater degree of structure was implemented to the voting functionality. However, over the following day a new TypeError began to appear on certain definitions when upvoting on downvoting.
+"TypeError: 'in <string>' requires string as left operand notObjectId". This struck the developer as odd as the error was not being thrown on all definitions. In order to resolve this, the error was forced to be thrown once again and MongoDB was consulted to get a clearer picture of what was happening.
 
+It was then discovered that the changes made in the edit_definition 'submit' dictionary and the vote form inputs on the edit definition form were causing the arrays to be converted into a string. The if and elif statements were throwing an error as there was no longer an array to check the user_id against for certain definitions. To recify this, the default amount set for both upvote and downvote was removed from the form request in the submit dictionary, and the count method added to the expression {{ definition.upvote/downvote }} was removed from the value attribute. The database was then combed for definition documents that had their array converted into string and were manually reset. Following these changes, functionality had returned across the board. 
 
+![DB image](static/images/TESTING/Bugs/array-to-string.png)
+![Vote inputs](static/images/TESTING/Bugs/vote-input.png)
+![Submit dictionary - edit definition function](static/images/TESTING/Bugs/submit-dict.png)
 
 
 # Manual functionality testing:
@@ -768,7 +775,10 @@ This functionality was tested in the following manner:
 * Once redirected to edit definition form, attempt to add a URL that doesn't meet the specified regex pattern - validation and regex pattern requirements are not met, form does not submit.
 * Attempt to add a URL that meets the specified regex pattern - validation and regex pattern requirements are met, form is submitted.
 
-ADD IMGS FOR TESTING
+![Valid URL input add definition form](static/images/TESTING/Bugs/valid-url-add.png)
+![Invalid URL input ddd definition form](static/images/TESTING/Bugs/invalid-url-add.png)
+![Valid URL input edit definition form](static/images/TESTING/Bugs/valid-url.png)
+![Invalid URL input edit definition form](static/images/TESTING/Bugs/invalid-url-add.png)
 
 ## **Pagination:**
 Flask pagination has been implemented in the following areas of the site:
@@ -997,7 +1007,7 @@ All pages were passed and validated.
 
 ## CSS
 The style.css file for this site was tested and validated using [W3C CSS Markup Validation Service](https://jigsaw.w3.org/css-validator/).  The CSS returned free of errors. Following this, the CSS was then parsed and had vendor prefixes added using [Autoprefixer CSS Online](https://autoprefixer.github.io/).
-INSERT IMG OF CSS VALIDATION
+
 
 ## JavaScript
 The script.js file for this project was validated using [JSHint](https://jshint.com/).  The file was flagged for missing semicolons, however once this was rectified there was no errors in the script.js file. 
@@ -1008,11 +1018,14 @@ The app.py file was validated using [PEP8 Online](http://pep8online.com/). The o
 
 # Lighthouse Performance
 Coming to the end of the development stage for the project, a lighthouse report was generated using [Chrome Dev Tools](https://developers.google.com/web/tools/lighthouse). The initial scores suggested some improvements could be made.
-INSERT IMG OF FIRST LIGHTHOUSE
+
+![Lighthouse initial test](static/images/TESTING/MT/lighthouse-performance-1.png)
 
 The following changes were made to improve the scores: 
 
 **Performance:**
+![Performance](static/images/TESTING/MT/use-next-gen-img.png)
+
 * The hero image used on index.html was converted from JPEG to WebP format for better compression and a quicker first contextual paint. 
 * The height of the hero image was also reduced.
 
@@ -1023,18 +1036,22 @@ The following changes were made to improve the scores:
 **SEO:**
 * Include additional metadata tags in the head of base.html
 
+![MetaData lighthouse](static/images/TESTING/MT/metadata.png)
+![Metadata included](static/images/TESTING/MT/metadata-included.png)
+
 The changes made helped increase these scores. While I would have preferred a higher score for the performance and SEO. However, when reports were generated for other pages of the site, higher scores in these areas were achieved.
+
+![Lighthouse 2](static/images/TESTING/MT/lighthouse-final.png)
+
 
 # Cross-browser compatibility 
 To test for cross-browser compatibility, the site was tested using [PowerMapper](https://www.powermapper.com/). Cross-browser compatibility tested well. 
 
+![Power Mapper results](static/images/TESTING/MT/browser-compatibility.png)
+![Power Mapper 2](static/images/TESTING/MT/potential-errors-no-issues.png)
+
 The only issue flagged here was:
-"The `display: flex` CSS property (that was added to the body element) does not work correctly in some browsers" and indicated that this would be an issue with Internet Explorer 11.
-
-To verify this issue, I consulted [Browserling](https://www.browserling.com/). While the `display: flex` did not seem to cause an issue, the newly formatted hero image was no longer displaying. While the WebP format is widely supported across modern browsers, it is not a format that is supported by older browsers.
-
-To rectify this issue, 
-
+"The `display: flex` CSS property (that was added to the body element) does not work correctly in some browsers" and indicated that this would be an issue with Internet Explorer 11. To verify this issue, I consulted [Browserling](https://www.browserling.com/). While the `display: flex` did not seem to cause an issue. 
 
 
 # Responsive Testing
@@ -1062,4 +1079,20 @@ The site's responsiveness was testing on the following devices in person:
 Was employed to view the site on a larger variety viewports. 
 
 **Responsinator:**
-Was employed where a device or browser wasn't accessible.
+Was employed where a devices that were'nt readily accessible.
+
+# Known issues or bugs:
+## Issues noted in the 'Problems' window of the terminal:
+The following issues were noted in the Problems window of the terminal: 
+
+![Problems window in terminal](static/images/TESTING/MT/issues-in-problem.png)
+
+**'env' imported but never used:**
+While env has been flagged as 'imported but never used', it has in fact been used in the app. Env was imported in order to use the environment variables and is only imported if the os can find an existing file path for the env.py file itself.
+
+**Unused 'e' argument/ doesn't conform to snake_case naming style:**
+This is referring to the event object in the Flask custom error pages. The implementation of the custom error pages was achieved by following the method outlined in the [Flask documentation](https://flask.palletsprojects.com/en/2.0.x/errorhandling/).  
+
+
+# Notes: 
+The implementation of custom error messages for input fields was added after the images for manual testing were uploaded to the TESTING file. The images display the default standard error messages, and will differ from what renders on the live site. The custom error messages were tested in the same manner after implementation. 
