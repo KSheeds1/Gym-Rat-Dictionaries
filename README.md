@@ -400,7 +400,7 @@ This will be extremely helpful as the database expands and will help users navig
 
 # **Database MongoDB:**
 ## **Schema:**
-![Below is the schema for the Gym Rat Dictionaries database:](static/images/README/grd-schema.png)
+![Below is the schema for the Gym Rat Dictionaries database:](static/images/README/data-model.png)
 
 
 ## **Breakdown of Collections:**
@@ -417,7 +417,7 @@ This will be extremely helpful as the database expands and will help users navig
 | _id             | ObjectId |                                              |
 | username        | String   |                                              |
 | password        | String   | Hashed/Salted for security                   |
-| user_favourites | Array    | Definition_id of users favourite definitions |
+| user_favourites | Array    | Definition_id is added to the array and displayed on the users profile page |
 
 
 ### **Definitions:**
@@ -427,18 +427,18 @@ This will be extremely helpful as the database expands and will help users navig
 | category_name        | String   | Category chosen by user from Categories       |
 | exercise_name        | String   |                                               |
 | exercise_description | String   | Breakdown of how to perform the exercise      |
-| tempo                | Int      | Pace the exercise should be performed at      |
-| image_url            | String   | URL of image users can upload with definition |
-| created_by           | ObjectId | ObjectId taken from users                     |
-| Upvote               | Int      | Increment the amount of upvotes a specific definition has   |
-| Downvote             | Int      | Increment the amount of downvotes a specific definition has |
+| tempo                | String      | Pace the exercise should be performed at      |
+| imge_url            | String   | URL of image users can upload with definition |
+| created_by           | ObjectId | ObjectId taken from the user that created the definition                    |
+| Upvote               | Array      | User_id is added to the array and length of array is displayed on the upvote button   |
+| Downvote             | Array      | User_id is added to the array and length of array is displayed on the downvote button |
 
 
 # **Testing:**
 Due to the size of the testing section, you can find all documentation related to the testing of Gym Rat Dictionaries [here](/TESTING.md)
 
 # **Deployment:**
-## **Git:**
+## **Git: version control**
 **Using Git to add, commit and push code into a repository:**
 Storing files in Git is a two-stage process:
 ​1. Files must be **added to the staging area** using the "**git add**" command followed by the specified file name.
@@ -493,7 +493,9 @@ This can be achieved by running the following command in the terminal of your ID
 * Login or register with MongoDB.
 * Create a cluster and a database.
 * Create three collections in the database: **Categories**, **Users**, and **definitions**.
-* Add the neccessary key-value pairs for each of the collections. The schema breakdown for this project can be found [here](#schema-/-data-model) and can be used to set up your collections. 
+* Add the neccessary key-value pairs for each of the collections. The schema breakdown for this project can be found [here](#schema) and can be used to set up your collections. 
+
+For more information on creating a database with MongoDB click [here](https://docs.atlas.mongodb.com/).
 
 #### 3. Create the necessary environment variables:
 * Create a .gitignore file in the root directory of the project. 
