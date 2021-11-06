@@ -1,8 +1,8 @@
 # Gym Rat Dictionaries
 
-*Gym Rat Dictionaries* is a online glossary of all the workout and exercise terminology you may come across during your fitness journey. *GRD* is a community built site, with gym rats of all fitness levels coming together to contribute a variety of exercises that you may come across in your fitness journey. 
+*Gym Rat Dictionaries* is a online glossary of all the workout and exercise terminology you may come across during your fitness journey. *GRD* is a community-built site, with gym rats of all fitness levels coming together to contribute a variety of exercises that you may come across in your fitness journey. 
 
-Are you new to fitness and left a little confused by all exercise jargon? Still working out what a Barbell Good Morning is? Well look no further! *Gym Rat Dictionaries* is a dictionary of exercise terms curated by our wonderful users. Our purpose is to provide a site that will be beneficial to those at any level of fitness. For those who are just starting off and struggling with the terminology, to those who are well versed in the fitness world and want to impart their knowledge to others!
+Are you new to fitness and left a little confused by all exercise jargon? Still working out what a Barbell Good Morning is? Well, look no further! *Gym Rat Dictionaries* is a dictionary of exercise terms curated by our wonderful users. Our purpose is to provide a site that will be beneficial to those at any level of fitness. For those who are just starting off and struggling with the terminology, to those who are well versed in the fitness world and want to impart their knowledge to others!
 
 # Demo
 ### Visit the live site [here](https://gym-rat-dictionaries.herokuapp.com/).
@@ -54,9 +54,10 @@ Are you new to fitness and left a little confused by all exercise jargon? Still 
 # **UX:**
 ## **User Stories:**
 *As a regular user, I want to be able to:*
-* Login and out of my account.
+* Login to my account.
+* Log out of my account.
 * Upload an exercise definition. 
-* View all my uploaded definition in one place.
+* View all my uploaded definitions in one place.
 * Add all my favourite definitions to 'My Favourites'. 
 * 'Like' or 'upvote' a definition.
 * Edit any definition I have added.
@@ -73,7 +74,7 @@ Are you new to fitness and left a little confused by all exercise jargon? Still 
 * Add a new workout type category to the site. 
 * Edit an existing workout type category.
 * Delete an existing workout type category. 
-* Provide the functionality to users to allow them to 'save' their favourite definitions to 'My Favourites'.
+
 
 
 ## **Strategies:**
@@ -81,7 +82,7 @@ Are you new to fitness and left a little confused by all exercise jargon? Still 
   
  * The purpose of the site is to provide a well-structured app where users can provide definitions for exercise terminology. Registered users can create, read, edit and delete exercise definitions, while casual or first-time users can search and share definitions. Gym Rat Dictionaries is a community driven app, where users can help extend the variety of definitions available to others. Our purpose is to provide a site that will be beneficial to those at any level of fitness. For those who are just starting off and struggling with the overwhelming jargon associated with exercise, to those who are well versed in the fitness world and want to impart their knowledge to others. GRD will provide a community to those interested in fitness.
 
-* The objective of this app is to provide the framework necessary for users to perform CRUD operations on the data provided to the non-relational DBMS. As a community driven app, the content gained from the users is tracked and catalogued in the non-relational DBMS. Each definition entry has a unique ID and is sorted into its relevant category by the user when creating the definition. Combined with the use of Flask, Python, and Materialize, the app provides a user-friendly front-end to present the data to the user to manipulate in a polished, intuitive manner. From there, users  can perform CRUD operations, are able to browse through each category or search for a specific definition through the search bar. The save functionality also allows the user to track and catalogue the content specific to their interests or share a definition across various social media platforms. 
+* The objective of this app is to provide the framework necessary for users to perform CRUD operations on the data provided to the non-relational DBMS. As a community driven app, the content gained from the users is tracked and catalogued in the non-relational DBMS. Each definition entry has a unique ID and is sorted into its relevant category by the user when creating the definition. Combined with the use of Flask, Python, and Materialize, the app provides a user-friendly front-end to present the data to the user to manipulate in a polished, intuitive manner. From there, users  can perform CRUD operations, are able to browse through each category or search for a specific definition through the search bar. The 'add to favourites' functionality also allows the user to track and catalogue the content specific to their interests. They also have the option to share a definition across various social media platforms. 
   
 ### **Owner Goals:**
 * To provide a community driven app to allow users to create, edit, delete and browse exercise definitions.
@@ -89,22 +90,29 @@ Are you new to fitness and left a little confused by all exercise jargon? Still 
 * To provide a mobile-first app with search functionality for users on the go.
 * Provide upvoting functionality for users to express their satisfaction with particular definitions.
 * To collect quality definitions provided by a variety of users to create and publish a dictionary or e-book. 
-* To provide save functionality to allow users to save their favourite definitions. 
+* To provide save functionality to allow users to save their favourite definitions.
+* To provide niche app that will appeal to the fitness/workout demographic.  
 
 
 ##  **Scope:**
-The functional requirements put in place help aid the user to access the content they are looking for quickly and easily, provide the framework for them to perform CRUD operations and provide the functionality to allow them to share this data across a variety of social media platforms. This is all combined to present a user-friendly intuitive front-end design to maximise UX:
+The functional requirements put in place help aid the user to access the content they are looking for quickly and easily. They provide the framework for users to perform CRUD operations, and allow them to share this data across a variety of social media platforms or save to their favourites. User feedback is provided throughout the site to further aid the user. This is all combined to present a user-friendly intuitive front-end design to maximise UX:
   * MongoDB
   * Flask 
   * Python 
   * Materialize
+  * Flash Messages
 
 
-The required content for the site is the framework put in place to guide users through performing CRUD operations, the content or data from then on, is provided by the users themselves: 
+The required content for the site is the framework put in place to guide users through performing CRUD operations, to register or log in and out of their account: 
 * Create definition form
 * Edit definition form 
-* Delete definition prompt 
+* Delete definition prompt
+* Add category form
+* Edit category form
+* Delete category prompt
 * Register/Login forms
+
+The content or data from then on, is provided by the users themselves.
   
 ## **Structure:**
 * The site is designed to foster intuitive learning; the aim is to provide an intuitive interaction between the user and the website.
@@ -143,9 +151,9 @@ Wireframes were created for each HTML file across a variety of viewports. (mobil
 
 [Desktop](static/images/README/wireframes/edit-definition-form-desktop.png)
 
-[Tablet](static/images/README/wireframes/edit-definition-form-tablet.png)
+[Tablet](static/images/README/wireframes/edit-definition-pg-tablet.png)
 
-[Mobile](static/images/README/wireframes/edit-definition-form-mobile.png)
+[Mobile](static/images/README/wireframes/edit-definition-pg-mobile.png)
 
 **Category Page:**
 
@@ -159,9 +167,9 @@ Wireframes were created for each HTML file across a variety of viewports. (mobil
 
 [Desktop](static/images/README/wireframes/categories-desktop.png)
 
-[Tablet](static/images/README/wireframes/categories-tablet.png)
+[Tablet](static/images/README/wireframes/categories-pg-tablet.png)
 
-[Mobile](static/images/README/wireframes/categories-mobile.png)
+[Mobile](static/images/README/wireframes/categories-pg-mobile.png)
 
 **Add Category Page:**
 
@@ -265,7 +273,7 @@ The changes in the nav-items presented in the navigation bar depend solely on th
 ### **Search Functionality:**
 As the app was constructed in a mobile-first approach with user interaction and experience in mind, the choice was made to build the search bar functionality directly below the navigation bar. It is hidden until toggled by the search icons as seen in the navbar, or in the floating action button available on the bottom right hand corner of the screen. This was implemented to aid users on the go, perhaps at the gym, mid-workout. It minimises the amount of limited time a user has to spend trying to find the exercise definition they are looking for. As the site's function is primarily a glossary or dictionary, its search functionality needs to be easily identified and accessed.
 
-Initially, in the pre-development stage of the project, the plan was to add the search bar into the navbar itself, as documented in the wireframes of the project. However it was decided to alter its positioning in the development stage to just below the navigation. It is accessible on all site pages and the search results are rendered on definitions.html.s 
+Initially, in the pre-development stage of the project, the plan was to add the search bar into the navbar itself, as documented in the wireframes of the project. However it was decided to alter its positioning in the development stage to just below the navigation. It is accessible on all site pages and the search results are rendered on definitions.html. 
 
 
 ![Search Icon](static/images/README/search-icon.png)
@@ -284,7 +292,7 @@ To present the data in an organised and intuitive fashion, the site owner has ch
 
 ![Category Dropdown Menu](static/images/TESTING/UST/UST-see-categories.png)
 
-Upon creating a definition, the user must as a requirement, select which category the definition fall underneath. 
+Upon creating a definition, the user must, as a requirement, select which category the definition falls underneath. 
 
 ### **Creation/Management of categories:** 
 The functionality surrounding the creation and management of categories is restricted to the site owner and admin. While registered and casual users can browse the categories available, only the site owner and admin will have access to category CRUD operations. Admin can access the individual category pages through clicking on its title in category management. 
@@ -312,7 +320,7 @@ The addition of floating buttons (scroll to the top, add definition, and search)
 ![FAB](static/images/README/floating-action-btns.png)
 
 ### **My Favourites:**
-The my favourites functionality was provided to allow users to save their favourite definitions onto their profile page, alongside their own uploaded definitions. Users can add a definition to their 'My Favourites' by clicking on the HEART icon available on each definition panel, further increasing user interaction with the app.
+The my favourites functionality was provided to allow users to save their favourite definitions onto their profile page, alongside their own uploaded definitions. Users can add a definition to their 'My Favourites' by clicking on the bookmark icon available on each definition panel, further increasing user interaction with the app.
 
 ![My favourites icon](static/images/README/add-to-faves-icon.png)
 
@@ -320,6 +328,8 @@ The my favourites functionality was provided to allow users to save their favour
 
 ### **Upvote and downvote functionality:**
 Promotes further user interaction with the app and also gives the user a sense of community, as the functionality displays the amount of 'upvotes' or 'downvotes' a definition has gotten from the Gym Rat Dictionaries community. Both icons to vote on a definition are displayed on each definition panel and a user can simply click it to vote on a definition.
+
+**Note:** Only registered users have access to upvote and downvote functionality. 
 
 ![Up/down vote](static/images/README/up-down-vote.png)
 
@@ -334,7 +344,7 @@ The decision to integrate the option to share a definition was twofold, it would
 
 ### **Adding an image or video URL:**
 
-Users have the option to upload an image or video URL to include with their definition. This can be done when creating a new definition by pasting the URL into the appropriate input field, or can be added at a later stage by adding the URL to the appropriate field in the edit definition form. Only URL's will be accepted into this input field to be uploaded to the database. The images or videos will not be displayed on the definition panel or the site but will be accessed in a new, external tab. This functionality was implemented solely to supplement the definitions and provide further visual context to the user. 
+Users have the option to upload an image or video URL to include with their definition. This can be done when creating a new definition by pasting the URL into the appropriate input field, or it can be added at a later stage by adding the URL to the appropriate field in the edit definition form. Only URLs will be accepted into this input field to be uploaded to the database. The images or videos will not be displayed on the definition panel or the site but will be accessed in a new, external tab. This functionality was implemented solely to supplement the definitions and provide further visual context to the user. 
 
 ![Image URL](static/images/README/url-img.png)
 
@@ -347,6 +357,32 @@ Was implemented in the following areas to increase UX and to break up content-he
 This will be extremely helpful as the database expands and will help users navigate the site more easily. Each of the following areas will only display 8 definitions per page so as not to overwhelm the user and allow them to process the information at a reasonable pace. 
 
 ![Pagination](static/images/README/pagination.png)
+
+### **Security: user authentication**
+The following security features have been implemented to protect the user where possible:
+
+**Upon registration:**
+* A new username is checked against the database to make sure it doesn't already exist, a user will be prompted to provide a different username if this is the case.
+* When a user creates a password, a 'password hash' is generated from the user's input by Werkzueg's security helper functions. This means that the password is converted into another string, for additional security, that string is then 'salted' meaning it is salted with random data making it more difficult to crack. 
+
+**Upon login:**
+* The user's username is checked against the database for a match, if the username is found it then checks the user input for password.
+* The password provided during login is verified using Werkzeug, meaning that it ensures the hashed password created during registration matches the current user input. If the correct password is entered, the user is redirected to their profile. If not the user is returned back to login page to reattempt login. 
+
+**Log Out:**
+* Steps have been taken to ensure that the user is logged out of the site securely. 
+* Upon registering or logging into the site the user is put into a 'session cookie' for security purposes to protect the user when using the site.
+* When the user chooses to logout their session cookie is deleted and the user is redirected to the login page. 
+
+**User Authentication:** 
+
+Throughout the site, attempts have been made to implement user authentication at every step. This means what is displayed and available on the site depends upon the users status:
+* Whether they are logged in or out
+* Whether they are a regular user or a site admin
+* Whether they are a casual browser or a registered and logged in user
+
+Certain CRUD operations have only been made available to registered, logged in users and or admin.
+
 
 ## **Features left to implement:**
 * Introduce a 'definition of the day' functionality - where registered users receive a daily definition through email.
@@ -416,7 +452,7 @@ This will be extremely helpful as the database expands and will help users navig
 |-----------------|----------|----------------------------------------------|
 | _id             | ObjectId |                                              |
 | username        | String   |                                              |
-| password        | String   | Hashed/Salted for security                   |
+| password        | String   | Salted hashes for security purposes                   |
 | user_favourites | Array    | Definition_id is added to the array and displayed on the users profile page |
 
 
@@ -439,7 +475,7 @@ Due to the size of the testing section, you can find all documentation related t
 
 # **Deployment:**
 ## **Git: version control**
-**Using Git to add, commit and push code into a repository:**
+**Using Git to add, commit, and push code into a repository:**
 Storing files in Git is a two-stage process:
 ​1. Files must be **added to the staging area** using the "**git add**" command followed by the specified file name.
 
@@ -534,7 +570,7 @@ To fork this repository:
   
 
 ## **Heroku Deployment:**
-This project was deployed using Heroku. Heroku is a platform as a service that enables developer to build, run and operate applications entirely in the cloud. Heroku integrates with GitHub to make it easy to deploy code living on GitHub to apps running on Heroku. 
+This project was deployed using Heroku. Heroku is a PAAS (platform as a service) that enables developer to build, run and operate applications entirely in the cloud. Heroku integrates with GitHub to make it easy to deploy code living on GitHub to apps running on Heroku. 
 
 ### Prior to creating the Heroku application:
 Before creating the Heroku application, you must first set up two files which Heroku needs to run the app
@@ -546,7 +582,7 @@ Before creating the Heroku application, you must first set up two files which He
 To **create these files**, use the following code in the **GitHub Terminal**:
 
 ```
-pip3 freeze --local>requirements.txt
+pip3 freeze --local > requirements.txt
 echo web: python app.py > Procfile
 ```
 
