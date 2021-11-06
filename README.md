@@ -268,7 +268,7 @@ The navigation bar is available in the default position and allows users to quic
 ![Casual user not logged in mobile](static/images/README/not-logged-in-mobile-navbar.png)
 
 
-The changes in the nav-items presented in the navigation bar depend solely on the status of the user. Changes will be seen depending on whether you are casually browsing, are registered user, or a site admin. For both the registered user and site admin there is additional functionality made available. 
+The changes in the nav-items presented in the navigation bar depend solely on the status of the user. Changes will be seen depending on whether you are casually browsing, are a registered user, or a site admin. For both the registered user and site admin there is additional functionality made available. 
 
 ### **Search Functionality:**
 As the app was constructed in a mobile-first approach with user interaction and experience in mind, the choice was made to build the search bar functionality directly below the navigation bar. It is hidden until toggled by the search icons as seen in the navbar, or in the floating action button available on the bottom right hand corner of the screen. This was implemented to aid users on the go, perhaps at the gym, mid-workout. It minimises the amount of limited time a user has to spend trying to find the exercise definition they are looking for. As the site's function is primarily a glossary or dictionary, its search functionality needs to be easily identified and accessed.
@@ -327,9 +327,9 @@ The my favourites functionality was provided to allow users to save their favour
 ![My favourites](static/images/README/my-faves.png)
 
 ### **Upvote and downvote functionality:**
-Promotes further user interaction with the app and also gives the user a sense of community, as the functionality displays the amount of 'upvotes' or 'downvotes' a definition has gotten from the Gym Rat Dictionaries community. Both icons to vote on a definition are displayed on each definition panel and a user can simply click it to vote on a definition.
+Promotes further user interaction with the app and also gives the user a sense of community, as the functionality displays the amount of 'upvotes' or 'downvotes' a definition has gotten from the Gym Rat Dictionaries community. Both vote icons are displayed on all definition card panels and a user can simply click on either button to up or down vote a definition. 
 
-**Note:** Only registered users have access to upvote and downvote functionality. 
+**Note:** Only registered users have access to upvote and downvote functionality. Users cannot upvote a definition they have already downvoted and vice versa. Although they can change their vote by clicking on the vote choice made originally to remove it and then are free to vote again.  
 
 ![Up/down vote](static/images/README/up-down-vote.png)
 
@@ -354,7 +354,7 @@ Was implemented in the following areas to increase UX and to break up content-he
 * Search results (if necessary)
 * Individual category pages 
 
-This will be extremely helpful as the database expands and will help users navigate the site more easily. Each of the following areas will only display 8 definitions per page so as not to overwhelm the user and allow them to process the information at a reasonable pace. 
+This will be extremely helpful as the database expands and will help users navigate the site more easily. Each of the following areas will only display 8 definitions per page, so as not to overwhelm the user and allow them to process the information at a reasonable pace. 
 
 ![Pagination](static/images/README/pagination.png)
 

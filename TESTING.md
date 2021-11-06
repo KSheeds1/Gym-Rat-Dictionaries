@@ -10,53 +10,68 @@
 * [Validation Testing](#validation-testing)
 * [Lighthouse performance](#lighthouse-performance)
 * [Cross-browser Compatibility](#cross-browser-compatibility)
-* [Responsive Testing](#repsonsive-testing)
-* [Known bugs and issues](#known-bugs-and-issues)
+* [Responsive Testing](#responsive-testing) 
+* [Known issues or bugs](#known-issues-or-bugs)
+* [Notes](#notes)
 
 # Testing User Stories:
 ## ***As a regular user, I want to be able to:***
-> ### **UST1: *Login and out of my account:***
+> ### **UST1: *Login to my account:***
 
-A registered user can login to their account by clicking on 'Log In' in the Navigation Bar on the right hand side. To log out of their account, they must be logged into their account, navigate to the navigation bar and click on 'Log Out'.
+A registered user can login to their account by clicking on 'Log In' in the Navigation Bar on the right hand side. A user must provide the correct login details to be granted access to their account. 
 
 ![Login navbar](static/images/TESTING/UST/UST-login.png)
 ![Login page](static/images/TESTING/UST/UST-login-2.png)
 
-> ### **UST2: *Upload an exercise definition:*** 
+> ### **UST2: *Log out of my account:***
 
-Once logged in, registered users can add a definition from three places:
+To log out of their account, a user must be already logged into their account. Locate the navigation bar and click on 'Log Out', the user will be redirected to the login page.
+
+![Nav log out](static/images/TESTING/UST/UST-logout.png)
+![Logged out flash](static/images/TESTING/UST/UST-logout-2.png)
+
+> ### **UST3: *Upload an exercise definition:*** 
+
+Once logged-in, registered users can be redirect to the add definition form from three places:
 * 'Add Definition' nav-link
 * The '+' icon in the floating action button
-* 'Add Definition' button on their profile page
+* 'Add Definition' button on their profile page (Only available to newly registered users)
+
+On the add definition form, they must:
+* Fill out all required input fields to the matching specifications
+* Once all requirements are met they can then click the 'add definition' button. The definition will then be added to the site
 
 ![Add definition - navbar](static/images/TESTING/UST/UST-add-def.png)
 ![Add definition - FAB](static/images/TESTING/UST/UST-add-def-2.png)
 ![Add definition - form](static/images/TESTING/UST/UST-add-def-form.png)
 
-> ### **UST3: *View all my uploaded exercises in one place:***
+> ### **UST4: *View all my uploaded exercises in one place:***
 
-Once logged in, users can navigate to their 'Profile' page from the Navigation bar and view their uploaded definitions from there.
+Once logged-in, users can navigate to their 'Profile' page from the Navigation bar and view their uploaded definitions from there.
 
 ![My definitions](static/images/TESTING/UST/UST-view-my-defs.png)
 
  
-> ### **UST4: *Add all my favourite definitions to 'My Favourites':***
+> ### **UST5: *Add all my favourite definitions to 'My Favourites':***
 
-Once logged in, users can simply click on the 'Add to Favourites' icon featured on each individual definition card panel to add a definition to their favourites. They can then view their favourites on their profile page. 
+Once logged-in, users can simply click on the 'Add to Favourites' icon featured on each individual definition card panel to add a definition to their favourites. They can then view their favourites on their profile page. 
 
 ![Add to favourites icon](static/images/README/add-to-faves-icon.png)
 ![My Favourites](static/images/TESTING/UST/UST-view-my-faves.png)
 
-> ### **UST5: *'Upvote' or 'Downvote' a definition:***
+> ### **UST6: *'Upvote' or 'Downvote' a definition:***
 
-Logged in users can 'upvote' or 'Downvote' a definition by simply clicking on the thumbs up or down icon featured on each individual definition card panel, the amount of votes for both are displayed on the icon and incremented by one when clicked.
+Logged-in users can 'Upvote' or 'Downvote' a definition by simply clicking on the 'thumbs up' or 'thumbs down' icon featured on each individual definition card panel. The amount of votes for both are displayed on the icon and incremented by one when clicked.
+
+**Note:** Users cannot upvote a definition they have already downvoted and vice versa. Although they can change their vote by clicking on the vote choice made originally to remove it and are then free to vote again. Users will be made aware of their choices through the flash messages. 
 
 ![Up/Down vote](static/images/TESTING/UST/UST-up-down-vote.png)
+![Flash message](static/images/TESTING/MT/already-upvoted-flash.png)
  
-> ### **UST6: *Edit any definition I have added:***
+> ### **UST7: *Edit any definition I have added:***
 
-A logged in user can choose to edit any of their own added definitions. This can be achieved across the site:
-* On the users profile page
+A logged-in user can choose to edit any of their own added definitions. This can be achieved across the site:
+* On the user's profile page
 * On the home page
 * On any of the category pages
 * By searching for a specific definition in the search bar and accessing the definition in the search results. Click on the edit button to redirect to the edit definition form. 
@@ -69,9 +84,9 @@ A logged in user can choose to edit any of their own added definitions. This can
 ![Edit - Home pg](static/images/TESTING/UST/UST-edit-delete.png)
 ![Edit definition form](static/images/TESTING/UST/UST-edit-def-form.png)
 
-### **UST7: *Delete any definition I have added:***
-A logged in user can choose to delete any of their own added definitions. This can be achieved across the site:
-* On the users profile page
+### **UST8: *Delete any definition I have added:***
+A logged-in user can choose to delete any of their own added definitions. This can be achieved across the site:
+* On the user's profile page
 * On the home page
 * On any of the category pages
 * By searching for a specific definition in the search bar and accessing the definition in the search results. Click on the delete button. 
@@ -83,62 +98,65 @@ A logged in user can choose to delete any of their own added definitions. This c
 ![Delete definition](static/images/TESTING/UST/UST-delete-confirm.png)
 
 ## ***As a first-time user, I want to be able to:***
-> ### **UST8: *Identify the different categories of definitions available on the app:***
+> ### **UST9: *Identify the different categories of definitions available on the app:***
 
 First-time users can browse the different categories of exercise definitions by clicking on the 'Categories' nav-item and selecting a category they wish to browse from the dropdown. This will direct them to the specific category collection.
 
 ![Category menu](static/images/TESTING/UST/UST-see-categories.png)
 ![Category pg](static/images/TESTING/UST/UST-view-category.png)
 
-> ### **UST9: *Search for a particular definition quickly:***
+> ### **UST10: *Search for a particular definition quickly:***
 
 Casual users of the site can search for a particular definition quickly by using the search bar, which can be accessed in two places: 
 * From the magnify glass icon in the Navigation bar, which triggers the search bar 
-* The magnify glass icon FAB located on the bottom right hand side of the app, which scrolls the user to the top and triggers the search bar. 
+* The magnify glass icon FAB located on the bottom right hand side of the app, which scrolls the user to the top of the page if necessary, and triggers the search bar
+
+To search for a definition, a user can enter their query into the search bar and click 'Search'. Depending on the page that the user accesses the search bar, they will be redirected to definitions.html to render the search results. If no results can be found from the query the user will be informed thusly.
 
 ![Search - Nav](static/images/TESTING/UST/UST-search-bar.png)
 ![Search - Fab](static/images/TESTING/UST/UST-search-fab.png)
+![No results](static/images/TESTING/MT/search-no-results-min.png)
 
-> ### **UST10: *Create an account if I like the content of the site:***
+> ### **UST11: *Create an account if I like the content of the site:***
 
-First-time users can create an account or register with the app by navigating to the nav-bar and clicking on the nav-item for 'Register'. From there they will be prompted to create a unique username and to provide a validated password. The user will know that they have succeeded in creating an account as they will be redirected to their new profile page and will see a successful registration flash message. 
+First-time users can create an account or register with the app by locating the nav-bar and clicking on the nav-item for 'Register'. From there they will be prompted to create a unique username and to provide a validated password. The user will know that they have succeeded in creating an account as they will be redirected to their new profile page and will see a successful registration flash message. 
 
 ![Register - Nav](static/images/TESTING/UST/UST-register.png)
 ![Register - Form](static/images/TESTING/UST/UST-register-2.png)
 
-> ### **UST11: *To share a definition on my Facebook or Instagram account:***
+> ### **UST12: *To share a definition on my Facebook or Instagram account:***
 
-Even casual, first-time users can choose to share a definition from GRD to their social media account, this can be achieved by clicking on the share icon featured on each individual definition card panel and choosing from the options made available in the share modal. 
+Even casual, first-time users can choose to share a definition from GRD to their social media account.This can be achieved by clicking on the share icon featured on each individual definition card panel and choosing from the options made available in the share modal. 
 
 ![Share icon](static/images/TESTING/UST/UST-share-2.png)
 ![Share modal](static/images/TESTING/UST/UST-share.png)
 
-> ### **UST12: *To quickly find a definition while I'm at the gym:***
+> ### **UST13: *To quickly find a definition while I'm at the gym:***
 
-Anyone can quickly find a definition on the go by accessing the site and searching for the definition using the search bar. This can be accessed from the magnify icon in the nav-bar or in the floating action buttons. If the definition has been added, it will be returned in the search request, if it has not been added, the app will inform the user thusly. 
+Anyone can quickly find a definition on the go by accessing the site and searching for the definition using the search bar. This can be accessed from the magnify icon in the nav-bar or in the floating action buttons. To search for a definition, a user can enter their query into the search bar and click 'Search'. Depending on the page that the user accesses the search bar, they will be redirected to definitions.html to render the search results. If no results can be found from the query the user will be informed thusly. 
 
 ![Search Nav](static/images/TESTING/UST/UST-quick-find-2.png)
 ![Search FAB](static/images/TESTING/UST/UST-quick-find.png)
 
 ## ***As the site owner/Admin, I want to be able to:***
-> ### **UST13: *Add a new category to the site:***
+> ### **UST14: *Add a new category to the site:***
 
-Adding a new category to the app is restricted to both the site owner and admin. Once logged in as either, they can navigate to the 'Category Management' page from the navigation bar and click on the card panel that reads 'Add New Category'. From there they can fill out the form to create a new category and select to 'Create' or 'Cancel' if they decide not to add a new category.
+Adding a new category to the app is restricted to both the site owner and admin. Once logged in as either, they can navigate to the 'Category Management' page from the navigation bar and click on the card panel that reads 'Add New Category'. From there they can fill out the form to create a new category and select to 'Add category' or 'Cancel' if they decide not to add a new category.
 
 ![Add new category btn](static/images/TESTING/UST/UST-add-new-cat.png)
 ![Add new category form](static/images/TESTING/UST/UST-add-new-cat-form.png)
 
 
-> ### **UST14: *Edit an existing workout type category:***
+> ### **UST15: *Edit an existing workout type category:***
 
 This functionality is restricted to both the site owner and admin. To edit a category, navigate to Category Management, by clicking on the nav-item 'Category Management'. Once redirected to the page, the admin or site owner will have the option to click on the 'Edit' button offered on each category panel. Once selected, an admin can edit the pre-existing data in the 'Edit Category form'. If they wish to save the changes select the 'Edit Category' button or to cancel the changes, select 'Cancel'. 
 
 ![Edit category btn](static/images/TESTING/UST/UST-edit-cat-btn.png)
 ![Edit category form](static/images/TESTING/UST/UST-edit-cat-form.png)
 
-> ### **UST15: *Delete an existing workout type category:*** 
+> ### **UST16: *Delete an existing workout type category:*** 
 
-This functionality is restricted to both the site owner and admin. To delete an existing category, navigate to the Category Management page from the nav-bar. Once redirected to the page, the admin or site owner will have the option to click the 'Delete' button attached to each category. Once clicked, the user will be prompted to confirm the action prior to deletion, they can choose to either delete or cancel to be redirected to the category management page. 
+This functionality is restricted to both the site owner and admin. To delete an existing category, navigate to the Category Management page from the nav-bar. Once redirected to the page, the admin or site owner will have the option to click the 'Delete' button attached to each category. Once clicked, the user will be prompted to confirm the action prior to deletion, they can choose to either delete or cancel and be redirected to the category management page. 
 
 ![Delete category btn](static/images/TESTING/UST/UST-edit-cat-btn.png)
 ![Delete category modal](static/images/TESTING/UST/UST-delete-cat-confirm.png)
@@ -150,11 +168,11 @@ This functionality is restricted to both the site owner and admin. To delete an 
 
 
 # **Loss of functionality to 'add' and 'edit' buttons:**
-A loss of functionality for the 'add' and 'edit' buttons featured on the add_definition and edit_definition forms was discovered following the completion of the POST method for the edit_definition form. When manually testing the edit_definition function, by updating a definition, the 'edit' button would not send the updated definition to the database. Nor would the 'add' button on the add_definition form add a definition to the database. A change in color of the buttons when clicked was also noted. 
+A loss of functionality for the 'add' and 'edit' buttons featured on the add_definition and edit_definition forms was discovered following the completion of the POST method for the edit_definition form. When manually testing the edit_definition function, by updating a definition, the 'edit' button would not send the updated definition to the database. Nor would the 'add' button on the add_definition form, add a definition to the database. A change in color of the buttons when clicked was also noted. 
 
 ![Add btn failure](static/images/TESTING/Bugs/add-edit-buttons.png)
 
-With no errors being thrown, I check over both the add_definition and edit_definition functions in app.py but everything seemed in order. Both form templates were rendering so I turned to the HTML for both templates. After running both forms through the [W3C Markup Validation Service](https://validator.w3.org/#validate_by_input) an error was thrown for the form tags surrounding the image_url input field on both forms that 'nested forms are not allowed'. The addition of this nested form was the root of the issue. 
+With no errors being thrown, I check over both the add_definition and edit_definition functions in app.py but everything seemed in order. Both form templates were rendering so I turned to the HTML for both templates. After running both forms through the [W3C Markup Validation Service](https://validator.w3.org/#validate_by_input) an error was thrown for the form tags surrounding the image_url input field on both forms stating that 'nested forms are not allowed'. The addition of this nested form was the root of the issue. 
 
 ![Validation service output](static/images/TESTING/Bugs/button-bug.png)
 ![Image URL code](static/images/TESTING/Bugs/add-def-2.png)
@@ -196,7 +214,7 @@ Following the implementation of the @app.context_processor and the category_pg f
 ![Add definition form bug](static/images/TESTING/Bugs/Select-category-bug-add-def.png)
 ![Edit definition form bug](static/images/TESTING/Bugs/select-category-bug-edit-def.png)
 
-Initially it was believed that the issue was due to the fact that the select inputs were actually `<ul><li>` structures and shared the same 'dropdown-content' class as the navbar and sidenav dropdown menus.
+Initially it was believed that the issue was due to the fact that the select inputs were actually `<ul><li></li></ul>` structures and shared the same 'dropdown-content' class as the navbar and sidenav dropdown menus.
 
 ![Select category code](static/images/TESTING/Bugs/category-selection-bug-3.png)
 
@@ -216,7 +234,7 @@ To resolve this issue, both the profile and add_to_user_favourites views were re
 
 ![Orginial profile code](static/images/TESTING/Bugs/profile.png)
 
-In order to resolve the bug the profile view was altered to gain access to all user document fields by passing through the Mongo Object "user" and the projection parameter was removed from the find method. This allowed for all definitions to be accessible from the profile page. A slight refactoring of the add_to_favourites view was also implemented, it was decided to only store the ObjectId for each definition in the user_favourites array rather than the whole definition and to get.
+In order to resolve the bug the profile view was altered to gain access to all user document fields by passing through the Mongo Object "user" and the projection parameter was removed from the find method. This allowed for all definitions to be accessible from the profile page. A slight refactoring of the add_to_favourites view was also implemented, it was decided to only store the ObjectId for each definition in the user_favourites array rather than the whole definition document itself.
 
 ![Refactored profile code](static/images/TESTING/Bugs/profile-refactored.png)
 ![Refactored add-to-faves code](static/images/TESTING/Bugs/refactored-add-to-faves.png)
@@ -241,7 +259,7 @@ When first implemented, the pagination seemed functional, definition panels per 
 ![Cursor no len](static/images/TESTING/Bugs/List-prior-to-being-cursor-and-change-to-count.png)
 
 Following some research of this issue, a suitable fix was found in this [Stack Overflow question.](https://stackoverflow.com/questions/65477524/flask-and-jinja-template-throwing-error-object-of-type-cursor-has-no-len)
-To resolve the TypeError  the 'definitions' lists were changed to return a cursor object instead and the if statements were updated also. 
+To resolve the TypeError, the 'definitions' lists were changed to return a cursor object instead and the if statements were updated also. 
 
 ![Definitions function](static/images/TESTING/Bugs/get-def-function.png)
 ![Category pg function](static/images/TESTING/Bugs/category_pg-function.png)
@@ -250,7 +268,7 @@ To resolve the TypeError  the 'definitions' lists were changed to return a curso
 
 These changes to the code seemed to rectify the issue and all aspects of the Flask pagination seemed to be functional. These changes were then pushed to Git. 
 
-However, when later returning to development again, and attempting to save a definition to 'favourites', an error was thrown and new bug had appeared. While the definition was being added to the user_favourites array in the User collection, the profile page was no longer accessible.
+However, when later returning to development again and attempting to save a definition to 'favourites', an error was thrown and new bug had appeared. While the definition was being added to the user_favourites array in the User collection, the profile page was no longer accessible.
 
 ![Definition not defined](static/images/TESTING/Bugs/After-change-from-list-to-cursor-and-count-instead-of-length.png) 
 
@@ -258,9 +276,9 @@ Upon reviewing the app.py file and definitions.html it was decided that this bug
 
 ![Search bug](static/images/TESTING/Bugs/search-bug.png)
 
-Some research and guidance was necessary to resolve this bug. Initially, the plan to resolve this issue was to build a second route to split the search functionality. Maintain the original route as a post request, the initial search query and build a second route to deal with the pagination and subsequent requests. However this was abandoned for a much more straightforward approach. 
+Some research and guidance was necessary to resolve this bug. Initially, the plan to resolve this issue was to build a second route to split the search functionality. Maintaining the original route as a post request for the initial search query and then build a second route to deal with the pagination and subsequent requests. However this was abandoned for a much more straightforward approach. 
 
-It was decided to keep the current pagination and just change the form from `POST` to `GET`. Following this approach, the `GET` method passes the query term into the URL args, using `request.args.get()` to get it from the args, to search the database and paginate. So the query cannot be lost from the args upon pagination. The following alterations were made to the code to implement this: 
+It was decided to keep the current pagination and just change the form from `POST` to `GET`. Following this approach, the `GET` method passes the query term into the URL args, using `request.args.get()` to get the query from args, and to search the database and paginate. The query cannot be lost from the args upon pagination. The following alterations were made to the code to implement this: 
 
 ![Search HTML](static/images/TESTING/Bugs/get-method.png)
 
@@ -272,11 +290,13 @@ Following this all aspects of pagination were manually tested and all bugs and i
 
 
 # **Registration bug:**
-A bug was discovered when registering a new user to the site, relating to both the register view function and the user_favourites array. 
+A bug was discovered when registering a new user to the site, relating to both the register view and the user_favourites array. 
 
 ![Register Error](static/images/TESTING/Bugs/user-fave-array-bug-on-register.png)
 
 After reviewing the 'User' collection on MongoDB, it was noted that newly created users being inserted into the collection did not have a 'user_favourites' array. To rectify this issue, the register view needed to be refactored. Prior to this, the register function inserted a dictionary object 'register' into the database, inserting the username and password. 
+
+**Note:** The 'register' dictionary was renamed to 'registry' at a later point of development to resolve a Pylint warning. 
 
 ![Original register code](static/images/TESTING/Bugs/original-register-f.png)
 
@@ -284,18 +304,18 @@ This was the root of the bug, an empty 'user_favourites' array needed to be inse
 
 ![Refactored register code](static/images/TESTING/Bugs/refactored-register-f.png)
 
-The refactored function was then tested manually by registering a new user. The register dict no longer threw a TypeError and was redirected to their profile page. The user was then able to select definitions to add to their favourites, the add_to_favourites function inserts the definition_id into the array and the definition is then displayed on their profile page.
+The refactored function was then tested manually by registering a new user. The register dict no longer threw a TypeError and was redirected to their profile page. The user was then able to select definitions to add to their favourites, the add_to_favourites function inserted the definition_id into the array and the definition itself is then displayed on their profile page.
 
 ![Array in mongo](static/images/TESTING/Bugs/new-user-array.png)
 ![user-faves in newly registered user](static/images/TESTING/Bugs/register-user-faves.png)
 
 
 # Displaying the profile page rendered for newly registered users:
-It was noticed when a new user registered with the site that the 'else' block of the profile page was not rendering to the site. When overviewing the profile function in app.py, it was noted that the jinja if statement, {% if definitions|length > 0 %} would always be considered as true as the developer was sending the definitions collection to the profile so that they could be filtered to display my definitions and my favourites.
+It was noticed when a new user registered with the site that the 'else' block of the profile page was not rendering to the site. When overviewing the profile function in app.py, it was realised that the jinja if statement, {% if definitions|length > 0 %} on profile.html would always be considered as true as the developer was sending the definitions collection to the profile so that they could be filtered to display 'my definitions' and 'my favourites'.
 
 ![Original profile function](static/images/TESTING/Bugs/profile-refactored.png) 
 
-This was the root of the bug, the else block of the code was never going to be rendered as definitions were always going to be greater than zero on profile.html. In order to resolve this issue, it was decided to only send definitions created by the session user and to create a new array of the user_favourites array (a field in each definition in the definitions collection) to match the definitions by ID to those saved in the session users 'user_favourites' array and send that to the profile.
+This was the root of the bug, the else block of the code was never going to be rendered as definitions were always going to be greater than zero on profile.html. In order to resolve this issue, it was decided to only send filtered definitions. Those created by the session user, and to create a new array from the user_favourites array (an array present in each definition document in the definitions collection) to match the definitions by ID to those saved in the session users 'user_favourites' array and send that to the profile.
 
 ![Refactored profile function](static/images/TESTING/Bugs/refactored-profile-f.png)
 
@@ -307,7 +327,7 @@ On profile.html some refactoring was necessary to help render the profile depend
 ![Profile else block](static/images/TESTING/Bugs/profile-else-block.png)
 ![Newly reg user profile rendering](static/images/TESTING/Bugs/new-reg-user.png)
 
-### Additional rendering was also put in place to pre-emptively plan for the event that the newly registered user:
+### Additional rendering was also put in place to pre-emptively plan for the event that the newly registered user had:
 
 * **Added a definition to site but did **not** add a definition to 'My Favourites':**
 
@@ -320,9 +340,9 @@ On profile.html some refactoring was necessary to help render the profile depend
 ![Profile rendering of added user faves no added def](static/images/TESTING/Bugs/added-faves-no-defs.png)
 
 # Maintaining the amount of upvotes and downvotes on a definition that has been 'edited'.
-While the original functionality for upvote and downvote was working, a bug arose when the a definition was updated or edited. The initial functionality added the user_id into either the upvote or downvote array stored in each definition document depending on the button clicked. It was noted however that the 'upvote' and 'downvote' arrays were emptied and the count on the respective buttons were reset to zero on a definition that had been edited. In order to resolve this issue, all aspects of the functionality was assessed. 
+While the original functionality for upvote and downvote was working, a bug arose when the a definition was updated or edited. The initial functionality added the user_id into either the upvote or downvote array stored in each definition document depending on the button clicked. It was noted however that the 'upvote' and 'downvote' arrays were emptied and the count on the respective buttons was reset to zero on a definition that had been edited. In order to resolve this issue, all aspects of the functionality was assessed. 
 
-To resolve this issue, it was necessary for the amount of upvotes and downvotes to be included in the pre-existing data sent to the edit_definition form. In order to do so, two hidden inputs were added to the edit_definition form, as these inputs do not need to be edited, they are hidden from the user. The value attribute set provides the count of the arrays. In app.py, both the upvote and downvote are requested from the form and a pre-emptive default amount is set. They are then updated with the rest of the submit dictionary.
+To resolve this issue, it was necessary for the amount of upvotes and downvotes to be included in the pre-existing data sent to the edit_definition form. In order to do so, two hidden inputs were added to the edit_definition form, as these inputs do not need to be edited, they are hidden from the user. The value attribute set provided the count of the arrays. In the edit_definition function in app.py, both the upvote and downvote are requested from the form and a pre-emptive default amount was set. They were then updated with the rest of the 'submit' dictionary.
 
 ![Hidden inputs on edit definition form](static/images/TESTING/Bugs/hidden-inputs.png)
 ![Sumbit dictionary from edit definition function](static/images/TESTING/Bugs/edit-def-dict.png)
@@ -343,7 +363,7 @@ Upon implementing this structure, it was necessary to create two arrays for 'upv
 Following the changes made above the bug seemed to be resolved and a greater degree of structure was implemented to the voting functionality. However, over the following day a new TypeError began to appear on certain definitions when upvoting on downvoting.
 "TypeError: 'in <string>' requires string as left operand notObjectId". This struck the developer as odd as the error was not being thrown on all definitions. In order to resolve this, the error was forced to be thrown once again and MongoDB was consulted to get a clearer picture of what was happening.
 
-It was then discovered that the changes made in the edit_definition 'submit' dictionary and the vote form inputs on the edit definition form were causing the arrays to be converted into a string. The if and elif statements were throwing an error as there was no longer an array to check the user_id against for certain definitions. To recify this, the default amount set for both upvote and downvote was removed from the form request in the submit dictionary, and the count method added to the expression {{ definition.upvote/downvote }} was removed from the value attribute. The database was then combed for definition documents that had their array converted into string and were manually reset. Following these changes, functionality had returned across the board. 
+It was then discovered that the changes made in the edit_definition 'submit' dictionary and the vote form inputs on the edit definition form were causing the arrays to be converted into a string. The if and elif statements were throwing an error as there was no longer an array to check the user_id against for certain definition documents. To recify this, the default amount set for both upvote and downvote was removed from the form request in the submit dictionary, and the count method added to the expression {{ definition.upvote/downvote }} was removed from the value attribute. The database was then combed for definition documents that had their array converted into string and were manually reset. Following these changes, functionality had returned across the board. 
 
 ![DB image](static/images/TESTING/Bugs/array-to-string.png)
 ![Vote inputs](static/images/TESTING/Bugs/vote-input.png)
@@ -353,6 +373,8 @@ It was then discovered that the changes made in the edit_definition 'submit' dic
 # Manual functionality testing:
 
 # User Authentication: 
+
+### **Note:** Since manually testing the different elements of user authentication, updates were made to provide custom error messages on input fields. The error messages seen in the supporting imges below do not reflect what will be rendered on the live site. 
 
 ## **Registration functionality:**
 Following completion of the function register, the function and form were tested manually. The functionality was tested in the following manner: 
@@ -458,6 +480,10 @@ The admin's login status can be confirmed in 'Cookies' found in the 'Application
 
 
 # CRUD OPERATIONS
+
+### **Note:** Since manually testing the different elements of CRUD operations, updates were made to provide custom error messages on input fields. The error messages seen in the supporting imges below do not reflect what will be rendered on the live site.
+
+
 ## **Create/Add:**
 ### Add Definition:
 Following the completion of add_definition functionality, manual testing was carried out against the functionality. It was tested in the following manner:
@@ -1081,7 +1107,7 @@ Was employed to view the site on a larger variety viewports.
 **Responsinator:**
 Was employed where a devices that were'nt readily accessible.
 
-# Known issues or bugs:
+# Known issues or bugs
 ## Issues noted in the 'Problems' window of the terminal:
 The following issues were noted in the Problems window of the terminal: 
 
@@ -1094,5 +1120,5 @@ While env has been flagged as 'imported but never used', it has in fact been use
 This is referring to the event object in the Flask custom error pages. The implementation of the custom error pages was achieved by following the method outlined in the [Flask documentation](https://flask.palletsprojects.com/en/2.0.x/errorhandling/).  
 
 
-# Notes: 
+# Notes 
 The implementation of custom error messages for input fields was added after the images for manual testing were uploaded to the TESTING file. The images display the default standard error messages, and will differ from what renders on the live site. The custom error messages were tested in the same manner after implementation. 
