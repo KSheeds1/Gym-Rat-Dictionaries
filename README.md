@@ -608,7 +608,8 @@ If you need any more information on Heroku Deployment click [here](https://devce
 * This [Stack Overflow question](https://stackoverflow.com/questions/27980121/pylint-warning-possible-unbalanced-tuple-unpacking-with-sequence) helped me to remove the Pylint warning for 'possible unbalanced tuple unpacking'.
 * This [GitHub Gist](https://gist.github.com/toshimaru/6102647) helped me to detect scrolling to the bottom of the page using jQuery. It was modified slightly to get the innerHeight of the window so it would function on all viewports. 
 * This [GeeksforGeeks article](https://www.geeksforgeeks.org/how-to-detect-a-mobile-device-in-jquery/) showed me how to detect smaller viewports using JavaScript's `window.matchMedia();`
-* This [Stack Overflow question](https://stackoverflow.com/questions/5599934/regular-expression-that-allows-spaces-in-a-string-but-not-only-blank-spaces/5599987) provided me with the regex pattern used to validate the form and search inputs across the site. 
+* This [Stack Overflow question](https://stackoverflow.com/questions/5599934/regular-expression-that-allows-spaces-in-a-string-but-not-only-blank-spaces/5599987) provided me with the regex pattern used to validate the form and search inputs across the site. The pattern was slightly altered to better fit the purpose of my site.
+* This [Stack Overflow question](https://stackoverflow.com/questions/5272433/html5-form-required-attribute-set-custom-validation-message) showed me how to provide custom error messages on input fields. 
 
 ##  **Content:**
 * Exercise descriptions for the defintions was supplied by *Move With Us*.
