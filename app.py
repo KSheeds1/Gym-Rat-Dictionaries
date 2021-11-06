@@ -133,6 +133,8 @@ def category_pg(category_id):
                            pagination=pagination,)
 
 
+# User Authentication:
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """
@@ -167,8 +169,6 @@ def register():
 
     return render_template("register.html")
 
-
-# User Authentication:
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
