@@ -22,7 +22,7 @@ $(document).ready(function(){
     /*Trigger search bar, scroll to the top of page first, if necessary toggle search bar */
     $('#search, .search').on('click', function() {
         $('html, body').animate({scrollTop:0}, '300');
-        $('.search-panel').toggle("slow");
+        $('.search-panel').show("slow");
     });
     /*Detect scroll to the bottom sourced from https://gist.github.com/toshimaru/6102647 */
     $(window).on("scroll", function() {
